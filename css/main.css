@@ -1147,10 +1147,13 @@ pre .javascript .function {
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ace0c7;
+  background: #ffff50;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
