@@ -21,7 +21,7 @@
   var CONFIG = {
     hostname: new URL('http://yoursite.com').hostname,
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '7.7.1',
     exturl: false,
     sidebar: {"position":"right","display":"post","padding":18,"offset":12,"b2t":true,"onmobile":false},
@@ -45,6 +45,24 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
 
   <meta name="description" content="Better me">
 <meta property="og:type" content="website">
@@ -159,16 +177,6 @@
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">1</span></a>
-
-  </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
   </ul>
@@ -290,6 +298,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kavin Homepea"
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Kavin Homepea</p>
   <div class="site-description" itemprop="description">Better me</div>
 </div>
