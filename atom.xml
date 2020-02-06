@@ -25,8 +25,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a href=&quot;https://zh-cn.wordpress.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WordPress&lt;/a&gt;的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我&lt;a href=&quot;http://begild.top/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;队友&lt;/a&gt;，决定用&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;试试。&lt;/p&gt;
-&lt;p&gt;最初它推荐的是国内的&lt;a href=&quot;https://coding.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Coding&lt;/a&gt;上面建站，访问速度比&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt;快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。&lt;/p&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a
+        
+      
     
     </summary>
     
@@ -47,8 +52,13 @@
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
     
     </summary>
     

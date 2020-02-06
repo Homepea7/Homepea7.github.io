@@ -126,7 +126,7 @@
 <li>熟练使用 Latex、IgorPro、Coreldraw、AI 和 PhotoShop 等办公软件</li>
 </ul>
 <h1 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h1><ol>
-<li>总体而言屌丝一枚吧，喜欢很多新奇的东西会经常去尝试，比如单片机，电路什么的都非常喜欢。以前也游行结识了很多志同道合的朋友，觉得非常的开心。</li>
+<li>总体而言屌丝一枚吧，喜欢很多新奇的东西会经常去尝试，比如单片机，电路什么的都非常喜欢。以前也结识了很多志同道合的朋友，觉得非常的开心。</li>
 <li>想法比较多，想做的事情也非常多，网站建设也在我的想法之内但是却搁置了很久，现在终于有机会来做了。</li>
 <li>我是一个很喜欢宅的人，喜欢打游戏、看视频、看电影、听音乐等等一系列不用动身的运动。受这个疫情的影响，我在家待了十来天了，中间就下楼了一次，居然能够忍下来，以前天天打游戏现在也有点觉得不好玩儿了，还是静下心来好好做点事情吧。</li>
 <li>感觉我的性格比较随和吧，虽然玩游戏偶尔会化身祖安人，但是现实中非常不喜欢和别人哔哔，就连打球也是经常晚上一个人去篮球场，吹着晚风真的很舒服呀！</li>
@@ -135,7 +135,7 @@
 <h1 id="安利一些自己喜欢的东西吧"><a href="#安利一些自己喜欢的东西吧" class="headerlink" title="安利一些自己喜欢的东西吧"></a>安利一些自己喜欢的东西吧</h1><ul>
 <li>歌手：朴树，周杰伦，林俊杰和许嵩等</li>
 </ul>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=93% height=86 src="//music.163.com/outchain/player?type=2&id=139392&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=93% height=86 src="//music.163.com/outchain/player?type=2&id=139392&auto=0&height=66"></iframe>
 
 <ul>
 <li><p>电影：周星驰的电影基本都喜欢</p>
@@ -148,13 +148,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
+    <title>tags</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
+    <title>categories</title>
+    <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
