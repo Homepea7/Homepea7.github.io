@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>记录Hexo建站</title>
-    <url>/2020/%E8%AE%B0%E5%BD%95Hexo%E5%BB%BA%E7%AB%99/</url>
+    <url>/2020/Hexo+Next/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于<a href="https://zh-cn.wordpress.com/" target="_blank" rel="noopener">WordPress</a>的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我<a href="http://begild.top/" target="_blank" rel="noopener">队友</a>，决定用<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>试试。</p>
 <p>最初它推荐的是国内的<a href="https://coding.net/" target="_blank" rel="noopener">Coding</a>上面建站，访问速度比<a href="https://github.com/" target="_blank" rel="noopener">Github</a>快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。</p>
 <h1 id="关于Hexo-Next主题的说明"><a href="#关于Hexo-Next主题的说明" class="headerlink" title="关于Hexo+Next主题的说明"></a>关于Hexo+Next主题的说明</h1><p>首先说明我也是参考了大部分的教程，非常感谢在CSDN，知乎，简书，B站和掘金上面看到的相关教程，在结语中有相应的列举，下面的工作都是自己之前做的一些工作截的图，也是比较新的内容。</p>
@@ -89,6 +89,7 @@
 ]]></content>
       <tags>
         <tag>Hexo</tag>
+        <tag>Next</tag>
       </tags>
   </entry>
   <entry>
@@ -108,10 +109,13 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
   </entry>
   <entry>
-    <title>about</title>
-    <url>/about/index.html</url>
+    <title>categories</title>
+    <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -120,8 +124,37 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
+    <title>关于博主</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
+<h2 id="2018-6-至今-研究生-中国地质大学-武汉"><a href="#2018-6-至今-研究生-中国地质大学-武汉" class="headerlink" title="2018.6-至今   研究生 中国地质大学(武汉)"></a>2018.6-至今   研究生 中国地质大学(武汉)</h2><p>专业是控制科学与工程，学习内容有：鲁棒与最优控制、机器学习与学习控制、智能优化与最优化方法、人工神经网络及应用、非线性系统分析与控制、模糊控制</p>
+<h1 id="专业技能"><a href="#专业技能" class="headerlink" title="专业技能"></a>专业技能</h1><ul>
+<li>熟悉各种计算机操作系统，计算机网络等相关知识，精通嵌入式程序设计和开发</li>
+<li>熟练使用嵌入式开发的 Keil、J-Scope 等软件和 PCB 制图的 Altium Designer</li>
+<li>熟练使用电路仿真软件 Proteus、Multisim 进行电路仿真</li>
+<li>熟练使用Markdown网页编写和微信小程序开发的微信开发者工具</li>
+<li>熟练使用 Latex、IgorPro、Coreldraw、AI 和 PhotoShop 等办公软件</li>
+</ul>
+<h1 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h1><ol>
+<li>总体而言屌丝一枚吧，喜欢很多新奇的东西会经常去尝试，比如单片机，电路什么的都非常喜欢。以前也游行结识了很多志同道合的朋友，觉得非常的开心。</li>
+<li>想法比较多，想做的事情也非常多，网站建设也在我的想法之内但是却搁置了很久，现在终于有机会来做了。</li>
+<li>我是一个很喜欢宅的人，喜欢打游戏、看视频、看电影、听音乐等等一系列不用动身的运动。受这个疫情的影响，我在家待了十来天了，中间就下楼了一次，居然能够忍下来，以前天天打游戏现在也有点觉得不好玩儿了，还是静下心来好好做点事情吧。</li>
+<li>感觉我的性格比较随和吧，虽然玩游戏偶尔会化身祖安人，但是现实中非常不喜欢和别人哔哔，就连打球也是经常晚上一个人去篮球场，吹着晚风真的很舒服呀！</li>
+<li>不善于表达自己的情绪，因此也失去了一些东西，不知道以后能不能慢慢改变~</li>
+</ol>
+<h1 id="安利一些自己喜欢的东西吧"><a href="#安利一些自己喜欢的东西吧" class="headerlink" title="安利一些自己喜欢的东西吧"></a>安利一些自己喜欢的东西吧</h1><ul>
+<li>歌手：朴树，周杰伦，林俊杰和许嵩等</li>
+</ul>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=93% height=86 src="//music.163.com/outchain/player?type=2&id=139392&auto=1&height=66"></iframe>
+
+<ul>
+<li><p>电影：周星驰的电影基本都喜欢</p>
+</li>
+<li><p>B站UP：<a href="https://space.bilibili.com/546195?spm_id_from=333.788.b_765f7570696e666f.1" target="_blank" rel="noopener">老番茄</a>，<a href="https://space.bilibili.com/382666849/dynamic" target="_blank" rel="noopener">维修厮</a>，<a href="https://www.bilibili.com/video/av82313557" target="_blank" rel="noopener">绵羊料理</a>和<a href="https://space.bilibili.com/390461123/dynamic" target="_blank" rel="noopener">徐大骚</a>等等。</p>
+</li>
+<li><p>图片：来源B站<a href="https://space.bilibili.com/6823116" target="_blank" rel="noopener">壁纸娘</a>的“Bilibili盛夏”，5K超清！<br><img src="bilibili%E7%9B%9B%E5%A4%8F" alt=""> <img src="https://i0.hdslb.com/bfs/album/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"></p>
+</li>
+</ul>
+]]></content>
   </entry>
 </search>

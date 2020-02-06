@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-06T04:47:01.940Z</updated>
+  <updated>2020-02-06T08:16:16.245Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,26 +18,23 @@
   
   <entry>
     <title>记录Hexo建站</title>
-    <link href="http://yoursite.com/2020/%E8%AE%B0%E5%BD%95Hexo%E5%BB%BA%E7%AB%99/"/>
-    <id>http://yoursite.com/2020/%E8%AE%B0%E5%BD%95Hexo%E5%BB%BA%E7%AB%99/</id>
+    <link href="http://yoursite.com/2020/Hexo+Next/"/>
+    <id>http://yoursite.com/2020/Hexo+Next/</id>
     <published>2020-02-05T12:09:02.000Z</published>
-    <updated>2020-02-06T04:47:01.940Z</updated>
+    <updated>2020-02-06T08:16:16.245Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a
-        
-      
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a href=&quot;https://zh-cn.wordpress.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WordPress&lt;/a&gt;的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我&lt;a href=&quot;http://begild.top/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;队友&lt;/a&gt;，决定用&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;试试。&lt;/p&gt;
+&lt;p&gt;最初它推荐的是国内的&lt;a href=&quot;https://coding.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Coding&lt;/a&gt;上面建站，访问速度比&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt;快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。&lt;/p&gt;
     
     </summary>
     
     
     
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="Next" scheme="http://yoursite.com/tags/Next/"/>
     
   </entry>
   
@@ -46,21 +43,18 @@
     <link href="http://yoursite.com/2020/hello-world/"/>
     <id>http://yoursite.com/2020/hello-world/</id>
     <published>2020-02-02T04:22:55.165Z</published>
-    <updated>2020-02-06T03:41:26.541Z</updated>
+    <updated>2020-02-06T06:12:05.514Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
     
     </summary>
     
     
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
