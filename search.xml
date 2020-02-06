@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>记录Hexo建站</title>
+    <url>/2020/%E8%AE%B0%E5%BD%95Hexo%E5%BB%BA%E7%AB%99/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于<a href="https://zh-cn.wordpress.com/" target="_blank" rel="noopener">WordPress</a>的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我<a href="http://begild.top/" target="_blank" rel="noopener">队友</a>，决定用<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>试试。</p>
+<p>最初它推荐的是国内的<a href="https://coding.net/" target="_blank" rel="noopener">Coding</a>上面建站，访问速度比<a href="https://github.com/" target="_blank" rel="noopener">Github</a>快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。</p>
+<h1 id="关于Hexo-Next主题的说明"><a href="#关于Hexo-Next主题的说明" class="headerlink" title="关于Hexo+Next主题的说明"></a>关于Hexo+Next主题的说明</h1><p>首先说明我也是参考了大部分的教程，非常感谢在CSDN，知乎，简书，B站和掘金上面看到的相关教程，在结语中有相应的列举，下面的工作都是自己之前做的一些工作截的图，也是比较新的内容。</p>
+<p>然后说说Hexo，它是一款基于Node.js的静态博客框架，依赖少、易于安装使用，可以方便的生成静态网页托管在Github上。他的一些指令非常方便的生成静态网页，对于像Github和Coding这样能够生成静态网页的平台而言非常好用，关键在免费！Hexo的常见这是台湾人，因此对中文支持很好，而且全<a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">开源</a>，主题非常好看，也可以进行非常多的个性化配置，一条指令可以直接同步到Github和Coding，非常好用。</p>
+<p>其次是Next主题，Hexo支持很多主题风格，其中Next主题是Github上Star最多的主题，其一直在更新维护，支持非常多的外部插件和功能选项，关键是非常好看，配置起来也很简单，上手也快。</p>
+<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><p>搭建步骤我都是非常简洁的去写，但是都会留一些截图具体说明，下面是几个具体的步骤：</p>
+<ul>
+<li>GitHub创建仓库</li>
+<li>安装Git</li>
+<li>安装Node.js</li>
+<li>安装Hexo</li>
+<li>将 GitHub 和 Hexo 关联起来</li>
+</ul>
+<h2 id="GitHub创建个人仓库"><a href="#GitHub创建个人仓库" class="headerlink" title="GitHub创建个人仓库"></a>GitHub创建个人仓库</h2><p>登录到GitHub，如果没有<a href="https://github.com/" target="_blank" rel="noopener">Github</a>账号，如果没有的话就注册一个。如下图所示创建个人仓库，仓库名应该为：用户名.github.io，[注：这是固定写法]，比如我的仓库名为：Homepea7.github.io<br><img src="/images/recording-hexo/3.1.png" alt="仓库"></p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>Git是开源的分布式版本控制系统，我们网站在本地搭建好了，需要使用Git同步到GitHub上。安装后的效果就跟WIN10的CMD或者Linux的终端一样，都是执行的命令行，具体上传的过程后面会有具体的说明。关于Git的使用网上的教程很多，廖雪峰老师的<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git教程</a>和<a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">Python教程</a>我都看过，需要一点点的基础，不过逻辑和说明都非常的详细，大家可以自己搜一下看看。从Git官网下载Git-安装包 ，下载后安装，在命令行输入git测试是否安装成功，安装成功后，将Git与GitHub账号绑定，鼠标右键打开Git Bash Here。</p>
+<p><img src="/images/recording-hexo/3.2.1.png" alt="Git"></p>
+<h3 id="设置GIT配置信息"><a href="#设置GIT配置信息" class="headerlink" title="设置GIT配置信息"></a>设置GIT配置信息</h3><p>安装了Git之后首先要设置user.name和user.email配置信息，具体如下所示（双引号也是需要的）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="生成ssh密钥文件"><a href="#生成ssh密钥文件" class="headerlink" title="生成ssh密钥文件"></a>生成ssh密钥文件</h3><p>设置好了以后需要生成SSH密钥文件，方便上传网站。具体操作执行代码如下（双引号也是需要的）:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<p>执行完了之后直接三个回车即可，默认不需要设置密码 然后在目录【C:\Users\XXX.ssh】文件夹下面找到id_rsa.pub密钥，如下所示：<br><img src="/images/recording-hexo/3.2.2.png" alt="SSH"></p>
+<h3 id="复制到Github"><a href="#复制到Github" class="headerlink" title="复制到Github"></a>复制到Github</h3><p>将前面得到的SSH内容全部复制到Github上面的<a href="https://github.com/settings/keys" target="_blank" rel="noopener">界面</a>即可。新建new SSH Key，Title为标题，随意填即可，如下图所示：<br><img src="/images/recording-hexo/3.2.3.png" alt="KEY"></p>
+<p>在Git Bash检测GitHub公钥设置是否成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>如果下图说明成功：</p>
+<p><img src="/images/recording-hexo/3.2.4.png" alt="SSHOK"></p>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>Hexo基于<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a>，将官方的文件下下来直接安装即可。</p>
+<p>检测Node.js是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
+
+<p>检测npm是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>Hexo就是博客的框架，这里需要在自己的电脑里创建一个文件夹，这里我命名为Hexo，Hexo框架与以后你自己发布的网站都在这个文件夹中，创建好后，进入文件夹中 -&gt; Git Bash Here -&gt; 使用npm命令安装Hexo。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>复制代码这个安装时间较长（耐心等待中），我在下载的过程中好几次都下不下来,因此也打包了<a href="https://pan.baidu.com/s/1Xb36YSWXF3NZ7LojWNsm9A" target="_blank" rel="noopener">整个项目文件</a>，下载解压可以直接进行下面的步骤，也包含了Next主题。安装/下载 完成后，初始化我们的博客，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init Hexo</span><br></pre></td></tr></table></figure>
+
+<p>复制代码为了检测网站的雏形，分别按顺序输入一下三条命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+
+<p>复制代码完成后在浏览器输入: <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> ，可以看到我们写出的第一篇博文Hello World，里面有最基本的几个指令。</p>
+<h2 id="将-Hexo-和-GitHub-Coding-关联起来"><a href="#将-Hexo-和-GitHub-Coding-关联起来" class="headerlink" title="将 Hexo 和 GitHub/Coding 关联起来"></a>将 Hexo 和 GitHub/Coding 关联起来</h2><p>在Hexo根目录里_config.yml文件成为站点配置文件，打开_config.yml修改deploy（yml文件是根据缩进来判断的，因此一定要注意空格的多少），具体的操作如下所示:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:Homepea7/Homepea7.github.io.git</span><br><span class="line">- <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@e.coding.net:homepea/blog.git</span><br></pre></td></tr></table></figure>
+
+<p>复制代码保存站点配置，其实就是然hexo知道你要把Hexo部署在哪个位置，很明显，我们部署在我们GitHub/Coding的仓库里，最后安装Git部署插件，在部署之前需要执行以下指令，让Hexo能够正确上传。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>复制代码这时，我们分别输入三条命令，即可在通过xxx.github.io看到我们的博客了，最后执行下列执行，分别是清理，重建页面和上传仓库三个操作，一般上传之后不能立马看到效果，需要等待十分钟左右。执行的指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<h1 id="关于网站的美化"><a href="#关于网站的美化" class="headerlink" title="关于网站的美化"></a>关于网站的美化</h1><p>说实话我对好看的想法不多，只是想看起来能看，而且给妹子看她们觉得不丑就好了。我把我修改好的<a href="https://pan.baidu.com/s/1yTp2zblSl2IzA7T6ThQ4Sg" target="_blank" rel="noopener">next主题打包</a>好了，下载之后直接替换应该也是可以直接使用的。关于网上Next的主题优化的教程很多，相应的图标啊，图片啊什么的也有很多网站，我个人比较喜欢阿里的图标库，免费且很多很好看的图标。这里就不一一列举了，直接Google关键字【Next主题美化】即可。</p>
+<p>这里有一点要指出来的就是Next主题自7.6.0版本开始，自动在首页对文章进行摘要描述作为前言文本的功能被移除，请自行安装第三方插件，或阅读 Hexo <a href="https://github.com/chekun/hexo-excerpt" target="_blank" rel="noopener">有关文档</a>。没有这个功能的话对导致主页上面是文章的全部内容，显得非常的杂乱，相应的处理方法也是非常简单，自行安装【 hexo-excerpt 】即可，如下所示：</p>
+<h2 id="在博客目录下执行Git-Bash"><a href="#在博客目录下执行Git-Bash" class="headerlink" title="在博客目录下执行Git Bash"></a>在博客目录下执行Git Bash</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-excerpt --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="在站点配置文件-config-yml添加内容"><a href="#在站点配置文件-config-yml添加内容" class="headerlink" title="在站点配置文件_config.yml添加内容"></a>在站点配置文件_config.yml添加内容</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#自动在首页对文章进行摘要描述作为前言文本</span></span><br><span class="line">excerpt:</span><br><span class="line">  depth: 3 <span class="comment">#摘要的内容多少</span></span><br><span class="line">  excerpt_excludes: []</span><br><span class="line">  more_excludes: []</span><br><span class="line">  hideWholePostExcerpts: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在主题配置文件-config-yml确认开启"><a href="#在主题配置文件-config-yml确认开启" class="headerlink" title="在主题配置文件_config.yml确认开启"></a>在主题配置文件_config.yml确认开启</h2><p>查找字符excerpt_description 改为true，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line">excerpt_description: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>最后执行下列指令，重新生成一下静态网页就可以啦。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<h1 id="域名购买和解析"><a href="#域名购买和解析" class="headerlink" title="域名购买和解析"></a>域名购买和解析</h1><p>相信不少同学对生成的网页名称(xxx.github.io 或 xxx.coding.me)不满意，购买自己的域名也是需要相应的解析的，这个步骤比较简单，下面我也做一些介绍。具体分三步，如下：</p>
+<ul>
+<li>购买域名</li>
+<li>仓库中添加CNAME文件并在文件中填写绑定的域名</li>
+<li>添加域名解析</li>
+</ul>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>前提是前面的利用Github或者Coding搭建已经完成了并且可以访问了，后面的操作才有意义。关于域名的购买，有免费的和收费的，免费的王章也是一搜一大把，但是作为自己个性化的东西我觉得还是付费的安全一些。我买的是<a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">阿里云</a>的.top域名，别问为什么，问就是穷，三年才68块软妹币，美滋滋，还有就是.com 和 .cn 的域名需要备案才能使用，.top的域名可以不用实名认证直接就可以用的。阿里云上选取自己的域名然后用支付宝扫码登录和购买就可以了，非常的方便。</p>
+<h2 id="仓库中添加CNAME文件并在文件中填写绑定的域名"><a href="#仓库中添加CNAME文件并在文件中填写绑定的域名" class="headerlink" title="仓库中添加CNAME文件并在文件中填写绑定的域名"></a>仓库中添加CNAME文件并在文件中填写绑定的域名</h2><p>如果是第一次测试的话直接在仓库中建立名为CNAME的文件(文件名大写，且没有后缀)是完全可以的，在CNAME文件中添加刚刚购买的域名，如【homepea.top】，不能包含：【http://】和【www.】，如下图所示：</p>
+<p><img src="/images/recording-hexo/5.2.png" alt="CNAME"></p>
+<p>然后Github会自动解析的，不过还是自己确认以下最好，在最后的Settings里面，向下翻到【GitHub Pages】即可，找到自己的域名即可。</p>
+<p>但是注意，如果上传代码的话CNAME文件会丢失的，因此需要最本地的Hexo文件夹下面的【/source】文件夹下面建一个CNAME文件，内容还是前面购买的域名，这样可以保证每次使用 【$ hexo d】指令的时候代码仓CNAME文件还在。这点一定要注意，否则上传了代码可能网站还进不去。</p>
+<h2 id="添加域名解析"><a href="#添加域名解析" class="headerlink" title="添加域名解析"></a>添加域名解析</h2><p>ping你的<a href="http://github.io" target="_blank" rel="noopener">github.io</a>域名，得到一个IP，如下所示:<br><img src="/images/recording-hexo/5.3.1.png" alt="PING"></p>
+<p>登录到阿里云的<a href="https://dns.console.aliyun.com/?spm=a2c4g.11186623.2.12.d00459cbTbdzcz#/dns/domainList" target="_blank" rel="noopener">云解析控制台</a>，如果没有登陆过就添加域名，我是已经添加过了，所以有，然后点击右边的解析设置。<br><img src="/images/recording-hexo/5.3.2.png" alt="ALIYUN"></p>
+<p>点击蓝色且显眼的标签“添加记录”，添加两个A记录，用得到的IP，一个主机记录为：“www”，一个为“@”，如图中箭头所示。这样通过<a href="https://homepea.top/" target="_blank" rel="noopener">homepea.top</a>和<a href="https://homepea.top/" target="_blank" rel="noopener">www.homepea.top</a>两种方式就都可以访问自己的网站了。<br><img src="/images/recording-hexo/5.3.3.png" alt="DNS"></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这个建站的过程花费了接近三天的时间吧，最开始折腾了一点的Coding，到后来用Github的过程，我觉得一路看过来觉得收获还是比较大的，后面如果有哪些有意思的东西，我也会都记录下来。</p>
+<p>最后非常感谢我的队友<a href="http://begild.top/" target="_blank" rel="noopener">宝藏</a>，还有看到的一些教程，有掘金的<a href="https://juejin.im/post/5b3ed1d4e51d45194e0b7884#heading-36" target="_blank" rel="noopener">菜包包</a>，知乎的<a href="https://www.zhihu.com/question/31377141/answer/384465402" target="_blank" rel="noopener">SnailClimb</a>，还有最后学习的Markdown书写的<a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">高鸿祥</a>，还有参考了很多的教程才有最后的成功，非常感谢。</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>about</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+</search>

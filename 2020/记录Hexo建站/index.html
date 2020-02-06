@@ -25,8 +25,8 @@
     version: '7.7.1',
     exturl: false,
     sidebar: {"position":"right","display":"post","padding":18,"offset":12,"b2t":true,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -40,8 +40,8 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
@@ -81,7 +81,7 @@
 <meta property="og:image" content="http://yoursite.com/images/recording-hexo/5.3.2.png">
 <meta property="og:image" content="http://yoursite.com/images/recording-hexo/5.3.3.png">
 <meta property="article:published_time" content="2020-02-05T12:09:02.000Z">
-<meta property="article:modified_time" content="2020-02-05T16:12:19.343Z">
+<meta property="article:modified_time" content="2020-02-06T04:47:01.940Z">
 <meta property="article:author" content="Kavin Homepea">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -130,6 +130,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="Homepea's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -188,9 +189,34 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">2</span></a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -244,7 +270,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-06 00:12:19" itemprop="dateModified" datetime="2020-02-06T00:12:19+08:00">2020-02-06</time>
+                <time title="修改时间：2020-02-06 12:47:01" itemprop="dateModified" datetime="2020-02-06T12:47:01+08:00">2020-02-06</time>
               </span>
 
           
@@ -260,14 +286,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
+              <span>4.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -281,7 +307,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于<a href="https://zh-cn.wordpress.com/" target="_blank" rel="noopener">WordPress</a>的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我<a href="http://begild.top/" target="_blank" rel="noopener">队友</a>，决定用<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>试试。</p>
 <p>最初它推荐的是国内的<a href="https://coding.net/" target="_blank" rel="noopener">Coding</a>上面建站，访问速度比<a href="https://github.com/" target="_blank" rel="noopener">Github</a>快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。</p>
-<h1 id="关于Hexo-Next主题的说明"><a href="#关于Hexo-Next主题的说明" class="headerlink" title="关于Hexo+Next主题的说明"></a>关于Hexo+Next主题的说明</h1><p>首先说明我也是参考了大部分的教程，非常感谢在CSDN，知乎，简书，B站和掘金上面看到的相关教程，在介于中都有列举，下面的工作都是自己之前做的一些工作截的图。</p>
+<h1 id="关于Hexo-Next主题的说明"><a href="#关于Hexo-Next主题的说明" class="headerlink" title="关于Hexo+Next主题的说明"></a>关于Hexo+Next主题的说明</h1><p>首先说明我也是参考了大部分的教程，非常感谢在CSDN，知乎，简书，B站和掘金上面看到的相关教程，在结语中有相应的列举，下面的工作都是自己之前做的一些工作截的图，也是比较新的内容。</p>
 <p>然后说说Hexo，它是一款基于Node.js的静态博客框架，依赖少、易于安装使用，可以方便的生成静态网页托管在Github上。他的一些指令非常方便的生成静态网页，对于像Github和Coding这样能够生成静态网页的平台而言非常好用，关键在免费！Hexo的常见这是台湾人，因此对中文支持很好，而且全<a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">开源</a>，主题非常好看，也可以进行非常多的个性化配置，一条指令可以直接同步到Github和Coding，非常好用。</p>
 <p>其次是Next主题，Hexo支持很多主题风格，其中Next主题是Github上Star最多的主题，其一直在更新维护，支持非常多的外部插件和功能选项，关键是非常好看，配置起来也很简单，上手也快。</p>
 <h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><p>搭建步骤我都是非常简洁的去写，但是都会留一些截图具体说明，下面是几个具体的步骤：</p>
@@ -298,11 +324,11 @@
 <h3 id="设置GIT配置信息"><a href="#设置GIT配置信息" class="headerlink" title="设置GIT配置信息"></a>设置GIT配置信息</h3><p>安装了Git之后首先要设置user.name和user.email配置信息，具体如下所示（双引号也是需要的）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 
-<p>设置好了以后需要生成SSH密钥文件，方便上传网站。具体操作执行代码如下（双引号也是需要的）:</p>
+<h3 id="生成ssh密钥文件"><a href="#生成ssh密钥文件" class="headerlink" title="生成ssh密钥文件"></a>生成ssh密钥文件</h3><p>设置好了以后需要生成SSH密钥文件，方便上传网站。具体操作执行代码如下（双引号也是需要的）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 
 <p>执行完了之后直接三个回车即可，默认不需要设置密码 然后在目录【C:\Users\XXX.ssh】文件夹下面找到id_rsa.pub密钥，如下所示：<br><img src="/images/recording-hexo/3.2.2.png" alt="SSH"></p>
-<p>将内容全部复制到Github上面的<a href="https://github.com/settings/keys" target="_blank" rel="noopener">界面</a>即可。新建new SSH Key，Title为标题，随意填即可，如下图所示：<br><img src="/images/recording-hexo/3.2.3.png" alt="KEY"></p>
+<h3 id="复制到Github"><a href="#复制到Github" class="headerlink" title="复制到Github"></a>复制到Github</h3><p>将前面得到的SSH内容全部复制到Github上面的<a href="https://github.com/settings/keys" target="_blank" rel="noopener">界面</a>即可。新建new SSH Key，Title为标题，随意填即可，如下图所示：<br><img src="/images/recording-hexo/3.2.3.png" alt="KEY"></p>
 <p>在Git Bash检测GitHub公钥设置是否成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh git@github.com</span><br></pre></td></tr></table></figure>
 
@@ -335,6 +361,17 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 
 <h1 id="关于网站的美化"><a href="#关于网站的美化" class="headerlink" title="关于网站的美化"></a>关于网站的美化</h1><p>说实话我对好看的想法不多，只是想看起来能看，而且给妹子看她们觉得不丑就好了。我把我修改好的<a href="https://pan.baidu.com/s/1yTp2zblSl2IzA7T6ThQ4Sg" target="_blank" rel="noopener">next主题打包</a>好了，下载之后直接替换应该也是可以直接使用的。关于网上Next的主题优化的教程很多，相应的图标啊，图片啊什么的也有很多网站，我个人比较喜欢阿里的图标库，免费且很多很好看的图标。这里就不一一列举了，直接Google关键字【Next主题美化】即可。</p>
+<p>这里有一点要指出来的就是Next主题自7.6.0版本开始，自动在首页对文章进行摘要描述作为前言文本的功能被移除，请自行安装第三方插件，或阅读 Hexo <a href="https://github.com/chekun/hexo-excerpt" target="_blank" rel="noopener">有关文档</a>。没有这个功能的话对导致主页上面是文章的全部内容，显得非常的杂乱，相应的处理方法也是非常简单，自行安装【 hexo-excerpt 】即可，如下所示：</p>
+<h2 id="在博客目录下执行Git-Bash"><a href="#在博客目录下执行Git-Bash" class="headerlink" title="在博客目录下执行Git Bash"></a>在博客目录下执行Git Bash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-excerpt --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="在站点配置文件-config-yml添加内容"><a href="#在站点配置文件-config-yml添加内容" class="headerlink" title="在站点配置文件_config.yml添加内容"></a>在站点配置文件_config.yml添加内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自动在首页对文章进行摘要描述作为前言文本</span></span><br><span class="line">excerpt:</span><br><span class="line">  depth: 3 <span class="comment">#摘要的内容多少</span></span><br><span class="line">  excerpt_excludes: []</span><br><span class="line">  more_excludes: []</span><br><span class="line">  hideWholePostExcerpts: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在主题配置文件-config-yml确认开启"><a href="#在主题配置文件-config-yml确认开启" class="headerlink" title="在主题配置文件_config.yml确认开启"></a>在主题配置文件_config.yml确认开启</h2><p>查找字符excerpt_description 改为true，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line">excerpt_description: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>最后执行下列指令，重新生成一下静态网页就可以啦。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
 <h1 id="域名购买和解析"><a href="#域名购买和解析" class="headerlink" title="域名购买和解析"></a>域名购买和解析</h1><p>相信不少同学对生成的网页名称(xxx.github.io 或 xxx.coding.me)不满意，购买自己的域名也是需要相应的解析的，这个步骤比较简单，下面我也做一些介绍。具体分三步，如下：</p>
 <ul>
 <li>购买域名</li>
@@ -443,7 +480,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于Hexo-Next主题的说明"><span class="nav-number">2.</span> <span class="nav-text">关于Hexo+Next主题的说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建步骤"><span class="nav-number">3.</span> <span class="nav-text">搭建步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub创建个人仓库"><span class="nav-number">3.1.</span> <span class="nav-text">GitHub创建个人仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git"><span class="nav-number">3.2.</span> <span class="nav-text">安装Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置GIT配置信息"><span class="nav-number">3.2.1.</span> <span class="nav-text">设置GIT配置信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Node-js"><span class="nav-number">3.3.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">3.4.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将-Hexo-和-GitHub-Coding-关联起来"><span class="nav-number">3.5.</span> <span class="nav-text">将 Hexo 和 GitHub&#x2F;Coding 关联起来</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于网站的美化"><span class="nav-number">4.</span> <span class="nav-text">关于网站的美化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#域名购买和解析"><span class="nav-number">5.</span> <span class="nav-text">域名购买和解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#购买域名"><span class="nav-number">5.1.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库中添加CNAME文件并在文件中填写绑定的域名"><span class="nav-number">5.2.</span> <span class="nav-text">仓库中添加CNAME文件并在文件中填写绑定的域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加域名解析"><span class="nav-number">5.3.</span> <span class="nav-text">添加域名解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于Hexo-Next主题的说明"><span class="nav-number">2.</span> <span class="nav-text">关于Hexo+Next主题的说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建步骤"><span class="nav-number">3.</span> <span class="nav-text">搭建步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub创建个人仓库"><span class="nav-number">3.1.</span> <span class="nav-text">GitHub创建个人仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git"><span class="nav-number">3.2.</span> <span class="nav-text">安装Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置GIT配置信息"><span class="nav-number">3.2.1.</span> <span class="nav-text">设置GIT配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成ssh密钥文件"><span class="nav-number">3.2.2.</span> <span class="nav-text">生成ssh密钥文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制到Github"><span class="nav-number">3.2.3.</span> <span class="nav-text">复制到Github</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Node-js"><span class="nav-number">3.3.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">3.4.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将-Hexo-和-GitHub-Coding-关联起来"><span class="nav-number">3.5.</span> <span class="nav-text">将 Hexo 和 GitHub&#x2F;Coding 关联起来</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于网站的美化"><span class="nav-number">4.</span> <span class="nav-text">关于网站的美化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在博客目录下执行Git-Bash"><span class="nav-number">4.1.</span> <span class="nav-text">在博客目录下执行Git Bash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在站点配置文件-config-yml添加内容"><span class="nav-number">4.2.</span> <span class="nav-text">在站点配置文件_config.yml添加内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在主题配置文件-config-yml确认开启"><span class="nav-number">4.3.</span> <span class="nav-text">在主题配置文件_config.yml确认开启</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#域名购买和解析"><span class="nav-number">5.</span> <span class="nav-text">域名购买和解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#购买域名"><span class="nav-number">5.1.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库中添加CNAME文件并在文件中填写绑定的域名"><span class="nav-number">5.2.</span> <span class="nav-text">仓库中添加CNAME文件并在文件中填写绑定的域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加域名解析"><span class="nav-number">5.3.</span> <span class="nav-text">添加域名解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -506,7 +543,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -570,6 +607,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Homepea&#39;s Blog</title>
+  <icon>http://yoursite.com/icon.png</icon>
+  <subtitle>Good good study, day day up!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-02-06T04:47:01.940Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Kavin Homepea</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录Hexo建站</title>
+    <link href="http://yoursite.com/2020/%E8%AE%B0%E5%BD%95Hexo%E5%BB%BA%E7%AB%99/"/>
+    <id>http://yoursite.com/2020/%E8%AE%B0%E5%BD%95Hexo%E5%BB%BA%E7%AB%99/</id>
+    <published>2020-02-05T12:09:02.000Z</published>
+    <updated>2020-02-06T04:47:01.940Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/hello-world/"/>
+    <id>http://yoursite.com/2020/hello-world/</id>
+    <published>2020-02-02T04:22:55.165Z</published>
+    <updated>2020-02-06T03:41:26.541Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
