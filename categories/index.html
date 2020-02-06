@@ -19,7 +19,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('http://yoursite.com').hostname,
+    hostname: new URL('https://Homepea7.github.io').hostname,
     root: '/',
     scheme: 'Gemini',
     version: '7.7.1',
@@ -66,13 +66,13 @@
 
   <meta name="description" content="Better me">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta property="og:title" content="Homepea的分类">
+<meta property="og:url" content="https://homepea7.github.io/categories/index.html">
 <meta property="og:site_name" content="Homepea&#39;s Blog">
 <meta property="og:description" content="Better me">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-05T01:29:13.000Z">
-<meta property="article:modified_time" content="2020-02-05T01:29:13.397Z">
+<meta property="article:modified_time" content="2020-02-06T10:42:14.682Z">
 <meta property="article:author" content="Kavin Homepea">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content=" Python">
@@ -80,7 +80,7 @@
 <meta property="article:tag" content=" WeApplet">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/categories/">
+<link rel="canonical" href="https://homepea7.github.io/categories/">
 
 
 <script id="page-configurations">
@@ -92,7 +92,7 @@
   };
 </script>
 
-  <title>categories | Homepea's Blog
+  <title>Homepea的分类 | Homepea's Blog
   </title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
@@ -184,7 +184,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">0</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">1</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -267,7 +267,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">categories
+<h1 class="post-title" itemprop="name headline">Homepea的分类
 </h1>
 
 <div class="post-meta">
@@ -281,7 +281,15 @@
       
       
       <div class="post-body">
-          
+          <div class="category-all-page">
+            <div class="category-all-title">
+              目前共计 1 个分类
+            </div>
+            <div class="category-all">
+              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li></ul>
+            </div>
+          </div>
+        
       </div>
       
       
@@ -363,9 +371,17 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -413,6 +429,23 @@
     </span>
     <span title="站点阅读时长">4 分钟</span>
 </div>
+
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("01/01/2020 12:00:00");
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
 
         
 <div class="busuanzi-count">
@@ -513,7 +546,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       visitor: true,
       lang: '' || 'zh-cn',
       path: location.pathname,
-      recordIP: false,
+      recordIP: true,
       serverURLs: ''
     });
     
@@ -528,7 +561,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
 });
 </script>
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","hOffset":50,"vOffset":0,"width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
 <!-- 页面点击小红心 -->

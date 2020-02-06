@@ -87,6 +87,9 @@
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这个建站的过程花费了接近三天的时间吧，最开始折腾了一点的Coding，到后来用Github的过程，我觉得一路看过来觉得收获还是比较大的，后面如果有哪些有意思的东西，我也会都记录下来。</p>
 <p>最后非常感谢我的队友<a href="http://begild.top/" target="_blank" rel="noopener">宝藏</a>，还有看到的一些教程，有掘金的<a href="https://juejin.im/post/5b3ed1d4e51d45194e0b7884#heading-36" target="_blank" rel="noopener">菜包包</a>，知乎的<a href="https://www.zhihu.com/question/31377141/answer/384465402" target="_blank" rel="noopener">SnailClimb</a>，还有最后学习的Markdown书写的<a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">高鸿祥</a>，还有参考了很多的教程才有最后的成功，非常感谢。</p>
 ]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
       <tags>
         <tag>Hexo</tag>
         <tag>Next</tag>
@@ -109,6 +112,9 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
       <tags>
         <tag>Hexo</tag>
       </tags>
@@ -128,8 +134,13 @@
 </head>
     <body>
         <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8" homePageUrl="/" homePageName="返回"></script> 
-    </body>
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","hOffset":50,"vOffset":0,"width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>关于博主</title>
@@ -166,23 +177,18 @@
 ]]></content>
   </entry>
   <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>收藏</title>
     <url>/favorites/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
+    <title>资源</title>
+    <url>/resources/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>资源</title>
-    <url>/resources/index.html</url>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
