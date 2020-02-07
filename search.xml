@@ -172,11 +172,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>收藏</title>
     <url>/favorites/index.html</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我这个人有点无聊，一般每个学习主用的电脑都会重新装一次系统，但是我的软件基本都是绿色版，因此一般我半个小时就可以基本恢复好，但是浏览器上面的数千每次回复比较慢，这个我觉得比较烦，而且有时候梯子不好用了，因此在这里将我的数千同步一下，也做一个分享，希望上面的资源能够帮到大家。</p>
@@ -374,8 +369,13 @@
 <DT><A HREF="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener" >hexo live2d插件 2.0 ! | 幻想帖</A>
 
 
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西比较乱，主要是自己看的，所以没有好好整理，主要时东西收藏的太多了，以前就没有好好整理，本来像弄成表格，但是太乱了根本做不好，只能这样将就看看了<del>~</del></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西比较乱，主要是自己看的，所以没有好好整理，主要是东西收藏的太多了，分类的时候有一些都没有好好注意，本来想弄成表格，但是太乱了不好做，只能这样将就看看了<del>~</del></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>资源</title>
