@@ -138,11 +138,6 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -177,14 +172,240 @@
 ]]></content>
   </entry>
   <entry>
-    <title>收藏</title>
-    <url>/favorites/index.html</url>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>资源</title>
     <url>/resources/index.html</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我个人有一些使用软件上的一些小“洁癖”吧，国内的环境的确是真的非常非常的恶心，各种弹窗和广告数不胜数，还有百度说的“中国人愿意用隐私换取便利”，感觉真的是恶心到我了，这里将我常用的一些软件分享出来，希望能够帮到一些人，至少不受到垃圾广告和弹窗的影响，也为我自己的列一个清单，以后分享页方便。我经常逛的两个论坛是<a href="https://www.ghpym.com/" target="_blank" rel="noopener">果核剥壳</a>和<a href="https://www.52pojie.cn/" target="_blank" rel="noopener">我爱破解</a>这两个，其中大部分资源也都是基于这两个论坛的，但是很多都是用了许久，现在可能不能一一找到相应的出处了，我会尽量找出出处，如果有侵权请联系我一定迅速删除。</p>
+<h1 id="日常使用类"><a href="#日常使用类" class="headerlink" title="日常使用类"></a>日常使用类</h1><h2 id="Seer"><a href="#Seer" class="headerlink" title="Seer"></a>Seer</h2><p><a href="https://pan.baidu.com/s/1XDqQ9kg9xCT2OOJSQCV9nw" target="_blank" rel="noopener">Seer</a>可以实现Windown上像Mac一样的空格预览，可以预览非常多的文件，尤其时Gif，这个需求时真的很大，而且markdown文件也可以时时预览，用起来真的非常舒服。</p>
+<h1 id="Snipaste"><a href="#Snipaste" class="headerlink" title="Snipaste"></a>Snipaste</h1><p><a href="https://pan.baidu.com/s/1j533U7llMe3yrsFSC7c5MA" target="_blank" rel="noopener">Snipaste</a>妥妥的生产力工具，我觉得时win系统最好用的截图工具了，还能贴图，自从用了这个我就放弃了QQ、微信和win自带的截图软件了，真的巨好用。</p>
+<h2 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h2><p>浏览器我一直用的<a href="https://www.google.com/chrome/" target="_blank" rel="noopener">Chrome</a>，相信大家也知道国内的浏览器基本都是根据谷歌的开源计划改的吧，当然可能改的很好，不过我看了我上面介绍乐那么多绿色版的东西，我觉得还是原版的好。不多说了，打开链接直接下载即可。</p>
+<h2 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h2><p>音乐播放器，我一直使用的<a href="https://pan.baidu.com/s/18gson3K_KicLeowQtPTAxg" target="_blank" rel="noopener">网易云</a>，虽然乐库越来越少，但是真的还算良心，我也是一直在使用的，上面分享的是绿色版，其实就是我以前自己安装的老版本，这个左侧没有Look直播，头像没有开会员的提醒，我设置不自动更新，就这样一直用着吧。</p>
+<h2 id="MpvPlayer"><a href="#MpvPlayer" class="headerlink" title="MpvPlayer"></a>MpvPlayer</h2><p>视频播放器我用的<a href="https://pan.baidu.com/s/1QSy_Yne2REjEahbEAV_OGg" target="_blank" rel="noopener">MpvPlayer</a>，这样说吧，应该是我见过最好用的一个播放器了，比Plot，foobar这种好多了，真心简洁但是功能一个不差，倍速慢速，换音源，还能逐帧播放，关键还开源，我觉得暂时没有比他更好的本地播放器了。其他的网站上面的我都是用的浏览器在线播放，因为有插件能去广告，非常方便。</p>
+<h2 id="IOBUninstall"><a href="#IOBUninstall" class="headerlink" title="IOBUninstall"></a>IOBUninstall</h2><p><a href="https://pan.baidu.com/s/1jBOqG2ltNcECuYPS1rWkSg" target="_blank" rel="noopener">IOBUninstall</a>我觉得良心制作，基础功能足矣，这个是绿色版，直接安装的，最大的好处是可以卸载win10自带的uwp，非常给力，而且卸载的足够干净。</p>
+<h2 id="WEI-PE"><a href="#WEI-PE" class="headerlink" title="WEI_PE"></a>WEI_PE</h2><p>装系统肯定是用<a href="https://pan.baidu.com/s/1T5UzjWey_MIbu2b_znaG9w" target="_blank" rel="noopener">WEI_PE</a>，国内的环境是真的恶心，用什么大白菜，U启动神的的基本一大推捆绑，好美其名曰推荐，这个PE制作是完全放心的，但是我现在好像已经搜不到观望了，就把以前下载的东西放出来，这个东西用过了就知道什么叫做清爽。</p>
+<h1 id="文本编辑类"><a href="#文本编辑类" class="headerlink" title="文本编辑类"></a>文本编辑类</h1><h2 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h2><p>我用的最多的一个文本编辑器了，特点就是快，因为他的本质就是一个文本编辑器，但是相应的插件支持非常多，支持的文件格式非常多，不管是做编程还是写文本都是非常的好用。至少我现在的tet文件，写Latex，还是Markdown写现在的网页都是用的它，配合其他的插件真的很好用，效率也很高，最先安利的一个了。网上看了很多资源，最后还是选择了果核的软件，我保存了其他人收集的结果<a href="https://pan.baidu.com/s/16944rScjYeHwrJvyO2TyiA" target="_blank" rel="noopener">链接</a>。</p>
+<h2 id="UltraEdit"><a href="#UltraEdit" class="headerlink" title="UltraEdit"></a>UltraEdit</h2><p><a href="https://pan.baidu.com/s/1Gdn_E2dxnUxIS_PN95b9iA" target="_blank" rel="noopener">UltraEdit</a>应该是一个老牌软件了，一些资深的程序员都在用这个，它查看二进制文件或者用二进制查看文件非常的优秀，这个是Sublime和VSCode不能比的，本人电脑也保留了一个，毕竟绿色版解压就能用，也不碍事。</p>
+<h1 id="论文撰写类"><a href="#论文撰写类" class="headerlink" title="论文撰写类"></a>论文撰写类</h1><h2 id="MikTex"><a href="#MikTex" class="headerlink" title="MikTex"></a>MikTex</h2><p>论文写作最麻烦的就是格式问题，这个使用Latex可以很好的解决，而且现在各大杂志都有自己的Latex模板，直接使用即可，那么编辑就成了一个很大的问题了。刚刚过去的时候很多同学推荐CTEX这个软件，一看4G的大小，而且界面非常丑，而且也没有代码高亮啥的，更关键的是找error让我觉得非常难受，因此网上看了很多方法，让我看到了MikTex，其实还有比如TeXlive等等，都是差不多的，因此我是使用的这个<a href="https://pan.baidu.com/s/1_nAJxLTqCaPZn9F9bbzSXQ" target="_blank" rel="noopener">MikTex</a>，安装的时候最好选取“自动下载文章确实的包”，因为这个软件毕竟是Basic的，很多的包还是需要后期安装的，安装完了之后页可以直接编辑tex文件，这个软件也是有编辑器和PDF阅读器的，但是也都是基本的东西，用起来还行吧，但是还是要配合<a href="(https://pan.baidu.com/s/16944rScjYeHwrJvyO2TyiA)">Sublime</a>更好的。</p>
+<h2 id="PDF查看"><a href="#PDF查看" class="headerlink" title="PDF查看"></a>PDF查看</h2><p>说实话，国内的PDF阅读器看了很久，没有一个我觉得是正常的，金山、福析和闪电等等阅读器是真的难用，还有那个知网出的那个什么可以读CAJ格式那两个垃圾阅读器，真的慢死了，广告那么大的板块，真的忍不了，其实真正能用的可能也就Adobe的了，后面有推荐，不过论文撰写方面肯定是<a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer.html" target="_blank" rel="noopener">SumatraPDF</a>，占用体积小，安装完了10M，速度是真的快，而且能够双击连接到Sublime写的文章的对应行上面去，修改论文非常方便，而且他的缩放是很合适，用过的绝对会觉得非常爽。</p>
+<p>除了PDF查看，偶尔也需要对PDF文件作一些小小的更改，特别是有些时候别人发过来的PDF文件，Adobe的阅读器当然可以，但是比较大门后面有介绍，这里介绍<a href="https://pan.baidu.com/s/1l7pc79MVNZEA96ofPMg7WA" target="_blank" rel="noopener">Xchange PDF</a>，也是轻量级的，我一般放在电脑里面吃灰，但是偶尔有时候会非常有用哦。</p>
+<h1 id="资源下载类"><a href="#资源下载类" class="headerlink" title="资源下载类"></a>资源下载类</h1><h2 id="迅雷简化版"><a href="#迅雷简化版" class="headerlink" title="迅雷简化版"></a>迅雷简化版</h2><p>迅雷的做法大家可以去搜搜，种子协议在国内快被他们搞垮了，因此破解版的也层出不穷。如果没错的话来源是我爱破解，但是具体的链接忘了，这个没有任何弹窗，而且在win10_1809可以正常使用，破解了VIP链接但是没有任何的显示，也无需登录，是我用的最久的一个版本了，<a href="https://pan.baidu.com/s/10ToTFaETm3xkBhHv671YRA" target="_blank" rel="noopener">绿色版</a>的，解压直接用即可，快捷方式在D盘的，大家根据快捷方式自己找文件目录吧。</p>
+<h2 id="IDM"><a href="#IDM" class="headerlink" title="IDM"></a>IDM</h2><p>IDM应该是我见过的最好用的下载器了，关键是其浏览器插件非常好用，网站视频啥的基本都能下载，而且多线程技术让他下载速度非常快，特别是国外的资源，比如会议论文模板，深度学习训练集等等，唯一的缺点是不支持种子文件下载。这里直接给到果核的<a href="https://www.ghpym.com/pcidm.html" target="_blank" rel="noopener">IDM链接</a>自行下载吧。</p>
+<h2 id="PanDownload"><a href="#PanDownload" class="headerlink" title="PanDownload"></a>PanDownload</h2><p>百度云的工具，百度云大家都知道，不多介绍，这个软件有一个很大的优点是搜集了一些番剧的网站，应该是爬的，因此会随着其他网站更新而更新，非常方便，缺点是现在旧版本是不能用，直接上<a href="https://pandownload.com/" target="_blank" rel="noopener">官网</a>。</p>
+<h1 id="编程开发类"><a href="#编程开发类" class="headerlink" title="编程开发类"></a>编程开发类</h1><h2 id="MingW64"><a href="#MingW64" class="headerlink" title="MingW64"></a>MingW64</h2><p>学过C语言的应该可能都知道C语言是可以通过命令行一步一步编译的，MingW64就不用说了，这里给出<a href="https://pan.baidu.com/s/1H5E3-etgW33w04zCHOqyug" target="_blank" rel="noopener">下载链接</a>，解压即用，注意要添加环境变量。这个不建议新手使用，一般也是结合Sublime或者VSCode用，因为有图形化界面。</p>
+<h2 id="Codebock"><a href="#Codebock" class="headerlink" title="Codebock"></a>Codebock</h2><p><a href="https://pan.baidu.com/s/1QAmdPykqFiS77O63NY3nxw" target="_blank" rel="noopener">CodeBlock</a>这个软件是大一学习C语言老师推荐的，也是用了很久，集成了很多环境，不需要任何配置上手就能用，非常方便，界面十分简洁，但是我觉得不够友好吧，很多区域不能个性化定制，可能是我自己没找到方法，因此后面用的不多了，总体而言非常不错的。</p>
+<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p>这个是微软开发的开源免费软件，一路逆袭，现在的势头也很猛，对于编程而言非常合适，比如C、C++、PyThon等等，都是非常的合适，中文支持，而且支持迁移原来的编辑器的风格，都是轻量级的软件，值得推荐。由于他现在还是不断更新，我直接更上<a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">官网</a>，但是说到底，它的主要功能还是编辑器，因此没有其他的编译链，如果编写C和C++语言需要MingW64，编写Python需要对应版本的Python安装。</p>
+<h2 id="Keil"><a href="#Keil" class="headerlink" title="Keil"></a>Keil</h2><p>玩过单片机的应该都知道Keil吧，我讲官网的打包了放在这里，因为官网下载要注册，然后就会一直给你邮箱里面发广告，很麻烦。<a href="https://pan.baidu.com/s/1mpuSBt2lebtfdS4DXgrCBQ" target="_blank" rel="noopener">内容</a>，这里Keil4和Keil5都有，一个是51系列的，另一个是ARM系列的，我找了STM32和K60的两个系列的包，都是可以直接使用的。</p>
+<h2 id="SourceInsight"><a href="#SourceInsight" class="headerlink" title="SourceInsight"></a>SourceInsight</h2><p><a href="https://pan.baidu.com/s/15RvsNKFLzu-eahbCiKvsJw" target="_blank" rel="noopener">SourceInsight</a>是查看和修改代码的好工具，特别是查看Linux内核时，各种复杂的引用还有非常多的头文件，用SourceInsight绝对可以事半功倍。</p>
+<h1 id="Adobe系列"><a href="#Adobe系列" class="headerlink" title="Adobe系列"></a>Adobe系列</h1><p>来源：<a href="https://weibo.com/vposy?is_hot=1" target="_blank" rel="noopener">嬴政天下</a>。这里仅作分享，因为是专业版的软件，懂的人自然懂。我这里保留的大都是<a href="https://pan.baidu.com/s/1ouIM91BDU4OSibIxCwhjSQ" target="_blank" rel="noopener">2020版本</a>，这个版本对平台要求比较高，不支持win7的，一定要注意。还有一些其他版本的在后面做一些说明。</p>
+<p><a href="https://pan.baidu.com/s/1JK6ePfzN21ZsRZJzEJITtQ" target="_blank" rel="noopener">PhotoShopCS6</a>这个版本是我本科室友分享的，一直用到了现在，功能齐全而且非常快，支持win7，直接解压打开文件夹中的【!)PhotoShopCS6x64Portable.exe】安装即可，但是注意一定要关闭杀毒软件！！！</p>
+<p><a href="https://pan.baidu.com/s/1Rwodbuz-hpwlVQlZLjjP8A" target="_blank" rel="noopener">AcrobatProDC</a>用的很久，2020版本的我前面看到的是没有PDF阅读器的，我也一直用的这个，安装完了就能直接使用，非常好用。自带虚拟打印机，虽然软件很大，但是打开速度很快，Adobe自带的文字识别也是好用到不行。</p>
+<h1 id="链接说明"><a href="#链接说明" class="headerlink" title="链接说明"></a>链接说明</h1><p>我虽然不喜欢百度云，但是说实话已经用了很久了，上面有很多的资源，所示还是分享的百度云链接，我分享的密码都是【2333】。还有就是只是软件的推荐，没有任何的教程，网上都是一搜一大把的，也非常仔细，如果有什么没有弄好或者觉得不清楚的欢迎评论或者给我发邮件说明哦~</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>收藏</title>
+    <url>/favorites/index.html</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我这个人有点无聊，一般每个学习主用的电脑都会重新装一次系统，但是我的软件基本都是绿色版，因此一般我半个小时就可以基本恢复好，但是浏览器上面的数千每次回复比较慢，这个我觉得比较烦，而且有时候梯子不好用了，因此在这里将我的数千同步一下，也做一个分享，希望上面的资源能够帮到大家。</p>
+<h1 id="主页类"><a href="#主页类" class="headerlink" title="主页类"></a>主页类</h1><h2 id="Google-淘宝-谷歌翻译-Bilibili"><a href="#Google-淘宝-谷歌翻译-Bilibili" class="headerlink" title="Google 淘宝 谷歌翻译 Bilibili"></a><a href="https://www.google.com" target="_blank" rel="noopener">Google</a> <a href="https://www.taobao.com" target="_blank" rel="noopener">淘宝</a> <a href="https://translate.google.com/?hl=zh-CN" target="_blank" rel="noopener">谷歌翻译</a> <a href="https://www.bilibili.com/" target="_blank" rel="noopener">Bilibili</a></h2><h1 id="CUG"><a href="#CUG" class="headerlink" title="CUG"></a>CUG</h1><DT><A HREF="http://192.168.167.14/" target="_blank" rel="noopener" >CUG_WiFi</A>
+<DT><A HREF="http://epo.cug.edu.cn/" target="_blank" rel="noopener" >研究生信息管理中心</A>
+<DT><A HREF="http://10.16.0.113/inde" target="_blank" rel="noopener">CUG自动化学院</A>
+<DT><A HREF="http://pay.cug.edu.cn/xysf/frame_container.aspx" target="_blank" rel="noopener" >CUG支付平台</A>
+<DT><A HREF="http://mail.cug.edu.cn/" target="_blank" rel="noopener" >CUG_Mail</A>
+<DT><A HREF="http://acm.cug.edu.cn/" target="_blank" rel="noopener" >ACM</A>
+<DT><A HREF="http://10.16.0.113/index" target="_blank" rel="noopener" >先进控制技术实验室</A>
+<DT><A HREF="http://202.114.200.86/open/Lesson_TestView.aspx" target="_blank" rel="noopener" >学期考试信息查询</A>
+<DT><A HREF="http://10.16.0.113/admin" target="_blank" rel="noopener" >实验室后台登陆</A>
+<DT><A HREF="https://www.google.com/earth/studio/" target="_blank" rel="noopener" >Google Earth Studio</A>
+<DT><A HREF="http://zcgl.cug.edu.cn/" target="_blank" rel="noopener" >中国地质大学资产综合管理系统</A>
+<DT><A HREF="http://cw.cug.edu.cn/" target="_blank" rel="noopener" >中国地质大学(武汉)财务处</A>
+<DT><A HREF="https://github.com/wandou911/ssr" target="_blank" rel="noopener" >GitHub - wandou911/ssr: ssr免费节点</A>
+<DT><A HREF="https://lncn.org/" target="_blank" rel="noopener" >免费节点 - lncn.org</A>
+<DT><A HREF="https://www.52pojie.cn/" target="_blank" rel="noopener" >吾爱破解 </A>
+<DT><A HREF="https://www.iconfont.cn/" target="_blank" rel="noopener" >Iconfont-阿里巴巴矢量图标库</A>
+<DT><A HREF="https://leetcode-cn.com/explore/" target="_blank" rel="noopener" >LeetCode</A>
+<DT><A HREF="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener" >(5) 题库 - 力扣 (LeetCode) 全球极客挚爱的技术成长平台</A>
+<DT><A HREF="http://www.soopat.com/" target="_blank" rel="noopener" >SooPAT 专利搜索</A>
+<DT><A HREF="http://www.360doc.com/content/18/1210/23/25934206_800797613.shtml" target="_blank" rel="noopener" >常用乐高零件名称及命名规则</A>
+<DT><A HREF="https://study.163.com/course/courseLearn.htm" target="_blank" rel="noopener">   网易云课堂</A>      
+<DT><A HREF="http://begild.top/" target="_blank" rel="noopener" >BeGild Working - BeGild&#39;s Blog</A>
+<DT><A HREF="http://homepea.top/" target="_blank" rel="noopener" >杜晨的博客</A>
+<DT><A HREF="https://github.com/Homepea7/Homepea7.github.io" target="_blank" rel="noopener" >Homepea7/Homepea7.github.io</A>
+
+
+<h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><DT><A HREF="https://www.ieee.org/index.html" target="_blank" rel="noopener" >IEEE</A>
+<DT><A HREF="https://scholar.google.com/schhp?hl=zh-cn" target="_blank" rel="noopener" >Learning</A>
+<DT><A HREF="http://www.sciencedirect.com/" target="_blank" rel="noopener" >SCI</A>
+<DT><A HREF="https://scholar.google.com.hk/?hl=zh-CN" target="_blank" rel="noopener" >Google 学术搜索</A>
+<DT><A HREF="http://www.cnki.net/" target="_blank" rel="noopener" >知网</A>
+<DT><A HREF="http://new.oversea.cnki.net/index/" target="_blank" rel="noopener" >CNKI</A>
+<DT><A HREF="http://www.lib.cug.edu.cn/zy/commondb.htm" target="_blank" rel="noopener" >常用数据库</A>
+<DT><A HREF="http://202.114.202.207/reader/redr_info.php" target="_blank" rel="noopener" >中国地质大学图书馆v5.6书目检索系统</A>
+<DT><A HREF="http://www.lib.cug.edu.cn/" target="_blank" rel="noopener" >中国地质大学图书馆--首页</A>
+<DT><A HREF="http://202.114.202.219/reslist" target="_blank" rel="noopener" >资源列表</A>
+<DT><A HREF="http://www.lib.cug.edu.cn/pageinfo?cid=246" target="_blank" rel="noopener" >校外访问</A>
+<DT><A HREF="http://www.sci-hub.tw/" target="_blank" rel="noopener" >Sci-Hub: removing barriers in the way of science</A>
+<DT><A HREF="http://www.sipo.gov.cn/" target="_blank" rel="noopener" >国家知识产权局</A>
+<DT><A HREF="https://www.uspto.gov/" target="_blank" rel="noopener" >United States Patent and Trademark Office</A>
+<DT><A HREF="http://c.oldg.wanfangdata.com.cn/PatentIndex.aspx" target="_blank" rel="noopener" >sci-hub最新可用网址大全</A>
+<DT><A HREF="https://blog.csdn.net/csdn_moming/article/details/50585021" target="_blank" rel="noopener" >ICM——LaTeX排版</A>
+<DT><A HREF="https://www.engineeringvillage.com/search/quick.url" target="_blank" rel="noopener" >Engineering Village </A>
+<DT><A HREF="http://apps.webofknowledge.com/WOS_GeneralSearch_input.do?product=WOS&search_mode=GeneralSearch&SID=6F33DOq6xsv2fbHvWSG&preferencesSaved=" target="_blank" rel="noopener" >Web of Science</A>                
+
+
+
+<h1 id="资源分享"><a href="#资源分享" class="headerlink" title="资源分享"></a>资源分享</h1><DT><A HREF="http://www.tensorfly.cn/tfdoc/get_started/introduction.html" target="_blank" rel="noopener" >介绍 | TensorFlow 官方文档中文版</A>
+<DT><A HREF="https://space.bilibili.com/209599371/#/channel/detail?cid=23541" target="_blank" rel="noopener" >MXNet_Gluon的个人空间 - 哔哩哔哩 ( ゜- ゜)つロ 乾杯~ Bilibili</A>
+<DT><A HREF="http://www.tensorfly.cn/tfdoc/tutorials/overview.html" target="_blank" rel="noopener" >总览 | TensorFlow 官方文档中文版</A>
+<DT><A HREF="https://mp.weixin.qq.com/s?spm=a2c4e.11153940.blogcont583670.11.62e75de5LJmWQm&__biz=MzAxMjMwODMyMQ==&mid=2456336157&idx=1&sn=109b62b0b2f153f2ae1d7416f90cdc13&chksm=8c2fcd13bb5844051b2d9834f4ad6371e654d8aa04fc09ef9193b0c720a0524e5385347ff46c&scene=21#wechat_redirect" target="_blank" rel="noopener" >磐创AI</A>
+<DT><A HREF="https://zhuanlan.zhihu.com/p/27180274" target="_blank" rel="noopener" >深度学习资源汇总</A>
+<DT><A HREF="https://www.bilibili.com/video/av20542427?from=search&seid=10483055109705593256" target="_blank" rel="noopener" >深度学习框架Tensorflow学习与应用_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</A>
+<DT><A HREF="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/" target="_blank" rel="noopener" >Tensorflow 教程系列 | 莫烦Python</A>
+<DT><A HREF="https://www.jianshu.com/p/2ea7a0632239" target="_blank" rel="noopener" >五分钟带你入门TensorFlow - 简书</A>
+<DT><A HREF="https://www.tensorflow.org/tutorials/" target="_blank" rel="noopener" >TensorFlow</A>
+<DT><A HREF="https://www.bilibili.com/video/av20542427/?p=8" target="_blank" rel="noopener" >深度学习框架Tensorflow学习与应用_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</A>
+<DT><A HREF="https://blog.csdn.net/zj360202/article/details/70259999" target="_blank" rel="noopener" >【Tensorflow】tf.argmax函数 - CSDN博客</A>
+<DT><A HREF="https://www.bilibili.com/video/av20542427/?p=11" target="_blank" rel="noopener" >深度学习框架Tensorflow学习与应用_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</A>
+<DT><A HREF="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/" target="_blank" rel="noopener" >Tensorflow 教程系列 | 莫烦Python</A>
+<DT><A HREF="http://www.runoob.com/w3cnote/python-spider-intro.html" target="_blank" rel="noopener" >Python 爬虫介绍 | 菜鸟教程</A>
+<DT><A HREF="https://zhuanlan.zhihu.com/p/21479334" target="_blank" rel="noopener" >如何学习Python爬虫[入门篇]？</A>
+<DT><A HREF="https://developers.google.com/machine-learning/crash-course/ml-intro" target="_blank" rel="noopener" >机器学习简介 (Introduction to Machine Learning)  |  机器学习速成课程  |  Google Developers</A>
+<DT><A HREF="http://stormzhang.com/github/2016/05/25/learn-github-from-zero1/" target="_blank" rel="noopener" >从0开始学习 GitHub 系列之「初识 GitHub」 - stormzhang</A>
+<DT><A HREF="https://guides.github.com/activities/hello-world/" target="_blank" rel="noopener" >Hello World · GitHub Guides</A>
+<DT><A HREF="https://github.com/orgs/KavinHomepea/people?query=role%3Aowner" target="_blank" rel="noopener" >People · KavinHomepea</A>
+<DT><A HREF="https://github.com/michaelliao" target="_blank" rel="noopener" >michaelliao (Michael Liao) · GitHub</A>
+<DT><A HREF="https://github.com/join/customize" target="_blank" rel="noopener" >GitHub · Where software is built</A>
+<DT><A HREF="https://github.com/cheneyveron/clover-x79-e5-2670-gtx650" target="_blank" rel="noopener" >GitHub - cheneyveron/clover-x79-e5-2670-gtx650: Hackintosh clover perfect for High Sierra / Mojave / Catalina</A>
+<DT><A HREF="https://ubuntu-mate.org/download/" target="_blank" rel="noopener" >Download | Ubuntu MATE</A>
+
+
+<h1 id="电子制作"><a href="#电子制作" class="headerlink" title="电子制作"></a>电子制作</h1><DT><A HREF="http://www.openedv.com/" target="_blank" rel="noopener" >原子</A>
+<DT><A HREF="https://github.com/MHEtLive/ESP32-MINI-KIT/issues/4" target="_blank" rel="noopener" >Internal LED · Issue #4 · MHEtLive/ESP32-MINI-KIT · GitHub</A>
+<DT><A HREF="http://bbs.ai-thinker.com/forum.php" target="_blank" rel="noopener" >论坛 - 安信可科技</A>
+<DT><A HREF="http://www.datasheet5.com/" target="_blank" rel="noopener" >DateSheet5</A>
+<DT><A HREF="http://www.ti.com.cn/" target="_blank" rel="noopener" >TI</A>
+<DT><A HREF="https://grabcad.com/library" target="_blank" rel="noopener" >Grabcad</A>
+<DT><A HREF="http://www.3dcontentcentral.cn/default.aspx" target="_blank" rel="noopener" >3D ContentCentral</A>
+<DT><A HREF="https://tool.lu/" target="_blank" rel="noopener" >在线工具</A>
+<DT><A HREF="http://bbs.elecfans.com/jishu_949360_1_1.html" target="_blank" rel="noopener" >ESP32博客</A>
+<DT><A HREF="https://github.com/MHEtLive/ESP32-MINI-KIT/tree/master/Shield%20libraries" target="_blank" rel="noopener" >ESP32-MINI-KIT/Shield libraries at master · MHEtLive/ESP32-MINI-KIT · GitHub</A>
+<DT><A HREF="https://www.jianshu.com/p/f7ace175e643" target="_blank" rel="noopener" >【ESP32】在Windows下搭建ESP32开发环境 - 简书</A>
+<DT><A HREF="https://www.cnblogs.com/hongwans/p/7772833.html" target="_blank" rel="noopener" >野路子学习esp32(三) 导入ESP32_IDF,编译案例Hello_World @a.宏万 - 宏万工作室 - 博客园</A>
+<DT><A HREF="https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/external-ram.html" target="_blank" rel="noopener" ADD_DATE="1543286023">Support for external RAM — ESP-IDF Programming Guide v3.3-dev-236-gfa59b1b documentation</A>
+<DT><A HREF="https://docs.espressif.com/projects/esp-idf/zh_CN/latest/get-started/linux-setup.html" target="_blank" rel="noopener" ADD_DATE="1546526251">Linux 平台工具链的标准设置 — ESP-IDF 编程指南 v3.3-beta1-169-g3c94b6e 文档</A>
+<DT><A HREF="http://fengmeitech.club/category/%E9%9D%92%E6%9F%9Azero/" target="_blank" rel="noopener" ADD_DATE="1561374927">青柚ZERO – 风媒实验室</A>
+<DT><A HREF="https://book.openmv.cc/python-background.html" target="_blank" rel="noopener" >Python背景知识 · OpenMV中文入门教程</A>
+<DT><A HREF="https://book.openmv.cc/MCU/pyb.html" target="_blank" rel="noopener" >pyb各种外设 · OpenMV中文入门教程</A>
+<DT><A HREF="https://book.openmv.cc/quick-starter.html" target="_blank" rel="noopener" >10分钟快速上手 · OpenMV中文入门教程</A>
+<DT><A HREF="https://www.alldatasheetcn.com/" target="_blank" rel="noopener" >WWW.ALLDATASHEETCN.COM - IC搜索-提供Datasheet, IC数据表, datasheet资料表, ic资料表, 电子元器件手册, 电子元件手册 等 资料下载中心, 为电子元件和半导体等的供应商。</A>
+<DT><A HREF="https://www.bilibili.com/video/av37951162/?spm_id_from=333.788.videocard.5" target="_blank" rel="noopener" >【黑苹果教程】AMD锐龙平台完美吃上黑苹果，无需安装任何驱动！_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</A>
+<DT><A HREF="https://www.coursera.org/" target="_blank" rel="noopener" >Coursera</A>
+
+<h1 id="效率资源"><a href="#效率资源" class="headerlink" title="效率资源"></a>效率资源</h1><DT><A HREF="https://www.facebook.com/home.php?ref=wizard" target="_blank" rel="noopener" >FB</A>
+<DT><A HREF="https://www.bilibili.com/video/av19321436?p=2" target="_blank" rel="noopener" >SmallPinkPig</A>
+<DT><A HREF="https://www.bilibili.com/video/av19321436/?p=15" target="_blank" rel="noopener" >【英文原版1080P】小猪佩奇 第一季第二季全集 （英文字幕）_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</A>
+<DT><A HREF="https://study.163.com/course/courseMain.htm?courseId=1003681015" target="_blank" rel="noopener" >TED演讲集：心理 - 网易云课堂</A>
+<DT><A HREF="https://www.bilibili.com/video/av16404880/?p=6" target="_blank" rel="noopener" >自由泳入门（第二版）教学视频_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</A>
+<DT><A HREF="https://vectormagic.com/" target="_blank" rel="noopener" >Vector Magic: Convert JPG, PNG images to SVG, EPS, AI vectors</A>
+<DT><A HREF="https://wallpaperscraft.com/catalog/3d/2560x1080" target="_blank" rel="noopener" >3d wallpapers dual wide 1080p, desktop backgrounds hd, pictures and images</A>
+<DT><A HREF="http://www.1ppt.com/article/52542.html#xiazai" target="_blank" rel="noopener" >天安门华表背景的社会主义核心价值观PPT模板 - 第一PPT</A>
+<DT><A HREF="https://education.lego.com/zh-cn" target="_blank" rel="noopener" >乐高教育</A>
+<DT><A HREF="https://www.lego.com/zh-cn" target="_blank" rel="noopener" >Home | LEGO.com CN</A>
+<DT><A HREF="https://blog.csdn.net/constantin_/article/details/79575638" target="_blank" rel="noopener" >C语言指针详解(经典,非常详细) - constantin_的博客 - CSDN博客</A>
+<DT><A HREF="http://www.semia.com/" target="_blank" rel="noopener" >西觅亚官方网站–西觅亚科技,乐高机器人,乐高教育, 幼儿,机械,能源全系列教育产品,教材和培训semia官方网站</A>
+<DT><A HREF="https://xjh.haitou.cc/wh" target="_blank" rel="noopener" >海投</A>
+<DT><A HREF="https://mp.weixin.qq.com/wxopen/initprofile?action=home&lang=zh_CN&token=445497167" target="_blank" rel="noopener" ADD_DATE="1534731366">微信公众平台</A>
+<DT><A HREF="https://getitfree.cn/" target="_blank" rel="noopener" >正版中国 | 正版软件限时免费</A>
+<DT><A HREF="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319106919344c4ef8b1e04c48778bb45796e0335839000#0" target="_blank" rel="noopener" >使用元类 - 廖雪峰的官方网站</A>
+<DT><A HREF="https://gallerix.asia/" target="_blank" rel="noopener" >绘画、 艺术家、 图片。</A>
+<DT><A HREF="http://www.ypppt.com/" target="_blank" rel="noopener" >PPT模板下载_免费PPT模板下载_精美免费PPT模板下载 - 优品PPT</A>
+<DT><A HREF="http://git.gupaoedu.com/ldqk/soft" target="_blank" rel="noopener" >懒得勤快 / soft · GitLab</A>
+<DT><A HREF="https://www.lulinux.com/archives/1319" target="_blank" rel="noopener" ></A>
+<DT><A HREF="http://www.lanzou.com/u" target="_blank" rel="noopener" >蓝奏云-控制台</A>
+<DT><A HREF="http://www.1ppt.com/" target="_blank" rel="noopener" >PPT模板_PPT模板下载_幻灯片模板_PPT模版免费下载 -【第一PPT】</A>
+<DT><A HREF="http://www.officeplus.cn/Template/Home.shtml" target="_blank" rel="noopener" >OfficePLUS，微软Office官方在线模板网站！</A>
+<DT><A HREF="https://slidemodel.com/" target="_blank" rel="noopener" >Professional PowerPoint Templates &amp; Slides - SlideModel.com</A>
+<DT><A HREF="http://www.docer.com/" target="_blank" rel="noopener" >PPT模板-简历模板-图片素材-Docer稻壳儿分享有价值的文档、视频和模板资源-Docer稻壳儿</A>
+<DT><A HREF="https://www.sqlsec.com/2018/08/clover.html" target="_blank" rel="noopener" >B站黑苹果安装教程 | 国光</A>
+<DT><A HREF="https://www.flighty.cn/index_1.html" target="_blank" rel="noopener" >轻狂志 - 少轻狂分享优质软件资源！</A>
+<DT><A HREF="http://www.icxbk.com/article/detail/434.html" target="_blank" rel="noopener" >Adafruit Circuit Express可穿戴开发板之初体验-电子芯吧客（www.icxbk.com）</A>
+<DT><A HREF="https://www.sqlsec.com/friends/" target="_blank" rel="noopener" >友情链接 | 国光</A>
+<DT><A HREF="https://github.com/daliansky/Hackintosh" target="_blank" rel="noopener" >daliansky/Hackintosh: Hackintosh long-term maintenance model EFI and installation tutorial</A>
+<DT><A HREF="https://blog.daliansky.net/Mojave-Hardware-Support-List.html" target="_blank" rel="noopener" >Mojave硬件支持列表（持续更新中） | 黑果小兵的部落阁</A>
+<DT><A HREF="https://h.bilibili.com/2464388" target="_blank" rel="noopener" >哔哩哔哩相簿</A>
+<DT><A HREF="http://www.dayanzai.me/" target="_blank" rel="noopener" >大眼仔旭 - 爱软件 爱汉化 爱分享 博客型软件首页</A>
+<DT><A HREF="https://www.itpwd.com/efi/" target="_blank" rel="noopener" >黑果引导_IT密码_You are the reason why I became stronger. But still, you are my weakness.</A>
+<DT><A HREF="https://zhuanlan.zhihu.com/p/75718363" target="_blank" rel="noopener" >黑苹果配置选购指南之ITX篇--2019年7月 - 知乎</A>
+<DT><A HREF="https://icyleaf.com/2019/03/asrock-z390-gaming-itx-install-hackintosh-tutorial/" target="_blank" rel="noopener" >华擎 Z390 Gaming ITX 黑苹果安装教程 · icyleaf</A>
+<DT><A HREF="https://www.52pojie.cn/thread-1064680-1-1.html" target="_blank" rel="noopener" >CSOL2（反恐精英ol2）一键端（汉化加完美教程） - 『精品软件区』 - 吾爱破解 - LCG - LSG |安卓破解|病毒分析|破解软件|www.52pojie.cn</A>
+<DT><A HREF="https://www.ghpym.com/win10mac.html" target="_blank" rel="noopener" >使用Win10，打造属于你的黑苹果 - 果核剥壳</A>
+<DT><A HREF="https://wqbook.wqxuetang.com/" target="_blank" rel="noopener" >文泉书局</A>
+<DT><A HREF="http://sc.chinaz.com/" target="_blank" rel="noopener" >站长素材-分享综合设计素材的平台</A>
+<DT><A HREF="https://www.runoob.com/" target="_blank" rel="noopener" >菜鸟教程 - 学的不仅是技术，更是梦想！</A>
+<DT><A HREF="https://www.52pojie.cn/thread-1079337-1-1.html" target="_blank" rel="noopener" >免Root使用ADB命令_停用手机系统应用 - 『精品软件区』 - 吾爱破解 - LCG - LSG |安卓破解|病毒分析|破解软件|www.52pojie.cn</A>
+<DT><A HREF="http://fontawesome.dashgame.com/" target="_blank" rel="noopener" >Font Awesome，一套绝佳的图标字体库和CSS框架</A>
+<DT><A HREF="https://pan.baidu.com/disk/home#/all?path=%2F&vmode=list" target="_blank" rel="noopener" >百度网盘-全部文件</A>
+
+
+<h1 id="电影资源"><a href="#电影资源" class="headerlink" title="电影资源"></a>电影资源</h1><DT><A HREF="http://www.dytt8.net/" target="_blank" rel="noopener" >电影天堂_免费电影_迅雷电影下载</A>
+<DT><A HREF="http://bddn.cn/zb.htm" target="_blank" rel="noopener" >全国电视直播---bddn.cn</A>
+<DT><A HREF="http://www.5ifxw.com/vipshipin/" target="_blank" rel="noopener" >爱奇艺vip 乐视 腾讯优酷vip视频在线解析</A>
+<DT><A HREF="http://www.baocaibt.org/" target="_blank" rel="noopener" >BT手撕包菜 - 收录最全最快的磁力链接搜索引擎</A>
+<DT><A HREF="http://www.5ifxw.com/zhuangbi/" target="_blank" rel="noopener" >斗图大会-在线制作表情包生成器-无形装逼最为致命！</A>
+<DT><A HREF="http://www.5ifxw.com/fuli/" target="_blank" rel="noopener" >我爱分享网福利平台</A>
+<DT><A HREF="http://www.dyxia.com/" target="_blank" rel="noopener" >全集网_全集电影网_迅雷电影下载_高清电影下载_BT种子电影下载</A>
+<DT><A HREF="http://www.aicili.pw/" target="_blank" rel="noopener" >电影天堂 | 顺利进入第六年</A>
+<DT><A HREF="http://www.soyunpan.com/" target="_blank" rel="noopener" ADD_DATE="1530155087">百度云网盘资源搜索引擎_搜云盘!</A>
+<DT><A HREF="http://www.panduoduo.net/" target="_blank" rel="noopener" ADD_DATE="1530155241">盘多多-百度云盘-百度云搜索-百度云盘资源搜索-百度网盘搜索引擎-微盘,新浪微盘-网盘搜索_盘多多</A>
+<DT><A HREF="https://www.torrentkitty.tv/search/" target="_blank" rel="noopener" ADD_DATE="1533446089">Torrent Kitty - Free Torrent To Magnet Link Conversion Service</A>
+<DT><A HREF="https://btdigg.cc/" target="_blank" rel="noopener" >BTDigg - p2p种子搜索器，BT种子搜索神器，磁力链接搜索网站</A>
+<DT><A HREF="https://www.btdalu.com/" target="_blank" rel="noopener" >bt大陆 - 磁力链接搜索,bt种子搜索,资源电影下载</A>
+<DT><A HREF="http://www.mvcat.com/" target="_blank" rel="noopener" >电影推荐 · MVCAT</A>
+<DT><A HREF="http://v.wenkuwenku.com/" target="_blank" rel="noopener" >VIP视频网站解析 一键解析爱奇艺,优酷,腾讯,乐视,芒果等各大视频网站的VIP视频-去广告播放</A>
+<DT><A HREF="http://www.youzhidy.com/" target="_blank" rel="noopener" >优质电影网_1080P高清电影下载_3D蓝光原盘高清电影下载</A>
+<DT><A HREF="http://www.verycd.com/" target="_blank" rel="noopener" >VeryCD电驴大全 - 不听指点，多绕弯弯</A>
+<DT><A HREF="http://www.hdwan.net/page/3" target="_blank" rel="noopener" >海盗湾中文网 | 最新720P、1080P高清电影种子下载网站,海盗湾。 - 第3页</A>
+<DT><A HREF="http://www.bttwo.com/" target="_blank" rel="noopener" >两个BT – BT下载与分享</A>
+<DT><A HREF="https://www.urlgot.com/zh_CN/" target="_blank" rel="noopener" >urlgot视频解析,下载器 for bilibili,Youtube ...</A>
+<DT><A HREF="http://www.jspoo.com/vip.html" target="_blank" rel="noopener" >vip解析-全网在线视频解析、音乐解析、短视频解析_聚神铺</A>
+<DT><A HREF="https://www.ttky8.com/" target="_blank" rel="noopener" >首页 | 天天看影吧</A>
+<DT><A HREF="http://www.925.tv/" target="_blank" rel="noopener" >925直播-JRS直播,足球直播,NBA直播吧,低调看直播</A>
+<DT><A HREF="https://hao.su/908/" target="_blank" rel="noopener" >bt磁力搜索网站 - 不死鸟 - 分享为王</A>
+
+
+<h1 id="网站建设"><a href="#网站建设" class="headerlink" title="网站建设"></a>网站建设</h1><DT><A HREF="http://me.com/" target="_blank" rel="noopener" >WordPress站点</A>
+<DT><A HREF="http://me.com/wp-admin/" target="_blank" rel="noopener" >后台</A>
+<DT><A HREF="https://www.natfrp.com/?page=panel&module=download" target="_blank" rel="noopener" >管理面板 :: Sakura Panel - 内网穿透管理面板</A>
+<DT><A HREF="https://promotion.aliyun.com/ntms/mobile.html" target="_blank" rel="noopener" >阿里云APP - 移动管控运维，云端资源尽在掌握</A>
+<DT><A HREF="https://club.aliyun.com/?spm=5176.2020520207.0.0.13764c12Jq8QTG#/earnPoints?_k=ngg72u" target="_blank" rel="noopener" >会员俱乐部</A>
+<DT><A HREF="https://dc.console.aliyun.com/next/index#/domain/list/all-domain" target="_blank" rel="noopener" >域名控制台</A>
+<DT><A HREF="https://coding.net/" target="_blank" rel="noopener" >CODING - 一站式软件研发管理平台</A>
+<DT><A HREF="https://blog.csdn.net/anqiao6759/article/details/101358857" target="_blank" rel="noopener" >使用hexo+coding搭建免费个人博客_anqiao6759的博客-CSDN博客</A>
+<DT><A HREF="https://blog.csdn.net/qq_33619378/article/details/81191564" target="_blank" rel="noopener" >基于hexo和coding免费搭建个人博客网站_LarsCheng&#39;s Blog-CSDN博客</A>
+<DT><A HREF="https://blog.csdn.net/nightmare_dimple/article/details/86661502" target="_blank" rel="noopener" >Hexo博客优化之Next主题美化_huangpiao-CSDN博客</A>
+<DT><A HREF="https://homepea7.github.io/" >Welcome to GitHub Pages | Homepea7.github.io</A>
+<DT><A HREF="https://homepea.coding.net/admin/overview" target="_blank" rel="noopener" >团队概览 - 团队帐户 - homepea</A>
+<DT><A HREF="https://juejin.im/post/5b3ed1d4e51d45194e0b7884" target="_blank" rel="noopener" >Hexo+Github建站 - 掘金</A>
+<DT><A HREF="https://www.jianshu.com/p/f60c60773fa8" target="_blank" rel="noopener" >Hexo + GitHub 建站最详细教程 - 程序员还是写作爱好者都可以拥有这样一个个人站 - 简书</A>
+<DT><A HREF="https://juejin.im/post/5b3ed1d4e51d45194e0b7884#heading-36" target="_blank" rel="noopener" >Hexo+Github建站 - 掘金</A>
+<DT><A HREF="https://dc.console.aliyun.com/next/index?accounttraceid=81133a8c9e95433a979838bdf42feab0wfkp#/domain/list/all-domain" target="_blank" rel="noopener" >域名控制台</A>
+<DT><A HREF="https://github.com/Homepea7" target="_blank" rel="noopener" >Homepea7</A>
+<DT><A HREF="https://github.com/" target="_blank" rel="noopener" >GitHub</A>
+<DT><A HREF="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener" >Markdown基本语法 - 简书</A>
+<DT><A HREF="https://zhuanlan.zhihu.com/p/94038688" target="_blank" rel="noopener" >hexo next 主题进阶设置 - 知乎</A>
+<DT><A HREF="https://leancloud.cn/dashboard/applist.html#/apps" target="_blank" rel="noopener" >应用列表 - LeanCloud</A>
+<DT><A HREF="https://sphard.com/ebooks/hexo-next-2/" target="_blank" rel="noopener" >本书简介 · Hexo博客+Next主题教程 | SPhard</A>
+<DT><A HREF="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener" >Font Awesome Icons</A>
+<DT><A HREF="https://analytics.google.com/analytics/web/#/report-home/a157890086w222126945p211052566" target="_blank" rel="noopener" >Google Analytics（分析）</A>
+<DT><A HREF="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener" >hexo-helper-live2d/README.zh-CN.md at master · EYHN/hexo-helper-live2d</A>
+<DT><A HREF="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener" >hexo live2d插件 2.0 ! | 幻想帖</A>
+
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西比较乱，主要是自己看的，所以没有好好整理，主要时东西收藏的太多了，以前就没有好好整理，本来像弄成表格，但是太乱了根本做不好，只能这样将就看看了<del>~</del></p>
+]]></content>
   </entry>
   <entry>
     <title>Homepea的标签</title>
