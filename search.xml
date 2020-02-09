@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>LeetCode做题的记录</title>
+    <url>/2020/04.LeetCode/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本人闲来无事在LeetCode上面开始刷题，但是比较菜，没做出来很多，而且也基本上做的简单的题目，但是仍旧学习了很多知识，在这里做一个简单的记录，也欢迎大家看看，放上<a href="https://github.com/Homepea7/LeetCode" target="_blank" rel="noopener">GitHub地址</a>。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>C</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git上传本地代码到GitHub</title>
+    <url>/2020/03.Git-Commit/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文仅仅是介绍几条简单的指令，将本地的代码上传到GitHub，免得老是忘记，因此写了这篇博文，内容比较简单。</p>
+<h1 id="安装Git，创建码仓"><a href="#安装Git，创建码仓" class="headerlink" title="安装Git，创建码仓"></a>安装Git，创建码仓</h1><p>首先是安装软件和在GitHub上创建代码仓库，这个不做多的介绍，应该都比较熟悉。然后是需要将代码仓Clone到本地，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:Homepea7/LeetCode.git</span><br></pre></td></tr></table></figure>
+<p>后面的地址就是自己代码仓的SSH，下载完成以后本地会有一个相应的文件夹，名称就是代码仓的名称。</p>
+<h1 id="复制文件，准备上传"><a href="#复制文件，准备上传" class="headerlink" title="复制文件，准备上传"></a>复制文件，准备上传</h1><p>将需要上传的文件复制到刚刚Clone的文件夹下，接着在Git Bash中使用【cd XXX】命令进入该文件夹（XXX是刚刚的代码仓的名称）。</p>
+<h1 id="执行命令，开始上传"><a href="#执行命令，开始上传" class="headerlink" title="执行命令，开始上传"></a>执行命令，开始上传</h1><p>分别执行如下三条指令，如下所示：</p>
+<ol>
+<li><p>将XXX文件夹下面的文件都添加进来（别忘记后面的”.”，而且add后面与”.”有空格）:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>填写提交信息，比如下列指令的”first commit”:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit  -m  <span class="string">"first commit"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把本地仓库push到github上面，如果以前没有上传SSH公钥的话需要输入帐号和密码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>上传的操作肯定是经常需要用到的，也非常简单，希望以后可以不看这个记录就能熟练的使用git。</p>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>commit code</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记录Hexo建站</title>
-    <url>/2020/Hexo+Next/</url>
+    <url>/2020/02.Hexo+Next/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于<a href="https://zh-cn.wordpress.com/" target="_blank" rel="noopener">WordPress</a>的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我<a href="http://begild.top/" target="_blank" rel="noopener">队友</a>，决定用<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>试试。</p>
 <p>最初它推荐的是国内的<a href="https://coding.net/" target="_blank" rel="noopener">Coding</a>上面建站，访问速度比<a href="https://github.com/" target="_blank" rel="noopener">Github</a>快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。</p>
 <h1 id="关于Hexo-Next主题的说明"><a href="#关于Hexo-Next主题的说明" class="headerlink" title="关于Hexo+Next主题的说明"></a>关于Hexo+Next主题的说明</h1><p>首先说明我也是参考了大部分的教程，非常感谢在CSDN，知乎，简书，B站和掘金上面看到的相关教程，在结语中有相应的列举，下面的工作都是自己之前做的一些工作截的图，也是比较新的内容。</p>
@@ -97,7 +142,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2020/hello-world/</url>
+    <url>/2020/01.hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
@@ -170,6 +215,11 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>收藏</title>
@@ -371,11 +421,6 @@
 
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西比较乱，主要是自己看的，所以没有好好整理，主要是东西收藏的太多了，分类的时候有一些都没有好好注意，本来想弄成表格，但是太乱了不好做，只能这样将就看看了<del>~</del></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>资源</title>
