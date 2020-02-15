@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-02-10T06:33:34.959Z</updated>
+  <updated>2020-02-15T13:49:51.505Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Termux给旧手机安装Ubuntu</title>
+    <link href="https://homepea7.github.io/2020/05.Termux/"/>
+    <id>https://homepea7.github.io/2020/05.Termux/</id>
+    <published>2020-02-15T11:19:53.000Z</published>
+    <updated>2020-02-15T13:49:51.505Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL锁现在不能解开了，因此没有Root权限（感觉华为这件事儿很恶心）。我花了好长时间去解锁（其实就是不想去淘宝花30块钱），但是都没有成功，因此一直都搁置在，今天还是给拿出来了试试，终于成功在没有root权限的情况下安装了ubuntu，并且通过SSH连接上去了，可以跑一些Python程序，感觉还是很开心的，下面说说具体的过程。&lt;/p&gt;
+&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://Homepea7.github.io/categories/Linux/"/>
+    
+    
+      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
+    
+      <category term="AnLinux" scheme="https://Homepea7.github.io/tags/AnLinux/"/>
+    
+      <category term="ubuntu" scheme="https://Homepea7.github.io/tags/ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>2020肺炎实时疫情图</title>

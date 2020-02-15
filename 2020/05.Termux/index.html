@@ -64,21 +64,27 @@
 </style>
 
 
-  <meta name="description" content="说明本文仅仅是介绍几条简单的指令，将本地的代码上传到GitHub，免得老是忘记，因此写了这篇博文，内容比较简单。 安装Git，创建码仓">
+  <meta name="description" content="说明今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git上传本地代码到GitHub">
-<meta property="og:url" content="https://homepea7.github.io/2020/03.Git-Commit/index.html">
+<meta property="og:title" content="使用Termux给旧手机安装Ubuntu">
+<meta property="og:url" content="https://homepea7.github.io/2020/05.Termux/index.html">
 <meta property="og:site_name" content="Homepea&#39;s Blog">
-<meta property="og:description" content="说明本文仅仅是介绍几条简单的指令，将本地的代码上传到GitHub，免得老是忘记，因此写了这篇博文，内容比较简单。 安装Git，创建码仓">
+<meta property="og:description" content="说明今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-09T13:31:34.000Z">
-<meta property="article:modified_time" content="2020-02-10T06:41:36.391Z">
+<meta property="og:image" content="https://homepea7.github.io/images/Termux-Ubuntu/3.1.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Termux-Ubuntu/3.2.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Termux-Ubuntu/3.3.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Termux-Ubuntu/3.4.png">
+<meta property="article:published_time" content="2020-02-15T11:19:53.000Z">
+<meta property="article:modified_time" content="2020-02-15T13:49:51.505Z">
 <meta property="article:author" content="Kavin Homepea">
-<meta property="article:tag" content="git">
-<meta property="article:tag" content="commit code">
+<meta property="article:tag" content="Termux">
+<meta property="article:tag" content="AnLinux">
+<meta property="article:tag" content="ubuntu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://homepea7.github.io/images/Termux-Ubuntu/3.1.png">
 
-<link rel="canonical" href="https://homepea7.github.io/2020/03.Git-Commit/">
+<link rel="canonical" href="https://homepea7.github.io/2020/05.Termux/">
 
 
 <script id="page-configurations">
@@ -90,7 +96,7 @@
   };
 </script>
 
-  <title>Git上传本地代码到GitHub | Homepea's Blog</title>
+  <title>使用Termux给旧手机安装Ubuntu | Homepea's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
     <script>
@@ -260,7 +266,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/03.Git-Commit/">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/05.Termux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -273,7 +279,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Git上传本地代码到GitHub
+          使用Termux给旧手机安装Ubuntu
         </h1>
 
         <div class="post-meta">
@@ -282,30 +288,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-02-09 21:31:34" itemprop="dateCreated datePublished" datetime="2020-02-09T21:31:34+08:00">2020-02-09</time>
+              <time title="创建时间：2020-02-15 19:19:53 / 修改时间：21:49:51" itemprop="dateCreated datePublished" datetime="2020-02-15T19:19:53+08:00">2020-02-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-10 14:41:36" itemprop="dateModified" datetime="2020-02-10T14:41:36+08:00">2020-02-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GitHub/" itemprop="url" rel="index">
-                    <span itemprop="name">GitHub</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
             </span>
 
           
-            <span id="/2020/03.Git-Commit/" class="post-meta-item leancloud_visitors" data-flag-title="Git上传本地代码到GitHub" title="阅读次数">
+            <span id="/2020/05.Termux/" class="post-meta-item leancloud_visitors" data-flag-title="使用Termux给旧手机安装Ubuntu" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -320,8 +320,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/03.Git-Commit/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03.Git-Commit/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/05.Termux/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05.Termux/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -331,14 +331,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>540</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -350,25 +350,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文仅仅是介绍几条简单的指令，将本地的代码上传到GitHub，免得老是忘记，因此写了这篇博文，内容比较简单。</p>
-<h1 id="安装Git，创建码仓"><a href="#安装Git，创建码仓" class="headerlink" title="安装Git，创建码仓"></a>安装Git，创建码仓</h1><p>首先是安装软件和在GitHub上创建代码仓库，这个不做多的介绍，应该都比较熟悉。然后是需要将代码仓Clone到本地，指令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:Homepea7/LeetCode.git</span><br></pre></td></tr></table></figure>
-<p>后面的地址就是自己代码仓的SSH，下载完成以后本地会有一个相应的文件夹，名称就是代码仓的名称。</p>
-<h1 id="复制文件，准备上传"><a href="#复制文件，准备上传" class="headerlink" title="复制文件，准备上传"></a>复制文件，准备上传</h1><p>将需要上传的文件复制到刚刚Clone的文件夹下，接着在Git Bash中使用【cd XXX】命令进入该文件夹（XXX是刚刚的代码仓的名称）。</p>
-<h1 id="执行命令，开始上传"><a href="#执行命令，开始上传" class="headerlink" title="执行命令，开始上传"></a>执行命令，开始上传</h1><p>分别执行如下三条指令，如下所示：</p>
-<ol>
-<li><p>将XXX文件夹下面的文件都添加进来（别忘记后面的”.”，而且add后面与”.”有空格）:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>填写提交信息，比如下列指令的”first commit”:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit  -m  <span class="string">"first commit"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把本地仓库push到github上面，如果以前没有上传SSH公钥的话需要输入帐号和密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL锁现在不能解开了，因此没有Root权限（感觉华为这件事儿很恶心）。我花了好长时间去解锁（其实就是不想去淘宝花30块钱），但是都没有成功，因此一直都搁置在，今天还是给拿出来了试试，终于成功在没有root权限的情况下安装了ubuntu，并且通过SSH连接上去了，可以跑一些Python程序，感觉还是很开心的，下面说说具体的过程。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>Android手机</li>
+</ul>
+<p>这个应该是不用说明的，Android系统本身也是基于Unix的，不用多言。其实Iphone也是可以使用SSH连接并使用一部分Linux指令的，但是需要越狱环境，而且指令能用的也非常少，就不多介绍了。相较于树莓派和其他的单板机，旧Android手机的优势还是非常大的。首先是Wi-Fi和蓝牙肯定是都带的，而且基本都不差；其次是内存和运存，现在而言一般都有16G的吧，比树莓派，香橙派等用的内存卡肯定是好很多的吧，最后是运存，2G至少也有吧；特别是CPU，这几年手机CPU的快速发展，可以说三年前的中端机CPU绝大部分都比树莓派3B强，因此性能也是不用担心的。</p>
+<ul>
+<li>软件：Termux </li>
+</ul>
+<p>关于软件的使用，我最终选择的是<a href="https://termux.com/" target="_blank" rel="noopener">Termux</a>。我前期三种方案，分别是：Androidterm + Busubox，Linux deploy + Busubox和Termux + AnLinux。但是前两个都是需要Root权限的，前期我的小米Note刷了开发板成功获取了Root，成功使用Androidterm + Busubox安装好了，非常感觉各位大神提供的镜像，资源我打包好了，<a href="https://pan.baidu.com/s/1Vv8iRk2jSa2qRkkngfYJGw" target="_blank" rel="noopener">如下</a>，感觉这个应该是最好的方案，毕竟是有权限的，想干嘛就干嘛（结局挺惨，跳屏有一点受不了，装SSH一直乱动我生气直接给摔了扔了）。其次是Linux deploy，这个也是十分有名的，我没有测试过，但是应该也是很不错的。最后是Termux + AnLinux的方案，这个对于没有Root权限的用户而言是最好的选择，安装Ubuntu Core，跑一下Python还是美滋滋的，下面我都是以Termux + AnLinux进行具体的说明。</p>
+<h1 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h1><h2 id="首先安装软件"><a href="#首先安装软件" class="headerlink" title="首先安装软件"></a>首先安装软件</h2><p>Termux和AnLinux安装包已经打包好，<a href="https://pan.baidu.com/s/1Irz7ZZgr4YRP5BvIcpjrSA" target="_blank" rel="noopener">地址如下</a>。下载完成之后直接安装即可，软件比较小，应该能够很快的安装上，安装完成的两个图标如下所示。<img src="/images/Termux-Ubuntu/3.1.png" alt="图标">)，然后依次打开和运行即可(Anlinux在安装完成之后可以禁止联网，因为有广告)。</p>
+<h2 id="用Termux安装Ubuntu"><a href="#用Termux安装Ubuntu" class="headerlink" title="用Termux安装Ubuntu"></a>用Termux安装Ubuntu</h2><p>首先打开AnLinux，首先看到的是仪表盘，下左图，然后点击“选择”，勾选Ubuntu，这里的系统看个人需求，我比较喜欢ubuntu，确定之后就可以复制指令了，最后点击“启动”便会启动Termux，将刚刚的指令复制过去并执行就可以了，它会下载相应的文件（如果可以，最好使用科学上网），具体内容如图所示。<img src="/images/Termux-Ubuntu/3.2.png" alt="AnLinux"></p>
+<h2 id="在Termux安装Ubuntu并启动"><a href="#在Termux安装Ubuntu并启动" class="headerlink" title="在Termux安装Ubuntu并启动"></a>在Termux安装Ubuntu并启动</h2><p>在AnLinux转到Termux的时候会初始化，下左图。此时必须联网，因为要下载相应的文件。在安装Ubuntu之前需要执行两个操作：</p>
+<p>申请读写权限，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
 
+<p>更新一下，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+
+<p>更新之后即可执行AnLinux复制过来的指令，如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install wget openssl-tool proot -y &amp;&amp; <span class="built_in">hash</span> -r &amp;&amp; wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh &amp;&amp; bash ubuntu.sh</span><br></pre></td></tr></table></figure>
+<p>在Termux执行的结果如下，这个过程可能执行时间教程，如果有科学上网最好开启。完成之后会输入【ls】指令可以看到如下，下右图。<img src="/images/Termux-Ubuntu/3.3.png" alt="Termux">。</p>
+<p>打开Ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./start-ubuntu.sh</span><br></pre></td></tr></table></figure>
+<p>在下面看到 root@localhost 就知道进入Ubuntu了，这样就可以愉快的玩耍啦~</p>
+<h2 id="使用SSH连接Termux"><a href="#使用SSH连接Termux" class="headerlink" title="使用SSH连接Termux"></a>使用SSH连接Termux</h2><h3 id="安装openssh"><a href="#安装openssh" class="headerlink" title="安装openssh"></a>安装openssh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install openssh</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动sshd服务"><a href="#启动sshd服务" class="headerlink" title="启动sshd服务"></a>启动sshd服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加公钥信息"><a href="#添加公钥信息" class="headerlink" title="添加公钥信息"></a>添加公钥信息</h3><p>此操作在PC端，将生成的id_rsa.pub复制到存在于/sdcard/目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加公钥信息到手机"><a href="#添加公钥信息到手机" class="headerlink" title="添加公钥信息到手机"></a>添加公钥信息到手机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">cp /sdcard/id_rsa.pub ./</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+<p>此时已经完成SSH的配置了，下面还需要获取相关信息。</p>
+<h3 id="获取相关信息"><a href="#获取相关信息" class="headerlink" title="获取相关信息"></a>获取相关信息</h3><ul>
+<li><p>获取登录的用户名<br>会返回当前的用户名，最好不要是运行ubuntu时的root，一般是【u0_axxx】这样的格式，后面的示例为：u0_a118</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>上传的操作肯定是经常需要用到的，也非常简单，希望以后可以不看这个记录就能熟练的使用git。</p>
+<li><p>获取当前的ip<br>PC端要跟手机端在同一网段，选取wlan0中的inet addr的地址即可。一般路由器分配的地址都是192.168.0.xxx这样的，后面的示例为：192.168.1.101</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置连接的密码<br>就是当前账户的密码，用于登录SSH的确认，需要输入两次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>连接SSH<br>默认端口不是22二十8022，这个一定要注意</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh u0_a118@192.168.1.101 -p 8022</span><br></pre></td></tr></table></figure>
+<p>连接成功的界面如下所示：<img src="/images/Termux-Ubuntu/3.4.png" alt="SSH"></p>
+</li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>前文的文件分享的百度云密码都是：2333。最后感谢网上看到的相关教程，分别有<a href="http://blog.lujun9972.win/blog/2018/01/24/%E4%BD%BF%E7%94%A8termux%E6%8A%8Aandroid%E6%89%8B%E6%9C%BA%E5%8F%98%E6%88%90ssh%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank" rel="noopener">DarkSun的个人博客</a>，520的罗的<a href="https://blog.51cto.com/gt520/2134487" target="_blank" rel="noopener">博客</a>，<a href="https://blog.csdn.net/u010164190/article/details/78831069" target="_blank" rel="noopener">慢慢的燃烧</a>、<a href="https://blog.csdn.net/zhangbangqian/article/details/82019175" target="_blank" rel="noopener">我是MONEY呀</a>、<a href="https://www.cnblogs.com/root1/p/9250678.html" target="_blank" rel="noopener">老板_来三斤荔枝</a>的博客，中间还有一些早期看到的教程，真的非常感谢！</p>
 
     </div>
 
@@ -389,8 +420,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
-              <a href="/tags/commit-code/" rel="tag"><i class="fa fa-tag"></i> commit code</a>
+              <a href="/tags/Termux/" rel="tag"><i class="fa fa-tag"></i> Termux</a>
+              <a href="/tags/AnLinux/" rel="tag"><i class="fa fa-tag"></i> AnLinux</a>
+              <a href="/tags/ubuntu/" rel="tag"><i class="fa fa-tag"></i> ubuntu</a>
           </div>
 
         
@@ -399,13 +431,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02.Hexo+Next/" rel="prev" title="记录Hexo建站">
-      <i class="fa fa-chevron-left"></i> 记录Hexo建站
+    <a href="/2020/00.WuHan/" rel="prev" title="2020肺炎实时疫情图">
+      <i class="fa fa-chevron-left"></i> 2020肺炎实时疫情图
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/04.LeetCode/" rel="next" title="LeetCode做题的记录">
-      LeetCode做题的记录 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -466,7 +495,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Git，创建码仓"><span class="nav-number">2.</span> <span class="nav-text">安装Git，创建码仓</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制文件，准备上传"><span class="nav-number">3.</span> <span class="nav-text">复制文件，准备上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行命令，开始上传"><span class="nav-number">4.</span> <span class="nav-text">执行命令，开始上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体过程"><span class="nav-number">3.</span> <span class="nav-text">具体过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先安装软件"><span class="nav-number">3.1.</span> <span class="nav-text">首先安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用Termux安装Ubuntu"><span class="nav-number">3.2.</span> <span class="nav-text">用Termux安装Ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Termux安装Ubuntu并启动"><span class="nav-number">3.3.</span> <span class="nav-text">在Termux安装Ubuntu并启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SSH连接Termux"><span class="nav-number">3.4.</span> <span class="nav-text">使用SSH连接Termux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装openssh"><span class="nav-number">3.4.1.</span> <span class="nav-text">安装openssh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动sshd服务"><span class="nav-number">3.4.2.</span> <span class="nav-text">启动sshd服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加公钥信息"><span class="nav-number">3.4.3.</span> <span class="nav-text">添加公钥信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加公钥信息到手机"><span class="nav-number">3.4.4.</span> <span class="nav-text">添加公钥信息到手机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取相关信息"><span class="nav-number">3.4.5.</span> <span class="nav-text">获取相关信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

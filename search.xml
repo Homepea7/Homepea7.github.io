@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用Termux给旧手机安装Ubuntu</title>
+    <url>/2020/05.Termux/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL锁现在不能解开了，因此没有Root权限（感觉华为这件事儿很恶心）。我花了好长时间去解锁（其实就是不想去淘宝花30块钱），但是都没有成功，因此一直都搁置在，今天还是给拿出来了试试，终于成功在没有root权限的情况下安装了ubuntu，并且通过SSH连接上去了，可以跑一些Python程序，感觉还是很开心的，下面说说具体的过程。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>Android手机</li>
+</ul>
+<p>这个应该是不用说明的，Android系统本身也是基于Unix的，不用多言。其实Iphone也是可以使用SSH连接并使用一部分Linux指令的，但是需要越狱环境，而且指令能用的也非常少，就不多介绍了。相较于树莓派和其他的单板机，旧Android手机的优势还是非常大的。首先是Wi-Fi和蓝牙肯定是都带的，而且基本都不差；其次是内存和运存，现在而言一般都有16G的吧，比树莓派，香橙派等用的内存卡肯定是好很多的吧，最后是运存，2G至少也有吧；特别是CPU，这几年手机CPU的快速发展，可以说三年前的中端机CPU绝大部分都比树莓派3B强，因此性能也是不用担心的。</p>
+<ul>
+<li>软件：Termux </li>
+</ul>
+<p>关于软件的使用，我最终选择的是<a href="https://termux.com/" target="_blank" rel="noopener">Termux</a>。我前期三种方案，分别是：Androidterm + Busubox，Linux deploy + Busubox和Termux + AnLinux。但是前两个都是需要Root权限的，前期我的小米Note刷了开发板成功获取了Root，成功使用Androidterm + Busubox安装好了，非常感觉各位大神提供的镜像，资源我打包好了，<a href="https://pan.baidu.com/s/1Vv8iRk2jSa2qRkkngfYJGw" target="_blank" rel="noopener">如下</a>，感觉这个应该是最好的方案，毕竟是有权限的，想干嘛就干嘛（结局挺惨，跳屏有一点受不了，装SSH一直乱动我生气直接给摔了扔了）。其次是Linux deploy，这个也是十分有名的，我没有测试过，但是应该也是很不错的。最后是Termux + AnLinux的方案，这个对于没有Root权限的用户而言是最好的选择，安装Ubuntu Core，跑一下Python还是美滋滋的，下面我都是以Termux + AnLinux进行具体的说明。</p>
+<h1 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h1><h2 id="首先安装软件"><a href="#首先安装软件" class="headerlink" title="首先安装软件"></a>首先安装软件</h2><p>Termux和AnLinux安装包已经打包好，<a href="https://pan.baidu.com/s/1Irz7ZZgr4YRP5BvIcpjrSA" target="_blank" rel="noopener">地址如下</a>。下载完成之后直接安装即可，软件比较小，应该能够很快的安装上，安装完成的两个图标如下所示。<img src="/images/Termux-Ubuntu/3.1.png" alt="图标">)，然后依次打开和运行即可(Anlinux在安装完成之后可以禁止联网，因为有广告)。</p>
+<h2 id="用Termux安装Ubuntu"><a href="#用Termux安装Ubuntu" class="headerlink" title="用Termux安装Ubuntu"></a>用Termux安装Ubuntu</h2><p>首先打开AnLinux，首先看到的是仪表盘，下左图，然后点击“选择”，勾选Ubuntu，这里的系统看个人需求，我比较喜欢ubuntu，确定之后就可以复制指令了，最后点击“启动”便会启动Termux，将刚刚的指令复制过去并执行就可以了，它会下载相应的文件（如果可以，最好使用科学上网），具体内容如图所示。<img src="/images/Termux-Ubuntu/3.2.png" alt="AnLinux"></p>
+<h2 id="在Termux安装Ubuntu并启动"><a href="#在Termux安装Ubuntu并启动" class="headerlink" title="在Termux安装Ubuntu并启动"></a>在Termux安装Ubuntu并启动</h2><p>在AnLinux转到Termux的时候会初始化，下左图。此时必须联网，因为要下载相应的文件。在安装Ubuntu之前需要执行两个操作：</p>
+<p>申请读写权限，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
+
+<p>更新一下，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+
+<p>更新之后即可执行AnLinux复制过来的指令，如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pkg install wget openssl-tool proot -y &amp;&amp; <span class="built_in">hash</span> -r &amp;&amp; wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh &amp;&amp; bash ubuntu.sh</span><br></pre></td></tr></table></figure>
+<p>在Termux执行的结果如下，这个过程可能执行时间教程，如果有科学上网最好开启。完成之后会输入【ls】指令可以看到如下，下右图。<img src="/images/Termux-Ubuntu/3.3.png" alt="Termux">。</p>
+<p>打开Ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./start-ubuntu.sh</span><br></pre></td></tr></table></figure>
+<p>在下面看到 root@localhost 就知道进入Ubuntu了，这样就可以愉快的玩耍啦~</p>
+<h2 id="使用SSH连接Termux"><a href="#使用SSH连接Termux" class="headerlink" title="使用SSH连接Termux"></a>使用SSH连接Termux</h2><h3 id="安装openssh"><a href="#安装openssh" class="headerlink" title="安装openssh"></a>安装openssh</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install openssh</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动sshd服务"><a href="#启动sshd服务" class="headerlink" title="启动sshd服务"></a>启动sshd服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加公钥信息"><a href="#添加公钥信息" class="headerlink" title="添加公钥信息"></a>添加公钥信息</h3><p>此操作在PC端，将生成的id_rsa.pub复制到存在于/sdcard/目录下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加公钥信息到手机"><a href="#添加公钥信息到手机" class="headerlink" title="添加公钥信息到手机"></a>添加公钥信息到手机</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">cp /sdcard/id_rsa.pub ./</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+<p>此时已经完成SSH的配置了，下面还需要获取相关信息。</p>
+<h3 id="获取相关信息"><a href="#获取相关信息" class="headerlink" title="获取相关信息"></a>获取相关信息</h3><ul>
+<li><p>获取登录的用户名<br>会返回当前的用户名，最好不要是运行ubuntu时的root，一般是【u0_axxx】这样的格式，后面的示例为：u0_a118</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前的ip<br>PC端要跟手机端在同一网段，选取wlan0中的inet addr的地址即可。一般路由器分配的地址都是192.168.0.xxx这样的，后面的示例为：192.168.1.101</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置连接的密码<br>就是当前账户的密码，用于登录SSH的确认，需要输入两次</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>连接SSH<br>默认端口不是22二十8022，这个一定要注意</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh u0_a118@192.168.1.101 -p 8022</span><br></pre></td></tr></table></figure>
+<p>连接成功的界面如下所示：<img src="/images/Termux-Ubuntu/3.4.png" alt="SSH"></p>
+</li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>前文的文件分享的百度云密码都是：2333。最后感谢网上看到的相关教程，分别有<a href="http://blog.lujun9972.win/blog/2018/01/24/%E4%BD%BF%E7%94%A8termux%E6%8A%8Aandroid%E6%89%8B%E6%9C%BA%E5%8F%98%E6%88%90ssh%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank" rel="noopener">DarkSun的个人博客</a>，520的罗的<a href="https://blog.51cto.com/gt520/2134487" target="_blank" rel="noopener">博客</a>，<a href="https://blog.csdn.net/u010164190/article/details/78831069" target="_blank" rel="noopener">慢慢的燃烧</a>、<a href="https://blog.csdn.net/zhangbangqian/article/details/82019175" target="_blank" rel="noopener">我是MONEY呀</a>、<a href="https://www.cnblogs.com/root1/p/9250678.html" target="_blank" rel="noopener">老板_来三斤荔枝</a>的博客，中间还有一些早期看到的教程，真的非常感谢！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Termux</tag>
+        <tag>AnLinux</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2020肺炎实时疫情图</title>
     <url>/2020/00.WuHan/</url>
     <content><![CDATA[<iframe src="https://www.lovestu.com/api/project/cnmapyinqing/obj.php" height="500" frameborder="no" border="0" width="100%"> </iframe>
@@ -194,42 +257,13 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>关于博主</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
-<h2 id="2018-6-至今-研究生-中国地质大学-武汉"><a href="#2018-6-至今-研究生-中国地质大学-武汉" class="headerlink" title="2018.6-至今   研究生 中国地质大学(武汉)"></a>2018.6-至今   研究生 中国地质大学(武汉)</h2><p>专业是控制科学与工程，学习内容有：鲁棒与最优控制、机器学习与学习控制、智能优化与最优化方法、人工神经网络及应用、非线性系统分析与控制、模糊控制</p>
-<h1 id="专业技能"><a href="#专业技能" class="headerlink" title="专业技能"></a>专业技能</h1><ul>
-<li>熟悉各种计算机操作系统，计算机网络等相关知识，精通嵌入式程序设计和开发</li>
-<li>熟练使用嵌入式开发的 Keil、J-Scope 等软件和 PCB 制图的 Altium Designer</li>
-<li>熟练使用电路仿真软件 Proteus、Multisim 进行电路仿真</li>
-<li>熟练使用Markdown网页编写和微信小程序开发的微信开发者工具</li>
-<li>熟练使用 Latex、IgorPro、Coreldraw、AI 和 PhotoShop 等办公软件</li>
-</ul>
-<h1 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h1><ol>
-<li>总体而言屌丝一枚吧，喜欢很多新奇的东西会经常去尝试，比如单片机，电路什么的都非常喜欢。以前也结识了很多志同道合的朋友，觉得非常的开心。</li>
-<li>想法比较多，想做的事情也非常多，网站建设也在我的想法之内但是却搁置了很久，现在终于有机会来做了。</li>
-<li>我是一个很喜欢宅的人，喜欢打游戏、看视频、看电影、听音乐等等一系列不用动身的运动。受这个疫情的影响，我在家待了十来天了，中间就下楼了一次，居然能够忍下来，以前天天打游戏现在也有点觉得不好玩儿了，还是静下心来好好做点事情吧。</li>
-<li>感觉我的性格比较随和吧，虽然玩游戏偶尔会化身祖安人，但是现实中非常不喜欢和别人哔哔，就连打球也是经常晚上一个人去篮球场，吹着晚风真的很舒服呀！</li>
-<li>不善于表达自己的情绪，因此也失去了一些东西，不知道以后能不能慢慢改变~</li>
-</ol>
-<h1 id="安利一些自己喜欢的东西吧"><a href="#安利一些自己喜欢的东西吧" class="headerlink" title="安利一些自己喜欢的东西吧"></a>安利一些自己喜欢的东西吧</h1><ul>
-<li>歌手：朴树，周杰伦，林俊杰和许嵩等</li>
-</ul>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=93% height=86 src="//music.163.com/outchain/player?type=2&id=139392&auto=0&height=66"></iframe>
-
-<ul>
-<li><p>电影：周星驰的电影基本都喜欢</p>
-</li>
-<li><p>B站UP：<a href="https://space.bilibili.com/546195?spm_id_from=333.788.b_765f7570696e666f.1" target="_blank" rel="noopener">老番茄</a>，<a href="https://space.bilibili.com/382666849/dynamic" target="_blank" rel="noopener">维修厮</a>，<a href="https://www.bilibili.com/video/av82313557" target="_blank" rel="noopener">绵羊料理</a>和<a href="https://space.bilibili.com/390461123/dynamic" target="_blank" rel="noopener">徐大骚</a>等等。</p>
-</li>
-<li><p>图片：来源B站<a href="https://space.bilibili.com/6823116" target="_blank" rel="noopener">壁纸娘</a>的“Bilibili盛夏”，5K超清！<br><img src="bilibili%E7%9B%9B%E5%A4%8F" alt=""> <img src="https://i0.hdslb.com/bfs/album/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"></p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>Homepea的分类</title>
     <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -464,8 +498,37 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
+    <title>关于博主</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
+<h2 id="2018-6-至今-研究生-中国地质大学-武汉"><a href="#2018-6-至今-研究生-中国地质大学-武汉" class="headerlink" title="2018.6-至今   研究生 中国地质大学(武汉)"></a>2018.6-至今   研究生 中国地质大学(武汉)</h2><p>专业是控制科学与工程，学习内容有：鲁棒与最优控制、机器学习与学习控制、智能优化与最优化方法、人工神经网络及应用、非线性系统分析与控制、模糊控制</p>
+<h1 id="专业技能"><a href="#专业技能" class="headerlink" title="专业技能"></a>专业技能</h1><ul>
+<li>熟悉各种计算机操作系统，计算机网络等相关知识，精通嵌入式程序设计和开发</li>
+<li>熟练使用嵌入式开发的 Keil、J-Scope 等软件和 PCB 制图的 Altium Designer</li>
+<li>熟练使用电路仿真软件 Proteus、Multisim 进行电路仿真</li>
+<li>熟练使用Markdown网页编写和微信小程序开发的微信开发者工具</li>
+<li>熟练使用 Latex、IgorPro、Coreldraw、AI 和 PhotoShop 等办公软件</li>
+</ul>
+<h1 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h1><ol>
+<li>总体而言屌丝一枚吧，喜欢很多新奇的东西会经常去尝试，比如单片机，电路什么的都非常喜欢。以前也结识了很多志同道合的朋友，觉得非常的开心。</li>
+<li>想法比较多，想做的事情也非常多，网站建设也在我的想法之内但是却搁置了很久，现在终于有机会来做了。</li>
+<li>我是一个很喜欢宅的人，喜欢打游戏、看视频、看电影、听音乐等等一系列不用动身的运动。受这个疫情的影响，我在家待了十来天了，中间就下楼了一次，居然能够忍下来，以前天天打游戏现在也有点觉得不好玩儿了，还是静下心来好好做点事情吧。</li>
+<li>感觉我的性格比较随和吧，虽然玩游戏偶尔会化身祖安人，但是现实中非常不喜欢和别人哔哔，就连打球也是经常晚上一个人去篮球场，吹着晚风真的很舒服呀！</li>
+<li>不善于表达自己的情绪，因此也失去了一些东西，不知道以后能不能慢慢改变~</li>
+</ol>
+<h1 id="安利一些自己喜欢的东西吧"><a href="#安利一些自己喜欢的东西吧" class="headerlink" title="安利一些自己喜欢的东西吧"></a>安利一些自己喜欢的东西吧</h1><ul>
+<li>歌手：朴树，周杰伦，林俊杰和许嵩等</li>
+</ul>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=93% height=86 src="//music.163.com/outchain/player?type=2&id=139392&auto=0&height=66"></iframe>
+
+<ul>
+<li><p>电影：周星驰的电影基本都喜欢</p>
+</li>
+<li><p>B站UP：<a href="https://space.bilibili.com/546195?spm_id_from=333.788.b_765f7570696e666f.1" target="_blank" rel="noopener">老番茄</a>，<a href="https://space.bilibili.com/382666849/dynamic" target="_blank" rel="noopener">维修厮</a>，<a href="https://www.bilibili.com/video/av82313557" target="_blank" rel="noopener">绵羊料理</a>和<a href="https://space.bilibili.com/390461123/dynamic" target="_blank" rel="noopener">徐大骚</a>等等。</p>
+</li>
+<li><p>图片：来源B站<a href="https://space.bilibili.com/6823116" target="_blank" rel="noopener">壁纸娘</a>的“Bilibili盛夏”，5K超清！<br><img src="bilibili%E7%9B%9B%E5%A4%8F" alt=""> <img src="https://i0.hdslb.com/bfs/album/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"></p>
+</li>
+</ul>
+]]></content>
   </entry>
 </search>
