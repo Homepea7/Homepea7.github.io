@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-02-20T03:16:29.301Z</updated>
+  <updated>2020-02-20T15:02:05.991Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
+    <link href="https://homepea7.github.io/2020/07.Termux+KODExplorer/"/>
+    <id>https://homepea7.github.io/2020/07.Termux+KODExplorer/</id>
+    <published>2020-02-20T14:11:30.267Z</published>
+    <updated>2020-02-20T15:02:05.991Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。&lt;/p&gt;
+&lt;h1 id=&quot;安装前提&quot;&gt;&lt;a href=&quot;#安装前提&quot; class=&quot;headerlink&quot; title=&quot;安装前提&quot;&gt;&lt;/a&gt;安装前提&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Termux" scheme="https://Homepea7.github.io/categories/Termux/"/>
+    
+    
+      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
+    
+      <category term="KODExplorer" scheme="https://Homepea7.github.io/tags/KODExplorer/"/>
+    
+      <category term="Git" scheme="https://Homepea7.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>通过更改Hosts解决Github进不去</title>
     <link href="https://homepea7.github.io/2020/06.GitHub-SpeedUp/"/>
     <id>https://homepea7.github.io/2020/06.GitHub-SpeedUp/</id>
     <published>2020-02-20T03:01:41.000Z</published>
-    <updated>2020-02-20T03:16:29.301Z</updated>
+    <updated>2020-02-20T15:02:02.359Z</updated>
     
     <summary type="html">
     
@@ -45,7 +71,7 @@
     <link href="https://homepea7.github.io/2020/05.Termux/"/>
     <id>https://homepea7.github.io/2020/05.Termux/</id>
     <published>2020-02-15T11:19:53.000Z</published>
-    <updated>2020-02-17T15:03:57.396Z</updated>
+    <updated>2020-02-20T15:01:59.228Z</updated>
     
     <summary type="html">
     

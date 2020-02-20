@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
+    <url>/2020/07.Termux+KODExplorer/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。</p>
+<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>首先是Git，因为需要Git下载KODExplorer的资源，安装Git的指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y git</span><br></pre></td></tr></table></figure>
+
+<p>其次是php的安装，指令如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y php</span><br></pre></td></tr></table></figure>
+
+<p>上面的install都附带了 -y，及默认安装，不会弹出那个确认的提示。</p>
+<h1 id="下载KODExplorer文件服务器"><a href="#下载KODExplorer文件服务器" class="headerlink" title="下载KODExplorer文件服务器"></a>下载KODExplorer文件服务器</h1><p><a href="https://gitee.com/kalcaddle/KODExplorer" target="_blank" rel="noopener">KodExplorer</a>可道云，原名芒果云，是基于Web技术的私有云和在线文件管理系统，是一款快捷高效的私有云和在线文档管理系统，为个人网站、企业私有云部署、网络存储、在线文档管理、在线办公等提供安全可控，简便易用、可高度定制的私有云产品。采用windows风格界面、操作习惯，无需适应即可快速上手，支持几百种常用文件格式的在线预览，可扩展易定制。GPL v3开源协议。</p>
+<p>个人觉得KodExplorer非常好用，不仅仅因为是Windows风格的操作，更有可以管理各种文件，而且Termux内部的目录也可以看的一清二楚，非常方便而且实用。在Termux安装的指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gitee.com/kalcaddle/KODExplorer.git</span><br></pre></td></tr></table></figure>
+
+<p>下载完成之后给权限，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod -Rf 777 ./KODExplorer/*</span><br></pre></td></tr></table></figure>
+
+<p>最后是启动KODExplorer文件服务器。首先是进入KOEExplorer文件夹，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> KodExplorer</span><br></pre></td></tr></table></figure>
+
+<p>此时使用ls指令可以查看相应的文件，然后使用php打开一个端口：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php -S 192.168.1.101:8233 -t .</span><br></pre></td></tr></table></figure>
+
+<p>这里的IP地址就是安装Termux本机的IP，最好别写localhost，因为这样可以在局域网的设备都可以访问到，而且真的是而且真的是美爆了，有毛玻璃效果！！！具体的效果如下：<br><img src="/images/Termux-Ubuntu/4.0.png" alt="KODExplorer"></p>
+<p>如果使用乃往穿透就是个人服务器了，用来写Python实现一些小功能美滋滋，或者前端的html，MD也都是再好不过了！</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>感谢<a href="https://www.bilibili.com/video/av89221670" target="_blank" rel="noopener">Coldwith</a>的分享，虽然他在视频中说失败了有问题，但是我这边成功实现了，2333~~</p>
+]]></content>
+      <categories>
+        <category>Termux</category>
+      </categories>
+      <tags>
+        <tag>Termux</tag>
+        <tag>KODExplorer</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>通过更改Hosts解决Github进不去</title>
     <url>/2020/06.GitHub-SpeedUp/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近在家上GitHub还算比较多，但是发现经常进不去，最近的梯子也进本都挂了，导致GitHub有时候进不去，然后去网上搜了很多办法，发现效果还比较好，在这里做一个小小的总结和分享。</p>
@@ -279,11 +316,6 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -318,8 +350,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -522,6 +554,11 @@
 
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西比较乱，主要是自己看的，所以没有好好整理，主要是东西收藏的太多了，分类的时候有一些都没有好好注意，本来想弄成表格，但是太乱了不好做，只能这样将就看看了<del>~</del></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>资源</title>
