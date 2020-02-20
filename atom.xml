@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-02-17T15:03:57.396Z</updated>
+  <updated>2020-02-20T03:16:29.301Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>通过更改Hosts解决Github进不去</title>
+    <link href="https://homepea7.github.io/2020/06.GitHub-SpeedUp/"/>
+    <id>https://homepea7.github.io/2020/06.GitHub-SpeedUp/</id>
+    <published>2020-02-20T03:01:41.000Z</published>
+    <updated>2020-02-20T03:16:29.301Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近在家上GitHub还算比较多，但是发现经常进不去，最近的梯子也进本都挂了，导致GitHub有时候进不去，然后去网上搜了很多办法，发现效果还比较好，在这里做一个小小的总结和分享。&lt;/p&gt;
+&lt;h1 id=&quot;原因分析&quot;&gt;&lt;a href=&quot;#原因分析&quot; class=&quot;headerlink&quot; title=&quot;原因分析&quot;&gt;&lt;/a&gt;原因分析&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="GitHub" scheme="https://Homepea7.github.io/categories/GitHub/"/>
+    
+    
+      <category term="GitHub" scheme="https://Homepea7.github.io/tags/GitHub/"/>
+    
+      <category term="Hosts" scheme="https://Homepea7.github.io/tags/Hosts/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Termux给旧手机安装Ubuntu</title>

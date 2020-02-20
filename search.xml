@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>通过更改Hosts解决Github进不去</title>
+    <url>/2020/06.GitHub-SpeedUp/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近在家上GitHub还算比较多，但是发现经常进不去，最近的梯子也进本都挂了，导致GitHub有时候进不去，然后去网上搜了很多办法，发现效果还比较好，在这里做一个小小的总结和分享。</p>
+<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>今天实在看到大佬<a href="https://space.bilibili.com/20259914" target="_blank" rel="noopener">稚晖君</a>开源的项目很激动，转手去GitHub却发现打不开，然后直接F12走起看了下network，发现和网上说的一样，很多域名都是指向：github.global.ssl.fastly.net，因为我们的互联网高墙的原因当然是无法请求成功的，于是想到了改Hosts文件，不同的系统Hosts文件地址如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Windows系统hosts位于    C:\Windows\System32\drivers\etc\hosts   </span><br><span class="line">Android系统hosts位于    &#x2F;etc&#x2F;hosts</span><br><span class="line">Mac系统hosts位于        &#x2F;etc&#x2F;hosts</span><br><span class="line">IOS系统hosts位于        &#x2F;etc&#x2F;hosts</span><br><span class="line">Linux系统hosts位于      &#x2F;etc&#x2F;hosts</span><br><span class="line">绝大多数Unix系统都是在   &#x2F;etc&#x2F;hosts</span><br></pre></td></tr></table></figure>
+
+<h1 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h1><p>用管理员权限打开Hosts文件，添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">74.125.237.1 dl-ssl.google.com</span><br><span class="line">74.125.128.95 ajax.googleapis.com</span><br><span class="line">185.31.16.185 github.global.ssl.fastly.net</span><br><span class="line">192.30.253.112 github.com</span><br><span class="line">192.30.252.131 github.com</span><br><span class="line">192.30.253.119 gist.github.com</span><br><span class="line">151.101.100.133 assets-cdn.github.com</span><br><span class="line">151.101.100.133 raw.githubusercontent.com</span><br><span class="line">151.101.100.133 gist.githubusercontent.com</span><br><span class="line">151.101.100.133 cloud.githubusercontent.com</span><br><span class="line">151.101.100.133 camo.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars0.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars1.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars2.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars3.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars4.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars5.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars6.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars7.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars8.githubusercontent.com</span><br><span class="line">173.194.127.200 groups.google.com</span><br></pre></td></tr></table></figure>
+
+<p>最后保存，重启浏览器即可。</p>
+<h1 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h1><p>这个我基本上是参考网上的教程，非常感谢他们的分享，我在这里知识做一个小小的整合。具体参考的如下：<a href="https://blog.csdn.net/lusic01/article/details/54343828" target="_blank" rel="noopener">lusic01</a>的CSDN博客和<a href="https://jingyan.baidu.com/article/7908e85cecb8d7af481ad281.html" target="_blank" rel="noopener">百度经验</a>。</p>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Hosts</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Termux给旧手机安装Ubuntu</title>
     <url>/2020/05.Termux/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL锁现在不能解开了，因此没有Root权限（感觉华为这件事儿很恶心）。我花了好长时间去解锁（其实就是不想去淘宝花30块钱），但是都没有成功，因此一直都搁置在，今天还是给拿出来了试试，终于成功在没有root权限的情况下安装了ubuntu，并且通过SSH连接上去了，可以跑一些Python程序，感觉还是很开心的，下面说说具体的过程。</p>
@@ -263,6 +284,45 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>关于博主</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
+<h2 id="2018-6-至今-研究生-中国地质大学-武汉"><a href="#2018-6-至今-研究生-中国地质大学-武汉" class="headerlink" title="2018.6-至今   研究生 中国地质大学(武汉)"></a>2018.6-至今   研究生 中国地质大学(武汉)</h2><p>专业是控制科学与工程，学习内容有：鲁棒与最优控制、机器学习与学习控制、智能优化与最优化方法、人工神经网络及应用、非线性系统分析与控制、模糊控制</p>
+<h1 id="专业技能"><a href="#专业技能" class="headerlink" title="专业技能"></a>专业技能</h1><ul>
+<li>熟悉各种计算机操作系统，计算机网络等相关知识，精通嵌入式程序设计和开发</li>
+<li>熟练使用嵌入式开发的 Keil、J-Scope 等软件和 PCB 制图的 Altium Designer</li>
+<li>熟练使用电路仿真软件 Proteus、Multisim 进行电路仿真</li>
+<li>熟练使用Markdown网页编写和微信小程序开发的微信开发者工具</li>
+<li>熟练使用 Latex、IgorPro、Coreldraw、AI 和 PhotoShop 等办公软件</li>
+</ul>
+<h1 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h1><ol>
+<li>总体而言屌丝一枚吧，喜欢很多新奇的东西会经常去尝试，比如单片机，电路什么的都非常喜欢。以前也结识了很多志同道合的朋友，觉得非常的开心。</li>
+<li>想法比较多，想做的事情也非常多，网站建设也在我的想法之内但是却搁置了很久，现在终于有机会来做了。</li>
+<li>我是一个很喜欢宅的人，喜欢打游戏、看视频、看电影、听音乐等等一系列不用动身的运动。受这个疫情的影响，我在家待了十来天了，中间就下楼了一次，居然能够忍下来，以前天天打游戏现在也有点觉得不好玩儿了，还是静下心来好好做点事情吧。</li>
+<li>感觉我的性格比较随和吧，虽然玩游戏偶尔会化身祖安人，但是现实中非常不喜欢和别人哔哔，就连打球也是经常晚上一个人去篮球场，吹着晚风真的很舒服呀！</li>
+<li>不善于表达自己的情绪，因此也失去了一些东西，不知道以后能不能慢慢改变~</li>
+</ol>
+<h1 id="安利一些自己喜欢的东西吧"><a href="#安利一些自己喜欢的东西吧" class="headerlink" title="安利一些自己喜欢的东西吧"></a>安利一些自己喜欢的东西吧</h1><ul>
+<li>歌手：朴树，周杰伦，林俊杰和许嵩等</li>
+</ul>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=93% height=86 src="//music.163.com/outchain/player?type=2&id=139392&auto=0&height=66"></iframe>
+
+<ul>
+<li><p>电影：周星驰的电影基本都喜欢</p>
+</li>
+<li><p>B站UP：<a href="https://space.bilibili.com/546195?spm_id_from=333.788.b_765f7570696e666f.1" target="_blank" rel="noopener">老番茄</a>，<a href="https://space.bilibili.com/382666849/dynamic" target="_blank" rel="noopener">维修厮</a>，<a href="https://www.bilibili.com/video/av82313557" target="_blank" rel="noopener">绵羊料理</a>和<a href="https://space.bilibili.com/390461123/dynamic" target="_blank" rel="noopener">徐大骚</a>等等。</p>
+</li>
+<li><p>图片：来源B站<a href="https://space.bilibili.com/6823116" target="_blank" rel="noopener">壁纸娘</a>的“Bilibili盛夏”，5K超清！<br><img src="bilibili%E7%9B%9B%E5%A4%8F" alt=""> <img src="https://i0.hdslb.com/bfs/album/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"></p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>收藏</title>
     <url>/favorites/index.html</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我这个人有点无聊，一般每个学习主用的电脑都会重新装一次系统，但是我的软件基本都是绿色版，因此一般我半个小时就可以基本恢复好，但是浏览器上面的数千每次回复比较慢，这个我觉得比较烦，而且有时候梯子不好用了，因此在这里将我的数千同步一下，也做一个分享，希望上面的资源能够帮到大家。</p>
@@ -461,45 +521,6 @@
 
 
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西比较乱，主要是自己看的，所以没有好好整理，主要是东西收藏的太多了，分类的时候有一些都没有好好注意，本来想弄成表格，但是太乱了不好做，只能这样将就看看了<del>~</del></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>关于博主</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
-<h2 id="2018-6-至今-研究生-中国地质大学-武汉"><a href="#2018-6-至今-研究生-中国地质大学-武汉" class="headerlink" title="2018.6-至今   研究生 中国地质大学(武汉)"></a>2018.6-至今   研究生 中国地质大学(武汉)</h2><p>专业是控制科学与工程，学习内容有：鲁棒与最优控制、机器学习与学习控制、智能优化与最优化方法、人工神经网络及应用、非线性系统分析与控制、模糊控制</p>
-<h1 id="专业技能"><a href="#专业技能" class="headerlink" title="专业技能"></a>专业技能</h1><ul>
-<li>熟悉各种计算机操作系统，计算机网络等相关知识，精通嵌入式程序设计和开发</li>
-<li>熟练使用嵌入式开发的 Keil、J-Scope 等软件和 PCB 制图的 Altium Designer</li>
-<li>熟练使用电路仿真软件 Proteus、Multisim 进行电路仿真</li>
-<li>熟练使用Markdown网页编写和微信小程序开发的微信开发者工具</li>
-<li>熟练使用 Latex、IgorPro、Coreldraw、AI 和 PhotoShop 等办公软件</li>
-</ul>
-<h1 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h1><ol>
-<li>总体而言屌丝一枚吧，喜欢很多新奇的东西会经常去尝试，比如单片机，电路什么的都非常喜欢。以前也结识了很多志同道合的朋友，觉得非常的开心。</li>
-<li>想法比较多，想做的事情也非常多，网站建设也在我的想法之内但是却搁置了很久，现在终于有机会来做了。</li>
-<li>我是一个很喜欢宅的人，喜欢打游戏、看视频、看电影、听音乐等等一系列不用动身的运动。受这个疫情的影响，我在家待了十来天了，中间就下楼了一次，居然能够忍下来，以前天天打游戏现在也有点觉得不好玩儿了，还是静下心来好好做点事情吧。</li>
-<li>感觉我的性格比较随和吧，虽然玩游戏偶尔会化身祖安人，但是现实中非常不喜欢和别人哔哔，就连打球也是经常晚上一个人去篮球场，吹着晚风真的很舒服呀！</li>
-<li>不善于表达自己的情绪，因此也失去了一些东西，不知道以后能不能慢慢改变~</li>
-</ol>
-<h1 id="安利一些自己喜欢的东西吧"><a href="#安利一些自己喜欢的东西吧" class="headerlink" title="安利一些自己喜欢的东西吧"></a>安利一些自己喜欢的东西吧</h1><ul>
-<li>歌手：朴树，周杰伦，林俊杰和许嵩等</li>
-</ul>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=93% height=86 src="//music.163.com/outchain/player?type=2&id=139392&auto=0&height=66"></iframe>
-
-<ul>
-<li><p>电影：周星驰的电影基本都喜欢</p>
-</li>
-<li><p>B站UP：<a href="https://space.bilibili.com/546195?spm_id_from=333.788.b_765f7570696e666f.1" target="_blank" rel="noopener">老番茄</a>，<a href="https://space.bilibili.com/382666849/dynamic" target="_blank" rel="noopener">维修厮</a>，<a href="https://www.bilibili.com/video/av82313557" target="_blank" rel="noopener">绵羊料理</a>和<a href="https://space.bilibili.com/390461123/dynamic" target="_blank" rel="noopener">徐大骚</a>等等。</p>
-</li>
-<li><p>图片：来源B站<a href="https://space.bilibili.com/6823116" target="_blank" rel="noopener">壁纸娘</a>的“Bilibili盛夏”，5K超清！<br><img src="bilibili%E7%9B%9B%E5%A4%8F" alt=""> <img src="https://i0.hdslb.com/bfs/album/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"></p>
-</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
