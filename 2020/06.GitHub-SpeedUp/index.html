@@ -72,7 +72,7 @@
 <meta property="og:description" content="说明最近在家上GitHub还算比较多，但是发现经常进不去，最近的梯子也进本都挂了，导致GitHub有时候进不去，然后去网上搜了很多办法，发现效果还比较好，在这里做一个小小的总结和分享。 原因分析">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-20T03:01:41.000Z">
-<meta property="article:modified_time" content="2020-02-20T15:02:02.359Z">
+<meta property="article:modified_time" content="2020-02-21T02:49:35.308Z">
 <meta property="article:author" content="Kavin Homepea">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Hosts">
@@ -282,10 +282,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-20 11:01:41 / 修改时间：23:02:02" itemprop="dateCreated datePublished" datetime="2020-02-20T11:01:41+08:00">2020-02-20</time>
+              <time title="创建时间：2020-02-20 11:01:41" itemprop="dateCreated datePublished" datetime="2020-02-20T11:01:41+08:00">2020-02-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-21 10:49:35" itemprop="dateModified" datetime="2020-02-21T10:49:35+08:00">2020-02-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -348,7 +354,7 @@
 <h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>今天实在看到大佬<a href="https://space.bilibili.com/20259914" target="_blank" rel="noopener">稚晖君</a>开源的项目很激动，转手去GitHub却发现打不开，然后直接F12走起看了下network，发现和网上说的一样，很多域名都是指向：github.global.ssl.fastly.net，因为我们的互联网高墙的原因当然是无法请求成功的，于是想到了改Hosts文件，不同的系统Hosts文件地址如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Windows系统hosts位于    C:\Windows\System32\drivers\etc\hosts   </span><br><span class="line">Android系统hosts位于    &#x2F;etc&#x2F;hosts</span><br><span class="line">Mac系统hosts位于        &#x2F;etc&#x2F;hosts</span><br><span class="line">IOS系统hosts位于        &#x2F;etc&#x2F;hosts</span><br><span class="line">Linux系统hosts位于      &#x2F;etc&#x2F;hosts</span><br><span class="line">绝大多数Unix系统都是在   &#x2F;etc&#x2F;hosts</span><br></pre></td></tr></table></figure>
 
-<h1 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h1><p>用管理员权限打开Hosts文件，添加如下内容：</p>
+<h1 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h1><p>用管理员权限打开Hosts文件，添加如下整合多人的内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">74.125.237.1 dl-ssl.google.com</span><br><span class="line">74.125.128.95 ajax.googleapis.com</span><br><span class="line">185.31.16.185 github.global.ssl.fastly.net</span><br><span class="line">192.30.253.112 github.com</span><br><span class="line">192.30.252.131 github.com</span><br><span class="line">192.30.253.119 gist.github.com</span><br><span class="line">151.101.100.133 assets-cdn.github.com</span><br><span class="line">151.101.100.133 raw.githubusercontent.com</span><br><span class="line">151.101.100.133 gist.githubusercontent.com</span><br><span class="line">151.101.100.133 cloud.githubusercontent.com</span><br><span class="line">151.101.100.133 camo.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars0.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars1.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars2.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars3.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars4.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars5.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars6.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars7.githubusercontent.com</span><br><span class="line">151.101.100.133 avatars8.githubusercontent.com</span><br><span class="line">173.194.127.200 groups.google.com</span><br></pre></td></tr></table></figure>
 
 <p>最后保存，重启浏览器即可。</p>
