@@ -319,11 +319,6 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -356,6 +351,41 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>资源</title>
+    <url>/resources/index.html</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我个人有一些使用软件上的一些小“洁癖”吧，国内的环境的确是真的非常非常的恶心，各种弹窗和广告数不胜数，还有百度说的“中国人愿意用隐私换取便利”，感觉真的是恶心到我了，这里将我常用的一些软件分享出来，希望能够帮到一些人，至少不受到垃圾广告和弹窗的影响，也为我自己的列一个清单，以后分享页方便。我经常逛的两个论坛是<a href="https://www.ghpym.com/" target="_blank" rel="noopener">果核剥壳</a>和<a href="https://www.52pojie.cn/" target="_blank" rel="noopener">我爱破解</a>这两个，其中大部分资源也都是基于这两个论坛的，但是很多都是用了许久，现在可能不能一一找到相应的出处了，我会尽量找出出处，如果有侵权请联系我一定迅速删除。</p>
+<h1 id="日常使用类"><a href="#日常使用类" class="headerlink" title="日常使用类"></a>日常使用类</h1><h2 id="Seer"><a href="#Seer" class="headerlink" title="Seer"></a>Seer</h2><p><a href="https://pan.baidu.com/s/1XDqQ9kg9xCT2OOJSQCV9nw" target="_blank" rel="noopener">Seer</a>可以实现Windown上像Mac一样的空格预览，可以预览非常多的文件，尤其时Gif，这个需求时真的很大，而且markdown文件也可以时时预览，用起来真的非常舒服。</p>
+<h1 id="Snipaste"><a href="#Snipaste" class="headerlink" title="Snipaste"></a>Snipaste</h1><p><a href="https://pan.baidu.com/s/1j533U7llMe3yrsFSC7c5MA" target="_blank" rel="noopener">Snipaste</a>妥妥的生产力工具，我觉得时win系统最好用的截图工具了，还能贴图，自从用了这个我就放弃了QQ、微信和win自带的截图软件了，真的巨好用。</p>
+<h2 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h2><p>浏览器我一直用的<a href="https://www.google.com/chrome/" target="_blank" rel="noopener">Chrome</a>，相信大家也知道国内的浏览器基本都是根据谷歌的开源计划改的吧，当然可能改的很好，不过我看了我上面介绍乐那么多绿色版的东西，我觉得还是原版的好。不多说了，打开链接直接下载即可。</p>
+<h2 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h2><p>音乐播放器，我一直使用的<a href="https://pan.baidu.com/s/18gson3K_KicLeowQtPTAxg" target="_blank" rel="noopener">网易云</a>，虽然乐库越来越少，但是真的还算良心，我也是一直在使用的，上面分享的是绿色版，其实就是我以前自己安装的老版本，这个左侧没有Look直播，头像没有开会员的提醒，我设置不自动更新，就这样一直用着吧。</p>
+<h2 id="MpvPlayer"><a href="#MpvPlayer" class="headerlink" title="MpvPlayer"></a>MpvPlayer</h2><p>视频播放器我用的<a href="https://pan.baidu.com/s/1QSy_Yne2REjEahbEAV_OGg" target="_blank" rel="noopener">MpvPlayer</a>，这样说吧，应该是我见过最好用的一个播放器了，比Plot，foobar这种好多了，真心简洁但是功能一个不差，倍速慢速，换音源，还能逐帧播放，关键还开源，我觉得暂时没有比他更好的本地播放器了。其他的网站上面的我都是用的浏览器在线播放，因为有插件能去广告，非常方便。</p>
+<h2 id="IOBUninstall"><a href="#IOBUninstall" class="headerlink" title="IOBUninstall"></a>IOBUninstall</h2><p><a href="https://pan.baidu.com/s/1jBOqG2ltNcECuYPS1rWkSg" target="_blank" rel="noopener">IOBUninstall</a>我觉得良心制作，基础功能足矣，这个是绿色版，直接安装的，最大的好处是可以卸载win10自带的uwp，非常给力，而且卸载的足够干净。</p>
+<h2 id="WEI-PE"><a href="#WEI-PE" class="headerlink" title="WEI_PE"></a>WEI_PE</h2><p>装系统肯定是用<a href="https://pan.baidu.com/s/1T5UzjWey_MIbu2b_znaG9w" target="_blank" rel="noopener">WEI_PE</a>，国内的环境是真的恶心，用什么大白菜，U启动神的的基本一大推捆绑，好美其名曰推荐，这个PE制作是完全放心的，但是我现在好像已经搜不到观望了，就把以前下载的东西放出来，这个东西用过了就知道什么叫做清爽。</p>
+<h1 id="文本编辑类"><a href="#文本编辑类" class="headerlink" title="文本编辑类"></a>文本编辑类</h1><h2 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h2><p>我用的最多的一个文本编辑器了，特点就是快，因为他的本质就是一个文本编辑器，但是相应的插件支持非常多，支持的文件格式非常多，不管是做编程还是写文本都是非常的好用。至少我现在的tet文件，写Latex，还是Markdown写现在的网页都是用的它，配合其他的插件真的很好用，效率也很高，最先安利的一个了。网上看了很多资源，最后还是选择了果核的软件，我保存了其他人收集的结果<a href="https://pan.baidu.com/s/16944rScjYeHwrJvyO2TyiA" target="_blank" rel="noopener">链接</a>。</p>
+<h2 id="UltraEdit"><a href="#UltraEdit" class="headerlink" title="UltraEdit"></a>UltraEdit</h2><p><a href="https://pan.baidu.com/s/1Gdn_E2dxnUxIS_PN95b9iA" target="_blank" rel="noopener">UltraEdit</a>应该是一个老牌软件了，一些资深的程序员都在用这个，它查看二进制文件或者用二进制查看文件非常的优秀，这个是Sublime和VSCode不能比的，本人电脑也保留了一个，毕竟绿色版解压就能用，也不碍事。</p>
+<h1 id="论文撰写类"><a href="#论文撰写类" class="headerlink" title="论文撰写类"></a>论文撰写类</h1><h2 id="MikTex"><a href="#MikTex" class="headerlink" title="MikTex"></a>MikTex</h2><p>论文写作最麻烦的就是格式问题，这个使用Latex可以很好的解决，而且现在各大杂志都有自己的Latex模板，直接使用即可，那么编辑就成了一个很大的问题了。刚刚过去的时候很多同学推荐CTEX这个软件，一看4G的大小，而且界面非常丑，而且也没有代码高亮啥的，更关键的是找error让我觉得非常难受，因此网上看了很多方法，让我看到了MikTex，其实还有比如TeXlive等等，都是差不多的，因此我是使用的这个<a href="https://pan.baidu.com/s/1_nAJxLTqCaPZn9F9bbzSXQ" target="_blank" rel="noopener">MikTex</a>，安装的时候最好选取“自动下载文章确实的包”，因为这个软件毕竟是Basic的，很多的包还是需要后期安装的，安装完了之后页可以直接编辑tex文件，这个软件也是有编辑器和PDF阅读器的，但是也都是基本的东西，用起来还行吧，但是还是要配合<a href="(https://pan.baidu.com/s/16944rScjYeHwrJvyO2TyiA)">Sublime</a>更好的。</p>
+<h2 id="PDF查看"><a href="#PDF查看" class="headerlink" title="PDF查看"></a>PDF查看</h2><p>说实话，国内的PDF阅读器看了很久，没有一个我觉得是正常的，金山、福析和闪电等等阅读器是真的难用，还有那个知网出的那个什么可以读CAJ格式那两个垃圾阅读器，真的慢死了，广告那么大的板块，真的忍不了，其实真正能用的可能也就Adobe的了，后面有推荐，不过论文撰写方面肯定是<a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer.html" target="_blank" rel="noopener">SumatraPDF</a>，占用体积小，安装完了10M，速度是真的快，而且能够双击连接到Sublime写的文章的对应行上面去，修改论文非常方便，而且他的缩放是很合适，用过的绝对会觉得非常爽。</p>
+<p>除了PDF查看，偶尔也需要对PDF文件作一些小小的更改，特别是有些时候别人发过来的PDF文件，Adobe的阅读器当然可以，但是比较大门后面有介绍，这里介绍<a href="https://pan.baidu.com/s/1l7pc79MVNZEA96ofPMg7WA" target="_blank" rel="noopener">Xchange PDF</a>，也是轻量级的，我一般放在电脑里面吃灰，但是偶尔有时候会非常有用哦。</p>
+<h1 id="资源下载类"><a href="#资源下载类" class="headerlink" title="资源下载类"></a>资源下载类</h1><h2 id="迅雷简化版"><a href="#迅雷简化版" class="headerlink" title="迅雷简化版"></a>迅雷简化版</h2><p>迅雷的做法大家可以去搜搜，种子协议在国内快被他们搞垮了，因此破解版的也层出不穷。如果没错的话来源是我爱破解，但是具体的链接忘了，这个没有任何弹窗，而且在win10_1809可以正常使用，破解了VIP链接但是没有任何的显示，也无需登录，是我用的最久的一个版本了，<a href="https://pan.baidu.com/s/10ToTFaETm3xkBhHv671YRA" target="_blank" rel="noopener">绿色版</a>的，解压直接用即可，快捷方式在D盘的，大家根据快捷方式自己找文件目录吧。</p>
+<h2 id="IDM"><a href="#IDM" class="headerlink" title="IDM"></a>IDM</h2><p>IDM应该是我见过的最好用的下载器了，关键是其浏览器插件非常好用，网站视频啥的基本都能下载，而且多线程技术让他下载速度非常快，特别是国外的资源，比如会议论文模板，深度学习训练集等等，唯一的缺点是不支持种子文件下载。这里直接给到果核的<a href="https://www.ghpym.com/pcidm.html" target="_blank" rel="noopener">IDM链接</a>自行下载吧。</p>
+<h2 id="PanDownload"><a href="#PanDownload" class="headerlink" title="PanDownload"></a>PanDownload</h2><p>百度云的工具，百度云大家都知道，不多介绍，这个软件有一个很大的优点是搜集了一些番剧的网站，应该是爬的，因此会随着其他网站更新而更新，非常方便，缺点是现在旧版本是不能用，直接上<a href="https://pandownload.com/" target="_blank" rel="noopener">官网</a>。</p>
+<h1 id="编程开发类"><a href="#编程开发类" class="headerlink" title="编程开发类"></a>编程开发类</h1><h2 id="MingW64"><a href="#MingW64" class="headerlink" title="MingW64"></a>MingW64</h2><p>学过C语言的应该可能都知道C语言是可以通过命令行一步一步编译的，MingW64就不用说了，这里给出<a href="https://pan.baidu.com/s/1H5E3-etgW33w04zCHOqyug" target="_blank" rel="noopener">下载链接</a>，解压即用，注意要添加环境变量。这个不建议新手使用，一般也是结合Sublime或者VSCode用，因为有图形化界面。</p>
+<h2 id="Codebock"><a href="#Codebock" class="headerlink" title="Codebock"></a>Codebock</h2><p><a href="https://pan.baidu.com/s/1QAmdPykqFiS77O63NY3nxw" target="_blank" rel="noopener">CodeBlock</a>这个软件是大一学习C语言老师推荐的，也是用了很久，集成了很多环境，不需要任何配置上手就能用，非常方便，界面十分简洁，但是我觉得不够友好吧，很多区域不能个性化定制，可能是我自己没找到方法，因此后面用的不多了，总体而言非常不错的。</p>
+<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p>这个是微软开发的开源免费软件，一路逆袭，现在的势头也很猛，对于编程而言非常合适，比如C、C++、PyThon等等，都是非常的合适，中文支持，而且支持迁移原来的编辑器的风格，都是轻量级的软件，值得推荐。由于他现在还是不断更新，我直接更上<a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">官网</a>，但是说到底，它的主要功能还是编辑器，因此没有其他的编译链，如果编写C和C++语言需要MingW64，编写Python需要对应版本的Python安装。</p>
+<h2 id="Keil"><a href="#Keil" class="headerlink" title="Keil"></a>Keil</h2><p>玩过单片机的应该都知道Keil吧，我讲官网的打包了放在这里，因为官网下载要注册，然后就会一直给你邮箱里面发广告，很麻烦。<a href="https://pan.baidu.com/s/1mpuSBt2lebtfdS4DXgrCBQ" target="_blank" rel="noopener">内容</a>，这里Keil4和Keil5都有，一个是51系列的，另一个是ARM系列的，我找了STM32和K60的两个系列的包，都是可以直接使用的。</p>
+<h2 id="SourceInsight"><a href="#SourceInsight" class="headerlink" title="SourceInsight"></a>SourceInsight</h2><p><a href="https://pan.baidu.com/s/15RvsNKFLzu-eahbCiKvsJw" target="_blank" rel="noopener">SourceInsight</a>是查看和修改代码的好工具，特别是查看Linux内核时，各种复杂的引用还有非常多的头文件，用SourceInsight绝对可以事半功倍。</p>
+<h1 id="Adobe系列"><a href="#Adobe系列" class="headerlink" title="Adobe系列"></a>Adobe系列</h1><p>来源：<a href="https://weibo.com/vposy?is_hot=1" target="_blank" rel="noopener">嬴政天下</a>。这里仅作分享，因为是专业版的软件，懂的人自然懂。我这里保留的大都是<a href="https://pan.baidu.com/s/1ouIM91BDU4OSibIxCwhjSQ" target="_blank" rel="noopener">2020版本</a>，这个版本对平台要求比较高，不支持win7的，一定要注意。还有一些其他版本的在后面做一些说明。</p>
+<p><a href="https://pan.baidu.com/s/1JK6ePfzN21ZsRZJzEJITtQ" target="_blank" rel="noopener">PhotoShopCS6</a>这个版本是我本科室友分享的，一直用到了现在，功能齐全而且非常快，支持win7，直接解压打开文件夹中的【!)PhotoShopCS6x64Portable.exe】安装即可，但是注意一定要关闭杀毒软件！！！</p>
+<p><a href="https://pan.baidu.com/s/1Rwodbuz-hpwlVQlZLjjP8A" target="_blank" rel="noopener">AcrobatProDC</a>用的很久，2020版本的我前面看到的是没有PDF阅读器的，我也一直用的这个，安装完了就能直接使用，非常好用。自带虚拟打印机，虽然软件很大，但是打开速度很快，Adobe自带的文字识别也是好用到不行。</p>
+<h1 id="链接说明"><a href="#链接说明" class="headerlink" title="链接说明"></a>链接说明</h1><p>我虽然不喜欢百度云，但是说实话已经用了很久了，上面有很多的资源，所示还是分享的百度云链接，我分享的密码都是【2333】。还有就是只是软件的推荐，没有任何的教程，网上都是一搜一大把的，也非常仔细，如果有什么没有弄好或者觉得不清楚的欢迎评论或者给我发邮件说明哦~</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>收藏</title>
@@ -562,35 +592,5 @@
     <title>Homepea的标签</title>
     <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>资源</title>
-    <url>/resources/index.html</url>
-    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我个人有一些使用软件上的一些小“洁癖”吧，国内的环境的确是真的非常非常的恶心，各种弹窗和广告数不胜数，还有百度说的“中国人愿意用隐私换取便利”，感觉真的是恶心到我了，这里将我常用的一些软件分享出来，希望能够帮到一些人，至少不受到垃圾广告和弹窗的影响，也为我自己的列一个清单，以后分享页方便。我经常逛的两个论坛是<a href="https://www.ghpym.com/" target="_blank" rel="noopener">果核剥壳</a>和<a href="https://www.52pojie.cn/" target="_blank" rel="noopener">我爱破解</a>这两个，其中大部分资源也都是基于这两个论坛的，但是很多都是用了许久，现在可能不能一一找到相应的出处了，我会尽量找出出处，如果有侵权请联系我一定迅速删除。</p>
-<h1 id="日常使用类"><a href="#日常使用类" class="headerlink" title="日常使用类"></a>日常使用类</h1><h2 id="Seer"><a href="#Seer" class="headerlink" title="Seer"></a>Seer</h2><p><a href="https://pan.baidu.com/s/1XDqQ9kg9xCT2OOJSQCV9nw" target="_blank" rel="noopener">Seer</a>可以实现Windown上像Mac一样的空格预览，可以预览非常多的文件，尤其时Gif，这个需求时真的很大，而且markdown文件也可以时时预览，用起来真的非常舒服。</p>
-<h1 id="Snipaste"><a href="#Snipaste" class="headerlink" title="Snipaste"></a>Snipaste</h1><p><a href="https://pan.baidu.com/s/1j533U7llMe3yrsFSC7c5MA" target="_blank" rel="noopener">Snipaste</a>妥妥的生产力工具，我觉得时win系统最好用的截图工具了，还能贴图，自从用了这个我就放弃了QQ、微信和win自带的截图软件了，真的巨好用。</p>
-<h2 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h2><p>浏览器我一直用的<a href="https://www.google.com/chrome/" target="_blank" rel="noopener">Chrome</a>，相信大家也知道国内的浏览器基本都是根据谷歌的开源计划改的吧，当然可能改的很好，不过我看了我上面介绍乐那么多绿色版的东西，我觉得还是原版的好。不多说了，打开链接直接下载即可。</p>
-<h2 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h2><p>音乐播放器，我一直使用的<a href="https://pan.baidu.com/s/18gson3K_KicLeowQtPTAxg" target="_blank" rel="noopener">网易云</a>，虽然乐库越来越少，但是真的还算良心，我也是一直在使用的，上面分享的是绿色版，其实就是我以前自己安装的老版本，这个左侧没有Look直播，头像没有开会员的提醒，我设置不自动更新，就这样一直用着吧。</p>
-<h2 id="MpvPlayer"><a href="#MpvPlayer" class="headerlink" title="MpvPlayer"></a>MpvPlayer</h2><p>视频播放器我用的<a href="https://pan.baidu.com/s/1QSy_Yne2REjEahbEAV_OGg" target="_blank" rel="noopener">MpvPlayer</a>，这样说吧，应该是我见过最好用的一个播放器了，比Plot，foobar这种好多了，真心简洁但是功能一个不差，倍速慢速，换音源，还能逐帧播放，关键还开源，我觉得暂时没有比他更好的本地播放器了。其他的网站上面的我都是用的浏览器在线播放，因为有插件能去广告，非常方便。</p>
-<h2 id="IOBUninstall"><a href="#IOBUninstall" class="headerlink" title="IOBUninstall"></a>IOBUninstall</h2><p><a href="https://pan.baidu.com/s/1jBOqG2ltNcECuYPS1rWkSg" target="_blank" rel="noopener">IOBUninstall</a>我觉得良心制作，基础功能足矣，这个是绿色版，直接安装的，最大的好处是可以卸载win10自带的uwp，非常给力，而且卸载的足够干净。</p>
-<h2 id="WEI-PE"><a href="#WEI-PE" class="headerlink" title="WEI_PE"></a>WEI_PE</h2><p>装系统肯定是用<a href="https://pan.baidu.com/s/1T5UzjWey_MIbu2b_znaG9w" target="_blank" rel="noopener">WEI_PE</a>，国内的环境是真的恶心，用什么大白菜，U启动神的的基本一大推捆绑，好美其名曰推荐，这个PE制作是完全放心的，但是我现在好像已经搜不到观望了，就把以前下载的东西放出来，这个东西用过了就知道什么叫做清爽。</p>
-<h1 id="文本编辑类"><a href="#文本编辑类" class="headerlink" title="文本编辑类"></a>文本编辑类</h1><h2 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h2><p>我用的最多的一个文本编辑器了，特点就是快，因为他的本质就是一个文本编辑器，但是相应的插件支持非常多，支持的文件格式非常多，不管是做编程还是写文本都是非常的好用。至少我现在的tet文件，写Latex，还是Markdown写现在的网页都是用的它，配合其他的插件真的很好用，效率也很高，最先安利的一个了。网上看了很多资源，最后还是选择了果核的软件，我保存了其他人收集的结果<a href="https://pan.baidu.com/s/16944rScjYeHwrJvyO2TyiA" target="_blank" rel="noopener">链接</a>。</p>
-<h2 id="UltraEdit"><a href="#UltraEdit" class="headerlink" title="UltraEdit"></a>UltraEdit</h2><p><a href="https://pan.baidu.com/s/1Gdn_E2dxnUxIS_PN95b9iA" target="_blank" rel="noopener">UltraEdit</a>应该是一个老牌软件了，一些资深的程序员都在用这个，它查看二进制文件或者用二进制查看文件非常的优秀，这个是Sublime和VSCode不能比的，本人电脑也保留了一个，毕竟绿色版解压就能用，也不碍事。</p>
-<h1 id="论文撰写类"><a href="#论文撰写类" class="headerlink" title="论文撰写类"></a>论文撰写类</h1><h2 id="MikTex"><a href="#MikTex" class="headerlink" title="MikTex"></a>MikTex</h2><p>论文写作最麻烦的就是格式问题，这个使用Latex可以很好的解决，而且现在各大杂志都有自己的Latex模板，直接使用即可，那么编辑就成了一个很大的问题了。刚刚过去的时候很多同学推荐CTEX这个软件，一看4G的大小，而且界面非常丑，而且也没有代码高亮啥的，更关键的是找error让我觉得非常难受，因此网上看了很多方法，让我看到了MikTex，其实还有比如TeXlive等等，都是差不多的，因此我是使用的这个<a href="https://pan.baidu.com/s/1_nAJxLTqCaPZn9F9bbzSXQ" target="_blank" rel="noopener">MikTex</a>，安装的时候最好选取“自动下载文章确实的包”，因为这个软件毕竟是Basic的，很多的包还是需要后期安装的，安装完了之后页可以直接编辑tex文件，这个软件也是有编辑器和PDF阅读器的，但是也都是基本的东西，用起来还行吧，但是还是要配合<a href="(https://pan.baidu.com/s/16944rScjYeHwrJvyO2TyiA)">Sublime</a>更好的。</p>
-<h2 id="PDF查看"><a href="#PDF查看" class="headerlink" title="PDF查看"></a>PDF查看</h2><p>说实话，国内的PDF阅读器看了很久，没有一个我觉得是正常的，金山、福析和闪电等等阅读器是真的难用，还有那个知网出的那个什么可以读CAJ格式那两个垃圾阅读器，真的慢死了，广告那么大的板块，真的忍不了，其实真正能用的可能也就Adobe的了，后面有推荐，不过论文撰写方面肯定是<a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer.html" target="_blank" rel="noopener">SumatraPDF</a>，占用体积小，安装完了10M，速度是真的快，而且能够双击连接到Sublime写的文章的对应行上面去，修改论文非常方便，而且他的缩放是很合适，用过的绝对会觉得非常爽。</p>
-<p>除了PDF查看，偶尔也需要对PDF文件作一些小小的更改，特别是有些时候别人发过来的PDF文件，Adobe的阅读器当然可以，但是比较大门后面有介绍，这里介绍<a href="https://pan.baidu.com/s/1l7pc79MVNZEA96ofPMg7WA" target="_blank" rel="noopener">Xchange PDF</a>，也是轻量级的，我一般放在电脑里面吃灰，但是偶尔有时候会非常有用哦。</p>
-<h1 id="资源下载类"><a href="#资源下载类" class="headerlink" title="资源下载类"></a>资源下载类</h1><h2 id="迅雷简化版"><a href="#迅雷简化版" class="headerlink" title="迅雷简化版"></a>迅雷简化版</h2><p>迅雷的做法大家可以去搜搜，种子协议在国内快被他们搞垮了，因此破解版的也层出不穷。如果没错的话来源是我爱破解，但是具体的链接忘了，这个没有任何弹窗，而且在win10_1809可以正常使用，破解了VIP链接但是没有任何的显示，也无需登录，是我用的最久的一个版本了，<a href="https://pan.baidu.com/s/10ToTFaETm3xkBhHv671YRA" target="_blank" rel="noopener">绿色版</a>的，解压直接用即可，快捷方式在D盘的，大家根据快捷方式自己找文件目录吧。</p>
-<h2 id="IDM"><a href="#IDM" class="headerlink" title="IDM"></a>IDM</h2><p>IDM应该是我见过的最好用的下载器了，关键是其浏览器插件非常好用，网站视频啥的基本都能下载，而且多线程技术让他下载速度非常快，特别是国外的资源，比如会议论文模板，深度学习训练集等等，唯一的缺点是不支持种子文件下载。这里直接给到果核的<a href="https://www.ghpym.com/pcidm.html" target="_blank" rel="noopener">IDM链接</a>自行下载吧。</p>
-<h2 id="PanDownload"><a href="#PanDownload" class="headerlink" title="PanDownload"></a>PanDownload</h2><p>百度云的工具，百度云大家都知道，不多介绍，这个软件有一个很大的优点是搜集了一些番剧的网站，应该是爬的，因此会随着其他网站更新而更新，非常方便，缺点是现在旧版本是不能用，直接上<a href="https://pandownload.com/" target="_blank" rel="noopener">官网</a>。</p>
-<h1 id="编程开发类"><a href="#编程开发类" class="headerlink" title="编程开发类"></a>编程开发类</h1><h2 id="MingW64"><a href="#MingW64" class="headerlink" title="MingW64"></a>MingW64</h2><p>学过C语言的应该可能都知道C语言是可以通过命令行一步一步编译的，MingW64就不用说了，这里给出<a href="https://pan.baidu.com/s/1H5E3-etgW33w04zCHOqyug" target="_blank" rel="noopener">下载链接</a>，解压即用，注意要添加环境变量。这个不建议新手使用，一般也是结合Sublime或者VSCode用，因为有图形化界面。</p>
-<h2 id="Codebock"><a href="#Codebock" class="headerlink" title="Codebock"></a>Codebock</h2><p><a href="https://pan.baidu.com/s/1QAmdPykqFiS77O63NY3nxw" target="_blank" rel="noopener">CodeBlock</a>这个软件是大一学习C语言老师推荐的，也是用了很久，集成了很多环境，不需要任何配置上手就能用，非常方便，界面十分简洁，但是我觉得不够友好吧，很多区域不能个性化定制，可能是我自己没找到方法，因此后面用的不多了，总体而言非常不错的。</p>
-<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p>这个是微软开发的开源免费软件，一路逆袭，现在的势头也很猛，对于编程而言非常合适，比如C、C++、PyThon等等，都是非常的合适，中文支持，而且支持迁移原来的编辑器的风格，都是轻量级的软件，值得推荐。由于他现在还是不断更新，我直接更上<a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">官网</a>，但是说到底，它的主要功能还是编辑器，因此没有其他的编译链，如果编写C和C++语言需要MingW64，编写Python需要对应版本的Python安装。</p>
-<h2 id="Keil"><a href="#Keil" class="headerlink" title="Keil"></a>Keil</h2><p>玩过单片机的应该都知道Keil吧，我讲官网的打包了放在这里，因为官网下载要注册，然后就会一直给你邮箱里面发广告，很麻烦。<a href="https://pan.baidu.com/s/1mpuSBt2lebtfdS4DXgrCBQ" target="_blank" rel="noopener">内容</a>，这里Keil4和Keil5都有，一个是51系列的，另一个是ARM系列的，我找了STM32和K60的两个系列的包，都是可以直接使用的。</p>
-<h2 id="SourceInsight"><a href="#SourceInsight" class="headerlink" title="SourceInsight"></a>SourceInsight</h2><p><a href="https://pan.baidu.com/s/15RvsNKFLzu-eahbCiKvsJw" target="_blank" rel="noopener">SourceInsight</a>是查看和修改代码的好工具，特别是查看Linux内核时，各种复杂的引用还有非常多的头文件，用SourceInsight绝对可以事半功倍。</p>
-<h1 id="Adobe系列"><a href="#Adobe系列" class="headerlink" title="Adobe系列"></a>Adobe系列</h1><p>来源：<a href="https://weibo.com/vposy?is_hot=1" target="_blank" rel="noopener">嬴政天下</a>。这里仅作分享，因为是专业版的软件，懂的人自然懂。我这里保留的大都是<a href="https://pan.baidu.com/s/1ouIM91BDU4OSibIxCwhjSQ" target="_blank" rel="noopener">2020版本</a>，这个版本对平台要求比较高，不支持win7的，一定要注意。还有一些其他版本的在后面做一些说明。</p>
-<p><a href="https://pan.baidu.com/s/1JK6ePfzN21ZsRZJzEJITtQ" target="_blank" rel="noopener">PhotoShopCS6</a>这个版本是我本科室友分享的，一直用到了现在，功能齐全而且非常快，支持win7，直接解压打开文件夹中的【!)PhotoShopCS6x64Portable.exe】安装即可，但是注意一定要关闭杀毒软件！！！</p>
-<p><a href="https://pan.baidu.com/s/1Rwodbuz-hpwlVQlZLjjP8A" target="_blank" rel="noopener">AcrobatProDC</a>用的很久，2020版本的我前面看到的是没有PDF阅读器的，我也一直用的这个，安装完了就能直接使用，非常好用。自带虚拟打印机，虽然软件很大，但是打开速度很快，Adobe自带的文字识别也是好用到不行。</p>
-<h1 id="链接说明"><a href="#链接说明" class="headerlink" title="链接说明"></a>链接说明</h1><p>我虽然不喜欢百度云，但是说实话已经用了很久了，上面有很多的资源，所示还是分享的百度云链接，我分享的密码都是【2333】。还有就是只是软件的推荐，没有任何的教程，网上都是一搜一大把的，也非常仔细，如果有什么没有弄好或者觉得不清楚的欢迎评论或者给我发邮件说明哦~</p>
-]]></content>
   </entry>
 </search>
