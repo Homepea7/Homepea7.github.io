@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-02-21T02:54:40.394Z</updated>
+  <updated>2020-03-01T03:54:35.599Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Latex参考文献双栏对齐</title>
+    <link href="https://homepea7.github.io/2020/08.Latex-References/"/>
+    <id>https://homepea7.github.io/2020/08.Latex-References/</id>
+    <published>2020-03-01T03:28:28.000Z</published>
+    <updated>2020-03-01T03:54:35.599Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;参考文献部分，如果在最后单页而且是单栏就会非常不好看，双栏就会好很多，效果如下。其实现的方法非常简单，有两种，介绍如下&lt;br&gt;&lt;img src=&quot;/images/Latex/1.1Ref.png&quot; alt=&quot;Ref&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;方法一：balance&quot;&gt;&lt;a href=&quot;#方法一：balance&quot; class=&quot;headerlink&quot; title=&quot;方法一：balance&quot;&gt;&lt;/a&gt;方法一：balance&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Latex" scheme="https://Homepea7.github.io/categories/Latex/"/>
+    
+    
+      <category term="Latex" scheme="https://Homepea7.github.io/tags/Latex/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
