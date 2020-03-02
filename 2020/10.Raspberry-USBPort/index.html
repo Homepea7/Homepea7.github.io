@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pokeball_16px.png">
+  <link rel="mask-icon" href="/images/pokeball_logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://Homepea7.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"right","display":"always","padding":18,"offset":12,"b2t":true,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  <meta name="description" content="说明前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~ 说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派使用USB网卡连接无线网络">
+<meta property="og:url" content="https://homepea7.github.io/2020/10.Raspberry-USBPort/index.html">
+<meta property="og:site_name" content="Homepea&#39;s Blog">
+<meta property="og:description" content="说明前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~ 说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-02T15:00:08.000Z">
+<meta property="article:modified_time" content="2020-03-02T15:38:17.768Z">
+<meta property="article:author" content="Kavin Homepea">
+<meta property="article:tag" content="RaspberryPi">
+<meta property="article:tag" content="USBPort">
+<meta property="article:tag" content="Wi-Fi">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://homepea7.github.io/2020/10.Raspberry-USBPort/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>树莓派使用USB网卡连接无线网络 | Homepea's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-157890086-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Homepea's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homepea's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Good good study, day day up!</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-favorites">
+
+    <a href="/favorites/" rel="section"><i class="fa fa-fw fa-bookmark"></i>收藏</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-fw fa-gift"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404.html/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/10.Raspberry-USBPort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kavin Homepea">
+      <meta itemprop="description" content="Better me">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homepea's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          树莓派使用USB网卡连接无线网络
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-02 23:00:08 / 修改时间：23:38:17" itemprop="dateCreated datePublished" datetime="2020-03-02T23:00:08+08:00">2020-03-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RaspberryPi/" itemprop="url" rel="index">
+                    <span itemprop="name">RaspberryPi</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/10.Raspberry-USBPort/" class="post-meta-item leancloud_visitors" data-flag-title="树莓派使用USB网卡连接无线网络" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/10.Raspberry-USBPort/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/10.Raspberry-USBPort/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~</p>
+<p>说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！虽然官方说这个型号功耗在3.5W左右，但是这里建议还是使用5V2A的供电！</p>
+<p>好了，说了这么多废话，赶紧插上网卡准备折腾吧。</p>
+<h1 id="硬件的相关信息"><a href="#硬件的相关信息" class="headerlink" title="硬件的相关信息"></a>硬件的相关信息</h1><p>首先查看使用的无线网卡，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># lsusb</span></span><br><span class="line">Bus 001 Device 002: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+
+<p>这里偷懒，直接使用的<font color=red>root</font>用户，可以看到，上面显示的 Device 002就是我的无线网卡，系统已经自带该网卡的驱动。</p>
+<p>这里比较推荐使用新的系统，最好是直接去树莓派的官网下载，因为系统增加新网卡的支持，能免去编译驱动的麻烦，如果你的无线网卡在系统中无法识别，请自行编译安装驱动。</p>
+<h1 id="查看已经连接的网络"><a href="#查看已经连接的网络" class="headerlink" title="查看已经连接的网络"></a>查看已经连接的网络</h1><p>指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwconfig</span></span><br><span class="line">wlan0     IEEE 802.11  ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">          Mode:Managed  Frequency:2.467 GHz  Access Point: 6C:FD:B9:CC:9B:1B</span><br><span class="line">          Bit Rate=72.2 Mb/s   Tx-Power=20 dBm</span><br><span class="line">          Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Encryption key:off</span><br><span class="line">          Power Management:off</span><br><span class="line">          Link Quality=70/70  Signal level=-37 dBm</span><br><span class="line">          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0</span><br><span class="line">          Tx excessive retries:1420  Invalid misc:135   Missed beacon:0</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure>
+
+<p>这个<font color=red>OpenWrt</font> 就是连接的Wi-Fi，还有连接频段和信号质量等等信息，如果没有连接的话就不会显示这么多信息，而且是”off/any”这个状态。</p>
+<h1 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h1><h2 id="扫描可见SSID"><a href="#扫描可见SSID" class="headerlink" title="扫描可见SSID"></a>扫描可见SSID</h2><p>使用如下指令扫描附近可见的SSID，并截取想要连接的无线路由器的信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwlist wlan0 scan</span></span><br><span class="line">wlan0     Scan completed :</span><br><span class="line">          Cell 01 - Address: 6C:FD:B9:CC:9B:1B</span><br><span class="line">                    Channel:12</span><br><span class="line">                    Frequency:2.467 GHz (Channel 12)</span><br><span class="line">                    Quality=67/70  Signal level=-43 dBm</span><br><span class="line">                    Encryption key:on</span><br><span class="line">                    ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s</span><br><span class="line">                              9 Mb/s; 12 Mb/s; 18 Mb/s</span><br><span class="line">                    Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s</span><br><span class="line">                    Mode:Master</span><br><span class="line">                    Extra:tsf=00000120c308241c</span><br><span class="line">                    Extra: Last beacon: 60ms ago</span><br><span class="line">                    IE: Unknown: 00074F70656E577274</span><br><span class="line">                    IE: Unknown: 010882848B960C121824</span><br><span class="line">                    IE: Unknown: 03010C</span><br><span class="line">                    IE: Unknown: 0706303020010C14</span><br><span class="line">                    IE: Unknown: 2A0100</span><br><span class="line">                    IE: Unknown: 32043048606C</span><br><span class="line">                    IE: IEEE 802.11i/WPA2 Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: WPA Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: Unknown: 0B050300A20000</span><br><span class="line">                    IE: Unknown: 2D1AEC0213FFFF000001000000000000000100000000000000000000</span><br><span class="line">                    IE: Unknown: 3D160C070600000000000000000000000000000000000000</span><br><span class="line">                    IE: Unknown: 7F080000000000000140</span><br><span class="line">                    IE: Unknown: DD180050F2020101010003A4000027A4000042435E0062322F00</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置SSID和对应密码"><a href="#设置SSID和对应密码" class="headerlink" title="设置SSID和对应密码"></a>设置SSID和对应密码</h2><p>使用如下命令密码生成SSID和对应的密码，复制内容备用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># wpa_passphrase OpenWrt Password</span></span><br><span class="line">network=&#123;</span><br><span class="line">        ssid=<span class="string">"OpenWrt"</span></span><br><span class="line">        <span class="comment">#psk="Password"</span></span><br><span class="line">        psk=583be43e0ffa97c1247d697a765edde350b37c98914307c46e87a00c2365dffc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的<font color=red>OpenWrt</font>和<font color=red>Password</font>对应自己的Wi-Fi的SSID和密码。</p>
+<h2 id="修改wpa-supplicant-conf"><a href="#修改wpa-supplicant-conf" class="headerlink" title="修改wpa_supplicant.conf"></a>修改wpa_supplicant.conf</h2><p>这一步需要管理员权限的，现在把内容粘贴到/etc/wpa_supplicant/wpa_supplicant.conf，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># less wifi.conf &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>配置/etc/network/interfaces，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># nano /etc/network/interfaces</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是参考的配置，当网线和Wifi同时连接时会独立获得ip，wlan0的配置表示通过DHCP获取IP地址，默认的只到了第七行 source 这里，后面的内容复制过去保存即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Please note that this file is written to be used with dhcpcd</span></span><br><span class="line"><span class="comment"># For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Include files from /etc/network/interfaces.d:</span></span><br><span class="line"><span class="built_in">source</span>-directory /etc/network/interfaces.d</span><br><span class="line"></span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line">allow-hotplug eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"></span><br><span class="line">allow-hotplug wlan0</span><br><span class="line">auto wlan0</span><br><span class="line">iface wlan0 inet dhcp</span><br><span class="line">pre-up wpa_supplicant -B w -D wext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line">post-down killall -q wpa_supplicant</span><br></pre></td></tr></table></figure>
+
+<h2 id="重启网络"><a href="#重启网络" class="headerlink" title="重启网络"></a>重启网络</h2><p>设置完成后保存退出，并重启树莓派的的网络：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># /etc/init.d/networking restart</span></span><br><span class="line">root@raspberrypi:~<span class="comment"># ifup wlan0</span></span><br></pre></td></tr></table></figure>
+
+<p>我看到这里前面的都完满成功，但是Wi-Fi就是连不上，有一点点懵，最后干脆使用重启大法，后期之后就好啦！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># reboot</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="查看连接后信息"><a href="#查看连接后信息" class="headerlink" title="查看连接后信息"></a>查看连接后信息</h1><p>连接成功后，用iwconfig查看信息，然后用ifconfig查看可知获得IP地址，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># ifconfig</span></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 2  bytes 78 (78.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 2  bytes 78 (78.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">wlan0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.1.153  netmask 255.255.255.0  broadcast 192.168.1.255</span><br><span class="line">        inet6 fe80::2232:33ff:fec7:185b  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 20:32:33:c7:18:5b  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 19440  bytes 27371475 (26.1 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 11646  bytes 1101351 (1.0 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>到这里就全部结束了，按照惯例还是感谢看到的各路大神的分享，分别有：<a href="https://www.jianshu.com/p/35be946c04c7" target="_blank" rel="noopener">phantomvk
+</a> 的简书，<a href="https://blog.csdn.net/brightming/article/details/50365228" target="_blank" rel="noopener">brightming</a>、<a href="https://blog.csdn.net/weixin_33918357/article/details/92090085" target="_blank" rel="noopener">weixin_33918357</a>和<a href="https://blog.csdn.net/hustsselbj/article/details/45866773" target="_blank" rel="noopener">hustsselbj</a>在CSDN上的分享，十分感谢！</p>
+
+    </div>
+
+    
+    
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RaspberryPi/" rel="tag"><i class="fa fa-tag"></i> RaspberryPi</a>
+              <a href="/tags/USBPort/" rel="tag"><i class="fa fa-tag"></i> USBPort</a>
+              <a href="/tags/Wi-Fi/" rel="tag"><i class="fa fa-tag"></i> Wi-Fi</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09.Raspberry-Serial/" rel="prev" title="使用串口终端访问树莓派">
+      <i class="fa fa-chevron-left"></i> 使用串口终端访问树莓派
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件的相关信息"><span class="nav-number">2.</span> <span class="nav-text">硬件的相关信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看已经连接的网络"><span class="nav-number">3.</span> <span class="nav-text">查看已经连接的网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置无线网络"><span class="nav-number">4.</span> <span class="nav-text">配置无线网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描可见SSID"><span class="nav-number">4.1.</span> <span class="nav-text">扫描可见SSID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置SSID和对应密码"><span class="nav-number">4.2.</span> <span class="nav-text">设置SSID和对应密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改wpa-supplicant-conf"><span class="nav-number">4.3.</span> <span class="nav-text">修改wpa_supplicant.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">4.4.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重启网络"><span class="nav-number">4.5.</span> <span class="nav-text">重启网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看连接后信息"><span class="nav-number">5.</span> <span class="nav-text">查看连接后信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kavin Homepea"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kavin Homepea</p>
+  <div class="site-description" itemprop="description">Better me</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Homepea7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Homepea7" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kavinhomepea@gmail.com" title="E-Mail → mailto:kavinhomepea@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homepea</span>
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">16k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">15 分钟</span>
+</div>
+
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("01/01/2020 12:00:00");
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.4' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'CCp6fpSlvQK1Wh7l8lr9Vglh-gzGzoHsz',
+      appKey: '7ANNsdbheFJqf9q2mrDcnhAp',
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+    
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","hOffset":50,"vOffset":0,"width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+

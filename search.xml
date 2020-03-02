@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>树莓派使用USB网卡连接无线网络</title>
+    <url>/2020/10.Raspberry-USBPort/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~</p>
+<p>说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！虽然官方说这个型号功耗在3.5W左右，但是这里建议还是使用5V2A的供电！</p>
+<p>好了，说了这么多废话，赶紧插上网卡准备折腾吧。</p>
+<h1 id="硬件的相关信息"><a href="#硬件的相关信息" class="headerlink" title="硬件的相关信息"></a>硬件的相关信息</h1><p>首先查看使用的无线网卡，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># lsusb</span></span><br><span class="line">Bus 001 Device 002: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+
+<p>这里偷懒，直接使用的<font color=red>root</font>用户，可以看到，上面显示的 Device 002就是我的无线网卡，系统已经自带该网卡的驱动。</p>
+<p>这里比较推荐使用新的系统，最好是直接去树莓派的官网下载，因为系统增加新网卡的支持，能免去编译驱动的麻烦，如果你的无线网卡在系统中无法识别，请自行编译安装驱动。</p>
+<h1 id="查看已经连接的网络"><a href="#查看已经连接的网络" class="headerlink" title="查看已经连接的网络"></a>查看已经连接的网络</h1><p>指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwconfig</span></span><br><span class="line">wlan0     IEEE 802.11  ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">          Mode:Managed  Frequency:2.467 GHz  Access Point: 6C:FD:B9:CC:9B:1B</span><br><span class="line">          Bit Rate=72.2 Mb/s   Tx-Power=20 dBm</span><br><span class="line">          Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Encryption key:off</span><br><span class="line">          Power Management:off</span><br><span class="line">          Link Quality=70/70  Signal level=-37 dBm</span><br><span class="line">          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0</span><br><span class="line">          Tx excessive retries:1420  Invalid misc:135   Missed beacon:0</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure>
+
+<p>这个<font color=red>OpenWrt</font> 就是连接的Wi-Fi，还有连接频段和信号质量等等信息，如果没有连接的话就不会显示这么多信息，而且是”off/any”这个状态。</p>
+<h1 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h1><h2 id="扫描可见SSID"><a href="#扫描可见SSID" class="headerlink" title="扫描可见SSID"></a>扫描可见SSID</h2><p>使用如下指令扫描附近可见的SSID，并截取想要连接的无线路由器的信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwlist wlan0 scan</span></span><br><span class="line">wlan0     Scan completed :</span><br><span class="line">          Cell 01 - Address: 6C:FD:B9:CC:9B:1B</span><br><span class="line">                    Channel:12</span><br><span class="line">                    Frequency:2.467 GHz (Channel 12)</span><br><span class="line">                    Quality=67/70  Signal level=-43 dBm</span><br><span class="line">                    Encryption key:on</span><br><span class="line">                    ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s</span><br><span class="line">                              9 Mb/s; 12 Mb/s; 18 Mb/s</span><br><span class="line">                    Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s</span><br><span class="line">                    Mode:Master</span><br><span class="line">                    Extra:tsf=00000120c308241c</span><br><span class="line">                    Extra: Last beacon: 60ms ago</span><br><span class="line">                    IE: Unknown: 00074F70656E577274</span><br><span class="line">                    IE: Unknown: 010882848B960C121824</span><br><span class="line">                    IE: Unknown: 03010C</span><br><span class="line">                    IE: Unknown: 0706303020010C14</span><br><span class="line">                    IE: Unknown: 2A0100</span><br><span class="line">                    IE: Unknown: 32043048606C</span><br><span class="line">                    IE: IEEE 802.11i/WPA2 Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: WPA Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: Unknown: 0B050300A20000</span><br><span class="line">                    IE: Unknown: 2D1AEC0213FFFF000001000000000000000100000000000000000000</span><br><span class="line">                    IE: Unknown: 3D160C070600000000000000000000000000000000000000</span><br><span class="line">                    IE: Unknown: 7F080000000000000140</span><br><span class="line">                    IE: Unknown: DD180050F2020101010003A4000027A4000042435E0062322F00</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置SSID和对应密码"><a href="#设置SSID和对应密码" class="headerlink" title="设置SSID和对应密码"></a>设置SSID和对应密码</h2><p>使用如下命令密码生成SSID和对应的密码，复制内容备用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># wpa_passphrase OpenWrt Password</span></span><br><span class="line">network=&#123;</span><br><span class="line">        ssid=<span class="string">"OpenWrt"</span></span><br><span class="line">        <span class="comment">#psk="Password"</span></span><br><span class="line">        psk=583be43e0ffa97c1247d697a765edde350b37c98914307c46e87a00c2365dffc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的<font color=red>OpenWrt</font>和<font color=red>Password</font>对应自己的Wi-Fi的SSID和密码。</p>
+<h2 id="修改wpa-supplicant-conf"><a href="#修改wpa-supplicant-conf" class="headerlink" title="修改wpa_supplicant.conf"></a>修改wpa_supplicant.conf</h2><p>这一步需要管理员权限的，现在把内容粘贴到/etc/wpa_supplicant/wpa_supplicant.conf，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># less wifi.conf &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>配置/etc/network/interfaces，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># nano /etc/network/interfaces</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是参考的配置，当网线和Wifi同时连接时会独立获得ip，wlan0的配置表示通过DHCP获取IP地址，默认的只到了第七行 source 这里，后面的内容复制过去保存即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Please note that this file is written to be used with dhcpcd</span></span><br><span class="line"><span class="comment"># For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Include files from /etc/network/interfaces.d:</span></span><br><span class="line"><span class="built_in">source</span>-directory /etc/network/interfaces.d</span><br><span class="line"></span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line">allow-hotplug eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"></span><br><span class="line">allow-hotplug wlan0</span><br><span class="line">auto wlan0</span><br><span class="line">iface wlan0 inet dhcp</span><br><span class="line">pre-up wpa_supplicant -B w -D wext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line">post-down killall -q wpa_supplicant</span><br></pre></td></tr></table></figure>
+
+<h2 id="重启网络"><a href="#重启网络" class="headerlink" title="重启网络"></a>重启网络</h2><p>设置完成后保存退出，并重启树莓派的的网络：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># /etc/init.d/networking restart</span></span><br><span class="line">root@raspberrypi:~<span class="comment"># ifup wlan0</span></span><br></pre></td></tr></table></figure>
+
+<p>我看到这里前面的都完满成功，但是Wi-Fi就是连不上，有一点点懵，最后干脆使用重启大法，后期之后就好啦！</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># reboot</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="查看连接后信息"><a href="#查看连接后信息" class="headerlink" title="查看连接后信息"></a>查看连接后信息</h1><p>连接成功后，用iwconfig查看信息，然后用ifconfig查看可知获得IP地址，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># ifconfig</span></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 2  bytes 78 (78.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 2  bytes 78 (78.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">wlan0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.1.153  netmask 255.255.255.0  broadcast 192.168.1.255</span><br><span class="line">        inet6 fe80::2232:33ff:fec7:185b  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 20:32:33:c7:18:5b  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 19440  bytes 27371475 (26.1 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 11646  bytes 1101351 (1.0 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>到这里就全部结束了，按照惯例还是感谢看到的各路大神的分享，分别有：<a href="https://www.jianshu.com/p/35be946c04c7" target="_blank" rel="noopener">phantomvk
+</a> 的简书，<a href="https://blog.csdn.net/brightming/article/details/50365228" target="_blank" rel="noopener">brightming</a>、<a href="https://blog.csdn.net/weixin_33918357/article/details/92090085" target="_blank" rel="noopener">weixin_33918357</a>和<a href="https://blog.csdn.net/hustsselbj/article/details/45866773" target="_blank" rel="noopener">hustsselbj</a>在CSDN上的分享，十分感谢！</p>
+]]></content>
+      <categories>
+        <category>RaspberryPi</category>
+      </categories>
+      <tags>
+        <tag>RaspberryPi</tag>
+        <tag>USBPort</tag>
+        <tag>Wi-Fi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用串口终端访问树莓派</title>
+    <url>/2020/09.Raspberry-Serial/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近天天在家也没事儿干，淘宝倒是逛的挺多的，这两天看到一家店，本来想买一个猫盘组一台NAS的，最终只买了一个OpenWrt软路由和一块树莓派。说起这个树莓派那就很有意思了，一代A+，只有一个USB口，一个HDMI，一个音频输出好一个MicroUSB供电，没有带网口，因此操作起来就比较麻烦了，但是，记住但是，真的便宜，只要38块RMB，还是512M的内存，然后开始了今天的内容，使用串口访问树莓派。这样做的好处是省出来那个USB口，后来知道可以接免驱的USB网卡，刚刚好，开启SSH的话串口都不需要，美滋滋<del>~</del></p>
+<h1 id="配置串口终端"><a href="#配置串口终端" class="headerlink" title="配置串口终端"></a>配置串口终端</h1><p>首先开机，用HDMI连接屏幕，HSB接口连接键盘，这样才能开始后续的工作。开机输入密码进入系统之后要<font color=red>查看串口设备</font>。从树莓派官网可知，串口终端设备节点名为ttyS0，但是实际却不是，但是明确的一点是系统默认不开启串口，如果以前没有开启过的话那肯定是关闭的！</p>
+<p>下面是<font color=red>打开串口终端</font>，在树莓派终端使用root权限执行如下命令以启动配置界面：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo raspi-cofig</span><br></pre></td></tr></table></figure>
+
+<p>在配置界面中选择 5 Interfacing Options，回车确认，如下所示：<br><img src="/images/RaspberryPi/1.1Interfacing.png" alt="Interfacing"></p>
+<p>然后继续选择 P6 Serial选项，回车确认，如下所示：<br><img src="/images/RaspberryPi/1.2Serial.png" alt="Serial"></p>
+<p>之后左右键移动光标选择 Yes，回车确认，如下所示：<br><img src="/images/RaspberryPi/1.3Yes.png" alt="Yes"></p>
+<p>全部完成之后重启树莓派即可，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
+
+<p>重启的过程中仔细看可以看到开启串口的相关字符，后面直接用串口连接即可。</p>
+<h1 id="串口硬件连接"><a href="#串口硬件连接" class="headerlink" title="串口硬件连接"></a>串口硬件连接</h1><p>现在只需要使用USB转TTL转接线连接PC和树莓派即可使用。树莓派40Pin脚示意图如下所示：<br><img src="/images/RaspberryPi/1.4GPIO.png" alt="GPIO"></p>
+<p>串口的连接规则应该都比较熟悉，GND对应连接，RX和TX互换，即树莓派的RX连接USB串口的TX，树莓派的TX连接USB串口的RX，5V的引脚不连，因为有USB供电。</p>
+<h1 id="使用串口工具访问树莓派"><a href="#使用串口工具访问树莓派" class="headerlink" title="使用串口工具访问树莓派"></a>使用串口工具访问树莓派</h1><p>最后的已经很简单了，直接使用终端软件连接即可，我使用的是Putty，查到串口号然后波特率设置为115200就可以直接连接了，这个时候会卡在登陆界面，输入用户名和密码就ok，如下图所示，这样就能通过串口直接访问树莓派了。<br><img src="/images/RaspberryPi/1.5Putty.png" alt="Putty"></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>刚刚拿到的树莓派资源比较少，还好了解了一些相关的东西，并且在实际用的过程中参考了很多教程分享，十分的感谢，这里也是尽量列出来，分别有：<a href="https://zhuanlan.zhihu.com/p/38853178" target="_blank" rel="noopener">晒月亮的孩子</a>的支护分享，<a href="https://blog.csdn.net/messidona11/article/details/71514215" target="_blank" rel="noopener">安翔</a>的CSDN博客，<a href="http://www.waveshare.net/" target="_blank" rel="noopener">微雪电子</a>的教程贴，还有很多其他零碎的教程分享，真的非常感谢！</p>
+<p>下一篇将介绍合理使用这个宝贵的USB口，使用免驱的USB网卡。</p>
+]]></content>
+      <categories>
+        <category>RaspberryPi</category>
+      </categories>
+      <tags>
+        <tag>RaspberryPi</tag>
+        <tag>Serial</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Latex参考文献双栏对齐</title>
     <url>/2020/08.Latex-References/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>参考文献部分，如果在最后单页而且是单栏就会非常不好看，双栏就会好很多，效果如下。其实现的方法非常简单，有两种，介绍如下<br><img src="/images/Latex/1.1Ref.png" alt="Ref"></p>
@@ -218,22 +298,22 @@
 <li>安装Hexo</li>
 <li>将 GitHub 和 Hexo 关联起来</li>
 </ul>
-<h2 id="GitHub创建个人仓库"><a href="#GitHub创建个人仓库" class="headerlink" title="GitHub创建个人仓库"></a>GitHub创建个人仓库</h2><p>登录到GitHub，如果没有<a href="https://github.com/" target="_blank" rel="noopener">Github</a>账号，如果没有的话就注册一个。如下图所示创建个人仓库，仓库名应该为：用户名.github.io，[注：这是固定写法]，比如我的仓库名为：Homepea7.github.io<br><img src="/images/recording-hexo/3.1.png" alt="仓库"></p>
+<h2 id="GitHub创建个人仓库"><a href="#GitHub创建个人仓库" class="headerlink" title="GitHub创建个人仓库"></a>GitHub创建个人仓库</h2><p>登录到GitHub，如果没有<a href="https://github.com/" target="_blank" rel="noopener">Github</a>账号，如果没有的话就注册一个。如下图所示创建个人仓库，仓库名应该为：用户名.github.io，[注：这是固定写法]，比如我的仓库名为：Homepea7.github.io<br><img src="/images/Recording-hexo/3.1.png" alt="仓库"></p>
 <h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>Git是开源的分布式版本控制系统，我们网站在本地搭建好了，需要使用Git同步到GitHub上。安装后的效果就跟WIN10的CMD或者Linux的终端一样，都是执行的命令行，具体上传的过程后面会有具体的说明。关于Git的使用网上的教程很多，廖雪峰老师的<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git教程</a>和<a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">Python教程</a>我都看过，需要一点点的基础，不过逻辑和说明都非常的详细，大家可以自己搜一下看看。从Git官网下载Git-安装包 ，下载后安装，在命令行输入git测试是否安装成功，安装成功后，将Git与GitHub账号绑定，鼠标右键打开Git Bash Here。</p>
-<p><img src="/images/recording-hexo/3.2.1.png" alt="Git"></p>
+<p><img src="/images/Recording-hexo/3.2.1.png" alt="Git"></p>
 <h3 id="设置GIT配置信息"><a href="#设置GIT配置信息" class="headerlink" title="设置GIT配置信息"></a>设置GIT配置信息</h3><p>安装了Git之后首先要设置user.name和user.email配置信息，具体如下所示（双引号也是需要的）：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="生成ssh密钥文件"><a href="#生成ssh密钥文件" class="headerlink" title="生成ssh密钥文件"></a>生成ssh密钥文件</h3><p>设置好了以后需要生成SSH密钥文件，方便上传网站。具体操作执行代码如下（双引号也是需要的）:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 
-<p>执行完了之后直接三个回车即可，默认不需要设置密码 然后在目录【C:\Users\XXX.ssh】文件夹下面找到id_rsa.pub密钥，如下所示：<br><img src="/images/recording-hexo/3.2.2.png" alt="SSH"></p>
-<h3 id="复制到Github"><a href="#复制到Github" class="headerlink" title="复制到Github"></a>复制到Github</h3><p>将前面得到的SSH内容全部复制到Github上面的<a href="https://github.com/settings/keys" target="_blank" rel="noopener">界面</a>即可。新建new SSH Key，Title为标题，随意填即可，如下图所示：<br><img src="/images/recording-hexo/3.2.3.png" alt="KEY"></p>
+<p>执行完了之后直接三个回车即可，默认不需要设置密码 然后在目录【C:\Users\XXX.ssh】文件夹下面找到id_rsa.pub密钥，如下所示：<br><img src="/images/Recording-hexo/3.2.2.png" alt="SSH"></p>
+<h3 id="复制到Github"><a href="#复制到Github" class="headerlink" title="复制到Github"></a>复制到Github</h3><p>将前面得到的SSH内容全部复制到Github上面的<a href="https://github.com/settings/keys" target="_blank" rel="noopener">界面</a>即可。新建new SSH Key，Title为标题，随意填即可，如下图所示：<br><img src="/images/Recording-hexo/3.2.3.png" alt="KEY"></p>
 <p>在Git Bash检测GitHub公钥设置是否成功：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
 
 <p>如果下图说明成功：</p>
-<p><img src="/images/recording-hexo/3.2.4.png" alt="SSHOK"></p>
+<p><img src="/images/Recording-hexo/3.2.4.png" alt="SSHOK"></p>
 <h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>Hexo基于<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a>，将官方的文件下下来直接安装即可。</p>
 <p>检测Node.js是否安装成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
@@ -280,12 +360,12 @@
 </ul>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>前提是前面的利用Github或者Coding搭建已经完成了并且可以访问了，后面的操作才有意义。关于域名的购买，有免费的和收费的，免费的王章也是一搜一大把，但是作为自己个性化的东西我觉得还是付费的安全一些。我买的是<a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">阿里云</a>的.top域名，别问为什么，问就是穷，三年才68块软妹币，美滋滋，还有就是.com 和 .cn 的域名需要备案才能使用，.top的域名可以不用实名认证直接就可以用的。阿里云上选取自己的域名然后用支付宝扫码登录和购买就可以了，非常的方便。</p>
 <h2 id="仓库中添加CNAME文件并在文件中填写绑定的域名"><a href="#仓库中添加CNAME文件并在文件中填写绑定的域名" class="headerlink" title="仓库中添加CNAME文件并在文件中填写绑定的域名"></a>仓库中添加CNAME文件并在文件中填写绑定的域名</h2><p>如果是第一次测试的话直接在仓库中建立名为CNAME的文件(文件名大写，且没有后缀)是完全可以的，在CNAME文件中添加刚刚购买的域名，如【homepea.top】，不能包含：【http://】和【www.】，如下图所示：</p>
-<p><img src="/images/recording-hexo/5.2.png" alt="CNAME"></p>
+<p><img src="/images/Recording-hexo/5.2.png" alt="CNAME"></p>
 <p>然后Github会自动解析的，不过还是自己确认以下最好，在最后的Settings里面，向下翻到【GitHub Pages】即可，找到自己的域名即可。</p>
 <p>但是注意，如果上传代码的话CNAME文件会丢失的，因此需要最本地的Hexo文件夹下面的【/source】文件夹下面建一个CNAME文件，内容还是前面购买的域名，这样可以保证每次使用 【 hexo d】指令的时候代码仓CNAME文件还在。这点一定要注意，否则上传了代码可能网站还进不去。</p>
-<h2 id="添加域名解析"><a href="#添加域名解析" class="headerlink" title="添加域名解析"></a>添加域名解析</h2><p>ping你的<a href="http://github.io" target="_blank" rel="noopener">github.io</a>域名，得到一个IP，如下所示:<br><img src="/images/recording-hexo/5.3.1.png" alt="PING"></p>
-<p>登录到阿里云的<a href="https://dns.console.aliyun.com/?spm=a2c4g.11186623.2.12.d00459cbTbdzcz#/dns/domainList" target="_blank" rel="noopener">云解析控制台</a>，如果没有登陆过就添加域名，我是已经添加过了，所以有，然后点击右边的解析设置。<br><img src="/images/recording-hexo/5.3.2.png" alt="ALIYUN"></p>
-<p>点击蓝色且显眼的标签“添加记录”，添加两个A记录，用得到的IP，一个主机记录为：“www”，一个为“@”，如图中箭头所示。这样通过<a href="https://homepea.top/" target="_blank" rel="noopener">homepea.top</a>和<a href="https://homepea.top/" target="_blank" rel="noopener">www.homepea.top</a>两种方式就都可以访问自己的网站了。<br><img src="/images/recording-hexo/5.3.3.png" alt="DNS"></p>
+<h2 id="添加域名解析"><a href="#添加域名解析" class="headerlink" title="添加域名解析"></a>添加域名解析</h2><p>ping你的<a href="http://github.io" target="_blank" rel="noopener">github.io</a>域名，得到一个IP，如下所示:<br><img src="/images/Recording-hexo/5.3.1.png" alt="PING"></p>
+<p>登录到阿里云的<a href="https://dns.console.aliyun.com/?spm=a2c4g.11186623.2.12.d00459cbTbdzcz#/dns/domainList" target="_blank" rel="noopener">云解析控制台</a>，如果没有登陆过就添加域名，我是已经添加过了，所以有，然后点击右边的解析设置。<br><img src="/images/Recording-hexo/5.3.2.png" alt="ALIYUN"></p>
+<p>点击蓝色且显眼的标签“添加记录”，添加两个A记录，用得到的IP，一个主机记录为：“www”，一个为“@”，如图中箭头所示。这样通过<a href="https://homepea.top/" target="_blank" rel="noopener">homepea.top</a>和<a href="https://homepea.top/" target="_blank" rel="noopener">www.homepea.top</a>两种方式就都可以访问自己的网站了。<br><img src="/images/Recording-hexo/5.3.3.png" alt="DNS"></p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这个建站的过程花费了接近三天的时间吧，最开始折腾了一点的Coding，到后来用Github的过程，我觉得一路看过来觉得收获还是比较大的，后面如果有哪些有意思的东西，我也会都记录下来。</p>
 <p>最后非常感谢我的队友<a href="http://begild.top/" target="_blank" rel="noopener">宝藏</a>，还有看到的一些教程，有掘金的<a href="https://juejin.im/post/5b3ed1d4e51d45194e0b7884#heading-36" target="_blank" rel="noopener">菜包包</a>，知乎的<a href="https://www.zhihu.com/question/31377141/answer/384465402" target="_blank" rel="noopener">SnailClimb</a>，还有最后学习的Markdown书写的<a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">高鸿祥</a>，还有参考了很多的教程才有最后的成功，非常感谢。</p>
 ]]></content>
@@ -342,11 +422,6 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -379,6 +454,11 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>收藏</title>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-03-01T03:54:35.599Z</updated>
+  <updated>2020-03-02T15:38:17.768Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>树莓派使用USB网卡连接无线网络</title>
+    <link href="https://homepea7.github.io/2020/10.Raspberry-USBPort/"/>
+    <id>https://homepea7.github.io/2020/10.Raspberry-USBPort/</id>
+    <published>2020-03-02T15:00:08.000Z</published>
+    <updated>2020-03-02T15:38:17.768Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~&lt;/p&gt;
+&lt;p&gt;说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！虽然官方说这个型号功耗在3.5W左右，但是这里建议还是使用5V2A的供电！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="RaspberryPi" scheme="https://Homepea7.github.io/categories/RaspberryPi/"/>
+    
+    
+      <category term="RaspberryPi" scheme="https://Homepea7.github.io/tags/RaspberryPi/"/>
+    
+      <category term="USBPort" scheme="https://Homepea7.github.io/tags/USBPort/"/>
+    
+      <category term="Wi-Fi" scheme="https://Homepea7.github.io/tags/Wi-Fi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用串口终端访问树莓派</title>
+    <link href="https://homepea7.github.io/2020/09.Raspberry-Serial/"/>
+    <id>https://homepea7.github.io/2020/09.Raspberry-Serial/</id>
+    <published>2020-03-02T14:12:59.000Z</published>
+    <updated>2020-03-02T14:57:54.328Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近天天在家也没事儿干，淘宝倒是逛的挺多的，这两天看到一家店，本来想买一个猫盘组一台NAS的，最终只买了一个OpenWrt软路由和一块树莓派。说起这个树莓派那就很有意思了，一代A+，只有一个USB口，一个HDMI，一个音频输出好一个MicroUSB供电，没有带网口，因此操作起来就比较麻烦了，但是，记住但是，真的便宜，只要38块RMB，还是512M的内存，然后开始了今天的内容，使用串口访问树莓派。这样做的好处是省出来那个USB口，后来知道可以接免驱的USB网卡，刚刚好，开启SSH的话串口都不需要，美滋滋&lt;del&gt;~&lt;/del&gt;&lt;/p&gt;
+&lt;h1 id=&quot;配置串口终端&quot;&gt;&lt;a href=&quot;#配置串口终端&quot; class=&quot;headerlink&quot; title=&quot;配置串口终端&quot;&gt;&lt;/a&gt;配置串口终端&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="RaspberryPi" scheme="https://Homepea7.github.io/categories/RaspberryPi/"/>
+    
+    
+      <category term="RaspberryPi" scheme="https://Homepea7.github.io/tags/RaspberryPi/"/>
+    
+      <category term="Serial" scheme="https://Homepea7.github.io/tags/Serial/"/>
+    
+  </entry>
   
   <entry>
     <title>Latex参考文献双栏对齐</title>
@@ -199,7 +249,7 @@
     <link href="https://homepea7.github.io/2020/02.Hexo+Next/"/>
     <id>https://homepea7.github.io/2020/02.Hexo+Next/</id>
     <published>2020-02-05T12:09:02.000Z</published>
-    <updated>2020-02-10T06:41:39.260Z</updated>
+    <updated>2020-03-02T14:09:43.816Z</updated>
     
     <summary type="html">
     
