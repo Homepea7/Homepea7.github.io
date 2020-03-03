@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>树莓派使用SSH远程连接</title>
+    <url>/2020/11.Raspberry-SSH/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>上一次说到了使用USB网卡连接Wi-Fi，这样可以正常联网和下载程序，但是有一点比较麻烦的是需要串口，是有线的连接，比较麻烦，而使用SSH的话就可以远程使用了，非常的方便，下面做一个简单地介绍。</p>
+<h1 id="开启SSH"><a href="#开启SSH" class="headerlink" title="开启SSH"></a>开启SSH</h1><p>同使用串口访问一样，需要进行树莓派的基础设置，需要用到屏幕和键盘，先把USB网卡拔掉。启动后输入如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo raspi-cofig</span><br></pre></td></tr></table></figure>
+<p>在配置界面中选择 5 Interfacing Options，回车确认，如下所示：<br><img src="/images/RaspberryPi/1.1Interfacing.png" alt="Interfacing"></p>
+<p>然后继续选择 P2 SSH选项，回车确认，如下所示：<br><img src="/images/RaspberryPi/1.2Serial.png" alt="Serial"></p>
+<p>然后一路继续即可，中间会提示弱密码不安全，直接忽略即可，选择开启之后就ok了。这个SSH服务是开机自启，后面不需要任何配置，然后插上USB网卡重启即可。</p>
+<h1 id="SSH远程连接"><a href="#SSH远程连接" class="headerlink" title="SSH远程连接"></a>SSH远程连接</h1><p>首先确保主机和树莓派在同一网段，然后使用串口确定IP地址，这个在路由器惯例页面也能查到，最好是和Mac地址绑定，这样的话连着这个路由器的话IP地址不改变，获取IP地址的指令是 ifconfig ，如下所示：<br><img src="/images/RaspberryPi/1.6Ifconfig.png" alt="Ifconfig"></p>
+<p>最后打开Putty直接连接即可，注意端口是22，如下所示：<br><img src="/images/RaspberryPi/1.7SSH.png" alt="SSH"></p>
+<p>第一次连接之后有一个提示，点击确认即可，然后输入账号和密码就连接成功了，这样就能脱离串口使用无线连接啦，后面想做什么都非常方便。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>关于树莓派上手的体验就到这里了，下面开始搞事情，后面如果有哪些有意思的东西也会继续更新~</p>
+]]></content>
+      <categories>
+        <category>RaspberryPi</category>
+      </categories>
+      <tags>
+        <tag>RaspberryPi</tag>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>树莓派使用USB网卡连接无线网络</title>
     <url>/2020/10.Raspberry-USBPort/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~</p>
@@ -422,11 +444,6 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -459,6 +476,11 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>收藏</title>
@@ -662,11 +684,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>资源</title>
     <url>/resources/index.html</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我个人有一些使用软件上的一些小“洁癖”吧，国内的环境的确是真的非常非常的恶心，各种弹窗和广告数不胜数，还有百度说的“中国人愿意用隐私换取便利”，感觉真的是恶心到我了，这里将我常用的一些软件分享出来，希望能够帮到一些人，至少不受到垃圾广告和弹窗的影响，也为我自己的列一个清单，以后分享页方便。我经常逛的两个论坛是<a href="https://www.ghpym.com/" target="_blank" rel="noopener">果核剥壳</a>和<a href="https://www.52pojie.cn/" target="_blank" rel="noopener">我爱破解</a>这两个，其中大部分资源也都是基于这两个论坛的，但是很多都是用了许久，现在可能不能一一找到相应的出处了，我会尽量找出出处，如果有侵权请联系我一定迅速删除。</p>
@@ -695,5 +712,10 @@
 <p><a href="https://pan.baidu.com/s/1Rwodbuz-hpwlVQlZLjjP8A" target="_blank" rel="noopener">AcrobatProDC</a>用的很久，2020版本的我前面看到的是没有PDF阅读器的，我也一直用的这个，安装完了就能直接使用，非常好用。自带虚拟打印机，虽然软件很大，但是打开速度很快，Adobe自带的文字识别也是好用到不行。</p>
 <h1 id="链接说明"><a href="#链接说明" class="headerlink" title="链接说明"></a>链接说明</h1><p>我虽然不喜欢百度云，但是说实话已经用了很久了，上面有很多的资源，所示还是分享的百度云链接，我分享的密码都是【2333】。还有就是只是软件的推荐，没有任何的教程，网上都是一搜一大把的，也非常仔细，如果有什么没有弄好或者觉得不清楚的欢迎评论或者给我发邮件说明哦~</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

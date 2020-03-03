@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-03-02T15:38:17.768Z</updated>
+  <updated>2020-03-03T03:22:16.099Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>树莓派使用SSH远程连接</title>
+    <link href="https://homepea7.github.io/2020/11.Raspberry-SSH/"/>
+    <id>https://homepea7.github.io/2020/11.Raspberry-SSH/</id>
+    <published>2020-03-03T03:03:06.000Z</published>
+    <updated>2020-03-03T03:22:16.099Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;上一次说到了使用USB网卡连接Wi-Fi，这样可以正常联网和下载程序，但是有一点比较麻烦的是需要串口，是有线的连接，比较麻烦，而使用SSH的话就可以远程使用了，非常的方便，下面做一个简单地介绍。&lt;/p&gt;
+&lt;h1 id=&quot;开启SSH&quot;&gt;&lt;a href=&quot;#开启SSH&quot; class=&quot;headerlink&quot; title=&quot;开启SSH&quot;&gt;&lt;/a&gt;开启SSH&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="RaspberryPi" scheme="https://Homepea7.github.io/categories/RaspberryPi/"/>
+    
+    
+      <category term="RaspberryPi" scheme="https://Homepea7.github.io/tags/RaspberryPi/"/>
+    
+      <category term="SSH" scheme="https://Homepea7.github.io/tags/SSH/"/>
+    
+  </entry>
   
   <entry>
     <title>树莓派使用USB网卡连接无线网络</title>
