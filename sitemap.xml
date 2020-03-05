@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homepea7.github.io/2020/10.Raspberry-USBPort/</loc>
+    
+    <lastmod>2020-03-05T06:04:09.772Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://homepea7.github.io/2020/11.Raspberry-SSH/</loc>
     
     <lastmod>2020-03-03T03:22:16.099Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://homepea7.github.io/2020/02.Hexo+Next/</loc>
     
     <lastmod>2020-03-03T02:51:18.123Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://homepea7.github.io/2020/10.Raspberry-USBPort/</loc>
-    
-    <lastmod>2020-03-02T15:38:17.768Z</lastmod>
     
   </url>
   

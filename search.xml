@@ -25,8 +25,8 @@
   <entry>
     <title>树莓派使用USB网卡连接无线网络</title>
     <url>/2020/10.Raspberry-USBPort/</url>
-    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~</p>
-<p>说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！虽然官方说这个型号功耗在3.5W左右，但是这里建议还是使用5V2A的供电！</p>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前面说过，我买到的这个树莓派是一代A+，没网口，Wi-Fi和蓝牙也都没有，就仅仅只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11/n的，免驱，插上就能用。于是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~</p>
+<p>说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！参考威胁电子的统计资料，这个型号功耗在3.5W左右，但是这里建议还是使用5V2A及以上的供电！</p>
 <p>好了，说了这么多废话，赶紧插上网卡准备折腾吧。</p>
 <h1 id="硬件的相关信息"><a href="#硬件的相关信息" class="headerlink" title="硬件的相关信息"></a>硬件的相关信息</h1><p>首先查看使用的无线网卡，指令如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># lsusb</span></span><br><span class="line">Bus 001 Device 002: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
@@ -43,7 +43,13 @@
 <h2 id="设置SSID和对应密码"><a href="#设置SSID和对应密码" class="headerlink" title="设置SSID和对应密码"></a>设置SSID和对应密码</h2><p>使用如下命令密码生成SSID和对应的密码，复制内容备用</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># wpa_passphrase OpenWrt Password</span></span><br><span class="line">network=&#123;</span><br><span class="line">        ssid=<span class="string">"OpenWrt"</span></span><br><span class="line">        <span class="comment">#psk="Password"</span></span><br><span class="line">        psk=583be43e0ffa97c1247d697a765edde350b37c98914307c46e87a00c2365dffc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的<font color=red>OpenWrt</font>和<font color=red>Password</font>对应自己的Wi-Fi的SSID和密码。</p>
+<p>然后通过重定向命令写入到文件备用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># wpa_passphrase MERCURY_4E1A blackcar &gt; ~/wifi.conf</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="修改wpa-supplicant-conf"><a href="#修改wpa-supplicant-conf" class="headerlink" title="修改wpa_supplicant.conf"></a>修改wpa_supplicant.conf</h2><p>这一步需要管理员权限的，现在把内容粘贴到/etc/wpa_supplicant/wpa_supplicant.conf，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># less wifi.conf &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</span></span><br></pre></td></tr></table></figure>
+
+<p>或重定向的方式给 wpa_supplicant.conf 追加 wifi.conf ：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># less wifi.conf &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>配置/etc/network/interfaces，命令如下：</p>
@@ -444,6 +450,11 @@
 </html>]]></content>
   </entry>
   <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -476,11 +487,6 @@
 </li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>收藏</title>
@@ -684,6 +690,11 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>资源</title>
     <url>/resources/index.html</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我个人有一些使用软件上的一些小“洁癖”吧，国内的环境的确是真的非常非常的恶心，各种弹窗和广告数不胜数，还有百度说的“中国人愿意用隐私换取便利”，感觉真的是恶心到我了，这里将我常用的一些软件分享出来，希望能够帮到一些人，至少不受到垃圾广告和弹窗的影响，也为我自己的列一个清单，以后分享页方便。我经常逛的两个论坛是<a href="https://www.ghpym.com/" target="_blank" rel="noopener">果核剥壳</a>和<a href="https://www.52pojie.cn/" target="_blank" rel="noopener">我爱破解</a>这两个，其中大部分资源也都是基于这两个论坛的，但是很多都是用了许久，现在可能不能一一找到相应的出处了，我会尽量找出出处，如果有侵权请联系我一定迅速删除。</p>
@@ -712,10 +723,5 @@
 <p><a href="https://pan.baidu.com/s/1Rwodbuz-hpwlVQlZLjjP8A" target="_blank" rel="noopener">AcrobatProDC</a>用的很久，2020版本的我前面看到的是没有PDF阅读器的，我也一直用的这个，安装完了就能直接使用，非常好用。自带虚拟打印机，虽然软件很大，但是打开速度很快，Adobe自带的文字识别也是好用到不行。</p>
 <h1 id="链接说明"><a href="#链接说明" class="headerlink" title="链接说明"></a>链接说明</h1><p>我虽然不喜欢百度云，但是说实话已经用了很久了，上面有很多的资源，所示还是分享的百度云链接，我分享的密码都是【2333】。还有就是只是软件的推荐，没有任何的教程，网上都是一搜一大把的，也非常仔细，如果有什么没有弄好或者觉得不清楚的欢迎评论或者给我发邮件说明哦~</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>

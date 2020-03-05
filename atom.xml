@@ -45,12 +45,12 @@
     <link href="https://homepea7.github.io/2020/10.Raspberry-USBPort/"/>
     <id>https://homepea7.github.io/2020/10.Raspberry-USBPort/</id>
     <published>2020-03-02T15:00:08.000Z</published>
-    <updated>2020-03-02T15:38:17.768Z</updated>
+    <updated>2020-03-05T06:04:09.772Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前面说过，我买到的这个树莓派是没有网卡的，Wi-Fi和蓝牙都没有，就只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11n的，免驱的，插上就能用，如是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~&lt;/p&gt;
-&lt;p&gt;说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！虽然官方说这个型号功耗在3.5W左右，但是这里建议还是使用5V2A的供电！&lt;/p&gt;
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前面说过，我买到的这个树莓派是一代A+，没网口，Wi-Fi和蓝牙也都没有，就仅仅只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11/n的，免驱，插上就能用。于是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~&lt;/p&gt;
+&lt;p&gt;说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！参考威胁电子的统计资料，这个型号功耗在3.5W左右，但是这里建议还是使用5V2A及以上的供电！&lt;/p&gt;
     
     </summary>
     
