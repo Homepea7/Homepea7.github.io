@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Adobe Premiere使两段视频分辨率一致</title>
+    <url>/2020/12.PR-Resolution/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近学习剪视频，我下了一个4K的白蛇：缘起，然后学习B站大佬的<a href="https://www.bilibili.com/video/BV1HJ411h78u" target="_blank" rel="noopener">水墨转场</a>跟着做，下载了他的水墨素材，然后发现分辨率不对应，如下图所示，记录一下解决的办法。<br><img src="/images/Premiere/P1.png" alt="P1"></p>
+<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>其实PR默认会把第一次导入的视频作为默认的分辨率来封装视频，大家看上面蒙面遮罩的效果，会看到分辨率的明显不同。默认的视频素材是4K的，但是作为遮罩的素材是1080P，所以有很多的内容没有遮上去。</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>方法非常简单，只需要遮罩的素材，就是小分辨率的部分点击右键，出现一连串的选项菜单，选择“缩放为帧大小”，然后这个时候可以看预览就可以发现分辨率统一了，如下图所示。<br><img src="/images/Premiere/P2.png" alt="P2"></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西其实还是比较简单的，其实“设为帧大小”貌似也可以，我也试过，但是人就有一些小问题，但是我下载的视频是4K而且是21：9的，设置“设为帧大小”只是将纵向拉成了，但是横向仍旧有问题，说明里面就是“设置为帧大小”，因此缩放是最保险的！</p>
+<p>希望大家一起愉快的玩耍吧，一起愉快的用PR~</p>
+]]></content>
+      <categories>
+        <category>Premiere</category>
+      </categories>
+      <tags>
+        <tag>Premiere</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>树莓派使用SSH远程连接</title>
     <url>/2020/11.Raspberry-SSH/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>上一次说到了使用USB网卡连接Wi-Fi，这样可以正常联网和下载程序，但是有一点比较麻烦的是需要串口，是有线的连接，比较麻烦，而使用SSH的话就可以远程使用了，非常的方便，下面做一个简单地介绍。</p>
@@ -489,6 +505,11 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>收藏</title>
     <url>/favorites/index.html</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>我这个人有点无聊，一般每个学习主用的电脑都会重新装一次系统，但是我的软件基本都是绿色版，因此一般我半个小时就可以基本恢复好，但是浏览器上面的数千每次回复比较慢，这个我觉得比较烦，而且有时候梯子不好用了，因此在这里将我的数千同步一下，也做一个分享，希望上面的资源能够帮到大家。</p>
@@ -688,11 +709,6 @@
 
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>东西比较乱，主要是自己看的，所以没有好好整理，主要是东西收藏的太多了，分类的时候有一些都没有好好注意，本来想弄成表格，但是太乱了不好做，只能这样将就看看了<del>~</del></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>资源</title>

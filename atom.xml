@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-03-03T03:22:16.099Z</updated>
+  <updated>2020-04-24T14:53:58.794Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Adobe Premiere使两段视频分辨率一致</title>
+    <link href="https://homepea7.github.io/2020/12.PR-Resolution/"/>
+    <id>https://homepea7.github.io/2020/12.PR-Resolution/</id>
+    <published>2020-04-24T14:23:13.000Z</published>
+    <updated>2020-04-24T14:53:58.794Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近学习剪视频，我下了一个4K的白蛇：缘起，然后学习B站大佬的&lt;a href=&quot;https://www.bilibili.com/video/BV1HJ411h78u&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;水墨转场&lt;/a&gt;跟着做，下载了他的水墨素材，然后发现分辨率不对应，如下图所示，记录一下解决的办法。&lt;br&gt;&lt;img src=&quot;/images/Premiere/P1.png&quot; alt=&quot;P1&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;原因分析&quot;&gt;&lt;a href=&quot;#原因分析&quot; class=&quot;headerlink&quot; title=&quot;原因分析&quot;&gt;&lt;/a&gt;原因分析&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Premiere" scheme="https://Homepea7.github.io/categories/Premiere/"/>
+    
+    
+      <category term="Premiere" scheme="https://Homepea7.github.io/tags/Premiere/"/>
+    
+  </entry>
   
   <entry>
     <title>树莓派使用SSH远程连接</title>
