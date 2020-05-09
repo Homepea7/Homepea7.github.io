@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pokeball_16px.png">
+  <link rel="mask-icon" href="/images/pokeball_logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://Homepea7.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"right","display":"always","padding":18,"offset":12,"b2t":true,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  <meta name="description" content="说明最近很幸运的拿到一台小米6（还能再战三年），于是开始小折腾了半天，对比IOS的话感觉MIUI还是有很多好的地方的，不过系统广告实在难忍，在哪都有广告和推送，于是想到办法去广告。以前在我爱破解看到过相关的内容，于是就去搜了一下，网上教程一大堆，于是在这里做一个小小的记录。本机部分参数如下：小米6，MIUI版本为MIUI10 9.9.3，基于安卓9的，刷的开发板但是没有开启root（官网上面的开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓手机免root使用ADB命令卸载预装软件（去广告）">
+<meta property="og:url" content="https://homepea7.github.io/2020/13.ADB-Shell/index.html">
+<meta property="og:site_name" content="Homepea&#39;s Blog">
+<meta property="og:description" content="说明最近很幸运的拿到一台小米6（还能再战三年），于是开始小折腾了半天，对比IOS的话感觉MIUI还是有很多好的地方的，不过系统广告实在难忍，在哪都有广告和推送，于是想到办法去广告。以前在我爱破解看到过相关的内容，于是就去搜了一下，网上教程一大堆，于是在这里做一个小小的记录。本机部分参数如下：小米6，MIUI版本为MIUI10 9.9.3，基于安卓9的，刷的开发板但是没有开启root（官网上面的开发">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://homepea7.github.io/images/Android/P1.1.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Android/P1.2.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Android/P1.3.png">
+<meta property="article:published_time" content="2020-05-09T02:23:13.000Z">
+<meta property="article:modified_time" content="2020-05-09T02:48:08.925Z">
+<meta property="article:author" content="Kavin Homepea">
+<meta property="article:tag" content="ADB">
+<meta property="article:tag" content="系统去广告">
+<meta property="article:tag" content="root">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://homepea7.github.io/images/Android/P1.1.png">
+
+<link rel="canonical" href="https://homepea7.github.io/2020/13.ADB-Shell/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>安卓手机免root使用ADB命令卸载预装软件（去广告） | Homepea's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-157890086-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Homepea's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homepea's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Good good study, day day up!</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-favorites">
+
+    <a href="/favorites/" rel="section"><i class="fa fa-fw fa-bookmark"></i>收藏</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-fw fa-gift"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404.html/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/13.ADB-Shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kavin Homepea">
+      <meta itemprop="description" content="Better me">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homepea's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安卓手机免root使用ADB命令卸载预装软件（去广告）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-09 10:23:13 / 修改时间：10:48:08" itemprop="dateCreated datePublished" datetime="2020-05-09T10:23:13+08:00">2020-05-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ADB/" itemprop="url" rel="index">
+                    <span itemprop="name">ADB</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/13.ADB-Shell/" class="post-meta-item leancloud_visitors" data-flag-title="安卓手机免root使用ADB命令卸载预装软件（去广告）" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/13.ADB-Shell/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/13.ADB-Shell/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近很幸运的拿到一台小米6（还能再战三年），于是开始小折腾了半天，对比IOS的话感觉MIUI还是有很多好的地方的，不过系统广告实在难忍，在哪都有广告和推送，于是想到办法去广告。以前在<a href="https://www.52pojie.cn/" target="_blank" rel="noopener">我爱破解</a>看到过相关的内容，于是就去搜了一下，网上教程一大堆，于是在这里做一个小小的记录。本机部分参数如下：小米6，MIUI版本为MIUI10 9.9.3，基于安卓9的，刷的开发板但是没有开启root（官网上面的开发板暂时不会提示更新）。</p>
+<h1 id="开发者选项"><a href="#开发者选项" class="headerlink" title="开发者选项"></a>开发者选项</h1><p>开发者选项是安卓手机调试必须开启的，小米的做法具体如下：打开 设置-&gt; 我的设备 -&gt; 全部参数，这里连点MIUI版本7下，然后会提示打开开发者选项，这样就可以打开USB调试了。</p>
+<p>然后打开 设置 -&gt; 更多设置 -&gt; 开发者选项，这个时候默认是打开的，下滑找到“USB调试”的开关，将他打开即可，然后用数据线链接电脑等待弹出ADB调试的提示即可。</p>
+<p><img src="/images/Android/P1.1.png" alt="P1"></p>
+<h1 id="开始ADB调试"><a href="#开始ADB调试" class="headerlink" title="开始ADB调试"></a>开始ADB调试</h1><p>首先下载<a href="/uploads/ADBShell.zip" target="_blank">ADB工具包</a>，解压（英文目录最好）后在CMD打开，然后输入下面命令，如果返回设备信息说明连接上了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<p><img src="/images/Android/P1.2.png" alt="P2"></p>
+<p>若第一次不成功，手机上没有提示允许USB调试，那么就先确认USB调试打开，然后重新插拔数据线，然后输入命令试试。如果出现”Offline”，那么重启ADB，命令如下，然后重新插拔数据线，这样基本都能好。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb <span class="built_in">kill</span>-server</span><br><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p>成功链接之后就能卸载应用了，这里对命令简单的说明一下，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm uninstall -k --user 0 packageName</span><br></pre></td></tr></table></figure>
+<p>这个命令的意思就是将用户 0 的 packageName 应用卸载掉。<br>-k 表示保存数据，如不需要，可去掉 -k，–user 指定用户 id，Android 系统支持多个用户，默认用户只有一个，id=0。</p>
+<p>我们可以到系统的应用设置里面看到 packageName ，如下图所示。下面是推荐卸载列出来的一些命令，其中包含广告的部分也在里面，直接用就行，不过需要注意不同版本的系统包名可能会有不同，因此还是系统的应用设置里面的 packageName 为准。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall --user 0 com.miui.systemAdSolution（小米系统广告解决方案，必删）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.analytics（小米广告分析，必删）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service  （小米游戏中心服务）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.gamecenter  （小米游戏中心）</span><br><span class="line">adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi  （搜狗输入法）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.player  （小米音乐）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.video  （小米视频）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.notes  （小米便签）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.translation.youdao  （有道翻译）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.translation.kingsoft  （金山翻译）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.email  （邮件）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.scanner  （小米扫描）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.hybrid  （混合器）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.bugreport  （bug 反馈）</span><br><span class="line">adb shell pm uninstall --user 0 com.milink.service  （米连服务）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.browser  （浏览器）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.gallery  （相册）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.yellowpage  （黄页）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.midrop  （小米快传）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.virtualsim  （小米虚拟器）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.payment  （小米支付）</span><br><span class="line">adb shell pm uninstall --user 0 com.mipay.wallet  （小米钱包）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.soundrecorder  （录音机）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.screenrecorder  （屏幕录制）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.wallpaper  （壁纸）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.voiceassist  （语音助手）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.fm  （收音机）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.touchassistant  （悬浮球）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.cellbroadcastreceiver  （小米广播）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.mitunes  （小米助手）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.pass  （小米卡包）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.thememanager  （个性主题管理）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.wallpaper  （动态壁纸）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.wallpaper.livepicker  （动态壁纸获取）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.klo.bugreport （KLO bug 反馈）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.vipaccount  (小米社区)</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.miservice (服务反馈)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Android/P1.3.png" alt="P3"></p>
+<p>！！！注意，下面的这些不能删除，会导致开不了机。尤其是应用商店，我自己有梯子所以用的Google Play商店，里面的App干净一些，所以没注意系统自带的应用商店删除了，但是它包含了系统的一些依赖，卸载之后不开机！如果实在手贱卸载了也可以去线刷，找到当前的系统ROM直接刷就行，也不会有数据丢失，只是会很麻烦。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">com.miui.cloudservice  （小米云服务）</span><br><span class="line">com.xiaomi.account  （小米账户）</span><br><span class="line">com.miui.cloudbackup  （云备份）</span><br><span class="line">com.xiaomi.market  （应用市场）</span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>说实话，从IOS到小米，我觉得MIUI还是挺好用的，虽然不如IOS，但是也能感受到安卓的开放，各种开源的APP和很多调试的需要的特定APP，大多都是安卓版本，广告的话卸载了之后我觉得也还算能用，MIUI确实已经很不错了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ADB/" rel="tag"><i class="fa fa-tag"></i> ADB</a>
+              <a href="/tags/%E7%B3%BB%E7%BB%9F%E5%8E%BB%E5%B9%BF%E5%91%8A/" rel="tag"><i class="fa fa-tag"></i> 系统去广告</a>
+              <a href="/tags/root/" rel="tag"><i class="fa fa-tag"></i> root</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07.Termux+KODExplorer/" rel="prev" title="使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）">
+      <i class="fa fa-chevron-left"></i> 使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发者选项"><span class="nav-number">2.</span> <span class="nav-text">开发者选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始ADB调试"><span class="nav-number">3.</span> <span class="nav-text">开始ADB调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kavin Homepea"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kavin Homepea</p>
+  <div class="site-description" itemprop="description">Better me</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Homepea7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Homepea7" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kavinhomepea@gmail.com" title="E-Mail → mailto:kavinhomepea@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homepea</span>
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">21k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">19 分钟</span>
+</div>
+
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("01/01/2020 12:00:00");
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.4' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'CCp6fpSlvQK1Wh7l8lr9Vglh-gzGzoHsz',
+      appKey: '7ANNsdbheFJqf9q2mrDcnhAp',
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar: 'monsterid',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+    
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","hOffset":50,"vOffset":0,"width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+

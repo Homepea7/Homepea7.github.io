@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>安卓手机免root使用ADB命令卸载预装软件（去广告）</title>
+    <url>/2020/13.ADB-Shell/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近很幸运的拿到一台小米6（还能再战三年），于是开始小折腾了半天，对比IOS的话感觉MIUI还是有很多好的地方的，不过系统广告实在难忍，在哪都有广告和推送，于是想到办法去广告。以前在<a href="https://www.52pojie.cn/" target="_blank" rel="noopener">我爱破解</a>看到过相关的内容，于是就去搜了一下，网上教程一大堆，于是在这里做一个小小的记录。本机部分参数如下：小米6，MIUI版本为MIUI10 9.9.3，基于安卓9的，刷的开发板但是没有开启root（官网上面的开发板暂时不会提示更新）。</p>
+<h1 id="开发者选项"><a href="#开发者选项" class="headerlink" title="开发者选项"></a>开发者选项</h1><p>开发者选项是安卓手机调试必须开启的，小米的做法具体如下：打开 设置-&gt; 我的设备 -&gt; 全部参数，这里连点MIUI版本7下，然后会提示打开开发者选项，这样就可以打开USB调试了。</p>
+<p>然后打开 设置 -&gt; 更多设置 -&gt; 开发者选项，这个时候默认是打开的，下滑找到“USB调试”的开关，将他打开即可，然后用数据线链接电脑等待弹出ADB调试的提示即可。</p>
+<p><img src="/images/Android/P1.1.png" alt="P1"></p>
+<h1 id="开始ADB调试"><a href="#开始ADB调试" class="headerlink" title="开始ADB调试"></a>开始ADB调试</h1><p>首先下载<a href="/uploads/ADBShell.zip" target="_blank">ADB工具包</a>，解压（英文目录最好）后在CMD打开，然后输入下面命令，如果返回设备信息说明连接上了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<p><img src="/images/Android/P1.2.png" alt="P2"></p>
+<p>若第一次不成功，手机上没有提示允许USB调试，那么就先确认USB调试打开，然后重新插拔数据线，然后输入命令试试。如果出现”Offline”，那么重启ADB，命令如下，然后重新插拔数据线，这样基本都能好。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb <span class="built_in">kill</span>-server</span><br><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p>成功链接之后就能卸载应用了，这里对命令简单的说明一下，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm uninstall -k --user 0 packageName</span><br></pre></td></tr></table></figure>
+<p>这个命令的意思就是将用户 0 的 packageName 应用卸载掉。<br>-k 表示保存数据，如不需要，可去掉 -k，–user 指定用户 id，Android 系统支持多个用户，默认用户只有一个，id=0。</p>
+<p>我们可以到系统的应用设置里面看到 packageName ，如下图所示。下面是推荐卸载列出来的一些命令，其中包含广告的部分也在里面，直接用就行，不过需要注意不同版本的系统包名可能会有不同，因此还是系统的应用设置里面的 packageName 为准。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell pm uninstall --user 0 com.miui.systemAdSolution（小米系统广告解决方案，必删）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.analytics（小米广告分析，必删）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service  （小米游戏中心服务）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.gamecenter  （小米游戏中心）</span><br><span class="line">adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi  （搜狗输入法）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.player  （小米音乐）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.video  （小米视频）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.notes  （小米便签）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.translation.youdao  （有道翻译）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.translation.kingsoft  （金山翻译）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.email  （邮件）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.scanner  （小米扫描）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.hybrid  （混合器）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.bugreport  （bug 反馈）</span><br><span class="line">adb shell pm uninstall --user 0 com.milink.service  （米连服务）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.browser  （浏览器）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.gallery  （相册）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.yellowpage  （黄页）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.midrop  （小米快传）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.virtualsim  （小米虚拟器）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.payment  （小米支付）</span><br><span class="line">adb shell pm uninstall --user 0 com.mipay.wallet  （小米钱包）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.soundrecorder  （录音机）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.screenrecorder  （屏幕录制）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.wallpaper  （壁纸）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.voiceassist  （语音助手）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.fm  （收音机）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.touchassistant  （悬浮球）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.cellbroadcastreceiver  （小米广播）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.mitunes  （小米助手）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.pass  （小米卡包）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.thememanager  （个性主题管理）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.wallpaper  （动态壁纸）</span><br><span class="line">adb shell pm uninstall --user 0 com.android.wallpaper.livepicker  （动态壁纸获取）</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.klo.bugreport （KLO bug 反馈）</span><br><span class="line">adb shell pm uninstall --user 0 com.xiaomi.vipaccount  (小米社区)</span><br><span class="line">adb shell pm uninstall --user 0 com.miui.miservice (服务反馈)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Android/P1.3.png" alt="P3"></p>
+<p>！！！注意，下面的这些不能删除，会导致开不了机。尤其是应用商店，我自己有梯子所以用的Google Play商店，里面的App干净一些，所以没注意系统自带的应用商店删除了，但是它包含了系统的一些依赖，卸载之后不开机！如果实在手贱卸载了也可以去线刷，找到当前的系统ROM直接刷就行，也不会有数据丢失，只是会很麻烦。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">com.miui.cloudservice  （小米云服务）</span><br><span class="line">com.xiaomi.account  （小米账户）</span><br><span class="line">com.miui.cloudbackup  （云备份）</span><br><span class="line">com.xiaomi.market  （应用市场）</span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>说实话，从IOS到小米，我觉得MIUI还是挺好用的，虽然不如IOS，但是也能感受到安卓的开放，各种开源的APP和很多调试的需要的特定APP，大多都是安卓版本，广告的话卸载了之后我觉得也还算能用，MIUI确实已经很不错了。</p>
+]]></content>
+      <categories>
+        <category>ADB</category>
+      </categories>
+      <tags>
+        <tag>ADB</tag>
+        <tag>系统去广告</tag>
+        <tag>root</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
+    <url>/2020/07.Termux+KODExplorer/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。</p>
+<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>首先是Git，因为需要Git下载KODExplorer的资源，安装Git的指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y git</span><br></pre></td></tr></table></figure>
+
+<p>其次是php的安装，指令如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y php</span><br></pre></td></tr></table></figure>
+
+<p>上面的install都附带了 -y，及默认安装，不会弹出那个确认的提示。</p>
+<h1 id="下载KODExplorer文件服务器"><a href="#下载KODExplorer文件服务器" class="headerlink" title="下载KODExplorer文件服务器"></a>下载KODExplorer文件服务器</h1><p><a href="https://gitee.com/kalcaddle/KODExplorer" target="_blank" rel="noopener">KodExplorer</a>可道云，原名芒果云，是基于Web技术的私有云和在线文件管理系统，是一款快捷高效的私有云和在线文档管理系统，为个人网站、企业私有云部署、网络存储、在线文档管理、在线办公等提供安全可控，简便易用、可高度定制的私有云产品。采用windows风格界面、操作习惯，无需适应即可快速上手，支持几百种常用文件格式的在线预览，可扩展易定制。GPL v3开源协议。</p>
+<p>个人觉得KodExplorer非常好用，不仅仅因为是Windows风格的操作，更有可以管理各种文件，而且Termux内部的目录也可以看的一清二楚，非常方便而且实用。在Termux安装的指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gitee.com/kalcaddle/KODExplorer.git</span><br></pre></td></tr></table></figure>
+
+<p>下载完成之后给权限，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod -Rf 777 ./KODExplorer/*</span><br></pre></td></tr></table></figure>
+
+<p>最后是启动KODExplorer文件服务器。首先是进入KOEExplorer文件夹，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> KodExplorer</span><br></pre></td></tr></table></figure>
+
+<p>此时使用ls指令可以查看相应的文件，然后使用php打开一个端口：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php -S 192.168.1.101:8233 -t .</span><br></pre></td></tr></table></figure>
+
+<p>这里的IP地址就是安装Termux本机的IP，最好别写localhost，因为使用真实IP的话可以在局域网的设备浏览器直接输入【IP+端口号】就可以访问到，而且真的是而且真的是美爆了，有毛玻璃效果！！！具体的效果如下：<br><img src="/images/Termux-Ubuntu/4.0.png" alt="KODExplorer"></p>
+<p>如果使用乃往穿透就是个人服务器了，用来写Python实现一些小功能美滋滋，或者前端的html，MD也都是再好不过了！</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>感谢<a href="https://www.bilibili.com/video/av89221670" target="_blank" rel="noopener">Coldwith</a>的分享，虽然他在视频中说失败了有问题，但是我这边成功实现了，2333~~</p>
+]]></content>
+      <categories>
+        <category>Termux</category>
+      </categories>
+      <tags>
+        <tag>Termux</tag>
+        <tag>KODExplorer</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/01.hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<script>//底部特效字
+    var chakhsu = function(r) {function t(){return b[Math.floor(Math.random()*b.length)]}function e(){return String.fromCharCode(94*Math.random()+33)}function n(r){for(var n=document.createDocumentFragment(),i=0;r>i;i++){var l=document.createElement("span");l.textContent=e(),l.style.color=t(),n.appendChild(l)}return n}function i(){var t=o[c.skillI];c.step?c.step--:(c.step=g,c.prefixP<l.length?(c.prefixP>=0&&(c.text+=l[c.prefixP]),c.prefixP++):"forward"===c.direction?c.skillP<t.length?(c.text+=t[c.skillP],c.skillP++):c.delay?c.delay--:(c.direction="backward",c.delay=a):c.skillP>0?(c.text=c.text.slice(0,-1),c.skillP--):(c.skillI=(c.skillI+1)%o.length,c.direction="forward")),r.textContent=c.text,r.appendChild(n(c.prefixP<l.length?Math.min(s,s+c.prefixP):Math.min(s,t.length-c.skillP))),setTimeout(i,d)}
+        var l = "",
+            o = ["六年了.....","我并没有成为更好的自己.....", "如今我们深夜饮酒.....", "杯子碰到一起.....", "都是梦破碎的声音....."].map(function(r) {
+
+        return r+"."}),a=2,g=1,s=5,d=75,b=["rgb(110,64,170)","rgb(150,61,179)","rgb(191,60,175)","rgb(228,65,157)","rgb(254,75,131)","rgb(255,94,99)","rgb(255,120,71)","rgb(251,150,51)","rgb(226,183,47)","rgb(198,214,60)","rgb(175,240,91)","rgb(127,246,88)","rgb(82,246,103)","rgb(48,239,130)","rgb(29,223,163)","rgb(26,199,194)","rgb(35,171,216)","rgb(54,140,225)","rgb(76,110,219)","rgb(96,84,200)"],c={text:"",prefixP:-s,skillI:0,skillP:0,direction:"forward",delay:a,step:g};i()};chakhsu(document.getElementById('chakhsu'));if('addEventListener'in document){document.addEventListener('DOMContentLoaded',function(){FastClick.attach(document.body)},false)}
+</script>
+<script data-no-instant>InstantClick.on('change',function(isInitialLoad){var blocks=document.querySelectorAll('pre code');for(var i=0;i<blocks.length;i++){hljs.highlightBlock(blocks[i])}if(isInitialLoad===false){if(typeof ga!=='undefined')ga('send','pageview',location.pathname+location.search);if(typeof MathJax!=='undefined'){MathJax.Hub.Queue(["Typeset",MathJax.Hub])}}});InstantClick.init('mousedown');</script>
+
+
+<!-- <iframe src="https://www.lovestu.com/api/project/cnmapyinqing/obj.php" height="500" frameborder="no" border="0" width="100%"> </iframe> -->
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Adobe Premiere使两段视频分辨率一致</title>
     <url>/2020/12.PR-Resolution/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近学习剪视频，我下了一个4K的白蛇：缘起，然后学习B站大佬的<a href="https://www.bilibili.com/video/BV1HJ411h78u" target="_blank" rel="noopener">水墨转场</a>跟着做，下载了他的水墨素材，然后发现分辨率不对应，如下图所示，记录一下解决的办法。<br><img src="/images/Premiere/P1.png" alt="P1"></p>
@@ -145,43 +252,6 @@
       </categories>
       <tags>
         <tag>Latex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
-    <url>/2020/07.Termux+KODExplorer/</url>
-    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。</p>
-<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>首先是Git，因为需要Git下载KODExplorer的资源，安装Git的指令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y git</span><br></pre></td></tr></table></figure>
-
-<p>其次是php的安装，指令如下所示：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install -y php</span><br></pre></td></tr></table></figure>
-
-<p>上面的install都附带了 -y，及默认安装，不会弹出那个确认的提示。</p>
-<h1 id="下载KODExplorer文件服务器"><a href="#下载KODExplorer文件服务器" class="headerlink" title="下载KODExplorer文件服务器"></a>下载KODExplorer文件服务器</h1><p><a href="https://gitee.com/kalcaddle/KODExplorer" target="_blank" rel="noopener">KodExplorer</a>可道云，原名芒果云，是基于Web技术的私有云和在线文件管理系统，是一款快捷高效的私有云和在线文档管理系统，为个人网站、企业私有云部署、网络存储、在线文档管理、在线办公等提供安全可控，简便易用、可高度定制的私有云产品。采用windows风格界面、操作习惯，无需适应即可快速上手，支持几百种常用文件格式的在线预览，可扩展易定制。GPL v3开源协议。</p>
-<p>个人觉得KodExplorer非常好用，不仅仅因为是Windows风格的操作，更有可以管理各种文件，而且Termux内部的目录也可以看的一清二楚，非常方便而且实用。在Termux安装的指令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gitee.com/kalcaddle/KODExplorer.git</span><br></pre></td></tr></table></figure>
-
-<p>下载完成之后给权限，指令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod -Rf 777 ./KODExplorer/*</span><br></pre></td></tr></table></figure>
-
-<p>最后是启动KODExplorer文件服务器。首先是进入KOEExplorer文件夹，指令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> KodExplorer</span><br></pre></td></tr></table></figure>
-
-<p>此时使用ls指令可以查看相应的文件，然后使用php打开一个端口：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php -S 192.168.1.101:8233 -t .</span><br></pre></td></tr></table></figure>
-
-<p>这里的IP地址就是安装Termux本机的IP，最好别写localhost，因为使用真实IP的话可以在局域网的设备浏览器直接输入【IP+端口号】就可以访问到，而且真的是而且真的是美爆了，有毛玻璃效果！！！具体的效果如下：<br><img src="/images/Termux-Ubuntu/4.0.png" alt="KODExplorer"></p>
-<p>如果使用乃往穿透就是个人服务器了，用来写Python实现一些小功能美滋滋，或者前端的html，MD也都是再好不过了！</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>感谢<a href="https://www.bilibili.com/video/av89221670" target="_blank" rel="noopener">Coldwith</a>的分享，虽然他在视频中说失败了有问题，但是我这边成功实现了，2333~~</p>
-]]></content>
-      <categories>
-        <category>Termux</category>
-      </categories>
-      <tags>
-        <tag>Termux</tag>
-        <tag>KODExplorer</tag>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -422,32 +492,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/01.hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<!-- <iframe src="https://www.lovestu.com/api/project/cnmapyinqing/obj.php" height="500" frameborder="no" border="0" width="100%"> </iframe> -->
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title></title>
     <url>/404.html</url>
     <content><![CDATA[+layout: false
@@ -464,11 +508,6 @@
         <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8" homePageUrl="/" homePageName="返回"></script> 
     <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","hOffset":50,"vOffset":0,"width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>关于博主</title>
@@ -505,8 +544,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -538,6 +577,11 @@
 <p><a href="https://pan.baidu.com/s/1Rwodbuz-hpwlVQlZLjjP8A" target="_blank" rel="noopener">AcrobatProDC</a>用的很久，2020版本的我前面看到的是没有PDF阅读器的，我也一直用的这个，安装完了就能直接使用，非常好用。自带虚拟打印机，虽然软件很大，但是打开速度很快，Adobe自带的文字识别也是好用到不行。</p>
 <h1 id="链接说明"><a href="#链接说明" class="headerlink" title="链接说明"></a>链接说明</h1><p>我虽然不喜欢百度云，但是说实话已经用了很久了，上面有很多的资源，所示还是分享的百度云链接，我分享的密码都是【2333】。还有就是只是软件的推荐，没有任何的教程，网上都是一搜一大把的，也非常仔细，如果有什么没有弄好或者觉得不清楚的欢迎评论或者给我发邮件说明哦~</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>收藏</title>

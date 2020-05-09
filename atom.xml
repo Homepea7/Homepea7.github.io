@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-04-24T14:53:58.794Z</updated>
+  <updated>2020-05-09T02:48:08.925Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,16 +17,110 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>安卓手机免root使用ADB命令卸载预装软件（去广告）</title>
+    <link href="https://homepea7.github.io/2020/13.ADB-Shell/"/>
+    <id>https://homepea7.github.io/2020/13.ADB-Shell/</id>
+    <published>2020-05-09T02:23:13.000Z</published>
+    <updated>2020-05-09T02:48:08.925Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ADB" scheme="https://Homepea7.github.io/categories/ADB/"/>
+    
+    
+      <category term="ADB" scheme="https://Homepea7.github.io/tags/ADB/"/>
+    
+      <category term="系统去广告" scheme="https://Homepea7.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8E%BB%E5%B9%BF%E5%91%8A/"/>
+    
+      <category term="root" scheme="https://Homepea7.github.io/tags/root/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
+    <link href="https://homepea7.github.io/2020/07.Termux+KODExplorer/"/>
+    <id>https://homepea7.github.io/2020/07.Termux+KODExplorer/</id>
+    <published>2020-05-06T04:56:51.945Z</published>
+    <updated>2020-02-21T02:54:40.394Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Termux" scheme="https://Homepea7.github.io/categories/Termux/"/>
+    
+    
+      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
+    
+      <category term="KODExplorer" scheme="https://Homepea7.github.io/tags/KODExplorer/"/>
+    
+      <category term="Git" scheme="https://Homepea7.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://homepea7.github.io/2020/01.hello-world/"/>
+    <id>https://homepea7.github.io/2020/01.hello-world/</id>
+    <published>2020-05-06T04:56:51.850Z</published>
+    <updated>2020-05-05T01:41:08.350Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://Homepea7.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://Homepea7.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Adobe Premiere使两段视频分辨率一致</title>
     <link href="https://homepea7.github.io/2020/12.PR-Resolution/"/>
     <id>https://homepea7.github.io/2020/12.PR-Resolution/</id>
     <published>2020-04-24T14:23:13.000Z</published>
-    <updated>2020-04-24T14:53:58.794Z</updated>
+    <updated>2020-05-09T01:15:22.173Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近学习剪视频，我下了一个4K的白蛇：缘起，然后学习B站大佬的&lt;a href=&quot;https://www.bilibili.com/video/BV1HJ411h78u&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;水墨转场&lt;/a&gt;跟着做，下载了他的水墨素材，然后发现分辨率不对应，如下图所示，记录一下解决的办法。&lt;br&gt;&lt;img src=&quot;/images/Premiere/P1.png&quot; alt=&quot;P1&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;原因分析&quot;&gt;&lt;a href=&quot;#原因分析&quot; class=&quot;headerlink&quot; title=&quot;原因分析&quot;&gt;&lt;/a&gt;原因分析&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近学习剪视频，我下了一个4K的白蛇：缘起，然后学习B站大佬的&lt;a
+        
+      
     
     </summary>
     
@@ -47,8 +141,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;上一次说到了使用USB网卡连接Wi-Fi，这样可以正常联网和下载程序，但是有一点比较麻烦的是需要串口，是有线的连接，比较麻烦，而使用SSH的话就可以远程使用了，非常的方便，下面做一个简单地介绍。&lt;/p&gt;
-&lt;h1 id=&quot;开启SSH&quot;&gt;&lt;a href=&quot;#开启SSH&quot; class=&quot;headerlink&quot; title=&quot;开启SSH&quot;&gt;&lt;/a&gt;开启SSH&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -71,8 +170,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前面说过，我买到的这个树莓派是一代A+，没网口，Wi-Fi和蓝牙也都没有，就仅仅只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11/n的，免驱，插上就能用。于是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~&lt;/p&gt;
-&lt;p&gt;说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！参考威胁电子的统计资料，这个型号功耗在3.5W左右，但是这里建议还是使用5V2A及以上的供电！&lt;/p&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -97,8 +201,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近天天在家也没事儿干，淘宝倒是逛的挺多的，这两天看到一家店，本来想买一个猫盘组一台NAS的，最终只买了一个OpenWrt软路由和一块树莓派。说起这个树莓派那就很有意思了，一代A+，只有一个USB口，一个HDMI，一个音频输出好一个MicroUSB供电，没有带网口，因此操作起来就比较麻烦了，但是，记住但是，真的便宜，只要38块RMB，还是512M的内存，然后开始了今天的内容，使用串口访问树莓派。这样做的好处是省出来那个USB口，后来知道可以接免驱的USB网卡，刚刚好，开启SSH的话串口都不需要，美滋滋&lt;del&gt;~&lt;/del&gt;&lt;/p&gt;
-&lt;h1 id=&quot;配置串口终端&quot;&gt;&lt;a href=&quot;#配置串口终端&quot; class=&quot;headerlink&quot; title=&quot;配置串口终端&quot;&gt;&lt;/a&gt;配置串口终端&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -121,8 +230,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;参考文献部分，如果在最后单页而且是单栏就会非常不好看，双栏就会好很多，效果如下。其实现的方法非常简单，有两种，介绍如下&lt;br&gt;&lt;img src=&quot;/images/Latex/1.1Ref.png&quot; alt=&quot;Ref&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;方法一：balance&quot;&gt;&lt;a href=&quot;#方法一：balance&quot; class=&quot;headerlink&quot; title=&quot;方法一：balance&quot;&gt;&lt;/a&gt;方法一：balance&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;参考文献部分，如果在最后单页而且是单栏就会非常不好看，双栏就会好很多，效果如下。其实现的方法非常简单，有两种，介绍如下&lt;br&gt;&lt;img
+        
+      
     
     </summary>
     
@@ -135,32 +249,6 @@
   </entry>
   
   <entry>
-    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
-    <link href="https://homepea7.github.io/2020/07.Termux+KODExplorer/"/>
-    <id>https://homepea7.github.io/2020/07.Termux+KODExplorer/</id>
-    <published>2020-02-20T14:11:30.267Z</published>
-    <updated>2020-02-21T02:54:40.394Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。&lt;/p&gt;
-&lt;h1 id=&quot;安装前提&quot;&gt;&lt;a href=&quot;#安装前提&quot; class=&quot;headerlink&quot; title=&quot;安装前提&quot;&gt;&lt;/a&gt;安装前提&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Termux" scheme="https://Homepea7.github.io/categories/Termux/"/>
-    
-    
-      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
-    
-      <category term="KODExplorer" scheme="https://Homepea7.github.io/tags/KODExplorer/"/>
-    
-      <category term="Git" scheme="https://Homepea7.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>通过更改Hosts解决Github进不去</title>
     <link href="https://homepea7.github.io/2020/06.GitHub-SpeedUp/"/>
     <id>https://homepea7.github.io/2020/06.GitHub-SpeedUp/</id>
@@ -169,8 +257,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近在家上GitHub还算比较多，但是发现经常进不去，最近的梯子也进本都挂了，导致GitHub有时候进不去，然后去网上搜了很多办法，发现效果还比较好，在这里做一个小小的总结和分享。&lt;/p&gt;
-&lt;h1 id=&quot;原因分析&quot;&gt;&lt;a href=&quot;#原因分析&quot; class=&quot;headerlink&quot; title=&quot;原因分析&quot;&gt;&lt;/a&gt;原因分析&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -193,8 +286,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL锁现在不能解开了，因此没有Root权限（感觉华为这件事儿很恶心）。我花了好长时间去解锁（其实就是不想去淘宝花30块钱），但是都没有成功，因此一直都搁置在，今天还是给拿出来了试试，终于成功在没有root权限的情况下安装了ubuntu，并且通过SSH连接上去了，可以跑一些Python程序，感觉还是很开心的，下面说说具体的过程。&lt;/p&gt;
-&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -275,8 +373,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;本文仅仅是介绍几条简单的指令，将本地的代码上传到GitHub，免得老是忘记，因此写了这篇博文，内容比较简单。&lt;/p&gt;
-&lt;h1 id=&quot;安装Git，创建码仓&quot;&gt;&lt;a href=&quot;#安装Git，创建码仓&quot; class=&quot;headerlink&quot; title=&quot;安装Git，创建码仓&quot;&gt;&lt;/a&gt;安装Git，创建码仓&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;本文仅仅是介绍几条简单的指令，将本地的代码上传到GitHub，免得老是忘记，因此写了这篇博文，内容比较简单。&lt;/p&gt;
+&lt;h1
+        
+      
     
     </summary>
     
@@ -299,8 +403,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a href=&quot;https://zh-cn.wordpress.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WordPress&lt;/a&gt;的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我&lt;a href=&quot;http://begild.top/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;队友&lt;/a&gt;，决定用&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;试试。&lt;/p&gt;
-&lt;p&gt;最初它推荐的是国内的&lt;a href=&quot;https://coding.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Coding&lt;/a&gt;上面建站，访问速度比&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt;快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。&lt;/p&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a
+        
+      
     
     </summary>
     
@@ -311,28 +420,6 @@
       <category term="Hexo" scheme="https://Homepea7.github.io/tags/Hexo/"/>
     
       <category term="Next" scheme="https://Homepea7.github.io/tags/Next/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://homepea7.github.io/2020/01.hello-world/"/>
-    <id>https://homepea7.github.io/2020/01.hello-world/</id>
-    <published>2020-02-02T04:22:55.165Z</published>
-    <updated>2020-02-10T06:23:35.441Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/tags/Hexo/"/>
     
   </entry>
   
