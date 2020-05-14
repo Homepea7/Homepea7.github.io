@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pokeball_16px.png">
+  <link rel="mask-icon" href="/images/pokeball_logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://Homepea7.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"right","display":"always","padding":18,"offset":12,"b2t":true,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  <meta name="description" content="说明研究生了，于是写Latex的文档也比较多，之前同学们之间推荐的都是使用的Ctex，在 CTeX 套装刚刚问世之时，因其解决了繁琐的中文字体安装工作，所以广受欢迎，但是，一方面 CTeX 套装已经很久不更新，内里的宏包、工具陈旧。不过个人感觉太臃肿，而且安装要接近4G的样子，而且自带的编辑器界面是真的丑。于是就去扒了一下，发现其实就是使用MikTex编译和生成的，于是下载了MikTex的原版软件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用VScode与Latex写论文">
+<meta property="og:url" content="https://homepea7.github.io/2020/14.VSCode-Latex/index.html">
+<meta property="og:site_name" content="Homepea&#39;s Blog">
+<meta property="og:description" content="说明研究生了，于是写Latex的文档也比较多，之前同学们之间推荐的都是使用的Ctex，在 CTeX 套装刚刚问世之时，因其解决了繁琐的中文字体安装工作，所以广受欢迎，但是，一方面 CTeX 套装已经很久不更新，内里的宏包、工具陈旧。不过个人感觉太臃肿，而且安装要接近4G的样子，而且自带的编辑器界面是真的丑。于是就去扒了一下，发现其实就是使用MikTex编译和生成的，于是下载了MikTex的原版软件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://homepea7.github.io/images/Latex/2.1.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Latex/2.2.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Latex/2.3.png">
+<meta property="og:image" content="https://homepea7.github.io/images/Latex/2.4.png">
+<meta property="article:published_time" content="2020-05-14T11:46:13.000Z">
+<meta property="article:modified_time" content="2020-05-14T12:56:41.242Z">
+<meta property="article:author" content="Kavin Homepea">
+<meta property="article:tag" content="Latex">
+<meta property="article:tag" content="VsCode">
+<meta property="article:tag" content="MiKTeX">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://homepea7.github.io/images/Latex/2.1.png">
+
+<link rel="canonical" href="https://homepea7.github.io/2020/14.VSCode-Latex/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>使用VScode与Latex写论文 | Homepea's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-157890086-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Homepea's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homepea's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Good good study, day day up!</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-favorites">
+
+    <a href="/favorites/" rel="section"><i class="fa fa-fw fa-bookmark"></i>收藏</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-fw fa-gift"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404.html/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/14.VSCode-Latex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kavin Homepea">
+      <meta itemprop="description" content="Better me">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homepea's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用VScode与Latex写论文
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-14 19:46:13 / 修改时间：20:56:41" itemprop="dateCreated datePublished" datetime="2020-05-14T19:46:13+08:00">2020-05-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Latex/" itemprop="url" rel="index">
+                    <span itemprop="name">Latex</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/14.VSCode-Latex/" class="post-meta-item leancloud_visitors" data-flag-title="使用VScode与Latex写论文" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/14.VSCode-Latex/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/14.VSCode-Latex/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>研究生了，于是写Latex的文档也比较多，之前同学们之间推荐的都是使用的Ctex，在 CTeX 套装刚刚问世之时，因其解决了繁琐的中文字体安装工作，所以广受欢迎，但是，一方面 CTeX 套装已经很久不更新，内里的宏包、工具陈旧。不过个人感觉太臃肿，而且安装要接近4G的样子，而且自带的编辑器界面是真的丑。于是就去扒了一下，发现其实就是使用MikTex编译和生成的，于是下载了MikTex的原版软件安装了试试，安装完了之后800M不到，虽然界面也比较难看，不过比Ctex好，而且非常简洁，还自带了PDF的阅读器，他的放大镜用起来非常舒服，感觉还是挺不错的，也用了一段时间，最近看到了用VSCode配置，发现真的是非常的简单和方便，而且VSCode这个软件真的是越用越爽，于是搜了一些资料然后自己尝试了一下，做了这个记录。</p>
+<h1 id="软件安装和配置"><a href="#软件安装和配置" class="headerlink" title="软件安装和配置"></a>软件安装和配置</h1><p>软件有三个，分别是<a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">VSCode</a>,<a href="https://miktex.org/download" target="_blank" rel="noopener">MiKTeX</a>或者<a href="https://tug.org/texlive/" target="_blank" rel="noopener">Tex Live</a>选其一，还有<a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer.html" target="_blank" rel="noopener">Sumatra PDF</a>。</p>
+<p>说说这三个软件，VSCode是微软推出的轻量级编辑器，个人觉得非常好用，目前我在Win10上的文本编辑基本都是这个软件，不管是C，还是Python都是非常好的，还能用SSH，十分推荐。其次是MiXTek和Tex Live，这两个我觉得都是差不多的，个人比较建议用MiKTex，他能设置自动获取的宏包，感觉还比较方便，安装起来也比较简洁，最后是Sumatra PDF，我个人认为最好的PDF阅读器，没有之一，要说缺点的话就是不能编辑，但是真的是非常清凉，而且打开速度非常快，重点是右键就是手抓模式，跟AD里面一样，所以用着很爽，还有就是他的缩放很到位。</p>
+<p>软件的安装还是比较简单，我觉得没什么说的，重点就是添加环境变量。Win10 中将路径添加到环境变量中的步骤如下：右键我的电脑，然后选择”属性”，在左侧选择 “高级系统设置”，然后选择下方的”环境变量”，选择变量”Path”编辑，将需要添加的路径添加进去即可，如下所示：</p>
+<p><img src="/images/Latex/2.1.png" alt="P2.1"></p>
+<p>现在已经可以完整使用MiKTex编译tex文件并且生成PDF了，但是MiKTex的环境也不太友好，我们还是选择VSCode。要做的就是VSCode里面安装拓展来调用插件LaTeX Workshop插件，直接搜索和安装即可在使用VSCode里面写论文了。新建一个文件夹，在文件夹里面新建一个 .tex 文件，最好是英文的，然后试试下面的Hello World。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line"></span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line"></span><br><span class="line">Hello,world 1!</span><br><span class="line">Hello,world 2!</span><br><span class="line">Hello,world 3!</span><br><span class="line"></span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>按”Ctrl + Alt + B”三个按键编译，会生成PDF文件，第一次可能比较慢，后面编译会快很多，这样基本环境就搭建好了。</p>
+<h1 id="添加其他的编译方式"><a href="#添加其他的编译方式" class="headerlink" title="添加其他的编译方式"></a>添加其他的编译方式</h1><p>VSCode 默认添加了3个编译工具：分别是latexmk，pdflatex 和bibtex，这样会导致一些问题，比如中文编译报错， 添加参考文献”.bib”文件有问题等等。为了添加其他的编译方式（比如xelatex），我们需要修改LaTeX Workshop 的配置。打开LaTeX Workshop 配置的方法如下：在VSCode界面左上角，依次选择 “文件”-&gt;”首选项”-&gt;”设置”，这样就到了设置界面，然后在屏幕右上角找到文件上一个箭头的标志，弹出内容是”打开设置（JSON）”，点击会进入编辑内容，将下面的内容直接复制到看到的第一个大括号里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">&quot;latex-workshop.showContextMenu&quot;:true, &#x2F;&#x2F;右键菜单  &quot;latex-workshop.intellisense.package.enabled&quot;: true, &#x2F;&#x2F;根据加载的包，自动完成命令或包  &quot;latex-workshop.latex.autoBuild.run&quot;: &quot;never&quot;,&#x2F;&#x2F;禁止保存文件时自动build  &quot;latex-workshop.latex.recipes&quot;: [</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;PDFLaTeX&quot;,</span><br><span class="line">     &quot;tools&quot;:[&quot;pdflatex&quot;]</span><br><span class="line"> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;PDFLaTeX with Shell Escape&quot;,</span><br><span class="line">     &quot;tools&quot;: [&quot;pdflatex-with-shell-escape&quot;]</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;XeLaTeX&quot;,</span><br><span class="line">     &quot;tools&quot;: [&quot;xelatex&quot;]</span><br><span class="line"> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;XeLaTeX with Shell Escape&quot;,</span><br><span class="line">     &quot;tools&quot;: [&quot;xelatex-with-shell-escape&quot;]</span><br><span class="line"> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;pdflatex -&gt; bibtex -&gt; pdflatex*2&quot;,</span><br><span class="line">     &quot;tools&quot;: [&quot;pdflatex&quot;, &quot;bibtex&quot;, &quot;pdflatex&quot;, &quot;pdflatex&quot;]</span><br><span class="line">&#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;xelatex -&gt; bibtex -&gt; xelatex*2&quot;,</span><br><span class="line">     &quot;tools&quot;: [&quot;xelatex&quot;, &quot;bibtex&quot;, &quot;xelatex&quot;, &quot;xelatex&quot;]</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;LaTeXmk&quot;,</span><br><span class="line">     &quot;tools&quot;: [&quot;latexmk&quot;]</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;BibTeX&quot;,</span><br><span class="line">     &quot;tools&quot;: [&quot;bibtex&quot;]</span><br><span class="line">   &#125;</span><br><span class="line"> ],</span><br><span class="line"> &quot;latex-workshop.latex.tools&quot;: [</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;latexmk&quot;,</span><br><span class="line">     &quot;command&quot;: &quot;latexmk&quot;,</span><br><span class="line">     &quot;args&quot;: [</span><br><span class="line">       &quot;-synctex&#x3D;1&quot;,</span><br><span class="line">       &quot;-interaction&#x3D;nonstopmode&quot;,</span><br><span class="line">       &quot;-file-line-error&quot;,</span><br><span class="line">       &quot;-pdf&quot;,</span><br><span class="line">       &quot;-outdir&#x3D;%OUTDIR%&quot;,</span><br><span class="line">       &quot;%DOCFILE%&quot;</span><br><span class="line"> ],</span><br><span class="line">     &quot;env&quot;: &#123;&#125;</span><br><span class="line"> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;pdflatex&quot;,</span><br><span class="line">     &quot;command&quot;: &quot;pdflatex&quot;,</span><br><span class="line">     &quot;args&quot;: [</span><br><span class="line">       &quot;-synctex&#x3D;1&quot;,</span><br><span class="line">       &quot;-interaction&#x3D;nonstopmode&quot;,</span><br><span class="line">       &quot;-file-line-error&quot;,</span><br><span class="line">       &quot;%DOCFILE%&quot;</span><br><span class="line"> ],</span><br><span class="line">     &quot;env&quot;: &#123;&#125;</span><br><span class="line"> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;pdflatex-with-shell-escape&quot;,</span><br><span class="line">     &quot;command&quot;: &quot;pdflatex&quot;,</span><br><span class="line">     &quot;args&quot;: [</span><br><span class="line">       &quot;--shell-escape&quot;,</span><br><span class="line">       &quot;-synctex&#x3D;1&quot;,</span><br><span class="line">       &quot;-interaction&#x3D;nonstopmode&quot;,</span><br><span class="line">       &quot;-file-line-error&quot;,</span><br><span class="line">       &quot;%DOCFILE%&quot;</span><br><span class="line"> ],</span><br><span class="line">     &quot;env&quot;: &#123;&#125;</span><br><span class="line"> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;xelatex&quot;,</span><br><span class="line">     &quot;command&quot;: &quot;xelatex&quot;,</span><br><span class="line">     &quot;args&quot;: [</span><br><span class="line">       &quot;-synctex&#x3D;1&quot;,</span><br><span class="line">       &quot;-interaction&#x3D;nonstopmode&quot;,</span><br><span class="line">       &quot;-file-line-error&quot;,</span><br><span class="line">       &quot;%DOCFILE%&quot;</span><br><span class="line">   ],</span><br><span class="line">     &quot;env&quot;: &#123;&#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;xelatex-with-shell-escape&quot;,</span><br><span class="line">     &quot;command&quot;: &quot;xelatex&quot;,</span><br><span class="line">     &quot;args&quot;: [</span><br><span class="line">       &quot;--shell-escape&quot;,</span><br><span class="line">       &quot;-synctex&#x3D;1&quot;,</span><br><span class="line">       &quot;-interaction&#x3D;nonstopmode&quot;,</span><br><span class="line">       &quot;-file-line-error&quot;,</span><br><span class="line">       &quot;%DOCFILE%&quot;</span><br><span class="line"> ],</span><br><span class="line">     &quot;env&quot;: &#123;&#125;</span><br><span class="line"> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;name&quot;: &quot;bibtex&quot;,</span><br><span class="line">     &quot;command&quot;: &quot;bibtex&quot;,</span><br><span class="line">     &quot;args&quot;: [&quot;%DOCFILE%&quot;],</span><br><span class="line">     &quot;env&quot;: &#123;&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> ],</span><br><span class="line"> &quot;latex-workshop.latex.clean.fileTypes&quot;: [</span><br><span class="line"> &#x2F;&#x2F;设定清理文件的类型(ctrl+alt+c：清除辅助文件)    &quot;*.aux&quot;,</span><br><span class="line">   &quot;*.bbl&quot;,</span><br><span class="line">   &quot;*.blg&quot;,</span><br><span class="line">   &quot;*.idx&quot;,</span><br><span class="line">   &quot;*.ind&quot;,</span><br><span class="line">   &quot;*.lof&quot;,</span><br><span class="line">   &quot;*.lot&quot;,</span><br><span class="line">   &quot;*.out&quot;,</span><br><span class="line">   &quot;*.toc&quot;,</span><br><span class="line">   &quot;*.acn&quot;,</span><br><span class="line">   &quot;*.acr&quot;,</span><br><span class="line">   &quot;*.alg&quot;,</span><br><span class="line">   &quot;*.glg&quot;,</span><br><span class="line">   &quot;*.glo&quot;,</span><br><span class="line">   &quot;*.gls&quot;,</span><br><span class="line">   &quot;*.ist&quot;,</span><br><span class="line">   &quot;*.fls&quot;,</span><br><span class="line">   &quot;*.log&quot;,</span><br><span class="line">   &quot;*.fdb_latexmk&quot;,</span><br><span class="line">   &quot;*.nav&quot;,</span><br><span class="line">   &quot;*.snm&quot;,</span><br><span class="line">   &quot;*.synctex.gz&quot;,</span><br><span class="line">   &quot;*.bcf&quot;,</span><br><span class="line">   &quot;*.run.xml&quot;</span><br><span class="line"> ],</span><br></pre></td></tr></table></figure>
+<p>如下图所示：<br><img src="/images/Latex/2.2.png" alt="P2.2"></p>
+<p>保存好了之后重启VSCOde，用XeLaTex尝试下面编译带中文的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[a4paper]&#123;ctexart&#125; %CTEX报告文章格式</span><br><span class="line"></span><br><span class="line">\usepackage[top &#x3D; 2cm, bottom &#x3D; 2cm, left &#x3D; 2cm, right &#x3D; 2cm]&#123;geometry&#125; % 页边距</span><br><span class="line">\usepackage&#123;ctex&#125;</span><br><span class="line"></span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line"></span><br><span class="line">试试</span><br><span class="line"></span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>如图所示，应该也是没多大问题的。<br><img src="/images/Latex/2.3.png" alt="P2.3"></p>
+<h1 id="正向检索，反向检索和双向检索"><a href="#正向检索，反向检索和双向检索" class="headerlink" title="正向检索，反向检索和双向检索"></a>正向检索，反向检索和双向检索</h1><p>“反向检索”是什么意思呢，就是是同.tex文件生成的PDF，在查阅的时候双击，可以快速定位到原来tex文档的地方，可以用来快速且准确地修改。</p>
+<h2 id="正向检索"><a href="#正向检索" class="headerlink" title="正向检索"></a>正向检索</h2><p>首先是正向检索，跟前面设置编译项相同，在VSCode里面设置JSON，添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置预览方式</span><br><span class="line">&quot;latex-workshop.view.pdf.viewer&quot;: &quot;external&quot;,</span><br><span class="line">&quot;latex-workshop.view.pdf.ref.viewer&quot;: &quot;external&quot;,</span><br><span class="line">&#x2F;&#x2F; 设置外部PDF预览器</span><br><span class="line">&quot;latex-workshop.view.pdf.external.viewer.command&quot;: &quot;D:&#x2F;Sumatra&#x2F;SumatraPDF.exe&quot;,</span><br><span class="line">&quot;latex-workshop.view.pdf.external.viewer.args&quot;: [&quot;%PDF%&quot;],</span><br><span class="line">&#x2F;&#x2F; 配置Syntex的正向搜索(Latex-&gt;PDF)</span><br><span class="line">&quot;latex-workshop.view.pdf.external.synctex.command&quot;: &quot;D:&#x2F;Sumatra&#x2F;SumatraPDF.exe&quot;,</span><br><span class="line">&quot;latex-workshop.view.pdf.external.synctex.args&quot;: [</span><br><span class="line">  &quot;-forward-search&quot;,</span><br><span class="line">  &quot;%TEX%&quot;,</span><br><span class="line">  &quot;%LINE%&quot;,</span><br><span class="line">  &quot;-reuse-instance&quot;,</span><br><span class="line">  &quot;-inverse-search&quot;,</span><br><span class="line">  &quot;D:&#x2F;VSCode&#x2F;Code.exe D:&#x2F;VSCode&#x2F;resources&#x2F;app&#x2F;out&#x2F;cli.js -r -g %f:%l&quot;,</span><br><span class="line">  &quot;%PDF%&quot;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>注意注意，路径要替换成自己的！！！路径要替换成自己的！！！路径要替换成自己的！！！</p>
+<h2 id="反向检索"><a href="#反向检索" class="headerlink" title="反向检索"></a>反向检索</h2><p>下面是反向搜索，这个应该是SumatraPDF软件带的功能，在SumatraPDF的”设置”-&gt;”选项”中设置，添加的内容如下，还是注意：路径要替换成自己的！其次就是”&quot;和”/“的用法，在VSCode里面”&quot;是转义符，因此要表达”&quot;可以用”\“或者”/“来表达，大家按照我上面写的直接改路径即可，记得两个符号的不同。大家可以试试双击生成的PDF文字就可以体会到，非常实用！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;D:\VSCode\Code.exe&quot;  -g  &quot;%f:%l&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Latex/2.4.png" alt="P2.4"></p>
+<h2 id="双向检索"><a href="#双向检索" class="headerlink" title="双向检索"></a>双向检索</h2><p>将光标移动到TeX文件的正文。ctrl+alt+x，找到”navigator,select and edit”，点击第一项”syncTeX from cursor”(或右键选择，或快捷键ctrl+alt+j)，会切换到PDF文件的相应位置并高亮显示。</p>
+<p>其实VSCode里面也能立即展示PDF，感觉也挺好用的，也能自适应页宽，大家觉得不错的话也可以试试。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>其实这就是一个提高效率的方法，用着自己觉得舒服的编辑器来工作我觉得是非常舒服的事情，早期我一直用的Sublime，但是Sublime会弹出自动更新的提示，还有提醒捐赠，虽然弹窗次数不多但是也觉着不舒服，也不想网上找破解了，尊重一下别人的劳动成果嘛，毕竟VSCode是免费的，也挺好用的，整体就是这样，感觉VSCode+MiKTex是一个非常好的选择！最后感谢<a href="https://mp.weixin.qq.com/s?__biz=MzI5MDI0ODEyNg==&mid=2247483750&idx=1&sn=f420aa6427e8a97b840fdabc473a6a01&chksm=ec2385b7db540ca16c369e560069eb4fd2070c6c112fcf76b4ad3346b815cf65bd49182eb752&mpshare=1&scene=1&srcid=&sharer_sharetime=1583150851810&sharer_shareid=d4bad27b7c193c89829e4b88500ddaa3&key=319ea6b0e73c8768b8eab405f52cc89f8f210f5bcbaff03642bc42f70d08d3278c27fbb7822a01ad902c59a409697039a914afdb65c8b07578cd0c5b51f07bf13927ac404b15c203771959f00970950e&ascene=1&uin=MTgxNzM5MjIyNA%3D%3D&devicetype=Windows+10&version=62080079&lang=zh_CN&exportkey=AVMUEk2ansz%2B4XY5aceI%2Fas%3D&pass_ticket=FyB7qu%2Bm9yTy8UywTToOau5gRVKwoaGtbJ9qAyEuJdSemZx7ySdqKR2%2BMtt0SQtS" target="_blank" rel="noopener">VSCode中文社区的分享</a>！</p>
+
+    </div>
+
+    
+    
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Latex/" rel="tag"><i class="fa fa-tag"></i> Latex</a>
+              <a href="/tags/VsCode/" rel="tag"><i class="fa fa-tag"></i> VsCode</a>
+              <a href="/tags/MiKTeX/" rel="tag"><i class="fa fa-tag"></i> MiKTeX</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/13.ADB-Shell/" rel="prev" title="安卓手机免root使用ADB命令卸载预装软件（去广告）">
+      <i class="fa fa-chevron-left"></i> 安卓手机免root使用ADB命令卸载预装软件（去广告）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件安装和配置"><span class="nav-number">2.</span> <span class="nav-text">软件安装和配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加其他的编译方式"><span class="nav-number">3.</span> <span class="nav-text">添加其他的编译方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正向检索，反向检索和双向检索"><span class="nav-number">4.</span> <span class="nav-text">正向检索，反向检索和双向检索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正向检索"><span class="nav-number">4.1.</span> <span class="nav-text">正向检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向检索"><span class="nav-number">4.2.</span> <span class="nav-text">反向检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双向检索"><span class="nav-number">4.3.</span> <span class="nav-text">双向检索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kavin Homepea"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kavin Homepea</p>
+  <div class="site-description" itemprop="description">Better me</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Homepea7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Homepea7" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kavinhomepea@gmail.com" title="E-Mail → mailto:kavinhomepea@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homepea</span>
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">28k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">26 分钟</span>
+</div>
+
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("01/01/2020 12:00:00");
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.4' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'CCp6fpSlvQK1Wh7l8lr9Vglh-gzGzoHsz',
+      appKey: '7ANNsdbheFJqf9q2mrDcnhAp',
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar: 'monsterid',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+    
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","hOffset":50,"vOffset":0,"width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
