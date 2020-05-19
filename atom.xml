@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-05-14T12:56:41.242Z</updated>
+  <updated>2020-05-19T02:29:42.066Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用VScode与Latex写论文</title>
+    <title>VSCode画图神器--Drawio</title>
+    <link href="https://homepea7.github.io/2020/15.VSCode-Drawio/"/>
+    <id>https://homepea7.github.io/2020/15.VSCode-Drawio/</id>
+    <published>2020-05-19T02:03:41.000Z</published>
+    <updated>2020-05-19T02:29:42.066Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;论文中画矢量图基本是刚需了，还有流程图也是经常用到的，微软家的Visio老师感觉怪怪的，画出来的图嵌入Word会自动缩放，因此字体大小也不对，所以我是直接放弃了一般用AI，前几天看VSCode的插件，发现VSCode居然也能画图，没错，你没看错，VSCode居然也能敲代码！&lt;/p&gt;
+&lt;p&gt;好了不开玩笑了，介绍今天的主角：Drawio。它本身是一个网页版的应用，跟我以前用的&lt;a href=&quot;https://www.processon.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Process On&lt;/a&gt;差不多的，烦人的是他限制画图个数，后来就放弃了。后来发现了Draw i哦，而且一位来自德国前端工程师Henning Dieterichs成功将 &lt;a href=&quot;http://draw.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;draw.io&lt;/a&gt; 的功能集成进了 VSCode，并打包成了插件供开发者下载使用，让你分分钟能用 VSCode 画出完美的流程图、思维导图与UML图，也有SVG矢量图的版本，十分好用，大家可以先去网页版试试功能，还可以设置语言，有简体中文。不仅如此，&lt;a href=&quot;http://draw.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;draw.io&lt;/a&gt; 还支持将图形保存到 Google Drive、One Drive 等云端硬盘上，如果你正在用这些云盘的话那就太方便了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Latex" scheme="https://Homepea7.github.io/categories/Latex/"/>
+    
+    
+      <category term="VsCode" scheme="https://Homepea7.github.io/tags/VsCode/"/>
+    
+      <category term="Drawio" scheme="https://Homepea7.github.io/tags/Drawio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用VScode与MiKTex写论文</title>
     <link href="https://homepea7.github.io/2020/14.VSCode-Latex/"/>
     <id>https://homepea7.github.io/2020/14.VSCode-Latex/</id>
     <published>2020-05-14T11:46:13.000Z</published>
-    <updated>2020-05-14T12:56:41.242Z</updated>
+    <updated>2020-05-19T02:02:57.964Z</updated>
     
     <summary type="html">
     
