@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-05-19T02:32:38.575Z</updated>
+  <updated>2020-06-17T14:48:21.072Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,86 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C语言的一些基础知识</title>
+    <link href="https://homepea7.github.io/2020/18.Basics%20of%20C/"/>
+    <id>https://homepea7.github.io/2020/18.Basics%20of%20C/</id>
+    <published>2020-06-10T09:03:51.000Z</published>
+    <updated>2020-06-17T14:48:21.072Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近准备在投简历，也是总结总结一下C语言的基础知识，做一些准备。首先说明，下文后面所做的所有的实验都是在win10_1909_x64环境下，gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)，软件使用的是VSCode。在C语言多线程的使用中，在VSCode配置好了C语言的基本环境之后就能直接使用了。&lt;/p&gt;
+&lt;h1 id=&quot;C语言的字与字节&quot;&gt;&lt;a href=&quot;#C语言的字与字节&quot; class=&quot;headerlink&quot; title=&quot;C语言的字与字节&quot;&gt;&lt;/a&gt;C语言的字与字节&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C language" scheme="https://Homepea7.github.io/categories/The-C-language/"/>
+    
+    
+      <category term="The C language" scheme="https://Homepea7.github.io/tags/The-C-language/"/>
+    
+      <category term="Some basics" scheme="https://Homepea7.github.io/tags/Some-basics/"/>
+    
+      <category term="Variable length" scheme="https://Homepea7.github.io/tags/Variable-length/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言实现CRC检验</title>
+    <link href="https://homepea7.github.io/2020/17.C-CRC/"/>
+    <id>https://homepea7.github.io/2020/17.C-CRC/</id>
+    <published>2020-05-28T10:17:51.000Z</published>
+    <updated>2020-06-17T14:23:40.770Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;之前在做一个项目的时候，为了保证数据的准确性，用到了CRC检验，现在将其总结一下，顺便也复习一下。首先说一下CRC校验，他的全称是循环冗余校验（cyclic redundancy check）。CRC检验的基本思想是利用线性编码理论，在发送端根据要传送的k位二进制码序列，以一定的规则产生一个检验码r位(就是CRC码)，附在信息后面，构成一个新的二进制码序列数共(k+r)位，最后发送出去。接收端根据同样的规则校验，以确定传送中是否出错。接收端有两种处理方式：1、计算k位序列的CRC码，与接收到的CRC比较，一致则接收正确。2、计算整个k+r位的CRC码，若为0，则接收正确。CRC码有多种检验位数，8位、16位、32位等，原理相同。16位的CRC码产生的规则是先将要发送的二进制序列数左移16位（即乘以2的16次方后），除以一个多项式，最后所得到的余数就是CRC码。&lt;/p&gt;
+&lt;p&gt;不说复杂了，CRC 算法的基本思想是将传输的数据当做一个位数很长的数，将这个数除以另一个数，得到的余数作为校验数据附加到原数据后面。除法采用正常的多项式乘除法，而加减法都采用模2运算。模2运算就是结果除以2后取余数，如 3 mod 2 = 1，在计算机中就是异或运算！下面举例说一下：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="The C language" scheme="https://Homepea7.github.io/categories/The-C-language/"/>
+    
+    
+      <category term="The C language" scheme="https://Homepea7.github.io/tags/The-C-language/"/>
+    
+      <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在51和STM32单片机上分别实现任意串口的类似printf操作</title>
+    <link href="https://homepea7.github.io/2020/16.C-uprintf/"/>
+    <id>https://homepea7.github.io/2020/16.C-uprintf/</id>
+    <published>2020-05-28T04:12:12.000Z</published>
+    <updated>2020-05-28T10:21:38.776Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;这个是在本科的时候就弄好了，最近整理本科的一些文件的时候又看到了这些，如是准备做一些小结，也是给自己回忆一下。在51和STM32两款单片机实现C语言自带的printf操作，打印在串口中断，或者用于串口的通讯，下面是具体的操作。&lt;/p&gt;
+&lt;h1 id=&quot;关于串行和并行&quot;&gt;&lt;a href=&quot;#关于串行和并行&quot; class=&quot;headerlink&quot; title=&quot;关于串行和并行&quot;&gt;&lt;/a&gt;关于串行和并行&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Embedded development" scheme="https://Homepea7.github.io/categories/Embedded-development/"/>
+    
+    
+      <category term="The C language" scheme="https://Homepea7.github.io/tags/The-C-language/"/>
+    
+      <category term="SingleChip" scheme="https://Homepea7.github.io/tags/SingleChip/"/>
+    
+      <category term="Uart" scheme="https://Homepea7.github.io/tags/Uart/"/>
+    
+      <category term="51" scheme="https://Homepea7.github.io/tags/51/"/>
+    
+      <category term="STM32" scheme="https://Homepea7.github.io/tags/STM32/"/>
+    
+  </entry>
   
   <entry>
     <title>VSCode画图神器--Drawio</title>
