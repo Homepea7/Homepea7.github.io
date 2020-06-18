@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-06-17T14:48:21.072Z</updated>
+  <updated>2020-05-05T01:41:08.000Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,11 +17,59 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hello World</title>
+    <link href="https://homepea7.github.io/2020/01.hello-world/"/>
+    <id>https://homepea7.github.io/2020/01.hello-world/</id>
+    <published>2020-06-16T15:42:39.891Z</published>
+    <updated>2020-05-05T01:41:08.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://Homepea7.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://Homepea7.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
+    <link href="https://homepea7.github.io/2020/07.Termux+KODExplorer/"/>
+    <id>https://homepea7.github.io/2020/07.Termux+KODExplorer/</id>
+    <published>2020-06-16T15:42:39.431Z</published>
+    <updated>2020-02-21T02:54:40.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。&lt;/p&gt;
+&lt;h1 id=&quot;安装前提&quot;&gt;&lt;a href=&quot;#安装前提&quot; class=&quot;headerlink&quot; title=&quot;安装前提&quot;&gt;&lt;/a&gt;安装前提&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Termux" scheme="https://Homepea7.github.io/categories/Termux/"/>
+    
+    
+      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
+    
+      <category term="KODExplorer" scheme="https://Homepea7.github.io/tags/KODExplorer/"/>
+    
+      <category term="Git" scheme="https://Homepea7.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>C语言的一些基础知识</title>
     <link href="https://homepea7.github.io/2020/18.Basics%20of%20C/"/>
     <id>https://homepea7.github.io/2020/18.Basics%20of%20C/</id>
     <published>2020-06-10T09:03:51.000Z</published>
-    <updated>2020-06-17T14:48:21.072Z</updated>
+    <updated>2020-06-17T14:48:21.000Z</updated>
     
     <summary type="html">
     
@@ -47,7 +95,7 @@
     <link href="https://homepea7.github.io/2020/17.C-CRC/"/>
     <id>https://homepea7.github.io/2020/17.C-CRC/</id>
     <published>2020-05-28T10:17:51.000Z</published>
-    <updated>2020-06-17T14:23:40.770Z</updated>
+    <updated>2020-06-17T14:23:40.000Z</updated>
     
     <summary type="html">
     
@@ -71,7 +119,7 @@
     <link href="https://homepea7.github.io/2020/16.C-uprintf/"/>
     <id>https://homepea7.github.io/2020/16.C-uprintf/</id>
     <published>2020-05-28T04:12:12.000Z</published>
-    <updated>2020-05-28T10:21:38.776Z</updated>
+    <updated>2020-05-28T10:21:38.000Z</updated>
     
     <summary type="html">
     
@@ -101,7 +149,7 @@
     <link href="https://homepea7.github.io/2020/15.VSCode-Drawio/"/>
     <id>https://homepea7.github.io/2020/15.VSCode-Drawio/</id>
     <published>2020-05-19T02:03:41.000Z</published>
-    <updated>2020-05-19T02:32:38.575Z</updated>
+    <updated>2020-05-19T02:32:38.000Z</updated>
     
     <summary type="html">
     
@@ -125,7 +173,7 @@
     <link href="https://homepea7.github.io/2020/14.VSCode-Latex/"/>
     <id>https://homepea7.github.io/2020/14.VSCode-Latex/</id>
     <published>2020-05-14T11:46:13.000Z</published>
-    <updated>2020-05-19T02:02:57.964Z</updated>
+    <updated>2020-06-18T02:27:59.608Z</updated>
     
     <summary type="html">
     
@@ -151,7 +199,7 @@
     <link href="https://homepea7.github.io/2020/13.ADB-Shell/"/>
     <id>https://homepea7.github.io/2020/13.ADB-Shell/</id>
     <published>2020-05-09T02:23:13.000Z</published>
-    <updated>2020-05-14T11:45:14.285Z</updated>
+    <updated>2020-05-14T11:45:14.000Z</updated>
     
     <summary type="html">
     
@@ -173,59 +221,11 @@
   </entry>
   
   <entry>
-    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
-    <link href="https://homepea7.github.io/2020/07.Termux+KODExplorer/"/>
-    <id>https://homepea7.github.io/2020/07.Termux+KODExplorer/</id>
-    <published>2020-05-06T04:56:51.945Z</published>
-    <updated>2020-02-21T02:54:40.394Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。&lt;/p&gt;
-&lt;h1 id=&quot;安装前提&quot;&gt;&lt;a href=&quot;#安装前提&quot; class=&quot;headerlink&quot; title=&quot;安装前提&quot;&gt;&lt;/a&gt;安装前提&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Termux" scheme="https://Homepea7.github.io/categories/Termux/"/>
-    
-    
-      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
-    
-      <category term="KODExplorer" scheme="https://Homepea7.github.io/tags/KODExplorer/"/>
-    
-      <category term="Git" scheme="https://Homepea7.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://homepea7.github.io/2020/01.hello-world/"/>
-    <id>https://homepea7.github.io/2020/01.hello-world/</id>
-    <published>2020-05-06T04:56:51.850Z</published>
-    <updated>2020-05-05T01:41:08.350Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Adobe Premiere使两段视频分辨率一致</title>
     <link href="https://homepea7.github.io/2020/12.PR-Resolution/"/>
     <id>https://homepea7.github.io/2020/12.PR-Resolution/</id>
     <published>2020-04-24T14:23:13.000Z</published>
-    <updated>2020-05-09T01:15:22.173Z</updated>
+    <updated>2020-05-09T01:15:22.000Z</updated>
     
     <summary type="html">
     
@@ -247,7 +247,7 @@
     <link href="https://homepea7.github.io/2020/11.Raspberry-SSH/"/>
     <id>https://homepea7.github.io/2020/11.Raspberry-SSH/</id>
     <published>2020-03-03T03:03:06.000Z</published>
-    <updated>2020-03-03T03:22:16.099Z</updated>
+    <updated>2020-03-03T03:22:16.000Z</updated>
     
     <summary type="html">
     
@@ -271,7 +271,7 @@
     <link href="https://homepea7.github.io/2020/10.Raspberry-USBPort/"/>
     <id>https://homepea7.github.io/2020/10.Raspberry-USBPort/</id>
     <published>2020-03-02T15:00:08.000Z</published>
-    <updated>2020-03-05T06:04:09.772Z</updated>
+    <updated>2020-03-05T06:04:09.000Z</updated>
     
     <summary type="html">
     
@@ -297,7 +297,7 @@
     <link href="https://homepea7.github.io/2020/09.Raspberry-Serial/"/>
     <id>https://homepea7.github.io/2020/09.Raspberry-Serial/</id>
     <published>2020-03-02T14:12:59.000Z</published>
-    <updated>2020-03-02T14:57:54.328Z</updated>
+    <updated>2020-03-02T14:57:54.000Z</updated>
     
     <summary type="html">
     
@@ -321,7 +321,7 @@
     <link href="https://homepea7.github.io/2020/08.Latex-References/"/>
     <id>https://homepea7.github.io/2020/08.Latex-References/</id>
     <published>2020-03-01T03:28:28.000Z</published>
-    <updated>2020-03-01T03:54:35.599Z</updated>
+    <updated>2020-03-01T03:54:35.000Z</updated>
     
     <summary type="html">
     
@@ -343,7 +343,7 @@
     <link href="https://homepea7.github.io/2020/06.GitHub-SpeedUp/"/>
     <id>https://homepea7.github.io/2020/06.GitHub-SpeedUp/</id>
     <published>2020-02-20T03:01:41.000Z</published>
-    <updated>2020-02-21T02:50:11.485Z</updated>
+    <updated>2020-02-21T02:50:11.000Z</updated>
     
     <summary type="html">
     
@@ -367,7 +367,7 @@
     <link href="https://homepea7.github.io/2020/05.Termux/"/>
     <id>https://homepea7.github.io/2020/05.Termux/</id>
     <published>2020-02-15T11:19:53.000Z</published>
-    <updated>2020-02-20T15:01:59.228Z</updated>
+    <updated>2020-02-20T15:01:59.000Z</updated>
     
     <summary type="html">
     
@@ -393,7 +393,7 @@
     <link href="https://homepea7.github.io/2020/00.WuHan/"/>
     <id>https://homepea7.github.io/2020/00.WuHan/</id>
     <published>2020-02-10T06:27:55.000Z</published>
-    <updated>2020-02-21T02:48:16.040Z</updated>
+    <updated>2020-02-21T02:48:16.000Z</updated>
     
     <summary type="html">
     
@@ -418,7 +418,7 @@
     <link href="https://homepea7.github.io/2020/04.LeetCode/"/>
     <id>https://homepea7.github.io/2020/04.LeetCode/</id>
     <published>2020-02-09T14:11:19.000Z</published>
-    <updated>2020-02-09T13:55:36.070Z</updated>
+    <updated>2020-02-09T13:55:36.000Z</updated>
     
     <summary type="html">
     
@@ -449,7 +449,7 @@
     <link href="https://homepea7.github.io/2020/03.Git-Commit/"/>
     <id>https://homepea7.github.io/2020/03.Git-Commit/</id>
     <published>2020-02-09T13:31:34.000Z</published>
-    <updated>2020-02-10T06:41:36.391Z</updated>
+    <updated>2020-02-10T06:41:36.000Z</updated>
     
     <summary type="html">
     
@@ -473,7 +473,7 @@
     <link href="https://homepea7.github.io/2020/02.Hexo+Next/"/>
     <id>https://homepea7.github.io/2020/02.Hexo+Next/</id>
     <published>2020-02-05T12:09:02.000Z</published>
-    <updated>2020-03-03T02:51:18.123Z</updated>
+    <updated>2020-03-03T02:51:18.000Z</updated>
     
     <summary type="html">
     
