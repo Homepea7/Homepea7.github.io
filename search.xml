@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/01.hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<script>//底部特效字
-    var chakhsu = function(r) {function t(){return b[Math.floor(Math.random()*b.length)]}function e(){return String.fromCharCode(94*Math.random()+33)}function n(r){for(var n=document.createDocumentFragment(),i=0;r>i;i++){var l=document.createElement("span");l.textContent=e(),l.style.color=t(),n.appendChild(l)}return n}function i(){var t=o[c.skillI];c.step?c.step--:(c.step=g,c.prefixP<l.length?(c.prefixP>=0&&(c.text+=l[c.prefixP]),c.prefixP++):"forward"===c.direction?c.skillP<t.length?(c.text+=t[c.skillP],c.skillP++):c.delay?c.delay--:(c.direction="backward",c.delay=a):c.skillP>0?(c.text=c.text.slice(0,-1),c.skillP--):(c.skillI=(c.skillI+1)%o.length,c.direction="forward")),r.textContent=c.text,r.appendChild(n(c.prefixP<l.length?Math.min(s,s+c.prefixP):Math.min(s,t.length-c.skillP))),setTimeout(i,d)}
-        var l = "",
-            o = ["六年了.....","我并没有成为更好的自己.....", "如今我们深夜饮酒.....", "杯子碰到一起.....", "都是梦破碎的声音....."].map(function(r) {
-
-        return r+"."}),a=2,g=1,s=5,d=75,b=["rgb(110,64,170)","rgb(150,61,179)","rgb(191,60,175)","rgb(228,65,157)","rgb(254,75,131)","rgb(255,94,99)","rgb(255,120,71)","rgb(251,150,51)","rgb(226,183,47)","rgb(198,214,60)","rgb(175,240,91)","rgb(127,246,88)","rgb(82,246,103)","rgb(48,239,130)","rgb(29,223,163)","rgb(26,199,194)","rgb(35,171,216)","rgb(54,140,225)","rgb(76,110,219)","rgb(96,84,200)"],c={text:"",prefixP:-s,skillI:0,skillP:0,direction:"forward",delay:a,step:g};i()};chakhsu(document.getElementById('chakhsu'));if('addEventListener'in document){document.addEventListener('DOMContentLoaded',function(){FastClick.attach(document.body)},false)}
-</script>
-<script data-no-instant>InstantClick.on('change',function(isInitialLoad){var blocks=document.querySelectorAll('pre code');for(var i=0;i<blocks.length;i++){hljs.highlightBlock(blocks[i])}if(isInitialLoad===false){if(typeof ga!=='undefined')ga('send','pageview',location.pathname+location.search);if(typeof MathJax!=='undefined'){MathJax.Hub.Queue(["Typeset",MathJax.Hub])}}});InstantClick.init('mousedown');</script>
-
-
-<!-- <iframe src="https://www.lovestu.com/api/project/cnmapyinqing/obj.php" height="500" frameborder="no" border="0" width="100%"> </iframe> -->
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
     <url>/2020/07.Termux+KODExplorer/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我又非常抵触VIM，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。</p>
@@ -225,9 +189,10 @@
         <category>The C language</category>
       </categories>
       <tags>
-        <tag>The C language</tag>
+        <tag>C语言</tag>
         <tag>Some basics</tag>
-        <tag>Variable length</tag>
+        <tag>变量长度</tag>
+        <tag>字节对齐</tag>
       </tags>
   </entry>
   <entry>
@@ -609,6 +574,30 @@
         <tag>Termux</tag>
         <tag>AnLinux</tag>
         <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HitMan Tube拟辉光钟制作记录</title>
+    <url>/2020/01.HitMan-Tube/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前看到B站大佬做了一个拟辉光钟，并且恰好我的同学<a href="http://www.nixieworld.com/" target="_blank" rel="noopener">Sadudu</a>也在做辉光钟，于是就正好一起做了以下这个用LED模拟的辉光钟，不为啥，就是使用的是LED，便宜并且寿命长，下面是效果图：<br><img src="/images/RaspberryPi/2.1.png" alt="2.1">。</p>
+<h1 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h1><p>自从我看到了以后我就抑制在思考他是一个怎么样的东西。由于我看了辉光管的实物，知道是一层一层的电热丝结构，于是就想是LED隔开每一层，然后单独点亮即可，当时想到这个一晚上都没有睡着呢！但是单独控制每个LED有比较麻烦，如果是单片机IO用PWM调光的话可能会使用非常多的锁存器，电路设计较为麻烦，成本也会一定程度增加，经过一番调研（其实就是问的我的几个同学），最终确定了WS2812B这个方案，这个LED是单总线的，我们看到的圣诞节灯带或者是家庭装修的大部分就是用的这个，他可以一直向后链接，只需要在程序里面设计即可。选定了光源的方案，我觉得了解的人一般也都有一定的开发基础，而且这个链接起来非常简单，随便找就可以看到电路图，就不展示了，下面决定开源一下驱动，我是使用的STM32来设计的，并且是原子的库，没有使用HAL库。驱动的思路是定时器加上DMA，因为这个单总线对时间要求比较严格，很多都是微秒级别的操作，因此用DMA会好很多，具体内容如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="微信小程序设计"><a href="#微信小程序设计" class="headerlink" title="微信小程序设计"></a>微信小程序设计</h1><p>在PC段直接通信即可，但是每次使用电脑的确很不方便，于是想到了APP，但是安卓和IOS需要开发两版APP的话我觉得工作量还是比较大的，经过一番调研（还是和我的几个同学讨论），最终确定了使用微信小程序的方案。于是通信的方式又需要重新选定，由于IOS的微信小程序调用蓝牙的API的时候有一定的限制，具体请看<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/device/bluetooth.html" target="_blank" rel="noopener">官方文档</a>，解决方案就是固定蓝牙的名称，通过名称确定设备，我设计了一个简单的界面，如下所示.做一个声明，由于微信小程序不能本地上传图片，只能使用网络地址的图片，我这里使用的是B站的<a href="https://space.bilibili.com/6823116/album" target="_blank" rel="noopener">壁纸娘的相簿</a>。<br><img src="/images/RaspberryPi/2.2.png" alt="2.2"><br><img src="/images/RaspberryPi/2.3.png" alt="2.3"></p>
+<p>下面开始微信小程序的学习，于是到B站找到相应的课程学习。由于以前学过网页设计，并且也管理了实验室的网站，通过一段时间学习很快就上手了。微信小程序的连接只能连接BLE，就是低功耗蓝牙，我们以前电赛经常用到的HC 05，HC-06这样的设备是蓝牙3.0或以下的，BLE是蓝牙4.0协议，虽然他也向下兼容，但是其优秀的低功耗设计是搭建集体、家庭、个人网络的最佳选择。</p>
+<p>这里贴一下蓝牙链接和通信的代码。我想吐槽一下，前期在网上找了很多的测试代码都不能用，最后还是使用官方的示例一步一步吃透才搞定的，以后看文档一定还是看官方的或者GitHub，CSDN上面的感觉有点鱼龙混杂的感觉，下面是BLE连接的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>关于这个开发就到这里了，很多文件可以到QQ群：1321653，我也是经过了群主和管理员的帮助才能顺利完成，而且里面的成员都是非常友好的，有问题大家也可以一起思考。</p>
+]]></content>
+      <categories>
+        <category>HitMan Tube</category>
+      </categories>
+      <tags>
+        <tag>HitMan Tueb</tag>
+        <tag>辉光管</tag>
+        <tag>微信小程序</tag>
+        <tag>蓝牙BLE</tag>
       </tags>
   </entry>
   <entry>

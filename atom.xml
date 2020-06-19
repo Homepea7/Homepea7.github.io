@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-05-05T01:41:08.000Z</updated>
+  <updated>2020-02-21T02:54:40.000Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://homepea7.github.io/2020/01.hello-world/"/>
-    <id>https://homepea7.github.io/2020/01.hello-world/</id>
-    <published>2020-06-16T15:42:39.891Z</published>
-    <updated>2020-05-05T01:41:08.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/tags/Hexo/"/>
-    
-  </entry>
   
   <entry>
     <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
@@ -69,7 +47,7 @@
     <link href="https://homepea7.github.io/2020/18.Basics%20of%20C/"/>
     <id>https://homepea7.github.io/2020/18.Basics%20of%20C/</id>
     <published>2020-06-10T09:03:51.000Z</published>
-    <updated>2020-06-19T02:43:00.518Z</updated>
+    <updated>2020-06-19T02:44:32.840Z</updated>
     
     <summary type="html">
     
@@ -82,11 +60,13 @@
       <category term="The C language" scheme="https://Homepea7.github.io/categories/The-C-language/"/>
     
     
-      <category term="The C language" scheme="https://Homepea7.github.io/tags/The-C-language/"/>
+      <category term="C语言" scheme="https://Homepea7.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
     
       <category term="Some basics" scheme="https://Homepea7.github.io/tags/Some-basics/"/>
     
-      <category term="Variable length" scheme="https://Homepea7.github.io/tags/Variable-length/"/>
+      <category term="变量长度" scheme="https://Homepea7.github.io/tags/%E5%8F%98%E9%87%8F%E9%95%BF%E5%BA%A6/"/>
+    
+      <category term="字节对齐" scheme="https://Homepea7.github.io/tags/%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/"/>
     
   </entry>
   
@@ -385,6 +365,34 @@
       <category term="AnLinux" scheme="https://Homepea7.github.io/tags/AnLinux/"/>
     
       <category term="ubuntu" scheme="https://Homepea7.github.io/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HitMan Tube拟辉光钟制作记录</title>
+    <link href="https://homepea7.github.io/2020/01.HitMan-Tube/"/>
+    <id>https://homepea7.github.io/2020/01.HitMan-Tube/</id>
+    <published>2020-02-10T12:09:02.000Z</published>
+    <updated>2020-06-19T11:15:29.448Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前看到B站大佬做了一个拟辉光钟，并且恰好我的同学&lt;a href=&quot;http://www.nixieworld.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sadudu&lt;/a&gt;也在做辉光钟，于是就正好一起做了以下这个用LED模拟的辉光钟，不为啥，就是使用的是LED，便宜并且寿命长，下面是效果图：&lt;br&gt;&lt;img src=&quot;/images/RaspberryPi/2.1.png&quot; alt=&quot;2.1&quot;&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;原理分析&quot;&gt;&lt;a href=&quot;#原理分析&quot; class=&quot;headerlink&quot; title=&quot;原理分析&quot;&gt;&lt;/a&gt;原理分析&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="HitMan Tube" scheme="https://Homepea7.github.io/categories/HitMan-Tube/"/>
+    
+    
+      <category term="HitMan Tueb" scheme="https://Homepea7.github.io/tags/HitMan-Tueb/"/>
+    
+      <category term="辉光管" scheme="https://Homepea7.github.io/tags/%E8%BE%89%E5%85%89%E7%AE%A1/"/>
+    
+      <category term="微信小程序" scheme="https://Homepea7.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="蓝牙BLE" scheme="https://Homepea7.github.io/tags/%E8%93%9D%E7%89%99BLE/"/>
     
   </entry>
   
