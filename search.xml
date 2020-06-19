@@ -153,13 +153,73 @@
 <p>尤其注意的是C语言中的bool变量，在C98是标准中是没有定义bool类型变量的，直接引用会报错，一般可以用define或者枚举型便来那个来表示，还有一种方法是在头文件中添加”stdbool.h”这个头文件来引用即可，下面是具体的一些代码：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "stdio.h"</span></span><br><span class="line"><span class="comment">#include "stdbool.h"</span></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(int));       </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(int[1]));    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(int[2]));    </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(char));      </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(char[1]));   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(char[2]));   </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(double));    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(double[1])); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(double[2])); </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(<span class="built_in">float</span>));     </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(<span class="built_in">float</span>[1]));  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(<span class="built_in">float</span>[2]));  </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(short));     </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(short[1]));  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(short[2]));  </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(bool));      </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(bool[1]));   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(bool[2]));   </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(long));      </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="数据结构的字节对齐"><a href="#数据结构的字节对齐" class="headerlink" title="数据结构的字节对齐"></a>数据结构的字节对齐</h1><p>这个是一个非常重要的知识点，面试经常考，具体是个什么意思呢，跑一下下面的代码就知道了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "stdio.h"</span></span><br><span class="line"><span class="comment">#include "stdbool.h"</span></span><br><span class="line"></span><br><span class="line">struct t1</span><br><span class="line">&#123;</span><br><span class="line">    char a1;</span><br><span class="line">    char b1;</span><br><span class="line">    char c1;</span><br><span class="line">    int  d1;</span><br><span class="line">    char e1;</span><br><span class="line">&#125;T1;</span><br><span class="line"></span><br><span class="line">struct t2</span><br><span class="line">&#123;</span><br><span class="line">    char a2;</span><br><span class="line">    char b2;</span><br><span class="line">    char c2;</span><br><span class="line">    char e2;</span><br><span class="line">    int  d2;</span><br><span class="line">&#125;T2;</span><br><span class="line"></span><br><span class="line">struct t3</span><br><span class="line">&#123;</span><br><span class="line">	double a2;</span><br><span class="line">	char b2;</span><br><span class="line">	int  c3;</span><br><span class="line">&#125;T3;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d"</span>, sizeof(T1), sizeof(T2), sizeof(T3));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
+<p>上面的输出分别是 “12 8 16”，两个基本相同的两个结构体长度是不一样，这个就是字节对齐。现代计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p>
+<p>对齐的作用和原因：各个硬件平台对存储空间的处理上有很大的不同。一些平台对某些特定类型的数据只能从某些特定地址开始存取。比如有些架构的CPU在访问一个没有进行对齐的变量的时候会发生错误,那么在这种架构下编程必须保证字节对齐.其他平台可能没有这种情况，但是最常见的是如果不按照适合其平台要求对数据存放进行对齐，会在存取效率上带来损失。比如有些平台每次读都是从偶地址开始，如果一个int型（假设为32位系统）如果存放在偶地址开始的地方，那么一个读周期就可以读出这32bit，而如果存放在奇地址开始的地方，就需要2个读周期，并对两次读出的结果的高低字节进行拼凑才能得到该32bit数据。显然在读取效率上下降很多。</p>
+<p>揭示了原因，现在上面的例子应该就比较好分析了，<strong>windows 64 位默认 结构体对齐系数为8，32位 结构体对齐系数为4，而且在VC/C++和GNU GCC中都是默认是4字节对齐</strong>。<br>T1结构体分三段：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1+1+1</td>
+<td>4  [对齐4]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4  [对齐4]</td>
+</tr>
+</tbody></table>
+<p>T2结构体分两段：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1+1+1+1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<p>T3结构体分两段：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>1+4</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>现在对字节对齐已经有了一个比较深刻的认识了大，他是由于计算机在高速读取的时候为了保证读取效率而设计的，但是我们在做嵌入式开发钟数据处理和传输数据的时候，经常设计一些自定义的通信协议，如果按照这种设计反而会降低通信效率，而且如果接收方不清楚这些内容可能会引起一些问题，因此也有一定的方法来取消字节对齐或者自行设计对齐的长度。</p>
+<p>　　· 使用伪指令#pragma pack (n)，编译器将按照n个字节对齐；<br>　　· 使用伪指令#pragma pack ()，取消自定义字节对齐方式。　</p>
+<p>注意：如果#pragma pack (n)中指定的n大于结构体中最大成员的size，则其不起作用，结构体仍然按照size最大的成员进行对界。</p>
+<p>另一种方式比较简单，直接在结构体后面加上<code>__attribute__((packed))</code>，这个是直接取消字节对齐的，或者用<code>__attribute__((aligned(n)))</code>，这个跟<code>pragma pack (n)</code>效果相同。</p>
+<p>可以尝试下面的例子：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "stdio.h"</span></span><br><span class="line"><span class="comment">#include "stdbool.h"</span></span><br><span class="line"></span><br><span class="line">struct t1</span><br><span class="line">&#123;</span><br><span class="line">    char a1;</span><br><span class="line">    char b1;</span><br><span class="line">    char c1;</span><br><span class="line">    int  d1;</span><br><span class="line">    char e1;</span><br><span class="line">&#125;__attribute__((packed)) T1;</span><br><span class="line"></span><br><span class="line">struct t2</span><br><span class="line">&#123;</span><br><span class="line">    char a2;</span><br><span class="line">    char b2;</span><br><span class="line">    char c2;</span><br><span class="line">    char e2;</span><br><span class="line">    int  d2;</span><br><span class="line">&#125;__attribute__((aligned(2))) T2;</span><br><span class="line"></span><br><span class="line">struct t3</span><br><span class="line">&#123;</span><br><span class="line">	double a2;</span><br><span class="line">	char b2;</span><br><span class="line">	int  c3;</span><br><span class="line">	int  d3;</span><br><span class="line">&#125;__attribute__((aligned(4))) T3;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d"</span>, sizeof(T1), sizeof(T2), sizeof(T3));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出为”8 8 24”，有兴趣可以自己对比前面的内容并且简单计算一下。</p>
 ]]></content>
       <categories>
         <category>The C language</category>
