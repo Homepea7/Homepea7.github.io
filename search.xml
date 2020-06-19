@@ -579,7 +579,8 @@
   <entry>
     <title>HitMan Tube拟辉光钟制作记录</title>
     <url>/2020/01.HitMan-Tube/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前看到B站大佬做了一个拟辉光钟，并且恰好我的同学<a href="http://www.nixieworld.com/" target="_blank" rel="noopener">Sadudu</a>也在做辉光钟，于是就正好一起做了以下这个用LED模拟的辉光钟，不为啥，就是使用的是LED，便宜并且寿命长，下面是效果图：<br><img src="/images/RaspberryPi/2.1.png" alt="2.1">。</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前看到B站大佬做了一个拟辉光钟，并且恰好我的同学<a href="http://www.nixieworld.com/" target="_blank" rel="noopener">Sadudu</a>也在做辉光钟，于是就正好一起做了一下这个用LED模拟的辉光钟，不为啥，就是使用的是LED，便宜并且寿命长，下面是效果图：<br><img src="/images/RaspberryPi/2.1.png" alt="2.1">。</p>
+<p>相信大家看到这个肯定也是比较有能力的，因此我下面就简单介绍硬件和微信小程序的设计，重点还是就核心的两段代码的分享，分别是STM32单片机的WS2812B驱动程序和微信小程序的BLE通讯程序，保证可用！！！</p>
 <h1 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h1><p>自从我看到了以后我就抑制在思考他是一个怎么样的东西。由于我看了辉光管的实物，知道是一层一层的电热丝结构，于是就想是LED隔开每一层，然后单独点亮即可，当时想到这个一晚上都没有睡着呢！但是单独控制每个LED有比较麻烦，如果是单片机IO用PWM调光的话可能会使用非常多的锁存器，电路设计较为麻烦，成本也会一定程度增加，经过一番调研（其实就是问的我的几个同学），最终确定了WS2812B这个方案，这个LED是单总线的，我们看到的圣诞节灯带或者是家庭装修的大部分就是用的这个，他可以一直向后链接，只需要在程序里面设计即可。选定了光源的方案，我觉得了解的人一般也都有一定的开发基础，而且这个链接起来非常简单，随便找就可以看到电路图，就不展示了，下面决定开源一下驱动，我是使用的STM32来设计的，并且是原子的库，没有使用HAL库。驱动的思路是定时器加上DMA，因为这个单总线对时间要求比较严格，很多都是微秒级别的操作，因此用DMA会好很多，具体内容如下所示：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -588,7 +589,7 @@
 <p>这里贴一下蓝牙链接和通信的代码。我想吐槽一下，前期在网上找了很多的测试代码都不能用，最后还是使用官方的示例一步一步吃透才搞定的，以后看文档一定还是看官方的或者GitHub，CSDN上面的感觉有点鱼龙混杂的感觉，下面是BLE连接的代码：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>关于这个开发就到这里了，很多文件可以到QQ群：1321653，我也是经过了群主和管理员的帮助才能顺利完成，而且里面的成员都是非常友好的，有问题大家也可以一起思考。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>关于这个开发就到这里了，很多文件可以到QQ群：1321653，我也是经过了群主和管理员的帮助才能顺利完成，而且里面的成员都是非常友好的，有问题大家也可以一起思考。最后呢感觉做这些还是非常有成就感的，非常开心，2333</p>
 ]]></content>
       <categories>
         <category>HitMan Tube</category>
@@ -771,6 +772,11 @@
 </html>]]></content>
   </entry>
   <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -803,11 +809,6 @@
 </li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Homepea的标签</title>

@@ -373,12 +373,12 @@
     <link href="https://homepea7.github.io/2020/01.HitMan-Tube/"/>
     <id>https://homepea7.github.io/2020/01.HitMan-Tube/</id>
     <published>2020-02-10T12:09:02.000Z</published>
-    <updated>2020-06-19T11:15:29.448Z</updated>
+    <updated>2020-06-19T12:18:46.289Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前看到B站大佬做了一个拟辉光钟，并且恰好我的同学&lt;a href=&quot;http://www.nixieworld.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sadudu&lt;/a&gt;也在做辉光钟，于是就正好一起做了以下这个用LED模拟的辉光钟，不为啥，就是使用的是LED，便宜并且寿命长，下面是效果图：&lt;br&gt;&lt;img src=&quot;/images/RaspberryPi/2.1.png&quot; alt=&quot;2.1&quot;&gt;。&lt;/p&gt;
-&lt;h1 id=&quot;原理分析&quot;&gt;&lt;a href=&quot;#原理分析&quot; class=&quot;headerlink&quot; title=&quot;原理分析&quot;&gt;&lt;/a&gt;原理分析&lt;/h1&gt;
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前看到B站大佬做了一个拟辉光钟，并且恰好我的同学&lt;a href=&quot;http://www.nixieworld.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sadudu&lt;/a&gt;也在做辉光钟，于是就正好一起做了一下这个用LED模拟的辉光钟，不为啥，就是使用的是LED，便宜并且寿命长，下面是效果图：&lt;br&gt;&lt;img src=&quot;/images/RaspberryPi/2.1.png&quot; alt=&quot;2.1&quot;&gt;。&lt;/p&gt;
+&lt;p&gt;相信大家看到这个肯定也是比较有能力的，因此我下面就简单介绍硬件和微信小程序的设计，重点还是就核心的两段代码的分享，分别是STM32单片机的WS2812B驱动程序和微信小程序的BLE通讯程序，保证可用！！！&lt;/p&gt;
     
     </summary>
     
