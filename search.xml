@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>19.Ubuntu-Samba</title>
+    <url>/2020/19.Ubuntu-Samba/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是<a href="https://ubuntu.com/tutorials/install-and-configure-samba#1-overview" target="_blank" rel="noopener">官网</a>可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。</p>
+<h1 id="首先安装Samba"><a href="#首先安装Samba" class="headerlink" title="首先安装Samba"></a>首先安装Samba</h1><p>为了安装Samba，我们运行下列指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install samba</span><br></pre></td></tr></table></figure>
+
+<p>为了确保安装成功，我们需要进行简单的确认：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">whereis samba</span><br></pre></td></tr></table></figure>
+
+<p>下面是返回的内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">samba: /usr/sbin/samba /usr/lib/samba /etc/samba /usr/share/samba /usr/share/man/man7/samba.7.gz /usr/share/man/man8/samba.8.gz</span><br></pre></td></tr></table></figure>
+
+<h1 id="其次是配置Samba"><a href="#其次是配置Samba" class="headerlink" title="其次是配置Samba"></a>其次是配置Samba</h1><p>目前来说Samba已经安装好了，下面开始新建一个共享的文件夹，这里建议最好就用/home里面自己这个用户的文件夹(下面的“username”记得换成自己的用户名)，这样可以避免一些权限的问题，操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /home/&lt;username&gt;/sambashare/</span><br></pre></td></tr></table></figure>
+
+<p>然后就能添加用户信息啦，运行如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>添加下面的内容到smb.conf文件中，记住下面的“username”还是要换成自己的用户名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[sambashare]</span><br><span class="line">    comment = Samba on Ubuntu</span><br><span class="line">    path = /home/username/sambashare</span><br><span class="line">    <span class="built_in">read</span> only = no</span><br><span class="line">    browsable = yes</span><br></pre></td></tr></table></figure>
+<p>这里如果对VIM或者nano不熟悉的话也可以用图形化界面的gedit来编辑，简单安装就行，也是非常方便，上面的指令看起来也是非常的简单易懂。</p>
+<p>最后我们开始设置Samba服务，首先是开启这个服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service smbd restart</span><br></pre></td></tr></table></figure>
+<p>更新防火墙规则来允许Samba通讯：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ufw allow samba</span><br></pre></td></tr></table></figure>
+
+<p>结尾的一部就是添加用户啦，指令如下(这里的“username”还是要换成自己的用户名，不然不允许共享)：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -a username</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他设备连接"><a href="#其他设备连接" class="headerlink" title="其他设备连接"></a>其他设备连接</h1><p>一般不同的设备之间可能会有一些不同，但是都大同小异。常用的一般是Win10和MacOS，一般需要获取局域网内需要共享的机器的局域网IP，比如自己的IP是:192.168.175.129，具体如下：</p>
+<p>Win10在文件资源管理器直接输入下列指令，输入账号和密码即可访问</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">\\ip-address\sambashare</span><br></pre></td></tr></table></figure>
+
+<p>MaxOs输入的指令略微不同，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">smb://ip-address/sambashare</span><br></pre></td></tr></table></figure>
+<p>这样Samba的配置就全部完成了，非常使实用！</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>还是看<a href="https://ubuntu.com/tutorials/install-and-configure-samba#1-overview" target="_blank" rel="noopener">官方文档</a>最靠谱！！！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
     <url>/2020/07.Termux+KODExplorer/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我对VIM又不熟悉，而且经常为退出而烦恼，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。</p>

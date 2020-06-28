@@ -64,13 +64,15 @@
 </style>
 
 
-  <meta name="description" content="Better me">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Homepea&#39;s Blog">
-<meta property="og:url" content="https://homepea7.github.io/categories/GitHub/index.html">
+  <meta name="description" content="说明Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是官网可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。 首先安装Samba">
+<meta property="og:type" content="article">
+<meta property="og:title" content="19.Ubuntu-Samba">
+<meta property="og:url" content="https://homepea7.github.io/2020/19.Ubuntu-Samba/index.html">
 <meta property="og:site_name" content="Homepea&#39;s Blog">
-<meta property="og:description" content="Better me">
+<meta property="og:description" content="说明Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是官网可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。 首先安装Samba">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T16:19:46.251Z">
+<meta property="article:modified_time" content="2020-06-27T16:16:54.000Z">
 <meta property="article:author" content="Kavin Homepea">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content=" Python">
@@ -78,7 +80,7 @@
 <meta property="article:tag" content=" WeApplet">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://homepea7.github.io/categories/GitHub/">
+<link rel="canonical" href="https://homepea7.github.io/2020/19.Ubuntu-Samba/">
 
 
 <script id="page-configurations">
@@ -86,11 +88,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>分类: GitHub | Homepea's Blog</title>
+  <title>19.Ubuntu-Samba | Homepea's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
     <script>
@@ -255,74 +257,162 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">GitHub
-          <small>分类</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/19.Ubuntu-Samba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kavin Homepea">
+      <meta itemprop="description" content="Better me">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homepea's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          19.Ubuntu-Samba
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-28 00:19:46" itemprop="dateCreated datePublished" datetime="2020-06-28T00:19:46+08:00">2020-06-28</time>
+            </span>
+
+          
+            <span id="/2020/19.Ubuntu-Samba/" class="post-meta-item leancloud_visitors" data-flag-title="19.Ubuntu-Samba" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/19.Ubuntu-Samba/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/19.Ubuntu-Samba/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是<a href="https://ubuntu.com/tutorials/install-and-configure-samba#1-overview" target="_blank" rel="noopener">官网</a>可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。</p>
+<h1 id="首先安装Samba"><a href="#首先安装Samba" class="headerlink" title="首先安装Samba"></a>首先安装Samba</h1><p>为了安装Samba，我们运行下列指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install samba</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>为了确保安装成功，我们需要进行简单的确认：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis samba</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-20T11:01:41+08:00"
-              content="2020-02-20">
-          02-20
-        </time>
-      </div>
+<p>下面是返回的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">samba: /usr/sbin/samba /usr/lib/samba /etc/samba /usr/share/samba /usr/share/man/man7/samba.7.gz /usr/share/man/man8/samba.8.gz</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06.GitHub-SpeedUp/" itemprop="url">
-            <span itemprop="name">通过更改Hosts解决Github进不去</span>
-          </a>
-      </h2>
+<h1 id="其次是配置Samba"><a href="#其次是配置Samba" class="headerlink" title="其次是配置Samba"></a>其次是配置Samba</h1><p>目前来说Samba已经安装好了，下面开始新建一个共享的文件夹，这里建议最好就用/home里面自己这个用户的文件夹(下面的“username”记得换成自己的用户名)，这样可以避免一些权限的问题，操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/&lt;username&gt;/sambashare/</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<p>然后就能添加用户信息啦，运行如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>添加下面的内容到smb.conf文件中，记住下面的“username”还是要换成自己的用户名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[sambashare]</span><br><span class="line">    comment = Samba on Ubuntu</span><br><span class="line">    path = /home/username/sambashare</span><br><span class="line">    <span class="built_in">read</span> only = no</span><br><span class="line">    browsable = yes</span><br></pre></td></tr></table></figure>
+<p>这里如果对VIM或者nano不熟悉的话也可以用图形化界面的gedit来编辑，简单安装就行，也是非常方便，上面的指令看起来也是非常的简单易懂。</p>
+<p>最后我们开始设置Samba服务，首先是开启这个服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service smbd restart</span><br></pre></td></tr></table></figure>
+<p>更新防火墙规则来允许Samba通讯：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow samba</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-09T21:31:34+08:00"
-              content="2020-02-09">
-          02-09
-        </time>
-      </div>
+<p>结尾的一部就是添加用户啦，指令如下(这里的“username”还是要换成自己的用户名，不然不允许共享)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a username</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03.Git-Commit/" itemprop="url">
-            <span itemprop="name">Git上传本地代码到GitHub</span>
-          </a>
-      </h2>
+<h1 id="其他设备连接"><a href="#其他设备连接" class="headerlink" title="其他设备连接"></a>其他设备连接</h1><p>一般不同的设备之间可能会有一些不同，但是都大同小异。常用的一般是Win10和MacOS，一般需要获取局域网内需要共享的机器的局域网IP，比如自己的IP是:192.168.175.129，具体如下：</p>
+<p>Win10在文件资源管理器直接输入下列指令，输入账号和密码即可访问</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\ip-address\sambashare</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<p>MaxOs输入的指令略微不同，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smb://ip-address/sambashare</span><br></pre></td></tr></table></figure>
+<p>这样Samba的配置就全部完成了，非常使实用！</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>还是看<a href="https://ubuntu.com/tutorials/install-and-configure-samba#1-overview" target="_blank" rel="noopener">官方文档</a>最靠谱！！！</p>
 
     </div>
+
+    
+    
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07.Termux+KODExplorer/" rel="prev" title="使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）">
+      <i class="fa fa-chevron-left"></i> 使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -369,6 +459,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#首先安装Samba"><span class="nav-number">2.</span> <span class="nav-text">首先安装Samba</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其次是配置Samba"><span class="nav-number">3.</span> <span class="nav-text">其次是配置Samba</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他设备连接"><span class="nav-number">4.</span> <span class="nav-text">其他设备连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
