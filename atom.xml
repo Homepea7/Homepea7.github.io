@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-06-27T16:16:54.000Z</updated>
+  <updated>2020-06-28T02:11:29.253Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>19.Ubuntu-Samba</title>
+    <title>Ubuntu安装Samba</title>
     <link href="https://homepea7.github.io/2020/19.Ubuntu-Samba/"/>
     <id>https://homepea7.github.io/2020/19.Ubuntu-Samba/</id>
-    <published>2020-06-27T16:19:46.251Z</published>
-    <updated>2020-06-27T16:16:54.000Z</updated>
+    <published>2020-06-28T15:03:51.000Z</published>
+    <updated>2020-06-28T02:11:29.253Z</updated>
     
     <summary type="html">
     
@@ -31,6 +31,14 @@
     </summary>
     
     
+      <category term="Ubuntu" scheme="https://Homepea7.github.io/categories/Ubuntu/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://Homepea7.github.io/tags/Ubuntu/"/>
+    
+      <category term="Linux" scheme="https://Homepea7.github.io/tags/Linux/"/>
+    
+      <category term="Samba" scheme="https://Homepea7.github.io/tags/Samba/"/>
     
   </entry>
   
