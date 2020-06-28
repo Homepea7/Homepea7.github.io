@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-06-28T02:11:29.253Z</updated>
+  <updated>2020-06-27T15:03:54.000Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,32 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Ubuntu安装Samba</title>
-    <link href="https://homepea7.github.io/2020/19.Ubuntu-Samba/"/>
-    <id>https://homepea7.github.io/2020/19.Ubuntu-Samba/</id>
-    <published>2020-06-28T15:03:51.000Z</published>
-    <updated>2020-06-28T02:11:29.253Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是&lt;a href=&quot;https://ubuntu.com/tutorials/install-and-configure-samba#1-overview&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网&lt;/a&gt;可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。&lt;/p&gt;
-&lt;h1 id=&quot;首先安装Samba&quot;&gt;&lt;a href=&quot;#首先安装Samba&quot; class=&quot;headerlink&quot; title=&quot;首先安装Samba&quot;&gt;&lt;/a&gt;首先安装Samba&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Ubuntu" scheme="https://Homepea7.github.io/categories/Ubuntu/"/>
-    
-    
-      <category term="Ubuntu" scheme="https://Homepea7.github.io/tags/Ubuntu/"/>
-    
-      <category term="Linux" scheme="https://Homepea7.github.io/tags/Linux/"/>
-    
-      <category term="Samba" scheme="https://Homepea7.github.io/tags/Samba/"/>
-    
-  </entry>
   
   <entry>
     <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
@@ -65,6 +39,32 @@
       <category term="KODExplorer" scheme="https://Homepea7.github.io/tags/KODExplorer/"/>
     
       <category term="Git" scheme="https://Homepea7.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu安装Samba</title>
+    <link href="https://homepea7.github.io/2020/19.Ubuntu-Samba/"/>
+    <id>https://homepea7.github.io/2020/19.Ubuntu-Samba/</id>
+    <published>2020-06-26T15:03:51.000Z</published>
+    <updated>2020-06-28T02:12:51.245Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是&lt;a href=&quot;https://ubuntu.com/tutorials/install-and-configure-samba#1-overview&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网&lt;/a&gt;可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。&lt;/p&gt;
+&lt;h1 id=&quot;首先安装Samba&quot;&gt;&lt;a href=&quot;#首先安装Samba&quot; class=&quot;headerlink&quot; title=&quot;首先安装Samba&quot;&gt;&lt;/a&gt;首先安装Samba&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Ubuntu" scheme="https://Homepea7.github.io/categories/Ubuntu/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://Homepea7.github.io/tags/Ubuntu/"/>
+    
+      <category term="Linux" scheme="https://Homepea7.github.io/tags/Linux/"/>
+    
+      <category term="Samba" scheme="https://Homepea7.github.io/tags/Samba/"/>
     
   </entry>
   
