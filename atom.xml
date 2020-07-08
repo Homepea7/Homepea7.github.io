@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-06-28T02:12:51.245Z</updated>
+  <updated>2020-07-08T08:48:14.207Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu安装和简单使用CMake</title>
+    <link href="https://homepea7.github.io/2020/21.Ubuntu-CMake/"/>
+    <id>https://homepea7.github.io/2020/21.Ubuntu-CMake/</id>
+    <published>2020-07-08T07:47:40.000Z</published>
+    <updated>2020-07-08T08:48:14.207Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近想简单学习一下CMake，因为比较好用，而且也会偏向多平台，为了方便的话我也是直接就在Ubuntu和Win10都进行了安装，现在介绍的是Ubuntu平台上面的，Win平台上面也是大同小异，而且教程也挺多的，不必纠结。&lt;/p&gt;
+&lt;h1 id=&quot;安装CMake&quot;&gt;&lt;a href=&quot;#安装CMake&quot; class=&quot;headerlink&quot; title=&quot;安装CMake&quot;&gt;&lt;/a&gt;安装CMake&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Ubuntu" scheme="https://Homepea7.github.io/categories/Ubuntu/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://Homepea7.github.io/tags/Ubuntu/"/>
+    
+      <category term="Linux" scheme="https://Homepea7.github.io/tags/Linux/"/>
+    
+      <category term="CMake" scheme="https://Homepea7.github.io/tags/CMake/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>汉诺塔问题与递归的思路总结</title>
+    <link href="https://homepea7.github.io/2020/20.Recursion%20problem/"/>
+    <id>https://homepea7.github.io/2020/20.Recursion%20problem/</id>
+    <published>2020-06-28T02:03:51.000Z</published>
+    <updated>2020-07-08T08:47:31.466Z</updated>
+    
+    <summary type="html">
+    
+      &lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;
+
+&lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;递归问题一直是笔试的重点，下面开始简单总结递归的问题，主要是递归思考的思路，还有就是怎么用编程的方式来实现。&lt;/p&gt;
+&lt;h1 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C++ language" scheme="https://Homepea7.github.io/categories/The-C-language/"/>
+    
+    
+      <category term="Recursion" scheme="https://Homepea7.github.io/tags/Recursion/"/>
+    
+      <category term="Hanota" scheme="https://Homepea7.github.io/tags/Hanota/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu安装Samba</title>
@@ -423,11 +475,11 @@
   </entry>
   
   <entry>
-    <title>2020肺炎实时疫情图(置顶)</title>
+    <title>2020肺炎实时疫情图【置顶】</title>
     <link href="https://homepea7.github.io/2020/00.WuHan/"/>
     <id>https://homepea7.github.io/2020/00.WuHan/</id>
     <published>2020-02-10T06:27:55.000Z</published>
-    <updated>2020-02-21T02:48:16.000Z</updated>
+    <updated>2020-07-08T08:25:53.681Z</updated>
     
     <summary type="html">
     
@@ -475,54 +527,6 @@
       <category term="C" scheme="https://Homepea7.github.io/tags/C/"/>
     
       <category term="C++" scheme="https://Homepea7.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git上传本地代码到GitHub</title>
-    <link href="https://homepea7.github.io/2020/03.Git-Commit/"/>
-    <id>https://homepea7.github.io/2020/03.Git-Commit/</id>
-    <published>2020-02-09T13:31:34.000Z</published>
-    <updated>2020-02-10T06:41:36.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;本文仅仅是介绍几条简单的指令，将本地的代码上传到GitHub，免得老是忘记，因此写了这篇博文，内容比较简单。&lt;/p&gt;
-&lt;h1 id=&quot;安装Git，创建码仓&quot;&gt;&lt;a href=&quot;#安装Git，创建码仓&quot; class=&quot;headerlink&quot; title=&quot;安装Git，创建码仓&quot;&gt;&lt;/a&gt;安装Git，创建码仓&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="GitHub" scheme="https://Homepea7.github.io/categories/GitHub/"/>
-    
-    
-      <category term="git" scheme="https://Homepea7.github.io/tags/git/"/>
-    
-      <category term="commit code" scheme="https://Homepea7.github.io/tags/commit-code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录Hexo建站</title>
-    <link href="https://homepea7.github.io/2020/02.Hexo+Next/"/>
-    <id>https://homepea7.github.io/2020/02.Hexo+Next/</id>
-    <published>2020-02-05T12:09:02.000Z</published>
-    <updated>2020-03-03T02:51:18.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直想做一个自己的网站，也买了域名，最开始看了果核的建站教程，觉得基于&lt;a href=&quot;https://zh-cn.wordpress.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WordPress&lt;/a&gt;的非常方便，但是搭建除了买域名之外还需要虚拟主机，费用比较高。作为一名屌丝研究生呢，肯定是要选择便宜的呀，然后问了我&lt;a href=&quot;http://begild.top/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;队友&lt;/a&gt;，决定用&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;试试。&lt;/p&gt;
-&lt;p&gt;最初它推荐的是国内的&lt;a href=&quot;https://coding.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Coding&lt;/a&gt;上面建站，访问速度比&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt;快，我也网站找了很多教程，很多人也都是这样说，因此我开始了很多的摸爬滚打，但是最后还是选择了Github，毕竟是全球最大的同性交友网站嘛，这里提一句在B站找到了一些教程用的Linux，我这里是用的Window10，其实在linux是一样的操作，只是相应的文件目录不一样而已。说到底呢其实主要是记录和学习用的，以后看到自己的博客可能也会觉得自己很有意思的吧。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://Homepea7.github.io/tags/Hexo/"/>
-    
-      <category term="Next" scheme="https://Homepea7.github.io/tags/Next/"/>
     
   </entry>
   

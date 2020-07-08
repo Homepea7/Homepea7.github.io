@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homepea7.github.io/2020/21.Ubuntu-CMake/</loc>
+    
+    <lastmod>2020-07-08T08:48:14.207Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://homepea7.github.io/2020/20.Recursion%20problem/</loc>
+    
+    <lastmod>2020-07-08T08:47:31.466Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://homepea7.github.io/2020/00.WuHan/</loc>
+    
+    <lastmod>2020-07-08T08:25:53.681Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://homepea7.github.io/2020/07.Termux+KODExplorer/</loc>
     
     <lastmod>2020-06-28T02:16:07.261Z</lastmod>
@@ -110,13 +131,6 @@
     <loc>https://homepea7.github.io/2020/06.GitHub-SpeedUp/</loc>
     
     <lastmod>2020-02-21T02:50:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://homepea7.github.io/2020/00.WuHan/</loc>
-    
-    <lastmod>2020-02-21T02:48:16.000Z</lastmod>
     
   </url>
   

@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ubuntu安装和简单使用CMake</title>
+    <url>/2020/21.Ubuntu-CMake/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近想简单学习一下CMake，因为比较好用，而且也会偏向多平台，为了方便的话我也是直接就在Ubuntu和Win10都进行了安装，现在介绍的是Ubuntu平台上面的，Win平台上面也是大同小异，而且教程也挺多的，不必纠结。</p>
+<h1 id="安装CMake"><a href="#安装CMake" class="headerlink" title="安装CMake"></a>安装CMake</h1><h2 id="直接命令行"><a href="#直接命令行" class="headerlink" title="直接命令行"></a>直接命令行</h2><p>我当时就感觉CMake比较流行，直接尝试了指令，发现真的可以，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install cmake</span><br></pre></td></tr></table></figure>
+
+<h2 id="官网下载安装"><a href="#官网下载安装" class="headerlink" title="官网下载安装"></a>官网下载安装</h2><p>这个里面也有两种方法，优点也比较明确。首先是可以选择版本，其次是可以下载源码自己编译，尤其是自己交叉编译Android平台的opencv时会提示版本过低。安装版本的和用指令的一样，下面简单介绍下载源码编译的。</p>
+<p>到<a href="https://cmake.org/download/" target="_blank" rel="noopener">CMake官网</a>下载最新的cmake。下载后解压,然后进入目录执行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bootstrap</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>然后验证版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake --version</span><br></pre></td></tr></table></figure>
+
+<p>如果实用安卓的opencv的话还需要将Android Sdk中的cmake软链接到/usr/local/bin目录中：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ln -s /home/gavinandre/Android/Sdk/cmake/3.6.4111459/bin/cmake /usr/<span class="built_in">local</span>/bin</span><br></pre></td></tr></table></figure>
+
+<h1 id="CMake示例"><a href="#CMake示例" class="headerlink" title="CMake示例"></a>CMake示例</h1><p>首先编写一个简单的cpp文件，取名 main.cpp, 写一个简单的hello world程序：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"hello world!"</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后编写CMakeLists.txt文件:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"><span class="comment">#工程名</span></span><br><span class="line">project(HELLOWORLD)</span><br><span class="line"><span class="comment">#包含原程序,即把给定目录下的源程序复制给变量DIR_SRC</span></span><br><span class="line"><span class="comment">#将指定路径下的源文件储存在指定的变量中</span></span><br><span class="line">aux_source_directory(./ DIR_SRC)</span><br><span class="line"><span class="comment">#生成程序</span></span><br><span class="line">add_executable(helloworld <span class="variable">$&#123;DIR_SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>最后编译：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$mkdir</span> build</span><br><span class="line"><span class="variable">$cd</span> build</span><br><span class="line"><span class="variable">$cmake</span> ..</span><br><span class="line"><span class="variable">$make</span></span><br><span class="line">$./helloworld</span><br></pre></td></tr></table></figure>
+
+<p>可以看到编译结果：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hello world!</span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>可以看到在linux下面安装和使用Cmake还是比较方便的，目前而言我对Cmake的语法也不是很熟悉，但是仍然感觉还是觉得挺好用的。</p>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>Linux</tag>
+        <tag>CMake</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汉诺塔问题与递归的思路总结</title>
+    <url>/2020/20.Recursion%20problem/</url>
+    <content><![CDATA[<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>递归问题一直是笔试的重点，下面开始简单总结递归的问题，主要是递归思考的思路，还有就是怎么用编程的方式来实现。</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>经典的汉诺塔问题就是最好的递归例子，早期相信很多的手机上面也有这个小游戏吧，就是移动圈圈的问题。以三个圈圈移动为例<img src="/images/C-Language/hannuo.gif" alt="P1.1"></p>
+<p>递归主要的思路就是找到 n 和 n-1 步的规律，还有就是递归停止的条件。在这个汉诺塔中，显然，n=1就直接移动过去了，主要是关于数量较多的时候的规律。</p>
+<p>首先是移动的函数move，写函数的主要思路是A通过B移动到C，这个一定要理解出来:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void move(int n, char c1, char c2, char c3)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(n == 1)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" %c -&gt; %c \n"</span>, c1, c3);</span><br><span class="line">    //  暂时没写完，后面还有</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其次是分析规律，汉诺塔的方式其实还比较简简单，就是先将 n-1 行移动到 B，然后将第 n 行移动到 C，最后将 B 上面的 n-1 行移动到 C 即可。具体如下（很抱歉公式编辑器出来的式子好像有点麻烦在这里显示不出来就用图片来代替了）：<br> <img src="/images/C-Language/2.1.png" width = "200" height = "110" alt="图片名称" align=center /></p>
+<p> 如实就可以写完整的函数了，如下：<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void move(int n, char c1, char c2, char c3)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(n == 1)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" %c -&gt; %c \n"</span>, c1, c3);</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		move(n-1, c1, c3, c2);</span><br><span class="line">		move(1, c1, c2, c3);</span><br><span class="line">		move(n-1, c2, c1, c3);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>实际使用中只需要调用move函数即可，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	move(5,<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>递归问题其实是一个常用的思路，但是由于其资源的耗费很多，而且堆栈资源的实用巨大，导致在牛客或者力上面扣做题实用递归常常会可能时间太长了。</p>
+<p>结论：在实际使用中如果能用循环解决一定不要用递归！</p>
+]]></content>
+      <categories>
+        <category>The C++ language</category>
+      </categories>
+      <tags>
+        <tag>Recursion</tag>
+        <tag>Hanota</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu安装Samba</title>
     <url>/2020/19.Ubuntu-Samba/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是<a href="https://ubuntu.com/tutorials/install-and-configure-samba#1-overview" target="_blank" rel="noopener">官网</a>可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。</p>
@@ -652,7 +720,7 @@
       </tags>
   </entry>
   <entry>
-    <title>2020肺炎实时疫情图(置顶)</title>
+    <title>2020肺炎实时疫情图【置顶】</title>
     <url>/2020/00.WuHan/</url>
     <content><![CDATA[<iframe src="https://www.lovestu.com/api/project/cnmapyinqing/obj.php" height="500" frameborder="no" border="0" width="100%"> </iframe>
 
@@ -822,6 +890,16 @@
 </html>]]></content>
   </entry>
   <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -854,16 +932,6 @@
 </li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>资源</title>
