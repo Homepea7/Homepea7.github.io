@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-07-08T08:48:14.207Z</updated>
+  <updated>2020-07-09T13:44:40.274Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于相机的一些记录</title>
+    <link href="https://homepea7.github.io/2020/22.Camera/"/>
+    <id>https://homepea7.github.io/2020/22.Camera/</id>
+    <published>2020-07-09T13:31:31.000Z</published>
+    <updated>2020-07-09T13:44:40.274Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近花了巨资买了一个相机（现在还有点心疼），型号是索尼的A7m2，刚刚上手还不习惯只能用自动模式，不过我肯定是不想妥协的，所以想写这个博客来记录一些摄影学习之路，所以这个可能是会长期更新的。（其实我是经常忘记内容所以来记录一下2333）&lt;/p&gt;
+&lt;h1 id=&quot;关于照相模式&quot;&gt;&lt;a href=&quot;#关于照相模式&quot; class=&quot;headerlink&quot; title=&quot;关于照相模式&quot;&gt;&lt;/a&gt;关于照相模式&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Camera" scheme="https://Homepea7.github.io/categories/Camera/"/>
+    
+    
+      <category term="Camera" scheme="https://Homepea7.github.io/tags/Camera/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Ubuntu安装和简单使用CMake</title>
     <link href="https://homepea7.github.io/2020/21.Ubuntu-CMake/"/>
     <id>https://homepea7.github.io/2020/21.Ubuntu-CMake/</id>
     <published>2020-07-08T07:47:40.000Z</published>
-    <updated>2020-07-08T08:48:14.207Z</updated>
+    <updated>2020-07-09T13:31:45.508Z</updated>
     
     <summary type="html">
     
@@ -496,37 +518,6 @@
     
     
       <category term="WuHan" scheme="https://Homepea7.github.io/tags/WuHan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode做题的记录</title>
-    <link href="https://homepea7.github.io/2020/04.LeetCode/"/>
-    <id>https://homepea7.github.io/2020/04.LeetCode/</id>
-    <published>2020-02-09T14:11:19.000Z</published>
-    <updated>2020-02-09T13:55:36.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="https://Homepea7.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="https://Homepea7.github.io/tags/LeetCode/"/>
-    
-      <category term="C" scheme="https://Homepea7.github.io/tags/C/"/>
-    
-      <category term="C++" scheme="https://Homepea7.github.io/tags/C/"/>
     
   </entry>
   
