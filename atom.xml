@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-07-15T03:07:32.259Z</updated>
+  <updated>2020-07-22T03:38:17.961Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>C++笔试中的获取数据流问题</title>
+    <link href="https://homepea7.github.io/2020/23.GetData-C/"/>
+    <id>https://homepea7.github.io/2020/23.GetData-C/</id>
+    <published>2020-07-22T03:21:47.000Z</published>
+    <updated>2020-07-22T03:38:17.961Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近做字节笔试的时候经常会出现一些数据解析的问题，比如输入”(1,2)”这种数据，要求提取其中的坐标，还有就是输入一长串数据，如”1 2 3 4 5”说是遗传数据，没有指定长度，前面一直死在数据的获取上面，可能半个小时都没有获取到数据，后面机制知道怎么做也不可能有通过率。后面进行了了一些小总结，有了后面的结果，也想做一个小小的开源分享吧。&lt;/p&gt;
+&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C/C++ language" scheme="https://Homepea7.github.io/categories/The-C-C-language/"/>
+    
+    
+      <category term="The C/C++ language" scheme="https://Homepea7.github.io/tags/The-C-C-language/"/>
+    
+      <category term="Getdata" scheme="https://Homepea7.github.io/tags/Getdata/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于相机的一些记录</title>
     <link href="https://homepea7.github.io/2020/22.Camera/"/>
     <id>https://homepea7.github.io/2020/22.Camera/</id>
     <published>2020-07-09T13:31:31.000Z</published>
-    <updated>2020-07-15T03:07:32.259Z</updated>
+    <updated>2020-07-19T03:24:16.000Z</updated>
     
     <summary type="html">
     
@@ -149,7 +173,7 @@
     <link href="https://homepea7.github.io/2020/17.C-CRC/"/>
     <id>https://homepea7.github.io/2020/17.C-CRC/</id>
     <published>2020-05-28T10:17:51.000Z</published>
-    <updated>2020-06-17T14:23:40.000Z</updated>
+    <updated>2020-07-22T03:23:13.849Z</updated>
     
     <summary type="html">
     
@@ -159,7 +183,7 @@
     </summary>
     
     
-      <category term="The C language" scheme="https://Homepea7.github.io/categories/The-C-language/"/>
+      <category term="The C/C++ language" scheme="https://Homepea7.github.io/categories/The-C-C-language/"/>
     
     
       <category term="The C language" scheme="https://Homepea7.github.io/tags/The-C-language/"/>
@@ -240,9 +264,9 @@
       <category term="Latex" scheme="https://Homepea7.github.io/categories/Latex/"/>
     
     
-      <category term="Latex" scheme="https://Homepea7.github.io/tags/Latex/"/>
-    
       <category term="VsCode" scheme="https://Homepea7.github.io/tags/VsCode/"/>
+    
+      <category term="Latex" scheme="https://Homepea7.github.io/tags/Latex/"/>
     
       <category term="MiKTeX" scheme="https://Homepea7.github.io/tags/MiKTeX/"/>
     
@@ -493,31 +517,6 @@
       <category term="微信小程序" scheme="https://Homepea7.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
       <category term="蓝牙BLE" scheme="https://Homepea7.github.io/tags/%E8%93%9D%E7%89%99BLE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2020肺炎实时疫情图【置顶】</title>
-    <link href="https://homepea7.github.io/2020/00.WuHan/"/>
-    <id>https://homepea7.github.io/2020/00.WuHan/</id>
-    <published>2020-02-10T06:27:55.000Z</published>
-    <updated>2020-07-08T08:25:53.681Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;iframe src=&quot;https://www.lovestu.com/api/project/cnmapyinqing/obj.php&quot; height=&quot;500&quot; frameborder=&quot;no&quot; border=&quot;0&quot; width=&quot;100%&quot;&gt;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="WuHan" scheme="https://Homepea7.github.io/tags/WuHan/"/>
     
   </entry>
   

@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homepea7.github.io/2020/23.GetData-C/</loc>
+    
+    <lastmod>2020-07-22T03:38:17.961Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://homepea7.github.io/2020/17.C-CRC/</loc>
+    
+    <lastmod>2020-07-22T03:23:13.849Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://homepea7.github.io/2020/22.Camera/</loc>
     
-    <lastmod>2020-07-15T03:07:32.259Z</lastmod>
+    <lastmod>2020-07-19T03:24:16.000Z</lastmod>
     
   </url>
   
@@ -61,13 +75,6 @@
     <loc>https://homepea7.github.io/2020/18.Basics%20of%20C/</loc>
     
     <lastmod>2020-06-19T02:44:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://homepea7.github.io/2020/17.C-CRC/</loc>
-    
-    <lastmod>2020-06-17T14:23:40.000Z</lastmod>
     
   </url>
   

@@ -64,20 +64,23 @@
 </style>
 
 
-  <meta name="description" content="来源：果核剥壳实时数据来源：丁香医生">
+  <meta name="description" content="说明最近做字节笔试的时候经常会出现一些数据解析的问题，比如输入”(1,2)”这种数据，要求提取其中的坐标，还有就是输入一长串数据，如”1 2 3 4 5”说是遗传数据，没有指定长度，前面一直死在数据的获取上面，可能半个小时都没有获取到数据，后面机制知道怎么做也不可能有通过率。后面进行了了一些小总结，有了后面的结果，也想做一个小小的开源分享吧。 思路">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020肺炎实时疫情图【置顶】">
-<meta property="og:url" content="https://homepea7.github.io/2020/00.WuHan/index.html">
+<meta property="og:title" content="C++笔试中的获取数据流问题">
+<meta property="og:url" content="https://homepea7.github.io/2020/23.GetData-C/index.html">
 <meta property="og:site_name" content="Homepea&#39;s Blog">
-<meta property="og:description" content="来源：果核剥壳实时数据来源：丁香医生">
+<meta property="og:description" content="说明最近做字节笔试的时候经常会出现一些数据解析的问题，比如输入”(1,2)”这种数据，要求提取其中的坐标，还有就是输入一长串数据，如”1 2 3 4 5”说是遗传数据，没有指定长度，前面一直死在数据的获取上面，可能半个小时都没有获取到数据，后面机制知道怎么做也不可能有通过率。后面进行了了一些小总结，有了后面的结果，也想做一个小小的开源分享吧。 思路">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-10T06:27:55.000Z">
-<meta property="article:modified_time" content="2020-07-08T08:25:53.681Z">
+<meta property="og:image" content="https://homepea7.github.io/images/C-Language/2-2.png">
+<meta property="article:published_time" content="2020-07-22T03:21:47.000Z">
+<meta property="article:modified_time" content="2020-07-22T03:38:17.961Z">
 <meta property="article:author" content="Kavin Homepea">
-<meta property="article:tag" content="WuHan">
+<meta property="article:tag" content="The C&#x2F;C++ language">
+<meta property="article:tag" content="Getdata">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://homepea7.github.io/images/C-Language/2-2.png">
 
-<link rel="canonical" href="https://homepea7.github.io/2020/00.WuHan/">
+<link rel="canonical" href="https://homepea7.github.io/2020/23.GetData-C/">
 
 
 <script id="page-configurations">
@@ -89,7 +92,7 @@
   };
 </script>
 
-  <title>2020肺炎实时疫情图【置顶】 | Homepea's Blog</title>
+  <title>C++笔试中的获取数据流问题 | Homepea's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
     <script>
@@ -259,7 +262,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/00.WuHan/">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/23.GetData-C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -272,7 +275,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2020肺炎实时疫情图【置顶】
+          C++笔试中的获取数据流问题
         </h1>
 
         <div class="post-meta">
@@ -282,11 +285,22 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-10 14:27:55" itemprop="dateCreated datePublished" datetime="2020-02-10T14:27:55+08:00">2020-02-10</time>
+              <time title="创建时间：2020-07-22 11:21:47" itemprop="dateCreated datePublished" datetime="2020-07-22T11:21:47+08:00">2020-07-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/The-C-C-language/" itemprop="url" rel="index">
+                    <span itemprop="name">The C/C++ language</span>
+                  </a>
+                </span>
             </span>
 
           
-            <span id="/2020/00.WuHan/" class="post-meta-item leancloud_visitors" data-flag-title="2020肺炎实时疫情图【置顶】" title="阅读次数">
+            <span id="/2020/23.GetData-C/" class="post-meta-item leancloud_visitors" data-flag-title="C++笔试中的获取数据流问题" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -294,20 +308,32 @@
               <span class="leancloud-visitors-count"></span>
             </span>
   
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/23.GetData-C/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/23.GetData-C/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>18</span>
+              <span>2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -319,10 +345,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <iframe src="https://www.lovestu.com/api/project/cnmapyinqing/obj.php" height="500" frameborder="no" border="0" width="100%"> </iframe>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近做字节笔试的时候经常会出现一些数据解析的问题，比如输入”(1,2)”这种数据，要求提取其中的坐标，还有就是输入一长串数据，如”1 2 3 4 5”说是遗传数据，没有指定长度，前面一直死在数据的获取上面，可能半个小时都没有获取到数据，后面机制知道怎么做也不可能有通过率。后面进行了了一些小总结，有了后面的结果，也想做一个小小的开源分享吧。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>仔细分析上面的内容，发现两个点，一个使输入的长度不固定，而且数组的多少也不固定，因此没有办法用固定的方法去解析。</p>
+<p>看了一下C++的常用数据类型，发现容器使可以很方便实现变长的类似数组功能，然后就是输入的数据，这个好办，直接输入字符串解析就好了，下面开写，具体代码如下。首先是main.c:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include "GetData.h"</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	// cout &lt;&lt; isNumber(<span class="string">'.'</span>) &lt;&lt;endl;</span><br><span class="line">	// GetData_Print();</span><br><span class="line"></span><br><span class="line">	string str;</span><br><span class="line">	getline(cin, str);</span><br><span class="line">	GetData(str);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>其次是GetData.cpp:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string&gt;</span></span><br><span class="line"><span class="comment">#include "GetData.h"</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void GetData_Print(void)</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">"GetData test!"</span> &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool isNumber(char tmp)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">return</span> ( (tmp &gt;= <span class="string">'0'</span>) &amp;&amp; (tmp &lt;= <span class="string">'9'</span>) ) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//从一行字符串获取相应的数据，解析到动态的容器中</span><br><span class="line">int GetData(string str)</span><br><span class="line">&#123;</span><br><span class="line">	int i = 0, data = 0;</span><br><span class="line">	bool update = <span class="literal">false</span>;	//是否存储数据</span><br><span class="line">	int  symbol = 1	   ;	//正负号的判定(+1或者-1)</span><br><span class="line">	vector &lt;int&gt; array1;	//存储不定长的数据</span><br><span class="line">	<span class="keyword">for</span>(int i = 0; i &lt; str.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(str[i] == <span class="string">'-'</span> &amp;&amp; isNumber(str[i+1]))</span><br><span class="line">			symbol = -1;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (str[i] &gt;= <span class="string">'0'</span> &amp;&amp; str[i] &lt;= <span class="string">'9'</span>)</span><br><span class="line">				data = 10*data + (str[i] - <span class="string">'0'</span>), update = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(update)</span><br><span class="line">				array1.push_back(symbol*data), data = 0, update = <span class="literal">false</span>, symbol = 1;</span><br><span class="line">			<span class="keyword">if</span>(update&amp;&amp;i == str.size() - 1)//需对字符串最后的数字进行判断</span><br><span class="line">				array1.push_back(symbol*data), symbol = 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; <span class="string">"Result:"</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span>(int j = 0; j &lt; array1.size(); j++)</span><br><span class="line">		cout &lt;&lt; array1[j] &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>来源：<a href="https://www.ghpym.com/2020cnyqt.html" target="_blank" rel="noopener">果核剥壳</a><br>实时数据来源：丁香医生</p>
+<p>最后是GetData.h</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ifndef GETDATA_H</span></span><br><span class="line"><span class="comment">#define GETDATA_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void GetData_Print(void);</span><br><span class="line">bool isNumber(char tmp);</span><br><span class="line">int GetData(string str);</span><br><span class="line"></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>上面的已经是改的第二版了，已经完美支持负数的解析了，而且个人比较喜欢代码行数比较少，因此if里面很多的幅值部分就直接用都好隔开了，我知道不是一个好习惯，但是我个人看着的确好看写，勿喷勿喷。测是结果如下：<img src="/images/C-Language/2-2.png" alt="2.2"></p>
+<p>可以看到已经解析了数据，但是其中有一个小问题，就是实际操作中我用到了[i+1],如果测试代码中只有一位是会溢出的，但是笔试的用例好像没有这个情况，他们都是给的指定的输入，对这个还是比较放心的，只是做一个简单的分享吧。</p>
 
     </div>
 
@@ -343,7 +378,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/WuHan/" rel="tag"><i class="fa fa-tag"></i> WuHan</a>
+              <a href="/tags/The-C-C-language/" rel="tag"><i class="fa fa-tag"></i> The C/C++ language</a>
+              <a href="/tags/Getdata/" rel="tag"><i class="fa fa-tag"></i> Getdata</a>
           </div>
 
         
@@ -352,13 +388,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04.LeetCode/" rel="prev" title="LeetCode做题的记录">
-      <i class="fa fa-chevron-left"></i> LeetCode做题的记录
+    <a href="/2020/22.Camera/" rel="prev" title="关于相机的一些记录">
+      <i class="fa fa-chevron-left"></i> 关于相机的一些记录
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01.HitMan-Tube/" rel="next" title="HitMan Tube拟辉光钟制作记录">
-      HitMan Tube拟辉光钟制作记录 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -372,6 +405,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -418,6 +452,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试结果"><span class="nav-number">3.</span> <span class="nav-text">测试结果</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
