@@ -1,7 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C++笔试中的获取数据流问题</title>
+    <title>C/C++常见输入输出的小总结</title>
+    <url>/2020/29.IO-Stream/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>怎么说呢，首先说说地址，还是<a href="https://ac.nowcoder.com/acm/contest/5650?from=hr_test#question" target="_blank" rel="noopener">牛客网</a>。总地来说吧，最近也是做了不少的题目，对于输入和输出数据的类型东西也是有了一些了解。我最开始利用输入字符串的形式，加上 vector 解析的<a href="http://localhost:4000/2020/23.GetData-C/" target="_blank" rel="noopener">例子</a>也是一个不错的想法，但是最近仔细的做了一系列的输入输出题目以后，发现有了新的思路。</p>
+<h1 id="例题分析"><a href="#例题分析" class="headerlink" title="例题分析"></a>例题分析</h1><p>废话不多说，直接上题，题型全是计算A+B的类型，具体如下：</p>
+<p><strong><a href="https://ac.nowcoder.com/acm/contest/5650/A" target="_blank" rel="noopener">1. 题目描述</a></strong><br>计算a+b</p>
+<p><strong>输入描述:</strong><br>输入包括两个正整数a,b(1 &lt;= a, b &lt;= 10^9),输入数据包括多组。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1 5</span><br><span class="line">10 20</span><br></pre></td></tr></table></figure>
+<p><strong>输出描述:</strong><br>输出a+b的结果。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">6</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+
+<p>一个简单的EOF，判断是否结束，比较简单直接贴答案：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a, b;</span><br><span class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%d %d"</span>, &amp;a, &amp;b) != EOF)</span><br><span class="line">		cout &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><a href="https://ac.nowcoder.com/acm/contest/5650/B" target="_blank" rel="noopener">2. 题目描述</a></strong><br>计算a+b</p>
+<p><strong>输入描述:</strong><br>输入第一行包括一个数据组数t(1 &lt;= t &lt;= 100)<br>接下来每行包括两个正整数a,b(1 &lt;= a, b &lt;= 10^9)<br>示例示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">1 5</span><br><span class="line">10 20</span><br></pre></td></tr></table></figure>
+<p><strong>输出描述:</strong><br>输出a+b的结果。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">6</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+
+<p>这个应该是最简单的一类了，直接上：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n, a, b;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">if</span>(n &lt;= 0)	<span class="built_in">return</span> 0;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(int i = 0; i &lt; n ; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		cout &lt;&lt; a+b &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><a href="https://ac.nowcoder.com/acm/contest/5650/C" target="_blank" rel="noopener">3. 题目描述</a></strong><br>计算a+b</p>
+<p><strong>输入描述:</strong><br>输入包括两个正整数a,b(1 &lt;= a, b &lt;= 10^9),输入数据有多组, 如果输入为0 0则结束输入<br>示例示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1 5</span><br><span class="line">10 20</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
+<p><strong>输出描述:</strong><br>输出a+b的结果。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">6</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+
+<p>这个直接判断输入的数据，直接上：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a, b;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(1)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		<span class="keyword">if</span>((a == 0) &amp;&amp; (b == 0))	</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		cout &lt;&lt; a+b &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><a href="https://ac.nowcoder.com/acm/contest/5650/D" target="_blank" rel="noopener">4. 题目描述</a></strong><br>计算一系列数的和</p>
+<p><strong>输入描述:</strong><br>输入数据包括多组。<br>每组数据一行,每行的第一个整数为整数的个数n(1 &lt;= n &lt;= 100), n为0的时候结束输入。<br>接下来n个正整数,即需要求和的每个正整数。<br>示例示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">4 1 2 3 4</span><br><span class="line">5 1 2 3 4 5</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p><strong>输出描述:</strong><br>输出a+b的结果。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p>这个直接判断输入第一个数即可，跟上面几乎没有区别：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n, a, b;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(1)</span><br><span class="line">	&#123;</span><br><span class="line">		int tmp = 0, sum = 0;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="keyword">if</span>(n &lt;= 0)	</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(int i = 0; i &lt; n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; tmp;</span><br><span class="line">			sum += tmp;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><a href="https://ac.nowcoder.com/acm/contest/5650/E" target="_blank" rel="noopener">5. 题目描述</a></strong><br>计算一系列数的和</p>
+<p><strong>输入描述:</strong><br>输入的第一行包括一个正整数t(1 &lt;= t &lt;= 100), 表示数据组数。<br>接下来t行, 每行一组数据。<br>每行的第一个整数为整数的个数n(1 &lt;= n &lt;= 100)。<br>接下来n个正整数, 即需要求和的每个正整数。<br>示例示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">4 1 2 3 4</span><br><span class="line">5 1 2 3 4 5</span><br></pre></td></tr></table></figure>
+<p><strong>输出描述:</strong><br>输出a+b的结果。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p>贴答案：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int t, n, a, b;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	<span class="keyword">if</span>(t &lt;= 0)	<span class="built_in">return</span> 0;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(int i = 0; i &lt; t; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int tmp = 0, sum = 0;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="keyword">if</span>(n &lt;= 0)	<span class="built_in">break</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(int j = 0; j &lt; n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; tmp;</span><br><span class="line">			sum += tmp;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><a href="https://ac.nowcoder.com/acm/contest/5650/F" target="_blank" rel="noopener">6. 题目描述</a></strong><br>计算一系列数的和</p>
+<p><strong>输入描述:</strong><br>输入数据有多组, 每行表示一组输入数据。<br>每行的第一个整数为整数的个数n(1 &lt;= n &lt;= 100)。<br>接下来n个正整数, 即需要求和的每个正整数。<br>示例示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">4 1 2 3 4</span><br><span class="line">5 1 2 3 4 5</span><br></pre></td></tr></table></figure>
+<p><strong>输出描述:</strong><br>输出a+b的结果。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p>同上，添加一个EOF，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n = 0;</span><br><span class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%d"</span>, &amp;n) != EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		int sum = 0, tmp = 0;</span><br><span class="line">		<span class="keyword">for</span>(int i = 0; i &lt; n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; tmp;</span><br><span class="line">			sum += tmp;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><a href="https://ac.nowcoder.com/acm/contest/5650/G" target="_blank" rel="noopener">6. 题目描述</a></strong><br>计算一系列数的和</p>
+<p><strong>输入描述:</strong><br>输入数据有多组, 每行表示一组输入数据。</p>
+<p>每行不定有n个整数，空格隔开。(1 &lt;= n &lt;= 100)。<br>示例示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">4 5</span><br><span class="line">0 0 0 0 0</span><br></pre></td></tr></table></figure>
+<p><strong>输出描述:</strong><br>输出a+b的结果。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">6</span><br><span class="line">9</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>这个就是我最先开始说的输入问题，我最先使用的输入字符串然后去解析的方式实在很笨，看了一些帖子以后发现scanf的标准输入输出非常好用，在输入的信息的时候scanf会默认用空格或者换行来区分数据，因此直接强行判断即可，题目默认也是一个数字一个字符，碰到换行符’\n’就输出并且清空就行，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int  n, sum = 0;</span><br><span class="line">	char c;</span><br><span class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%d%c"</span>, &amp;n, &amp;c) != EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		sum += n;</span><br><span class="line">		<span class="keyword">if</span>(c == <span class="string">'\n'</span>)</span><br><span class="line">			cout &lt;&lt; sum &lt;&lt; endl, sum = 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>关于笔试的刷题，我觉得<a href="https://ac.nowcoder.com/acm/contest/5650?from=hr_test#question" target="_blank" rel="noopener">牛客的这个帖子</a>是必做的，题目虽然不难，但是真的是受益匪浅！！！！</p>
+]]></content>
+      <categories>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>输入输出</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++大数取余和快速幂</title>
+    <url>/2020/28.Big-number/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近遇到的一些笔试问题，关于大数的情况还是很多，因此在这里做一个小的说明，关于大数取余的过程，典型的运算就是幂！</p>
+<h1 id="大数取模"><a href="#大数取模" class="headerlink" title="大数取模"></a>大数取模</h1><p>一般而言，取模的数字是1000000007（一般也会写作1e9+7，一共十位数），对于这个数的一些问题，我只能做一个小的总结吧，有很多的数学解释我在后面就直接放链接了。</p>
+<p>首先我觉得他是一个质数，而且足够大，因此在计算的时候不会很多麻烦，取余也比较方便；<br>其次int32的最大值是2147483647，所以对于int32位来说1000000007足够大；<br>最后int64的最大值是2^63-1，对于1000000007来说它的平方不会在int64中溢出 所以在大数相乘的时候，因为(a∗b) % c=((a%c) ∗ (b%c)) % c，所以相乘时两边都对1000000007取模，再保存在int64里面不会溢出。</p>
+<p>这句话在做题的时候看上去只需要取模就可以了，但是在实际计算中还是有一些小坑，因此还是小小总结一下。</p>
+<h1 id="关于快速幂"><a href="#关于快速幂" class="headerlink" title="关于快速幂"></a>关于快速幂</h1><p>快速幂运算其实就是二分法。假设要求x^n，如果n = 2^k，那么原题可以很轻松的表示为：x^n = ((x^2)^2)^2…。这样只要做k次平方运算就能解决，时间复杂度就从O(n)下降到log(n)。<br>示例代码如下（中间还做了大数取余的过程）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">long long mod(long long a, long long b) &#123;</span><br><span class="line">	long long ans = 1;</span><br><span class="line">	long long c = 1000000007;</span><br><span class="line">	<span class="keyword">while</span>(b &gt; 0) &#123;</span><br><span class="line">		<span class="keyword">if</span>(b &amp; 1) ans = ans * a % c; </span><br><span class="line">		a = a * a % c;</span><br><span class="line">		b &gt;&gt;= 1;                     //位运算：b /= 2; </span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="built_in">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="两个易错点"><a href="#两个易错点" class="headerlink" title="两个易错点"></a>两个易错点</h1><h2 id="求最大值时先取模"><a href="#求最大值时先取模" class="headerlink" title="求最大值时先取模"></a>求最大值时先取模</h2><p>取mod的时候，如果题目要求你算最大值，并且说由于答案可能很大，输出结果请对1e9+7取，那你千万不能在max函数更新最大值时就取模，这样很可能会出错！</p>
+<p>比如：题目过程中有四个数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2e9+7，1e9+6，1e9+5，1e9+4</span><br></pre></td></tr></table></figure>
+<p>然后算法中你用max求最大值时，如果先模上1e9+7，那你会得到1e9，1e9+6，1e9+5，1e9+4，并且max函数算出的最大值是1e9+6，可是这四个数的最大值应该是2e9 + 7才对。</p>
+<p>正确做法：在求max的时候不要先取mod，而是都以long long型数据比大小，最后得到最大值是2e9 + 7，再对它取mod，得到结果是1e9 + 7。</p>
+<h2 id="直到return才取模"><a href="#直到return才取模" class="headerlink" title="直到return才取模"></a>直到return才取模</h2><p>如果让你算1+2+…+n的值（由于答案可能很大，输出结果请对1e9+7取）<br>n的取值范围是1 ~ 10^10000。</p>
+<p>那显然如果在中间过程中不先取mod，必然会爆数据范围，因为不管是int还是long long甚至是double(最大10^308)都无法存下这个数据。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//	...</span><br><span class="line">long long res = 0;</span><br><span class="line"><span class="keyword">for</span>(int i = 1; i &lt;= n ; i++) </span><br><span class="line">    res = res + i; // n巨大，res无法存下这个数据</span><br><span class="line"><span class="built_in">return</span> res % (1e9 + 7);</span><br><span class="line">//	...</span><br></pre></td></tr></table></figure>
+
+<p>正确的做法应该是计算的过程中取模：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//	...</span><br><span class="line">long long res = 0;</span><br><span class="line"><span class="keyword">for</span>(int i = 1; i &lt;= n ; i++) </span><br><span class="line">    res = (res + i) % (1000000007); // 计算的过程中取模</span><br><span class="line"><span class="built_in">return</span> res;</span><br><span class="line">//	...</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>如果回想上面，做幂运算的时候就是这样的过程，也是在运算的过程中进行取余的。总结起来就是在做题的开始就需要想好，到底是先取余还是计算以后取余。</p>
+]]></content>
+      <categories>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>大数取余</tag>
+        <tag>快速幂</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>老毛子路由器解锁网易云音乐</title>
+    <url>/2020/27.UnblockCloudmusic/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>怎么说呢，网易云音乐是我一直在用的音乐app，黑色的主题我是真的很喜欢的呀，个人觉得非常好看，但是最近这两年来网易云音乐悦来月拉垮了，版权和直播那一块，让这个已经变得不想一个音乐app了。疫情在家的时候完了一下路由器，然后在大佬编译的OpenWrt的版本中有解锁网易云音乐的选项，然后我就开始了一系列的收集工作。</p>
+<p>下面仅仅是我个人的小记录，如果不是很懂或者零基础的话请看<a href="https://www.52pojie.cn/forum.php?mod=viewthread&tid=1234066&highlight=%CD%F8%D2%D7%D4%C6%BD%E2%CB%F8" target="_blank" rel="noopener">52PJ</a>。</p>
+<h1 id="系统说明"><a href="#系统说明" class="headerlink" title="系统说明"></a>系统说明</h1><p>硬件是联想的NeWifi3，这个路由器怎么说呢，也算是矿渣之一吧，不过全千兆和512m的内存，足够运行很多东西，刷了老毛子挂一个网站然后用花生壳直接映射到外网可以说是绰绰有余，但是我个人觉得不太稳定，于是打算做简单的小Nas使用，反正也不算啥，够用就行。</p>
+<p>下面开始说正题，使用脚本来解锁网易云。先放大佬的<a href="https://github.com/nondanee/UnblockNeteaseMusic" target="_blank" rel="noopener">github链接</a>，下载下来直接解压即可，然后使用FTP复制到路由器，然后开始配置环境就行了。</p>
+<h1 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h1><p>上面的脚本就是使用Node来运行的，但是老毛子一般的话可能没有编译进去，于是便要自行安装，打开SSH链接路由器，一次输入下列：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">unset</span> LD_LIBRARY_PATH</span><br><span class="line"><span class="built_in">unset</span> LD_PRELOAD</span><br><span class="line">mount -t tmpfs tmpfs /opt -o size=60M</span><br><span class="line"><span class="keyword">for</span> folder <span class="keyword">in</span> bin etc lib/opkg tmp var/lock</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">[ ! -d <span class="string">"/opt/<span class="variable">$folder</span>"</span> ] &amp;&amp; mkdir -p /opt/<span class="variable">$folder</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>下面安装OPkg</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://pkg.entware.net/binaries/mipsel/installer/opkg -O /opt/bin/opkg</span><br><span class="line">wget http://bin.entware.net/mipselsf-k3.4/installer/opkg.conf -O /opt/etc/opkg.conf | chmod 755 /opt/bin/opkg</span><br></pre></td></tr></table></figure>
+
+<p>update并且安装node</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/opt/bin/opkg update</span><br><span class="line">/opt/bin/opkg install node</span><br></pre></td></tr></table></figure>
+
+<p>此时可以使用下列指令查看node版本，并且确认node已经安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<h1 id="开始运行脚本"><a href="#开始运行脚本" class="headerlink" title="开始运行脚本"></a>开始运行脚本</h1><p>首先获取网易云音乐的ip，使用ping即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping music.163.com</span><br></pre></td></tr></table></figure>
+
+<p>会返回相应的ip和延迟等数据，记住那个ip，然后在SSH中找到相应的脚本文件，可以看看我下图的。<br><img src="/images/RaspberryPi/3.1.png" alt="P3.1"><br>然后使用上面记录的ip，运行node即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node /home/root/UNM/app.js -p 8888 -f 59.111.181.60</span><br></pre></td></tr></table></figure>
+
+<h1 id="设置APP代理"><a href="#设置APP代理" class="headerlink" title="设置APP代理"></a>设置APP代理</h1><p>打开网易云音乐后台的设置，找到工具中的代理选项，使用自定义代理，如下所示：<br><img src="/images/RaspberryPi/3.2.png" alt="P3.2"></p>
+<h1 id="完结撒花"><a href="#完结撒花" class="headerlink" title="完结撒花"></a>完结撒花</h1><p>完结撒花，感觉有这个脚本的花还是很好用的，关键是比如周杰伦的新歌都是有资源的，感觉很不错。</p>
+]]></content>
+      <categories>
+        <category>解锁网易云音乐</category>
+      </categories>
+      <tags>
+        <tag>老毛子</tag>
+        <tag>解锁网易云音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小小总结一下C/C++的进制转换</title>
+    <url>/2020/26.Hexadecimal-conversion/</url>
+    <content><![CDATA[<h1 id="首先说要求"><a href="#首先说要求" class="headerlink" title="首先说要求"></a>首先说要求</h1><p>题目要求输入一个字符串，只有数字和大写字母，然后需要转换成十进制的没，需要判定的是基数和偶数，然后默认的进制需要自己设计，ok下面开始简答分析。</p>
+<h1 id="进制转换的说明"><a href="#进制转换的说明" class="headerlink" title="进制转换的说明"></a>进制转换的说明</h1><p>其实进制转换也就是乘以基数的多少次方，然后相加即可。下面直接上代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int StrtoBool(string &amp;str, int r)</span><br><span class="line">&#123;</span><br><span class="line">	int ans = 0;</span><br><span class="line">	//	进制转换</span><br><span class="line">	<span class="keyword">for</span>(int i = 0; i != str.size(); i ++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans *= r;</span><br><span class="line">		<span class="keyword">if</span>(str[i] &gt;= <span class="string">'0'</span> &amp;&amp; str[i] &lt;= <span class="string">'9'</span>)</span><br><span class="line">			ans += str[i] - <span class="string">'0'</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(str[i] &gt;= <span class="string">'A'</span> &amp;&amp; str[i] &lt;= <span class="string">'Z'</span>)</span><br><span class="line">			ans += str[i] - <span class="string">'A'</span> + 10;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">return</span> ans % 2;	//结果是只看奇数和偶数的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="十进制转换为任意进制"><a href="#十进制转换为任意进制" class="headerlink" title="十进制转换为任意进制"></a>十进制转换为任意进制</h1><p>一般算法是除以基数，然后倒着取数，显然是栈的结构，先入后出。下面直给出完整版的代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n &#x3D; 0, r &#x3D; 10;	</span><br><span class="line">	stack&lt;char&gt; s;	&#x2F;&#x2F;全部存大写字母</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; r;	&#x2F;&#x2F;数字和进制（都是int类型的）</span><br><span class="line"></span><br><span class="line">	while(n)</span><br><span class="line">	&#123;</span><br><span class="line">		char tmp ;</span><br><span class="line">		tmp &#x3D; n%r;</span><br><span class="line">	</span><br><span class="line">		if(tmp &gt;&#x3D; 0 &amp;&amp; tmp &lt;&#x3D; 9)</span><br><span class="line">			tmp +&#x3D; 48;		&#x2F;&#x2F;	得到字符的0-9</span><br><span class="line">		else </span><br><span class="line">			tmp +&#x3D; 55;		&#x2F;&#x2F;	得到大写的数字（暂时没有处理Z以后的）</span><br><span class="line">		s.push(tmp);</span><br><span class="line">		n &#x2F;&#x3D; r;</span><br><span class="line">	&#125;</span><br><span class="line">	for(;!s.empty();)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; s.top();</span><br><span class="line">		s.pop();</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>The C/CPP language</tag>
+        <tag>Hexadecimal Conversion</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用循环链表解决约瑟夫问题(Josephus Problem)</title>
+    <url>/2020/25.C-Josephus-Problem/</url>
+    <content><![CDATA[<h1 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h1><p>约瑟夫问题是个有名的问题:N个人围成一圈，从第一个开始报数，第M个将被杀掉，最后剩下一个，其余人都将被杀掉。<br>同理还有丢手绢，猴子称王都是一模一样的问题，首先用循环就可以直接一次性解决，记录当前位置的数并且循环取余即可，但是直观而言，肯定是循环数组更加的直观！</p>
+<h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><p>不哆嗦了，直接贴上，里面注释还是很多的：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line">//定义循环链表</span><br><span class="line">typedef struct node//定义node结构体</span><br><span class="line">&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct node* next;</span><br><span class="line">&#125;cLinkList;//typedef struct node* cLinkList;定义一个struct node类型的循环链表</span><br><span class="line"></span><br><span class="line">//主函数</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cLinkList *head, *p, *s, *temp;</span><br><span class="line">    int n, k;</span><br><span class="line">    int i = 1;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter the total number n:\n"</span>);</span><br><span class="line">    scanf(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please enter the key value:\n"</span>);</span><br><span class="line">    scanf(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">    k %= n;</span><br><span class="line">    head = (cLinkList *)malloc(sizeof(cLinkList));</span><br><span class="line">    p = head;</span><br><span class="line">    p-&gt;next = p;//这里要赋值为p，不能赋值为head，要保持head的位置不变</span><br><span class="line">    p-&gt;data = i;</span><br><span class="line">    <span class="keyword">for</span>(i = 2; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s = (cLinkList *)malloc(sizeof(cLinkList));</span><br><span class="line">        s-&gt;data = i;</span><br><span class="line">        s-&gt;next = p-&gt;next;</span><br><span class="line">        p-&gt;next = s;</span><br><span class="line">        p = s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    p = head;</span><br><span class="line">    int total = n;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = 1; i &lt; k - 1; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d-&gt;"</span>, p-&gt;next-&gt;data);</span><br><span class="line">        temp = p-&gt;next;//temp为要删除的元素</span><br><span class="line">        p-&gt;next = temp-&gt;next;//链表中跳过temp</span><br><span class="line">        free(temp);//释放temp</span><br><span class="line">        p = p-&gt;next;//p向前移动继续寻找</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Done！\n"</span>);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>The C/CPP language</tag>
+        <tag>Josephus Problem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>空指针、野指针与悬垂指针</title>
+    <url>/2020/24.C-point/</url>
+    <content><![CDATA[<h1 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h1><p>空指针：指针指向的地址为空的指针叫空指针/NULL指针</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *p1;</span><br><span class="line">p1 = NULL;</span><br><span class="line"></span><br><span class="line">char *p2;</span><br><span class="line">p2 = NULL;</span><br></pre></td></tr></table></figure>
+
+<h1 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h1><p>当所指向的对象被释放或者收回，但是对该指针没有作任何的修改，以至于该指针仍旧指向已经回收的内存地址，此情况下该指针便称悬垂指针（也叫迷途指针）。<br>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">int *p1;		//这里p1没有初始化的赋值，随机只想一个地址，是野指针</span><br><span class="line">p1 = &amp;a;		//指向了值</span><br><span class="line"></span><br><span class="line">// 指针在申请的时候一定要赋值，至少要给NULL！</span><br><span class="line">char *p2 = NULL;</span><br></pre></td></tr></table></figure>
+
+<h1 id="悬垂指针"><a href="#悬垂指针" class="headerlink" title="悬垂指针"></a>悬垂指针</h1><p>悬垂指针：指针所指向的对象已经被释放或者回收了，但是指向该对象的指针没有作任何的修改，仍旧指向已经回收的内存地址。 此类指针称为垂悬指针。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   char *dp = NULL;</span><br><span class="line">   &#123;</span><br><span class="line">       char c;</span><br><span class="line">       dp = &amp;c;</span><br><span class="line">   &#125; /* c falls out of scope */</span><br><span class="line">     /* dp is now a dangling pointer */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个很常见的失误是返回一个栈分配的局部变量：一旦调用的函数返回了，分配给这些变量的空间被回收，此时它们拥有的是“垃圾值”。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *func(void)</span><br><span class="line">&#123;</span><br><span class="line">    int num = 1234;</span><br><span class="line">    /* ... */</span><br><span class="line">    <span class="built_in">return</span> &amp;num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用 func 后，尝试从该指针暂时能读取到正确的值（1234），但是再次调用函数后将会重写栈为 num 分配的的值，再从该指针读取的值就不正确了。如果必须要返回一个指向 num 的指针，num 的作用域必须大于这个函数——它也许被声明为 static。</p>
+<h1 id="避免悬垂指针错误"><a href="#避免悬垂指针错误" class="headerlink" title="避免悬垂指针错误"></a>避免悬垂指针错误</h1><p>在 C/C++ 中，一种最简单的技术是实现一个 free()（或类似的）替代版本或者 delete 析构器来保证指针的重置。然后，这个技术不会清除其他指针变量，它们含有该指针的副本。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* Alternative version <span class="keyword">for</span> <span class="string">'free()'</span> */</span><br><span class="line">void safefree(void **pp)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (pp != NULL) &#123;               /* safety check */</span><br><span class="line">        free(*pp);                  /* deallocate chunk, note that free(NULL) is valid */</span><br><span class="line">        *pp = NULL;                 /* reset original pointer */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int f(int i)</span><br><span class="line">&#123;</span><br><span class="line">    char *p = NULL, *p2;</span><br><span class="line">    p = (char *)malloc(1000);    /* get a chunk */</span><br><span class="line">    p2 = p;              /* copy the pointer */</span><br><span class="line">    /* use the chunk here */</span><br><span class="line">    safefree(&amp;p);       /* safety freeing; does not affect p2 variable */</span><br><span class="line">    safefree(&amp;p);       /* this second call won<span class="string">'t fail */</span></span><br><span class="line"><span class="string">    char c = *p2;       /* p2 is still a dangling pointer, so this is undefined behavior. */</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>CRC Check</tag>
+        <tag>The C/CPP language</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++笔试中的获取数据问题</title>
     <url>/2020/23.GetData-C/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近做字节笔试的时候经常会出现一些数据解析的问题，比如输入”(1,2)”这种数据，要求提取其中的坐标，还有就是输入一长串数据，如”1 2 3 4 5”说是遗传数据，没有指定长度，前面一直死在数据的获取上面，可能半个小时都没有获取到数据，后面机制知道怎么做也不可能有通过率。后面进行了了一些小总结，有了后面的结果，也想做一个小小的开源分享吧。</p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>仔细分析上面的内容，发现两个点，一个使输入的长度不固定，而且数组的多少也不固定，因此没有办法用固定的方法去解析。</p>
@@ -15,7 +230,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#ifndef GETDATA_H</span></span><br><span class="line"><span class="comment">#define GETDATA_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void GetData_Print(void);</span><br><span class="line">bool isNumber(char tmp);</span><br><span class="line">int GetData(string str);</span><br><span class="line"></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>上面的已经是改的第二版了，已经完美支持负数的解析了，而且个人比较喜欢代码行数比较少，因此if里面很多的幅值部分就直接用都好隔开了，我知道不是一个好习惯，但是我个人看着的确好看写，勿喷勿喷。测是结果如下：<img src="/images/C-Language/2-2.png" alt="2.2"></p>
-<p>可以看到已经解析了数据，但是其中有一个小问题，就是实际操作中我用到了[i+1],如果测试代码中只有一位是会溢出的，但是笔试的用例好像没有这个情况，他们都是给的指定的输入，对这个还是比较放心的，只是做一个简单的分享吧。</p>
+<p>可以看到已经解析了数据，但是其中有一个小问题，就是实际操作中判断符号哪里我用到了[i+1],如果测试代码中只有一个字符是会溢出的，但是笔试的用例好像没有这个情况，因为他们都是给的指定的输入，对这个还是比较放心的，只是做一个简单的分享吧。</p>
 ]]></content>
       <categories>
         <category>The C/C++ language</category>
@@ -467,8 +682,8 @@
         <category>Latex</category>
       </categories>
       <tags>
-        <tag>VsCode</tag>
         <tag>Latex</tag>
+        <tag>VsCode</tag>
         <tag>MiKTeX</tag>
       </tags>
   </entry>
@@ -973,16 +1188,6 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>Homepea的标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -1015,6 +1220,16 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>资源</title>

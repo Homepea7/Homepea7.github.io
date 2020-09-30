@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-07-22T03:38:17.961Z</updated>
+  <updated>2020-09-30T03:37:26.066Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,11 +17,157 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>C++笔试中的获取数据流问题</title>
+    <title>C/C++常见输入输出的小总结</title>
+    <link href="https://homepea7.github.io/2020/29.IO-Stream/"/>
+    <id>https://homepea7.github.io/2020/29.IO-Stream/</id>
+    <published>2020-09-30T02:16:47.000Z</published>
+    <updated>2020-09-30T03:37:26.066Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;怎么说呢，首先说说地址，还是&lt;a href=&quot;https://ac.nowcoder.com/acm/contest/5650?from=hr_test#question&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;牛客网&lt;/a&gt;。总地来说吧，最近也是做了不少的题目，对于输入和输出数据的类型东西也是有了一些了解。我最开始利用输入字符串的形式，加上 vector 解析的&lt;a href=&quot;http://localhost:4000/2020/23.GetData-C/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;例子&lt;/a&gt;也是一个不错的想法，但是最近仔细的做了一系列的输入输出题目以后，发现有了新的思路。&lt;/p&gt;
+&lt;h1 id=&quot;例题分析&quot;&gt;&lt;a href=&quot;#例题分析&quot; class=&quot;headerlink&quot; title=&quot;例题分析&quot;&gt;&lt;/a&gt;例题分析&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
+    
+    
+      <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
+    
+      <category term="输入输出" scheme="https://Homepea7.github.io/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++大数取余和快速幂</title>
+    <link href="https://homepea7.github.io/2020/28.Big-number/"/>
+    <id>https://homepea7.github.io/2020/28.Big-number/</id>
+    <published>2020-09-21T01:00:57.000Z</published>
+    <updated>2020-09-21T12:06:27.874Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近遇到的一些笔试问题，关于大数的情况还是很多，因此在这里做一个小的说明，关于大数取余的过程，典型的运算就是幂！&lt;/p&gt;
+&lt;h1 id=&quot;大数取模&quot;&gt;&lt;a href=&quot;#大数取模&quot; class=&quot;headerlink&quot; title=&quot;大数取模&quot;&gt;&lt;/a&gt;大数取模&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
+    
+    
+      <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
+    
+      <category term="大数取余" scheme="https://Homepea7.github.io/tags/%E5%A4%A7%E6%95%B0%E5%8F%96%E4%BD%99/"/>
+    
+      <category term="快速幂" scheme="https://Homepea7.github.io/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>老毛子路由器解锁网易云音乐</title>
+    <link href="https://homepea7.github.io/2020/27.UnblockCloudmusic/"/>
+    <id>https://homepea7.github.io/2020/27.UnblockCloudmusic/</id>
+    <published>2020-08-28T02:13:34.000Z</published>
+    <updated>2020-08-28T02:38:42.598Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;怎么说呢，网易云音乐是我一直在用的音乐app，黑色的主题我是真的很喜欢的呀，个人觉得非常好看，但是最近这两年来网易云音乐悦来月拉垮了，版权和直播那一块，让这个已经变得不想一个音乐app了。疫情在家的时候完了一下路由器，然后在大佬编译的OpenWrt的版本中有解锁网易云音乐的选项，然后我就开始了一系列的收集工作。&lt;/p&gt;
+&lt;p&gt;下面仅仅是我个人的小记录，如果不是很懂或者零基础的话请看&lt;a href=&quot;https://www.52pojie.cn/forum.php?mod=viewthread&amp;tid=1234066&amp;highlight=%CD%F8%D2%D7%D4%C6%BD%E2%CB%F8&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;52PJ&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="解锁网易云音乐" scheme="https://Homepea7.github.io/categories/%E8%A7%A3%E9%94%81%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
+    
+    
+      <category term="老毛子" scheme="https://Homepea7.github.io/tags/%E8%80%81%E6%AF%9B%E5%AD%90/"/>
+    
+      <category term="解锁网易云音乐" scheme="https://Homepea7.github.io/tags/%E8%A7%A3%E9%94%81%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小小总结一下C/C++的进制转换</title>
+    <link href="https://homepea7.github.io/2020/26.Hexadecimal-conversion/"/>
+    <id>https://homepea7.github.io/2020/26.Hexadecimal-conversion/</id>
+    <published>2020-08-24T08:23:58.000Z</published>
+    <updated>2020-08-24T08:46:03.961Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;首先说要求&quot;&gt;&lt;a href=&quot;#首先说要求&quot; class=&quot;headerlink&quot; title=&quot;首先说要求&quot;&gt;&lt;/a&gt;首先说要求&lt;/h1&gt;&lt;p&gt;题目要求输入一个字符串，只有数字和大写字母，然后需要转换成十进制的没，需要判定的是基数和偶数，然后默认的进制需要自己设计，ok下面开始简答分析。&lt;/p&gt;
+&lt;h1 id=&quot;进制转换的说明&quot;&gt;&lt;a href=&quot;#进制转换的说明&quot; class=&quot;headerlink&quot; title=&quot;进制转换的说明&quot;&gt;&lt;/a&gt;进制转换的说明&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/tags/The-C-CPP-language/"/>
+    
+      <category term="Hexadecimal Conversion" scheme="https://Homepea7.github.io/tags/Hexadecimal-Conversion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用循环链表解决约瑟夫问题(Josephus Problem)</title>
+    <link href="https://homepea7.github.io/2020/25.C-Josephus-Problem/"/>
+    <id>https://homepea7.github.io/2020/25.C-Josephus-Problem/</id>
+    <published>2020-08-08T03:03:40.000Z</published>
+    <updated>2020-08-08T03:07:29.553Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;问题说明&quot;&gt;&lt;a href=&quot;#问题说明&quot; class=&quot;headerlink&quot; title=&quot;问题说明&quot;&gt;&lt;/a&gt;问题说明&lt;/h1&gt;&lt;p&gt;约瑟夫问题是个有名的问题:N个人围成一圈，从第一个开始报数，第M个将被杀掉，最后剩下一个，其余人都将被杀掉。&lt;br&gt;同理还有丢手绢，猴子称王都是一模一样的问题，首先用循环就可以直接一次性解决，记录当前位置的数并且循环取余即可，但是直观而言，肯定是循环数组更加的直观！&lt;/p&gt;
+&lt;h1 id=&quot;代码分析&quot;&gt;&lt;a href=&quot;#代码分析&quot; class=&quot;headerlink&quot; title=&quot;代码分析&quot;&gt;&lt;/a&gt;代码分析&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/tags/The-C-CPP-language/"/>
+    
+      <category term="Josephus Problem" scheme="https://Homepea7.github.io/tags/Josephus-Problem/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>空指针、野指针与悬垂指针</title>
+    <link href="https://homepea7.github.io/2020/24.C-point/"/>
+    <id>https://homepea7.github.io/2020/24.C-point/</id>
+    <published>2020-08-03T02:54:22.000Z</published>
+    <updated>2020-08-03T03:12:46.363Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;空指针&quot;&gt;&lt;a href=&quot;#空指针&quot; class=&quot;headerlink&quot; title=&quot;空指针&quot;&gt;&lt;/a&gt;空指针&lt;/h1&gt;&lt;p&gt;空指针：指针指向的地址为空的指针叫空指针/NULL指针&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int *p1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p1 = NULL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;char *p2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2 = NULL;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
+    
+    
+      <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/tags/The-C-CPP-language/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++笔试中的获取数据问题</title>
     <link href="https://homepea7.github.io/2020/23.GetData-C/"/>
     <id>https://homepea7.github.io/2020/23.GetData-C/</id>
     <published>2020-07-22T03:21:47.000Z</published>
-    <updated>2020-07-22T03:38:17.961Z</updated>
+    <updated>2020-07-22T03:40:10.851Z</updated>
     
     <summary type="html">
     
@@ -67,7 +213,7 @@
     <link href="https://homepea7.github.io/2020/21.Ubuntu-CMake/"/>
     <id>https://homepea7.github.io/2020/21.Ubuntu-CMake/</id>
     <published>2020-07-08T07:47:40.000Z</published>
-    <updated>2020-07-09T13:31:45.508Z</updated>
+    <updated>2020-07-09T13:31:45.507Z</updated>
     
     <summary type="html">
     
@@ -93,7 +239,7 @@
     <link href="https://homepea7.github.io/2020/20.Recursion%20problem/"/>
     <id>https://homepea7.github.io/2020/20.Recursion%20problem/</id>
     <published>2020-06-28T02:03:51.000Z</published>
-    <updated>2020-07-08T08:47:31.466Z</updated>
+    <updated>2020-07-08T08:47:31.465Z</updated>
     
     <summary type="html">
     
@@ -251,7 +397,7 @@
     <link href="https://homepea7.github.io/2020/14.VSCode-Latex/"/>
     <id>https://homepea7.github.io/2020/14.VSCode-Latex/</id>
     <published>2020-05-14T11:46:13.000Z</published>
-    <updated>2020-07-15T02:53:24.593Z</updated>
+    <updated>2020-07-15T02:53:24.592Z</updated>
     
     <summary type="html">
     
@@ -264,9 +410,9 @@
       <category term="Latex" scheme="https://Homepea7.github.io/categories/Latex/"/>
     
     
-      <category term="VsCode" scheme="https://Homepea7.github.io/tags/VsCode/"/>
-    
       <category term="Latex" scheme="https://Homepea7.github.io/tags/Latex/"/>
+    
+      <category term="VsCode" scheme="https://Homepea7.github.io/tags/VsCode/"/>
     
       <category term="MiKTeX" scheme="https://Homepea7.github.io/tags/MiKTeX/"/>
     
@@ -367,156 +513,6 @@
       <category term="USBPort" scheme="https://Homepea7.github.io/tags/USBPort/"/>
     
       <category term="Wi-Fi" scheme="https://Homepea7.github.io/tags/Wi-Fi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用串口终端访问树莓派</title>
-    <link href="https://homepea7.github.io/2020/09.Raspberry-Serial/"/>
-    <id>https://homepea7.github.io/2020/09.Raspberry-Serial/</id>
-    <published>2020-03-02T14:12:59.000Z</published>
-    <updated>2020-03-02T14:57:54.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近天天在家也没事儿干，淘宝倒是逛的挺多的，这两天看到一家店，本来想买一个猫盘组一台NAS的，最终只买了一个OpenWrt软路由和一块树莓派。说起这个树莓派那就很有意思了，一代A+，只有一个USB口，一个HDMI，一个音频输出好一个MicroUSB供电，没有带网口，因此操作起来就比较麻烦了，但是，记住但是，真的便宜，只要38块RMB，还是512M的内存，然后开始了今天的内容，使用串口访问树莓派。这样做的好处是省出来那个USB口，后来知道可以接免驱的USB网卡，刚刚好，开启SSH的话串口都不需要，美滋滋&lt;del&gt;~&lt;/del&gt;&lt;/p&gt;
-&lt;h1 id=&quot;配置串口终端&quot;&gt;&lt;a href=&quot;#配置串口终端&quot; class=&quot;headerlink&quot; title=&quot;配置串口终端&quot;&gt;&lt;/a&gt;配置串口终端&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="RaspberryPi" scheme="https://Homepea7.github.io/categories/RaspberryPi/"/>
-    
-    
-      <category term="RaspberryPi" scheme="https://Homepea7.github.io/tags/RaspberryPi/"/>
-    
-      <category term="Serial" scheme="https://Homepea7.github.io/tags/Serial/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Latex参考文献双栏对齐</title>
-    <link href="https://homepea7.github.io/2020/08.Latex-References/"/>
-    <id>https://homepea7.github.io/2020/08.Latex-References/</id>
-    <published>2020-03-01T03:28:28.000Z</published>
-    <updated>2020-03-01T03:54:35.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;参考文献部分，如果在最后单页而且是单栏就会非常不好看，双栏就会好很多，效果如下。其实现的方法非常简单，有两种，介绍如下&lt;br&gt;&lt;img src=&quot;/images/Latex/1.1Ref.png&quot; alt=&quot;Ref&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;方法一：balance&quot;&gt;&lt;a href=&quot;#方法一：balance&quot; class=&quot;headerlink&quot; title=&quot;方法一：balance&quot;&gt;&lt;/a&gt;方法一：balance&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Latex" scheme="https://Homepea7.github.io/categories/Latex/"/>
-    
-    
-      <category term="Latex" scheme="https://Homepea7.github.io/tags/Latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Termux安装KODExplorer实现可以内网文件共享的文件服务器（UI简洁，代码高亮）</title>
-    <link href="https://homepea7.github.io/2020/07.Termux+KODExplorer/"/>
-    <id>https://homepea7.github.io/2020/07.Termux+KODExplorer/</id>
-    <published>2020-02-20T14:14:30.000Z</published>
-    <updated>2020-06-28T02:16:07.261Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;之前收手机端Termux安装的Ubuntu已经放在家里装路由器的盒子里面了，一般是不会在拿出来了，但是要写一些Python的代码，我对VIM又不熟悉，而且经常为退出而烦恼，怎么办呢？最近看到B站上面以为大佬的分享，搭建了KODExplorer文件服务器，在网页即可执行很多操作，而且他的编辑器支持代码高亮，局域网内的文件共享，视频在线播放等等一系列的功能，个人感觉非常好用，在这里做一个记录。&lt;/p&gt;
-&lt;h1 id=&quot;安装前提&quot;&gt;&lt;a href=&quot;#安装前提&quot; class=&quot;headerlink&quot; title=&quot;安装前提&quot;&gt;&lt;/a&gt;安装前提&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Termux" scheme="https://Homepea7.github.io/categories/Termux/"/>
-    
-    
-      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
-    
-      <category term="KODExplorer" scheme="https://Homepea7.github.io/tags/KODExplorer/"/>
-    
-      <category term="Git" scheme="https://Homepea7.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>通过更改Hosts解决Github进不去</title>
-    <link href="https://homepea7.github.io/2020/06.GitHub-SpeedUp/"/>
-    <id>https://homepea7.github.io/2020/06.GitHub-SpeedUp/</id>
-    <published>2020-02-20T03:01:41.000Z</published>
-    <updated>2020-02-21T02:50:11.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近在家上GitHub还算比较多，但是发现经常进不去，最近的梯子也进本都挂了，导致GitHub有时候进不去，然后去网上搜了很多办法，发现效果还比较好，在这里做一个小小的总结和分享。&lt;/p&gt;
-&lt;h1 id=&quot;原因分析&quot;&gt;&lt;a href=&quot;#原因分析&quot; class=&quot;headerlink&quot; title=&quot;原因分析&quot;&gt;&lt;/a&gt;原因分析&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="GitHub" scheme="https://Homepea7.github.io/categories/GitHub/"/>
-    
-    
-      <category term="GitHub" scheme="https://Homepea7.github.io/tags/GitHub/"/>
-    
-      <category term="Hosts" scheme="https://Homepea7.github.io/tags/Hosts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Termux给旧手机安装Ubuntu</title>
-    <link href="https://homepea7.github.io/2020/05.Termux/"/>
-    <id>https://homepea7.github.io/2020/05.Termux/</id>
-    <published>2020-02-15T11:19:53.000Z</published>
-    <updated>2020-02-20T15:01:59.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;今年武汉的疫情非常严重，已经好多天没有出门了，东西也有好多都在学校，有点想搞事情，本身想买一个树莓派跑跑Ubuntu玩玩的，快递实在是太慢了，而且回家的大东西就带了电脑，其他的硬件基本都没有，没有办法只能从身边的旧手机入手了。我手上有两个旧的，一个是小米Note，说实话我非常喜欢的，外形和手感都非常好，但是换屏之后屏幕跳屏（后来在我调试的过程中忍不了给摔了2333）；另一台是荣耀8，华为的BL锁现在不能解开了，因此没有Root权限（感觉华为这件事儿很恶心）。我花了好长时间去解锁（其实就是不想去淘宝花30块钱），但是都没有成功，因此一直都搁置在，今天还是给拿出来了试试，终于成功在没有root权限的情况下安装了ubuntu，并且通过SSH连接上去了，可以跑一些Python程序，感觉还是很开心的，下面说说具体的过程。&lt;/p&gt;
-&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://Homepea7.github.io/categories/Linux/"/>
-    
-    
-      <category term="Termux" scheme="https://Homepea7.github.io/tags/Termux/"/>
-    
-      <category term="AnLinux" scheme="https://Homepea7.github.io/tags/AnLinux/"/>
-    
-      <category term="ubuntu" scheme="https://Homepea7.github.io/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HitMan Tube拟辉光钟制作记录</title>
-    <link href="https://homepea7.github.io/2020/01.HitMan-Tube/"/>
-    <id>https://homepea7.github.io/2020/01.HitMan-Tube/</id>
-    <published>2020-02-10T12:09:02.000Z</published>
-    <updated>2020-06-19T13:46:31.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前看到B站大佬做了一个拟辉光钟，并且恰好我的同学&lt;a href=&quot;http://www.nixieworld.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sadudu&lt;/a&gt;也在做辉光钟，于是就正好一起做了一下这个用LED模拟的辉光钟，不为啥，就是使用的是LED，便宜并且寿命长，下面是效果图：&lt;br&gt;&lt;img src=&quot;/images/RaspberryPi/2.1.png&quot; alt=&quot;2.1&quot;&gt;。&lt;/p&gt;
-&lt;p&gt;相信大家看到这个肯定也是比较有能力的，因此我下面就简单介绍硬件和微信小程序的设计，重点还是就核心的代码的分享，分别是STM32单片机的WS2812B驱动程序和微信小程序的BLE通讯程序，保证可用！！！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="HitMan Tube" scheme="https://Homepea7.github.io/categories/HitMan-Tube/"/>
-    
-    
-      <category term="HitMan Tueb" scheme="https://Homepea7.github.io/tags/HitMan-Tueb/"/>
-    
-      <category term="辉光管" scheme="https://Homepea7.github.io/tags/%E8%BE%89%E5%85%89%E7%AE%A1/"/>
-    
-      <category term="微信小程序" scheme="https://Homepea7.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
-      <category term="蓝牙BLE" scheme="https://Homepea7.github.io/tags/%E8%93%9D%E7%89%99BLE/"/>
     
   </entry>
   
