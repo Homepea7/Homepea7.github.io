@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-09-30T03:37:26.066Z</updated>
+  <updated>2020-10-02T04:59:44.993Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>输入数字判断CPU是大端还是小端模式</title>
+    <link href="https://homepea7.github.io/2020/30.Endian/"/>
+    <id>https://homepea7.github.io/2020/30.Endian/</id>
+    <published>2020-10-02T04:33:30.907Z</published>
+    <updated>2020-10-02T04:59:44.993Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前几天做了一个笔试题目，是输入一个数字，16进制的，类似 &lt;code&gt;0x12345678&lt;/code&gt; 这种的，当时就想应该还是很好判断的，直接取数字的地址，然后取相应的位计算大小即可，但是通过率一直是0。一直在分析原因，由于他需要输入数据，当时也没多想，反正一直就没有做出来。知道前两天想到了一个点，存储数据最方便的肯定是字符串呀，如实今天上午花了点时间，重新写了一些，也不知道有没有通过率，反正当做是复习知识点了。&lt;/p&gt;
+&lt;h1 id=&quot;概念与详解&quot;&gt;&lt;a href=&quot;#概念与详解&quot; class=&quot;headerlink&quot; title=&quot;概念与详解&quot;&gt;&lt;/a&gt;概念与详解&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>C/C++常见输入输出的小总结</title>
@@ -156,9 +176,9 @@
       <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
     
     
-      <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
-    
       <category term="The C/CPP language" scheme="https://Homepea7.github.io/tags/The-C-CPP-language/"/>
+    
+      <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
     
   </entry>
   
@@ -487,32 +507,6 @@
       <category term="RaspberryPi" scheme="https://Homepea7.github.io/tags/RaspberryPi/"/>
     
       <category term="SSH" scheme="https://Homepea7.github.io/tags/SSH/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树莓派使用USB网卡连接无线网络</title>
-    <link href="https://homepea7.github.io/2020/10.Raspberry-USBPort/"/>
-    <id>https://homepea7.github.io/2020/10.Raspberry-USBPort/</id>
-    <published>2020-03-02T15:00:08.000Z</published>
-    <updated>2020-03-05T06:04:09.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前面说过，我买到的这个树莓派是一代A+，没网口，Wi-Fi和蓝牙也都没有，就仅仅只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11/n的，免驱，插上就能用。于是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~&lt;/p&gt;
-&lt;p&gt;说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然可以使用但是我担心后面会出问题，所以换了一根线，完美解决！参考威胁电子的统计资料，这个型号功耗在3.5W左右，但是这里建议还是使用5V2A及以上的供电！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="RaspberryPi" scheme="https://Homepea7.github.io/categories/RaspberryPi/"/>
-    
-    
-      <category term="RaspberryPi" scheme="https://Homepea7.github.io/tags/RaspberryPi/"/>
-    
-      <category term="USBPort" scheme="https://Homepea7.github.io/tags/USBPort/"/>
-    
-      <category term="Wi-Fi" scheme="https://Homepea7.github.io/tags/Wi-Fi/"/>
     
   </entry>
   
