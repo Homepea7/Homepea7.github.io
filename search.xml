@@ -1,6 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ESP32使用串口发送和接收数据</title>
+    <url>/2020/32.ESP32-UART/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>承接上文，准备玩单片机肯定是以IO和其他的外设来玩的，这次准备试试串口。资料来自Arduino的<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/print/" target="_blank" rel="noopener">官网</a>。有一说一，ESP32是真的好用！</p>
+<h1 id="几个常用的函数"><a href="#几个常用的函数" class="headerlink" title="几个常用的函数"></a>几个常用的函数</h1><h2 id="Serial-print"><a href="#Serial-print" class="headerlink" title="Serial.print()"></a><code>Serial.print()</code></h2><p>将数据作为人类可读的 ASCII 文本打印到串行端口。此命令可以有多种形式。每个数字都使用 ASCII 字符打印数字。浮数类似地打印为 ASCII 数字，默认为小数点两位。字节作为单个字符发送。字符和字符串按现在样发送。例如，</p>
+<ul>
+<li><code> Serial.print(78); </code> 输出: <code>"78"</code></li>
+<li><code> Serial.print(1.23456); </code> 输出: <code>"1.23"</code></li>
+<li><code> Serial.print('N'); </code> 输出: <code>"N"</code></li>
+<li><code> Serial.print("Hello world."); </code> 输出: <code>"Hello world."</code></li>
+</ul>
+<p>可选的第二个参数指定要使用的基础（格式）;允许的值为、、、对于浮点数字，此参数指定要使用的小数位数。例如，<code>BIN(binary, or base 2)OCT(octal, or base 8)DEC(decimal, or base 10)HEX(hexadecimal, or base 16) <code></p>
+<ul>
+<li><code> Serial.print(78, BIN); </code> 输出: <code>"1001110"</code></li>
+<li><code> Serial.print(78, OCT); </code> 输出: <code>"116"</code></li>
+<li><code> Serial.print(78, DEC); </code> 输出: <code>"78"</code></li>
+<li><code> Serial.print(78, HEX); </code> 输出: <code>"4e"</code></li>
+<li><code> Serial.print(1.23456, 0); </code> 输出: <code>"1"</code></li>
+<li><code> Serial.print(1.23456, 2); </code> 输出: <code>"1.23"</code></li>
+<li><code> Serial.print(1.23456, 4); </code> 输出: <code>"1.2345"</code></li>
+</ul>
+<p>您可以通过用<code>F()</code>包装它们来传递基于闪存的字符串。例如：Serial.print()</p>
+<p><code> Serial.print(F("Hello World")); </code><br>若要在不转换为字符表示形式的情况下发送数据，请使用Serial.write（）。</p>
+<p><strong>语法</strong></p>
+<ul>
+<li><code> Serial.print(val);</code></li>
+<li><code> Serial.print(val, format);</code></li>
+</ul>
+<p><strong>参数</strong><br>Serial：串行端口对象。请参阅串行主页上每个主板的可用串行端口列表。要打印的值。允许的数据类型：任何数据类型。</p>
+<p><strong>返回值</strong><br><code>print()</code>返回写入的字节数，但读取该数字是可选的。数据类型： <code>.size_t</code></p>
+<p><strong>示例代码</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line">  Uses a <span class="keyword">for</span> loop to <span class="built_in">print</span> numbers <span class="keyword">in</span> various formats.</span><br><span class="line">*/</span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  Serial.begin(9600); // open the serial port at 9600 bps:</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">  // <span class="built_in">print</span> labels</span><br><span class="line">  Serial.print(<span class="string">"NO FORMAT"</span>);  // prints a label</span><br><span class="line">  Serial.print(<span class="string">"\t"</span>);         // prints a tab</span><br><span class="line"></span><br><span class="line">  Serial.print(<span class="string">"DEC"</span>);</span><br><span class="line">  Serial.print(<span class="string">"\t"</span>);</span><br><span class="line"></span><br><span class="line">  Serial.print(<span class="string">"HEX"</span>);</span><br><span class="line">  Serial.print(<span class="string">"\t"</span>);</span><br><span class="line"></span><br><span class="line">  Serial.print(<span class="string">"OCT"</span>);</span><br><span class="line">  Serial.print(<span class="string">"\t"</span>);</span><br><span class="line"></span><br><span class="line">  Serial.print(<span class="string">"BIN"</span>);</span><br><span class="line">  Serial.println();        // carriage <span class="built_in">return</span> after the last label</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (int x = 0; x &lt; 64; x++) &#123; // only part of the ASCII chart, change to suit</span><br><span class="line">    // <span class="built_in">print</span> it out <span class="keyword">in</span> many formats:</span><br><span class="line">    Serial.print(x);       // <span class="built_in">print</span> as an ASCII-encoded decimal - same as <span class="string">"DEC"</span></span><br><span class="line">    Serial.print(<span class="string">"\t\t"</span>);  // prints two tabs to accomodate the label lenght</span><br><span class="line"></span><br><span class="line">    Serial.print(x, DEC);  // <span class="built_in">print</span> as an ASCII-encoded decimal</span><br><span class="line">    Serial.print(<span class="string">"\t"</span>);    // prints a tab</span><br><span class="line"></span><br><span class="line">    Serial.print(x, HEX);  // <span class="built_in">print</span> as an ASCII-encoded hexadecimal</span><br><span class="line">    Serial.print(<span class="string">"\t"</span>);    // prints a tab</span><br><span class="line"></span><br><span class="line">    Serial.print(x, OCT);  // <span class="built_in">print</span> as an ASCII-encoded octal</span><br><span class="line">    Serial.print(<span class="string">"\t"</span>);    // prints a tab</span><br><span class="line"></span><br><span class="line">    Serial.println(x, BIN);  // <span class="built_in">print</span> as an ASCII-encoded binary</span><br><span class="line">    // <span class="keyword">then</span> adds the carriage <span class="built_in">return</span> with <span class="string">"println"</span></span><br><span class="line">    delay(200);            // delay 200 milliseconds</span><br><span class="line">  &#125;</span><br><span class="line">  Serial.println();        // prints another carriage <span class="built_in">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Serial-println"><a href="#Serial-println" class="headerlink" title="Serial.println()"></a><code>Serial.println()</code></h2><p><strong>描述</strong><br>将数据打印为可人工可读的 ASCII 文本，后跟回车字符（ASCII 13 或”\r”）和一个新行字符（ASCII 10 或’\n’）。此命令采用与串行打印（） 相同的形式。</p>
+<p><strong>语法</strong><br><code> Serial.println(val); </code><br><code> Serial.println(val, format); </code></p>
+<p><strong>参数</strong><br>Serial：串行端口对象。请参阅<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/" target="_blank" rel="noopener">参考主页</a>上每个主板的可用串行端口列表。<br>：要打印的值。允许的数据类型：任何数据类型。<br>：指定数字基数（用于积分数据类型）或小数位数（对于浮点类型）。<code>valformat</code></p>
+<p><strong>返回值</strong><br><code> println(); </code>返回写入的字节数，但读取该数字是可选的。数据类型： .size_t</p>
+<p><strong>示例代码</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> Analog input reads an analog input on analog <span class="keyword">in</span> 0, prints the value out.</span><br><span class="line"> created 24 March 2006</span><br><span class="line"> by Tom Igoe</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">int analogValue = 0;    // variable to hold the analog value</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  // open the serial port at 9600 bps:</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">  // <span class="built_in">read</span> the analog input on pin 0:</span><br><span class="line">  analogValue = analogRead(0);</span><br><span class="line"></span><br><span class="line">  // <span class="built_in">print</span> it out <span class="keyword">in</span> many formats:</span><br><span class="line">  Serial.println(analogValue);       // <span class="built_in">print</span> as an ASCII-encoded decimal</span><br><span class="line">  Serial.println(analogValue, DEC);  // <span class="built_in">print</span> as an ASCII-encoded decimal</span><br><span class="line">  Serial.println(analogValue, HEX);  // <span class="built_in">print</span> as an ASCII-encoded hexadecimal</span><br><span class="line">  Serial.println(analogValue, OCT);  // <span class="built_in">print</span> as an ASCII-encoded octal</span><br><span class="line">  Serial.println(analogValue, BIN);  // <span class="built_in">print</span> as an ASCII-encoded binary</span><br><span class="line"></span><br><span class="line">  // delay 10 milliseconds before the next reading:</span><br><span class="line">  delay(10);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Serial-begin"><a href="#Serial-begin" class="headerlink" title="Serial.begin()"></a><code>Serial.begin()</code></h2><p><strong>描述</strong><br>为串行数据传输设置以比特/秒（波特）为单位的数据速率。要与串行监视器通信，请确保使用屏幕右下角菜单中列出的波特率之一。但是，您可以指定其他速率 - 例如，通过引脚 0 和 1 与需要特定波特速率的组件进行通信。</p>
+<p>可选的第二个参数配置数据、奇偶校验和停止位。默认值为 8 个数据位，无奇偶校验，一个停止位。</p>
+<p><strong>语法</strong><br><code> Serial.begin(speed); </code><br><code> Serial.begin(speed, config); </code></p>
+<p><strong>参数</strong><br>Serial：串行端口对象。请参阅串行主页上每个主板的可用串行端口列表。<br>：以比特/秒（波特为单位）。允许的数据类型： 。<br>：设置数据、奇偶校验和停止位。有效值为：<br>（默认值）: 偶数奇偶<br> 校验：奇偶校验<br>speedlongconfigSERIAL_5N1SERIAL_6N1SERIAL_7N1SERIAL_8N1SERIAL_5N2SERIAL_6N2SERIAL_7N2SERIAL_8N2SERIAL_5E1SERIAL_6E1SERIAL_7E1SERIAL_8E1SERIAL_5E2SERIAL_6E2SERIAL_7E2SERIAL_8E2SERIAL_5O1<br>SERIAL_6O1<br>SERIAL_7O1<br>SERIAL_8O1<br>SERIAL_5O2<br>SERIAL_6O2<br>SERIAL_7O2<br>SERIAL_8O2</p>
+<p><strong>返回值</strong><br>无</p>
+<p>示例代码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">    Serial.begin(9600); // opens serial port, sets data rate to 9600 bps</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// Arduino Mega using all four of its Serial ports</span><br><span class="line">// (Serial, Serial1, Serial2, Serial3),</span><br><span class="line">// with different baud rates:</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  Serial1.begin(38400);</span><br><span class="line">  Serial2.begin(19200);</span><br><span class="line">  Serial3.begin(4800);</span><br><span class="line"></span><br><span class="line">  Serial.println(<span class="string">"Hello Computer"</span>);</span><br><span class="line">  Serial1.println(<span class="string">"Hello Serial 1"</span>);</span><br><span class="line">  Serial2.println(<span class="string">"Hello Serial 2"</span>);</span><br><span class="line">  Serial3.println(<span class="string">"Hello Serial 3"</span>);</span><br><span class="line">&#125;</span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Serial-End"><a href="#Serial-End" class="headerlink" title="Serial.End()"></a><code>Serial.End()</code></h2><p><strong>描述</strong><br>禁用串行通信，允许将 RX 和 TX 引脚用于常规输入和输出。要重新启用串行通信，请调用<code>Serial.begin()</code>。</p>
+<p><strong>语法</strong><br><code> Serial.end(); </code></p>
+<p><strong>参数</strong><br>Serial：串行端口对象。请参阅串行主页上每个主板的可用串行端口列表。</p>
+<p><strong>返回值</strong><br>无</p>
+<h2 id="Serial-available"><a href="#Serial-available" class="headerlink" title="Serial.available()"></a><code>Serial.available()</code></h2><p><strong>描述</strong><br>获取可用于从串行端口读取的字节数（字符）。这是已到达并存储在串行接收缓冲区（包含 64 个字节）中的数据。<br><code>Serial.available()</code>从 Stream 实用程序类继承。</p>
+<p><strong>语法</strong><br><code> Serial.available(); </code></p>
+<p><strong>参数</strong><br>Serial：串行端口对象。请参阅<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/" target="_blank" rel="noopener">参考主页</a>上每个主板的可用串行端口列表。</p>
+<p><strong>返回值</strong><br>可供读取的字节数。</p>
+<p>示例代码<br>以下代码返回通过串行端口接收的字符。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int incomingByte = 0; // <span class="keyword">for</span> incoming serial data</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  Serial.begin(9600); // opens serial port, sets data rate to 9600 bps</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">  // reply only when you receive data:</span><br><span class="line">  <span class="keyword">if</span> (Serial.available() &gt; 0) &#123;</span><br><span class="line">    // <span class="built_in">read</span> the incoming byte:</span><br><span class="line">    incomingByte = Serial.read();</span><br><span class="line"></span><br><span class="line">    // say what you got:</span><br><span class="line">    Serial.print(<span class="string">"I received: "</span>);</span><br><span class="line">    Serial.println(incomingByte, DEC);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例2：此代码将板子的一个串行端口中接收的数据发送到另一个。例如，这可用于通过 Arduino 板将串行设备连接到计算机。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  Serial1.begin(9600);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">  // <span class="built_in">read</span> from port 0, send to port 1:</span><br><span class="line">  <span class="keyword">if</span> (Serial.available()) &#123;</span><br><span class="line">    int inByte = Serial.read();</span><br><span class="line">    Serial1.print(inByte, DEC);</span><br><span class="line">  &#125;</span><br><span class="line">  // <span class="built_in">read</span> from port 1, send to port 0:</span><br><span class="line">  <span class="keyword">if</span> (Serial1.available()) &#123;</span><br><span class="line">    int inByte = Serial1.read();</span><br><span class="line">    Serial.print(inByte, DEC);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Serial-read"><a href="#Serial-read" class="headerlink" title="Serial.read()"></a><code>Serial.read()</code></h2><p><strong>描述</strong><br>读取传入串行数据。<br><code>Serial.read()</code>从 Stream 实用程序类继承。</p>
+<p><strong>语法</strong><br><code> Serial.read(); </code></p>
+<p><strong>参数</strong><br>Serial：串行端口对象。请参阅串行主页上每个主板的可用串行端口列表。</p>
+<p><strong>返回值</strong><br>传入串行数据的第一个字节可用（如果没有数据可用，或 -1）。数据类型： .int</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int incomingByte = 0; // <span class="keyword">for</span> incoming serial data</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  Serial.begin(9600); // opens serial port, sets data rate to 9600 bps</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">  // send data only when you receive data:</span><br><span class="line">  <span class="keyword">if</span> (Serial.available() &gt; 0) &#123;</span><br><span class="line">    // <span class="built_in">read</span> the incoming byte:</span><br><span class="line">    incomingByte = Serial.read();</span><br><span class="line"></span><br><span class="line">    // say what you got:</span><br><span class="line">    Serial.print(<span class="string">"I received: "</span>);</span><br><span class="line">    Serial.println(incomingByte, DEC);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Serial-peek"><a href="#Serial-peek" class="headerlink" title="Serial.peek()"></a><code>Serial.peek()</code></h2><p><strong>描述</strong><br>返回传入串行数据的下一个字节（字符），而不将其从内部串行缓冲区中删除。</p>
+<p><code>Serial.peek()</code>从 Stream 实用程序类继承。</p>
+<p><strong>语法</strong><br><code> Serial.peek(); </code></p>
+<p><strong>参数</strong><br>Serial：串行端口对象。请参阅串行主页上每个主板的可用串行端口列表。</p>
+<p><strong>返回值</strong><br>传入串行数据的第一个字节可用（如果没有数据可用，或 -1）。数据类型：<code>.int</code></p>
+<p>示例代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">char incomingByte; // <span class="keyword">for</span> incoming serial data</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  Serial.begin(9600); // opens serial port, sets data rate to 9600 bps</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">  // send data only when you receive data:</span><br><span class="line">  <span class="keyword">if</span> (Serial.available() &gt; 0) &#123;</span><br><span class="line">    // <span class="built_in">read</span> the incoming byte:</span><br><span class="line">    incomingByte = Serial.peek();</span><br><span class="line"></span><br><span class="line">    // say what you got:</span><br><span class="line">    <span class="comment"># Serial.print("I received: ");</span></span><br><span class="line">    Serial.printf(<span class="string">"%c"</span>, incomingByte);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="一些注意点"><a href="#一些注意点" class="headerlink" title="一些注意点"></a>一些注意点</h1><p>最大的一个貌似是<code>serialEvent()</code>这个串口的时间，他本来是串口在接收数据之后会自动调用的，但是我尝试了好几次，但是都没有成功，因此在我的库函数里面我是会将其屏蔽的，即默认是不能用的，因为这个Arduino的库放到ESP32中也不一定的完全移植好了。下面给了一个线程来接收数据的方法，示例代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "uart.h"</span></span><br><span class="line"></span><br><span class="line">String inputString = <span class="string">""</span>;         // a string to hold incoming data</span><br><span class="line">boolean stringComplete = <span class="literal">false</span>;  // whether the string is complete</span><br><span class="line"></span><br><span class="line">//	监听串口收到数据的事件</span><br><span class="line">void <span class="function"><span class="title">serialEvent</span></span>() &#123;</span><br><span class="line">	<span class="keyword">while</span> (Serial.available()) &#123;</span><br><span class="line">		char inChar = (char)Serial.read();</span><br><span class="line">		inputString += inChar;</span><br><span class="line">		<span class="keyword">if</span> (inChar == <span class="string">'\n'</span>) &#123;	//注意是以换行符为标志位的</span><br><span class="line">			stringComplete = <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//	准备串口接收数据的线程函数</span><br><span class="line">//	示例：</span><br><span class="line">//	xTaskCreate(</span><br><span class="line">//		serialGetdata, /* Task <span class="keyword">function</span>. */</span><br><span class="line">//		<span class="string">"Task_SerialGetdata"</span>, /* String with name of task. */</span><br><span class="line">//		10000, /* Stack size <span class="keyword">in</span> bytes. */</span><br><span class="line">//		NULL, /* Parameter passed as input of the task */</span><br><span class="line">//		1, /* Priority of the task. */</span><br><span class="line">//		NULL); /* Task handle. */</span><br><span class="line">void serialGetdata(void *uartPtr) &#123;</span><br><span class="line">	<span class="keyword">while</span>(1)&#123;</span><br><span class="line">		serialEvent();</span><br><span class="line">		<span class="keyword">if</span> (stringComplete) &#123;</span><br><span class="line">			Serial.println(inputString);</span><br><span class="line">			// clear the string:</span><br><span class="line">			inputString = <span class="string">""</span>;</span><br><span class="line">			stringComplete = <span class="literal">false</span>;</span><br><span class="line">  		&#125;</span><br><span class="line">		// vTaskDelay(500 / portTICK_PERIOD_MS);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们都只是库函数的使用者，但是库函数的完善一直是任重而道远，因此发现问题也是一个很有意义的一件事儿。能够分享也是非常开心的。</p>
+]]></content>
+      <categories>
+        <category>ESP32</category>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>ESP32</tag>
+        <tag>串口发送</tag>
+        <tag>串口接收</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP32使用与环境配置介绍</title>
+    <url>/2020/31.ESP32-Introduce/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近总体来说自由的时间还比较多吧，开始准备弄一些之前没有弄得东西了，准备上手好好玩玩ESP32，并且打算将其作为以后长期使用的主力单片机，如实开始准备写一个关于ESP32的相关内容，这一次就是简单的介绍并且简介开发环境（其实是我找了很多资料发现很多就写了一个VSCode+PaltrformIO配置初始化的环境，而且感觉都是抄的同一个人的），没有玩过Arduino的同志可能会觉得还有点麻烦，因此决定自己开始搞一搞，主要的资料还是来自<a href="https://www.arduino.cc/en/Main/Products" target="_blank" rel="noopener">官方社区</a>。</p>
+<h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><h2 id="安装-VSCode-PlatFormIO-IDE"><a href="#安装-VSCode-PlatFormIO-IDE" class="headerlink" title="安装 VSCode + PlatFormIO IDE"></a>安装 VSCode + PlatFormIO IDE</h2><p>首先是VScode的安装，比较简单，直接去<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">官网</a>下载安装即可。完成以后启动VScode，在拓展页面直接搜索Platformio IDE，并且安装即可。具体操作如图：<br><img src="/images/RaspberryPi/4.1.png" alt="Platformio1"></p>
+<p>安装完成并且重新启动VSCode以后，拓展那一栏有一个外星人样子的图标，活着看左下角error和waring的右边出现一个小房子的小图标，这个就是PlatformIO IDE的主页，这样就表示安装好了。<br><img src="/images/RaspberryPi/4.2.png" alt="Platformio2"></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><ul>
+<li><p>选择New Project创建工程，选择相应的Board，我这里使用DOIT ESP32 DEVKIT V1，输入ESP32找到对应的Board</p>
+</li>
+<li><p>选择Framework是Arduino，选择保存路径，等待工程完成需要一点时间.</p>
+</li>
+<li><p>完成，打开工程文件夹，找到目录src下的main.cpp并修改如下：<br><img src="/images/RaspberryPi/4.3.png" alt="Platformio3"><br><img src="/images/RaspberryPi/4.4.png" alt="Platformio4"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;Arduino.h&gt;</span></span><br><span class="line"> </span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">  // put your setup code here, to run once:</span><br><span class="line">  pinMode(32, OUTPUT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">  // put your main code here, to run repeatedly:</span><br><span class="line">  digitalWrite(32, HIGH);   // turn the LED on (HIGH is the voltage level)</span><br><span class="line">  delay(1000);                       // <span class="built_in">wait</span> <span class="keyword">for</span> a second</span><br><span class="line">  digitalWrite(32, LOW);    // turn the LED off by making the voltage LOW</span><br><span class="line">  delay(1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译与下载同样左下角有一堆按钮,如上图可以看到相应的按钮</p>
+</li>
+<li><p>选择upload即可完成下载，GPIO32引脚电平翻转，可以看到我们连端口都没有选择就完成了下载的工作，PlatformIO IDE自动扫描串口设备，非常方便。</p>
+</li>
+<li><p>Arduino IDE有库管理功能，可以下载到需要的库，就不具体讲了。</p>
+</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>具体而言，ESP32的性价比是真的非常高的，而且我觉得有一个最大的好处就是可以使用C++，C++里面的库函数比C语言真的是封装了好多好多；其次是多线程。多线程在对比单片机的中断而言，其实是非常方便的。尤其是在设计比较大的系统而言。</p>
+]]></content>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>ESP32</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>输入数字判断CPU是大端还是小端模式</title>
     <url>/2020/30.Endian/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前几天做了一个笔试题目，是输入一个数字，16进制的，类似 <code>0x12345678</code> 这种的，当时就想应该还是很好判断的，直接取数字的地址，然后取相应的位计算大小即可，但是通过率一直是0。一直在分析原因，由于他需要输入数据，当时也没多想，反正一直就没有做出来。知道前两天想到了一个点，存储数据最方便的肯定是字符串呀，如实今天上午花了点时间，重新写了一些，也不知道有没有通过率，反正当做是复习知识点了。</p>
@@ -282,8 +406,8 @@
         <category>The C/CPP language</category>
       </categories>
       <tags>
-        <tag>The C/CPP language</tag>
         <tag>CRC Check</tag>
+        <tag>The C/CPP language</tag>
       </tags>
   </entry>
   <entry>
@@ -430,7 +554,7 @@
 <p>结论：在实际使用中如果能用循环解决一定不要用递归！</p>
 ]]></content>
       <categories>
-        <category>The C++ language</category>
+        <category>The C/C++ language</category>
       </categories>
       <tags>
         <tag>Recursion</tag>
@@ -634,7 +758,7 @@
 <p>输出为”8 8 24”，有兴趣可以自己对比前面的内容并且简单计算一下。</p>
 ]]></content>
       <categories>
-        <category>The C language</category>
+        <category>The C/C++ language</category>
       </categories>
       <tags>
         <tag>C语言</tag>
@@ -1259,11 +1383,6 @@
 </html>]]></content>
   </entry>
   <entry>
-    <title>Homepea的分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于博主</title>
     <url>/about/index.html</url>
     <content><![CDATA[<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><h2 id="2014-9-2018-6-本科-中国地质大学-武汉"><a href="#2014-9-2018-6-本科-中国地质大学-武汉" class="headerlink" title="2014.9-2018.6 本科 中国地质大学(武汉)"></a>2014.9-2018.6 本科 中国地质大学(武汉)</h2><p>专业是自动化，学习内容有：自动控制原理、数据结构、电力电子技术、单片机原理及应用、数字电子技术、模拟电子技术、嵌入式系统及应用、电气控制技术及 PLC</p>
@@ -1296,6 +1415,11 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Homepea的分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Homepea的标签</title>
