@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ESP32的外部中断和编码器的示例</title>
+    <url>/2020/33.ESP32-Interrupt/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>这次主要是记录ESP32的外部中断的相关内容，并且刚刚调试好了编码器，也做一个小小的分享！<br>按照惯例，先介绍一下环境吧：<br>硬件：TTGO T-Display ESP32带1.14LCD的小开发板 + 编码器<br>软件：VSCode + PlatformIO IDE（其实就是Arduino环境）</p>
+<h1 id="程序详解"><a href="#程序详解" class="headerlink" title="程序详解"></a>程序详解</h1><p>下面就一具体的功能实现来讲解使用外部中断调试编码器。首先还是简单介绍一下<a href="https://baike.baidu.com/item/%E7%BC%96%E7%A0%81%E5%99%A8" target="_blank" rel="noopener">编码器</a>吧，编码器（encoder）是将信号（如比特流）或数据进行编制、转换为可用以通讯、传输和存储的信号形式的设备。编码器把角位移或直线位移转换成电信号，前者称为码盘，后者称为码尺。按照读出方式编码器可以分为接触式和非接触式两种；按照工作原理编码器可分为增量式和绝对式两类。增量式编码器是将位移转换成周期性的电信号，再把这个电信号转变成计数脉冲，用脉冲的个数表示位移的大小。绝对式编码器的每一个位置对应一个确定的数字码，因此它的示值只与测量的起始和终止位置有关，而与测量的中间过程无关。</p>
+<p>我们直接上淘宝搜索，看具体的实物我觉得会看的更加清楚。然后开始看具体的程序了，首先定义引脚和一些需要用到的变量：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//定义引脚连接</span><br><span class="line">int CLK = 12;	//CLK-&gt;D2</span><br><span class="line">int DT = 13;	//DT-&gt;D3</span><br><span class="line">int SW = 15;	//SW-&gt;D4</span><br><span class="line"></span><br><span class="line">const int Int_Pin = digitalPinToInterrupt(CLK);// Interrupt 0 在 pin 2 上</span><br><span class="line">int count = 0;//计数值</span><br><span class="line">int lastCLK = 0;//CLK历史值</span><br></pre></td></tr></table></figure>
+
+<p>其次是中断处理函数，就是我们在出发外部中断时需要用到的操作：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;中断处理函数</span><br><span class="line">void ClockChanged()</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F; Serial.println(&quot;a&quot;);</span><br><span class="line">	int clkValue &#x3D; digitalRead(CLK);	&#x2F;&#x2F;读取CLK引脚的电平</span><br><span class="line">	int dtValue  &#x3D; digitalRead(DT);		&#x2F;&#x2F;读取DT引脚的电平</span><br><span class="line">	if (lastCLK !&#x3D; clkValue) &#123;</span><br><span class="line">		lastCLK &#x3D; clkValue;</span><br><span class="line">		count +&#x3D; (clkValue !&#x3D; dtValue ? 1 : -1);&#x2F;&#x2F;CLK和DT不一致时+1，否则-1</span><br><span class="line">		Serial.print(&quot;count:&quot;);</span><br><span class="line">		Serial.println(count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其次是初始化的函数，其中外部中断的初始化函数<code>attachInterrupt()</code>也在里面。接下来，由于将使用外部引脚中断，需要将先前声明的引脚编号配置为输入引脚。为此，调用pinMode函数，将引脚编号和操作模式作为参数传递。<code>pinMode(interruptPin, INPUT_PULLUP);</code></p>
+<p>接下来，通过调用attachInterrupt函数将中断附加到引脚。作为首个参数，将调用结果传递给digitalPinToInterrupt函数，该函数将使用的引脚编号转换为相应的内部中断编号。接下来，我们传递中断处理函数，换而言之，当指定引脚上出现中断时，该函数将予以执行。我们将其称为handleInterruptand，稍后再指定其代码。最后我们传递中断模式，它基本指定了在引脚输入信号中哪种类型变化触发了中断。直接F12查看模式，会发现一共有七种模式，具体如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//Interrupt Modes</span><br><span class="line"><span class="comment">#define RISING    0x01</span></span><br><span class="line"><span class="comment">#define FALLING   0x02</span></span><br><span class="line"><span class="comment">#define CHANGE    0x03</span></span><br><span class="line"><span class="comment">#define ONLOW     0x04</span></span><br><span class="line"><span class="comment">#define ONHIGH    0x05</span></span><br><span class="line"><span class="comment">#define ONLOW_WE  0x0C</span></span><br><span class="line"><span class="comment">#define ONHIGH_WE 0x0D</span></span><br></pre></td></tr></table></figure>
+
+<p>然后下面是具体的初始化函数，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void setup()</span><br><span class="line">&#123;</span><br><span class="line">//   pinMode(SW, INPUT);</span><br><span class="line">//   digitalWrite(SW, HIGH);</span><br><span class="line">	pinMode(CLK, INPUT);</span><br><span class="line">	pinMode(DT, INPUT);</span><br><span class="line">	attachInterrupt(digitalPinToInterrupt(CLK), ClockChanged, CHANGE);//设置中断0的处理函数，电平变化触发</span><br><span class="line">	Serial.begin(115200);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后的主循环里面就很简单了，一秒打印一次<code>count</code>就可以了，具体如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void loop()</span><br><span class="line">&#123;</span><br><span class="line">//   <span class="keyword">if</span> (!digitalRead(SW) &amp;&amp; count != 0) //读取到按钮按下并且计数值不为0时把计数器清零</span><br><span class="line">//   &#123;</span><br><span class="line">//     count = 0;</span><br><span class="line">	Serial.print(<span class="string">"count:"</span>);</span><br><span class="line">	Serial.println(count);</span><br><span class="line">	delay(1000);</span><br><span class="line">//   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>最后把代码整合一下吧：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;Arduino.h&gt;</span></span><br><span class="line"></span><br><span class="line">//定义引脚连接</span><br><span class="line">int CLK = 12;//CLK-&gt;D2</span><br><span class="line">int DT = 13;//DT-&gt;D3</span><br><span class="line">int SW = 15;//SW-&gt;D4</span><br><span class="line"></span><br><span class="line">const int Int_Pin = digitalPinToInterrupt(CLK);// Interrupt 0 在 pin 2 上</span><br><span class="line">int count = 0;//计数值</span><br><span class="line">int lastCLK = 0;//CLK历史值</span><br><span class="line"></span><br><span class="line">//中断处理函数</span><br><span class="line">void ClockChanged()</span><br><span class="line">&#123;</span><br><span class="line">	// Serial.println(<span class="string">"a"</span>);</span><br><span class="line">	int clkValue = digitalRead(CLK);//读取CLK引脚的电平</span><br><span class="line">	int dtValue  = digitalRead(DT);//读取DT引脚的电平</span><br><span class="line">	<span class="keyword">if</span> (lastCLK != clkValue)</span><br><span class="line">	&#123;</span><br><span class="line">	lastCLK = clkValue;</span><br><span class="line">	count += (clkValue != dtValue ? 1 : -1);//CLK和DT不一致时+1，否则-1</span><br><span class="line">	Serial.print(<span class="string">"count:"</span>);</span><br><span class="line">	Serial.println(count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void setup()</span><br><span class="line">&#123;</span><br><span class="line">//   pinMode(SW, INPUT);</span><br><span class="line">//   digitalWrite(SW, HIGH);</span><br><span class="line">	pinMode(CLK, INPUT);</span><br><span class="line">	pinMode(DT, INPUT);</span><br><span class="line">	attachInterrupt(digitalPinToInterrupt(CLK), ClockChanged, CHANGE);//设置中断0的处理函数，电平变化触发</span><br><span class="line">	Serial.begin(115200);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void loop()</span><br><span class="line">&#123;</span><br><span class="line">//   <span class="keyword">if</span> (!digitalRead(SW) &amp;&amp; count != 0) //读取到按钮按下并且计数值不为0时把计数器清零</span><br><span class="line">//   &#123;</span><br><span class="line">//     count = 0;</span><br><span class="line">	Serial.print(<span class="string">"count:"</span>);</span><br><span class="line">	Serial.println(count);</span><br><span class="line">	delay(1000);</span><br><span class="line">//   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ESP32使用外部中断的话还是挺方便的，初始化的设计也是很容易，我写的东西可能如果是有用过相应的硬件来找一下方向应该还是比较容易看懂的，希望以后可能慢慢分享一些内容。</p>
+]]></content>
+      <categories>
+        <category>ESP32</category>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>ESP32</tag>
+        <tag>外部中断</tag>
+        <tag>编码器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ESP32使用串口发送和接收数据</title>
     <url>/2020/32.ESP32-UART/</url>
-    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>承接上文，准备玩单片机肯定是以IO和其他的外设来玩的，这次准备试试串口。资料来自Arduino的<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/print/" target="_blank" rel="noopener">官网</a>。有一说一，ESP32是真的好用！</p>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>承接上文，准备玩单片机肯定是以IO和其他的外设来玩的，这次准备试试串口。资料来自Arduino的<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/print/" target="_blank" rel="noopener">官网</a>。有一说一，ESP32是真的好用！<br>按照惯例，先介绍一下环境吧：<br>硬件：TTGO T-Display ESP32带1.14LCD的小开发板<br>软件：VSCode + PlatformIO IDE（其实就是Arduino环境）</p>
 <h1 id="几个常用的函数"><a href="#几个常用的函数" class="headerlink" title="几个常用的函数"></a>几个常用的函数</h1><h2 id="Serial-print"><a href="#Serial-print" class="headerlink" title="Serial.print()"></a><code>Serial.print()</code></h2><p>将数据作为人类可读的 ASCII 文本打印到串行端口。此命令可以有多种形式。每个数字都使用 ASCII 字符打印数字。浮数类似地打印为 ASCII 数字，默认为小数点两位。字节作为单个字符发送。字符和字符串按现在样发送。例如，</p>
 <ul>
 <li><code> Serial.print(78); </code> 输出: <code>"78"</code></li>
@@ -192,7 +229,7 @@
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>没有什么值得特别总结的吧，感觉还是多加练习多多刷题就行！</p>
 ]]></content>
       <categories>
-        <category>The C/CPP language</category>
+        <category>The C/C++ language</category>
       </categories>
   </entry>
   <entry>
@@ -268,7 +305,7 @@
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>关于笔试的刷题，我觉得<a href="https://ac.nowcoder.com/acm/contest/5650?from=hr_test#question" target="_blank" rel="noopener">牛客的这个帖子</a>是必做的，题目虽然不难，但是真的是受益匪浅！！！！</p>
 ]]></content>
       <categories>
-        <category>The C/CPP language</category>
+        <category>The C/C++ language</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -300,7 +337,7 @@
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>如果回想上面，做幂运算的时候就是这样的过程，也是在运算的过程中进行取余的。总结起来就是在做题的开始就需要想好，到底是先取余还是计算以后取余。</p>
 ]]></content>
       <categories>
-        <category>The C/CPP language</category>
+        <category>The C/C++ language</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -354,10 +391,10 @@
 <h1 id="十进制转换为任意进制"><a href="#十进制转换为任意进制" class="headerlink" title="十进制转换为任意进制"></a>十进制转换为任意进制</h1><p>一般算法是除以基数，然后倒着取数，显然是栈的结构，先入后出。下面直给出完整版的代码：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n &#x3D; 0, r &#x3D; 10;	</span><br><span class="line">	stack&lt;char&gt; s;	&#x2F;&#x2F;全部存大写字母</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; r;	&#x2F;&#x2F;数字和进制（都是int类型的）</span><br><span class="line"></span><br><span class="line">	while(n)</span><br><span class="line">	&#123;</span><br><span class="line">		char tmp ;</span><br><span class="line">		tmp &#x3D; n%r;</span><br><span class="line">	</span><br><span class="line">		if(tmp &gt;&#x3D; 0 &amp;&amp; tmp &lt;&#x3D; 9)</span><br><span class="line">			tmp +&#x3D; 48;		&#x2F;&#x2F;	得到字符的0-9</span><br><span class="line">		else </span><br><span class="line">			tmp +&#x3D; 55;		&#x2F;&#x2F;	得到大写的数字（暂时没有处理Z以后的）</span><br><span class="line">		s.push(tmp);</span><br><span class="line">		n &#x2F;&#x3D; r;</span><br><span class="line">	&#125;</span><br><span class="line">	for(;!s.empty();)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; s.top();</span><br><span class="line">		s.pop();</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>The C/CPP language</category>
+        <category>The C/C++ language</category>
       </categories>
       <tags>
-        <tag>The C/CPP language</tag>
+        <tag>C/C++</tag>
         <tag>Hexadecimal Conversion</tag>
       </tags>
   </entry>
@@ -375,10 +412,10 @@
 
 ]]></content>
       <categories>
-        <category>The C/CPP language</category>
+        <category>The C/C++ language</category>
       </categories>
       <tags>
-        <tag>The C/CPP language</tag>
+        <tag>C/C++</tag>
         <tag>Josephus Problem</tag>
       </tags>
   </entry>
@@ -403,11 +440,11 @@
 
 ]]></content>
       <categories>
-        <category>The C/CPP language</category>
+        <category>The C/C++ language</category>
       </categories>
       <tags>
+        <tag>C/C++</tag>
         <tag>CRC Check</tag>
-        <tag>The C/CPP language</tag>
       </tags>
   </entry>
   <entry>
@@ -431,7 +468,7 @@
         <category>The C/C++ language</category>
       </categories>
       <tags>
-        <tag>The C/C++ language</tag>
+        <tag>C/C++</tag>
         <tag>Getdata</tag>
       </tags>
   </entry>
@@ -778,7 +815,7 @@
         <category>The C/C++ language</category>
       </categories>
       <tags>
-        <tag>The C language</tag>
+        <tag>C/C++</tag>
         <tag>CRC Check</tag>
       </tags>
   </entry>
@@ -819,10 +856,10 @@
         <category>Embedded development</category>
       </categories>
       <tags>
-        <tag>The C language</tag>
+        <tag>C/C++</tag>
         <tag>SingleChip</tag>
         <tag>Uart</tag>
-        <tag>51</tag>
+        <tag>STC51</tag>
         <tag>STM32</tag>
       </tags>
   </entry>
@@ -1234,8 +1271,7 @@
       </categories>
       <tags>
         <tag>LeetCode</tag>
-        <tag>C</tag>
-        <tag>C++</tag>
+        <tag>C/C++</tag>
       </tags>
   </entry>
   <entry>

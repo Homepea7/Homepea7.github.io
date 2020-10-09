@@ -186,17 +186,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">60</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">18</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -344,6 +344,124 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/33.ESP32-Interrupt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kavin Homepea">
+      <meta itemprop="description" content="Better me">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homepea's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/33.ESP32-Interrupt/" class="post-title-link" itemprop="url">ESP32的外部中断和编码器的示例</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-08 19:45:15" itemprop="dateCreated datePublished" datetime="2020-10-08T19:45:15+08:00">2020-10-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ESP32/" itemprop="url" rel="index">
+                    <span itemprop="name">ESP32</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ESP32/The-C-CPP-language/" itemprop="url" rel="index">
+                    <span itemprop="name">The C/CPP language</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/33.ESP32-Interrupt/" class="post-meta-item leancloud_visitors" data-flag-title="ESP32的外部中断和编码器的示例" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/33.ESP32-Interrupt/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/33.ESP32-Interrupt/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>这次主要是记录ESP32的外部中断的相关内容，并且刚刚调试好了编码器，也做一个小小的分享！<br>按照惯例，先介绍一下环境吧：<br>硬件：TTGO T-Display ESP32带1.14LCD的小开发板 + 编码器<br>软件：VSCode + PlatformIO IDE（其实就是Arduino环境）</p>
+<h1 id="程序详解"><a href="#程序详解" class="headerlink" title="程序详解"></a>程序详解</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/33.ESP32-Interrupt/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/32.ESP32-UART/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -415,7 +533,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.3k</span>
+              <span>7.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -434,7 +552,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>承接上文，准备玩单片机肯定是以IO和其他的外设来玩的，这次准备试试串口。资料来自Arduino的<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/print/" target="_blank" rel="noopener">官网</a>。有一说一，ESP32是真的好用！</p>
+          <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>承接上文，准备玩单片机肯定是以IO和其他的外设来玩的，这次准备试试串口。资料来自Arduino的<a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/print/" target="_blank" rel="noopener">官网</a>。有一说一，ESP32是真的好用！<br>按照惯例，先介绍一下环境吧：<br>硬件：TTGO T-Display ESP32带1.14LCD的小开发板<br>软件：VSCode + PlatformIO IDE（其实就是Arduino环境）</p>
 <h1 id="几个常用的函数"><a href="#几个常用的函数" class="headerlink" title="几个常用的函数"></a>几个常用的函数</h1>
           <!--noindex-->
             <div class="post-button">
@@ -595,8 +713,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/The-C-CPP-language/" itemprop="url" rel="index">
-                    <span itemprop="name">The C/CPP language</span>
+                  <a href="/categories/The-C-C-language/" itemprop="url" rel="index">
+                    <span itemprop="name">The C/C++ language</span>
                   </a>
                 </span>
             </span>
@@ -707,8 +825,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/The-C-CPP-language/" itemprop="url" rel="index">
-                    <span itemprop="name">The C/CPP language</span>
+                  <a href="/categories/The-C-C-language/" itemprop="url" rel="index">
+                    <span itemprop="name">The C/C++ language</span>
                   </a>
                 </span>
             </span>
@@ -819,8 +937,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/The-C-CPP-language/" itemprop="url" rel="index">
-                    <span itemprop="name">The C/CPP language</span>
+                  <a href="/categories/The-C-C-language/" itemprop="url" rel="index">
+                    <span itemprop="name">The C/C++ language</span>
                   </a>
                 </span>
             </span>
@@ -1043,8 +1161,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/The-C-CPP-language/" itemprop="url" rel="index">
-                    <span itemprop="name">The C/CPP language</span>
+                  <a href="/categories/The-C-C-language/" itemprop="url" rel="index">
+                    <span itemprop="name">The C/C++ language</span>
                   </a>
                 </span>
             </span>
@@ -1155,8 +1273,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/The-C-CPP-language/" itemprop="url" rel="index">
-                    <span itemprop="name">The C/CPP language</span>
+                  <a href="/categories/The-C-C-language/" itemprop="url" rel="index">
+                    <span itemprop="name">The C/C++ language</span>
                   </a>
                 </span>
             </span>
@@ -1212,118 +1330,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/25.C-Josephus-Problem/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/24.C-point/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Kavin Homepea">
-      <meta itemprop="description" content="Better me">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homepea's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/24.C-point/" class="post-title-link" itemprop="url">空指针、野指针与悬垂指针</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-03 10:54:22" itemprop="dateCreated datePublished" datetime="2020-08-03T10:54:22+08:00">2020-08-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/The-C-CPP-language/" itemprop="url" rel="index">
-                    <span itemprop="name">The C/CPP language</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/24.C-point/" class="post-meta-item leancloud_visitors" data-flag-title="空指针、野指针与悬垂指针" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/24.C-point/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/24.C-point/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h1><p>空指针：指针指向的地址为空的指针叫空指针/NULL指针</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int *p1;</span><br><span class="line">p1 = NULL;</span><br><span class="line"></span><br><span class="line">char *p2;</span><br><span class="line">p2 = NULL;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/24.C-point/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1415,20 +1421,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1474,12 +1480,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">71k</span>
+    <span title="站点总字数">74k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:04</span>
+    <span title="站点阅读时长">1:07</span>
 </div>
 
 <script>
