@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-10-08T12:24:58.795Z</updated>
+  <updated>2020-10-20T12:30:34.906Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,23 +17,57 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ESP32的外部中断和编码器的示例</title>
-    <link href="https://homepea7.github.io/2020/33.ESP32-Interrupt/"/>
-    <id>https://homepea7.github.io/2020/33.ESP32-Interrupt/</id>
-    <published>2020-10-08T11:45:15.000Z</published>
-    <updated>2020-10-08T12:24:58.795Z</updated>
+    <title>ESP32的定时器</title>
+    <link href="https://homepea7.github.io/2020/34.ESP32-Timer/"/>
+    <id>https://homepea7.github.io/2020/34.ESP32-Timer/</id>
+    <published>2020-10-20T12:10:48.000Z</published>
+    <updated>2020-10-20T12:30:34.906Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;这次主要是记录ESP32的外部中断的相关内容，并且刚刚调试好了编码器，也做一个小小的分享！&lt;br&gt;按照惯例，先介绍一下环境吧：&lt;br&gt;硬件：TTGO T-Display ESP32带1.14LCD的小开发板 + 编码器&lt;br&gt;软件：VSCode + PlatformIO IDE（其实就是Arduino环境）&lt;/p&gt;
-&lt;h1 id=&quot;程序详解&quot;&gt;&lt;a href=&quot;#程序详解&quot; class=&quot;headerlink&quot; title=&quot;程序详解&quot;&gt;&lt;/a&gt;程序详解&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
     
       <category term="ESP32" scheme="https://Homepea7.github.io/categories/ESP32/"/>
     
-      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/ESP32/The-C-CPP-language/"/>
+    
+      <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
+    
+      <category term="ESP32" scheme="https://Homepea7.github.io/tags/ESP32/"/>
+    
+      <category term="Timer" scheme="https://Homepea7.github.io/tags/Timer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ESP32的外部中断和编码器的示例</title>
+    <link href="https://homepea7.github.io/2020/33.ESP32-Interrupt/"/>
+    <id>https://homepea7.github.io/2020/33.ESP32-Interrupt/</id>
+    <published>2020-10-08T11:45:15.000Z</published>
+    <updated>2020-10-20T12:12:32.077Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ESP32" scheme="https://Homepea7.github.io/categories/ESP32/"/>
     
     
       <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
@@ -51,19 +85,22 @@
     <link href="https://homepea7.github.io/2020/32.ESP32-UART/"/>
     <id>https://homepea7.github.io/2020/32.ESP32-UART/</id>
     <published>2020-10-06T08:33:42.000Z</published>
-    <updated>2020-10-08T11:50:08.950Z</updated>
+    <updated>2020-10-20T12:12:27.123Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;承接上文，准备玩单片机肯定是以IO和其他的外设来玩的，这次准备试试串口。资料来自Arduino的&lt;a href=&quot;https://www.arduino.cc/reference/en/language/functions/communication/serial/print/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网&lt;/a&gt;。有一说一，ESP32是真的好用！&lt;br&gt;按照惯例，先介绍一下环境吧：&lt;br&gt;硬件：TTGO T-Display ESP32带1.14LCD的小开发板&lt;br&gt;软件：VSCode + PlatformIO IDE（其实就是Arduino环境）&lt;/p&gt;
-&lt;h1 id=&quot;几个常用的函数&quot;&gt;&lt;a href=&quot;#几个常用的函数&quot; class=&quot;headerlink&quot; title=&quot;几个常用的函数&quot;&gt;&lt;/a&gt;几个常用的函数&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;承接上文，准备玩单片机肯定是以IO和其他的外设来玩的，这次准备试试串口。资料来自Arduino的&lt;a
+        
+      
     
     </summary>
     
     
       <category term="ESP32" scheme="https://Homepea7.github.io/categories/ESP32/"/>
-    
-      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/ESP32/The-C-CPP-language/"/>
     
     
       <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
@@ -81,20 +118,29 @@
     <link href="https://homepea7.github.io/2020/31.ESP32-Introduce/"/>
     <id>https://homepea7.github.io/2020/31.ESP32-Introduce/</id>
     <published>2020-10-06T07:34:48.000Z</published>
-    <updated>2020-10-08T11:50:14.263Z</updated>
+    <updated>2020-10-20T12:12:15.099Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近总体来说自由的时间还比较多吧，开始准备弄一些之前没有弄得东西了，准备上手好好玩玩ESP32，并且打算将其作为以后长期使用的主力单片机，如实开始准备写一个关于ESP32的相关内容，这一次就是简单的介绍并且简介开发环境（其实是我找了很多资料发现很多就写了一个VSCode+PaltrformIO配置初始化的环境，而且感觉都是抄的同一个人的），没有玩过Arduino的同志可能会觉得还有点麻烦，因此决定自己开始搞一搞，主要的资料还是来自&lt;a href=&quot;https://www.arduino.cc/en/Main/Products&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方社区&lt;/a&gt;。&lt;/p&gt;
-&lt;h1 id=&quot;配置环境&quot;&gt;&lt;a href=&quot;#配置环境&quot; class=&quot;headerlink&quot; title=&quot;配置环境&quot;&gt;&lt;/a&gt;配置环境&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
+    
+      <category term="ESP32" scheme="https://Homepea7.github.io/categories/ESP32/"/>
     
     
       <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
     
       <category term="ESP32" scheme="https://Homepea7.github.io/tags/ESP32/"/>
+    
+      <category term="VSCode" scheme="https://Homepea7.github.io/tags/VSCode/"/>
     
   </entry>
   
@@ -107,8 +153,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前几天做了一个笔试题目，是输入一个数字，16进制的，类似 &lt;code&gt;0x12345678&lt;/code&gt; 这种的，当时就想应该还是很好判断的，直接取数字的地址，然后取相应的位计算大小即可，但是通过率一直是0。一直在分析原因，由于他需要输入数据，当时也没多想，反正一直就没有做出来。知道前两天想到了一个点，存储数据最方便的肯定是字符串呀，如实今天上午花了点时间，重新写了一些，也不知道有没有通过率，反正当做是复习知识点了。&lt;/p&gt;
-&lt;h1 id=&quot;概念与详解&quot;&gt;&lt;a href=&quot;#概念与详解&quot; class=&quot;headerlink&quot; title=&quot;概念与详解&quot;&gt;&lt;/a&gt;概念与详解&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;前几天做了一个笔试题目，是输入一个数字，16进制的，类似 &lt;code&gt;0x12345678&lt;/code&gt;
+        
+      
     
     </summary>
     
@@ -127,8 +178,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;怎么说呢，首先说说地址，还是&lt;a href=&quot;https://ac.nowcoder.com/acm/contest/5650?from=hr_test#question&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;牛客网&lt;/a&gt;。总地来说吧，最近也是做了不少的题目，对于输入和输出数据的类型东西也是有了一些了解。我最开始利用输入字符串的形式，加上 vector 解析的&lt;a href=&quot;http://localhost:4000/2020/23.GetData-C/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;例子&lt;/a&gt;也是一个不错的想法，但是最近仔细的做了一系列的输入输出题目以后，发现有了新的思路。&lt;/p&gt;
-&lt;h1 id=&quot;例题分析&quot;&gt;&lt;a href=&quot;#例题分析&quot; class=&quot;headerlink&quot; title=&quot;例题分析&quot;&gt;&lt;/a&gt;例题分析&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;怎么说呢，首先说说地址，还是&lt;a
+        
+      
     
     </summary>
     
@@ -151,8 +207,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近遇到的一些笔试问题，关于大数的情况还是很多，因此在这里做一个小的说明，关于大数取余的过程，典型的运算就是幂！&lt;/p&gt;
-&lt;h1 id=&quot;大数取模&quot;&gt;&lt;a href=&quot;#大数取模&quot; class=&quot;headerlink&quot; title=&quot;大数取模&quot;&gt;&lt;/a&gt;大数取模&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近遇到的一些笔试问题，关于大数的情况还是很多，因此在这里做一个小的说明，关于大数取余的过程，典型的运算就是幂！&lt;/p&gt;
+&lt;h1
+        
+      
     
     </summary>
     
@@ -177,8 +239,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;怎么说呢，网易云音乐是我一直在用的音乐app，黑色的主题我是真的很喜欢的呀，个人觉得非常好看，但是最近这两年来网易云音乐悦来月拉垮了，版权和直播那一块，让这个已经变得不想一个音乐app了。疫情在家的时候完了一下路由器，然后在大佬编译的OpenWrt的版本中有解锁网易云音乐的选项，然后我就开始了一系列的收集工作。&lt;/p&gt;
-&lt;p&gt;下面仅仅是我个人的小记录，如果不是很懂或者零基础的话请看&lt;a href=&quot;https://www.52pojie.cn/forum.php?mod=viewthread&amp;tid=1234066&amp;highlight=%CD%F8%D2%D7%D4%C6%BD%E2%CB%F8&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;52PJ&lt;/a&gt;。&lt;/p&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -201,8 +268,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;首先说要求&quot;&gt;&lt;a href=&quot;#首先说要求&quot; class=&quot;headerlink&quot; title=&quot;首先说要求&quot;&gt;&lt;/a&gt;首先说要求&lt;/h1&gt;&lt;p&gt;题目要求输入一个字符串，只有数字和大写字母，然后需要转换成十进制的没，需要判定的是基数和偶数，然后默认的进制需要自己设计，ok下面开始简答分析。&lt;/p&gt;
-&lt;h1 id=&quot;进制转换的说明&quot;&gt;&lt;a href=&quot;#进制转换的说明&quot; class=&quot;headerlink&quot; title=&quot;进制转换的说明&quot;&gt;&lt;/a&gt;进制转换的说明&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;首先说要求&quot;&gt;&lt;a href=&quot;#首先说要求&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -225,8 +297,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;问题说明&quot;&gt;&lt;a href=&quot;#问题说明&quot; class=&quot;headerlink&quot; title=&quot;问题说明&quot;&gt;&lt;/a&gt;问题说明&lt;/h1&gt;&lt;p&gt;约瑟夫问题是个有名的问题:N个人围成一圈，从第一个开始报数，第M个将被杀掉，最后剩下一个，其余人都将被杀掉。&lt;br&gt;同理还有丢手绢，猴子称王都是一模一样的问题，首先用循环就可以直接一次性解决，记录当前位置的数并且循环取余即可，但是直观而言，肯定是循环数组更加的直观！&lt;/p&gt;
-&lt;h1 id=&quot;代码分析&quot;&gt;&lt;a href=&quot;#代码分析&quot; class=&quot;headerlink&quot; title=&quot;代码分析&quot;&gt;&lt;/a&gt;代码分析&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;问题说明&quot;&gt;&lt;a href=&quot;#问题说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -242,6 +319,36 @@
   
   <entry>
     <title>空指针、野指针与悬垂指针</title>
+    <link href="https://homepea7.github.io/2020/24.C-point-DESKTOP-GRPI1FR/"/>
+    <id>https://homepea7.github.io/2020/24.C-point-DESKTOP-GRPI1FR/</id>
+    <published>2020-08-03T02:54:22.000Z</published>
+    <updated>2020-08-03T03:12:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;空指针&quot;&gt;&lt;a href=&quot;#空指针&quot; class=&quot;headerlink&quot; title=&quot;空指针&quot;&gt;&lt;/a&gt;空指针&lt;/h1&gt;&lt;p&gt;空指针：指针指向的地址为空的指针叫空指针/NULL指针&lt;/p&gt;
+&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
+    
+    
+      <category term="The C/CPP language" scheme="https://Homepea7.github.io/tags/The-C-CPP-language/"/>
+    
+      <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>空指针、野指针与悬垂指针</title>
     <link href="https://homepea7.github.io/2020/24.C-point/"/>
     <id>https://homepea7.github.io/2020/24.C-point/</id>
     <published>2020-08-03T02:54:22.000Z</published>
@@ -249,8 +356,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;空指针&quot;&gt;&lt;a href=&quot;#空指针&quot; class=&quot;headerlink&quot; title=&quot;空指针&quot;&gt;&lt;/a&gt;空指针&lt;/h1&gt;&lt;p&gt;空指针：指针指向的地址为空的指针叫空指针/NULL指针&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int *p1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p1 = NULL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;char *p2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2 = NULL;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;空指针&quot;&gt;&lt;a href=&quot;#空指针&quot; class=&quot;headerlink&quot; title=&quot;空指针&quot;&gt;&lt;/a&gt;空指针&lt;/h1&gt;&lt;p&gt;空指针：指针指向的地址为空的指针叫空指针/NULL指针&lt;/p&gt;
+&lt;figure class=&quot;highlight
+        
+      
     
     </summary>
     
@@ -273,8 +386,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近做字节笔试的时候经常会出现一些数据解析的问题，比如输入”(1,2)”这种数据，要求提取其中的坐标，还有就是输入一长串数据，如”1 2 3 4 5”说是遗传数据，没有指定长度，前面一直死在数据的获取上面，可能半个小时都没有获取到数据，后面机制知道怎么做也不可能有通过率。后面进行了了一些小总结，有了后面的结果，也想做一个小小的开源分享吧。&lt;/p&gt;
-&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近做字节笔试的时候经常会出现一些数据解析的问题，比如输入”(1,2)”这种数据，要求提取其中的坐标，还有就是输入一长串数据，如”1 2
+        
+      
     
     </summary>
     
@@ -297,8 +415,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近花了巨资买了一个相机（现在还有点心疼），型号是索尼的A7m2，刚刚上手还不习惯只能用自动模式，不过我肯定是不想妥协的，所以想写这个博客来记录一些摄影学习之路，所以这个可能是会长期更新的。（其实我是经常忘记内容所以来记录一下2333）&lt;/p&gt;
-&lt;h1 id=&quot;关于照相模式&quot;&gt;&lt;a href=&quot;#关于照相模式&quot; class=&quot;headerlink&quot; title=&quot;关于照相模式&quot;&gt;&lt;/a&gt;关于照相模式&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -319,8 +442,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近想简单学习一下CMake，因为比较好用，而且也会偏向多平台，为了方便的话我也是直接就在Ubuntu和Win10都进行了安装，现在介绍的是Ubuntu平台上面的，Win平台上面也是大同小异，而且教程也挺多的，不必纠结。&lt;/p&gt;
-&lt;h1 id=&quot;安装CMake&quot;&gt;&lt;a href=&quot;#安装CMake&quot; class=&quot;headerlink&quot; title=&quot;安装CMake&quot;&gt;&lt;/a&gt;安装CMake&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -345,10 +473,15 @@
     
     <summary type="html">
     
-      &lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;
+      
+      
+        
+        
+          &lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;
 
-&lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;递归问题一直是笔试的重点，下面开始简单总结递归的问题，主要是递归思考的思路，还有就是怎么用编程的方式来实现。&lt;/p&gt;
-&lt;h1 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h1&gt;
+&lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot;
+        
+      
     
     </summary>
     
@@ -371,8 +504,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;Samba在linux的应用应该来说还是非常广泛的，不管是商业用的NAS，还是自己手头分享用的文件共享，Samba由于其良好的共享性能都广受好评，但是新手常常在Ubuntu上面配置的时候经常出现一些小问题，如是广泛阅读了很多资料，最后发现还是&lt;a href=&quot;https://ubuntu.com/tutorials/install-and-configure-samba#1-overview&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网&lt;/a&gt;可靠，下面做一个简单的记录，分享Ubuntu上面Samba的使用(16.04-20.04均可用)。&lt;/p&gt;
-&lt;h1 id=&quot;首先安装Samba&quot;&gt;&lt;a href=&quot;#首先安装Samba&quot; class=&quot;headerlink&quot; title=&quot;首先安装Samba&quot;&gt;&lt;/a&gt;首先安装Samba&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -390,6 +528,39 @@
   
   <entry>
     <title>C语言的一些基础知识</title>
+    <link href="https://homepea7.github.io/2020/18.Basics%20of%20C-DESKTOP-GRPI1FR/"/>
+    <id>https://homepea7.github.io/2020/18.Basics%20of%20C-DESKTOP-GRPI1FR/</id>
+    <published>2020-06-10T09:03:51.000Z</published>
+    <updated>2020-06-19T02:44:32.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="The C language" scheme="https://Homepea7.github.io/categories/The-C-language/"/>
+    
+    
+      <category term="C语言" scheme="https://Homepea7.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="Some basics" scheme="https://Homepea7.github.io/tags/Some-basics/"/>
+    
+      <category term="变量长度" scheme="https://Homepea7.github.io/tags/%E5%8F%98%E9%87%8F%E9%95%BF%E5%BA%A6/"/>
+    
+      <category term="字节对齐" scheme="https://Homepea7.github.io/tags/%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言的一些基础知识</title>
     <link href="https://homepea7.github.io/2020/18.Basics%20of%20C/"/>
     <id>https://homepea7.github.io/2020/18.Basics%20of%20C/</id>
     <published>2020-06-10T09:03:51.000Z</published>
@@ -397,8 +568,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近准备在投简历，也是总结总结一下C语言的基础知识，做一些准备。首先说明，下文后面所做的所有的实验都是在win10_1909_x64环境下，gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)，软件使用的是VSCode。在C语言多线程的使用中，在VSCode配置好了C语言的基本环境之后就能直接使用了。&lt;/p&gt;
-&lt;h1 id=&quot;C语言的字与字节&quot;&gt;&lt;a href=&quot;#C语言的字与字节&quot; class=&quot;headerlink&quot; title=&quot;C语言的字与字节&quot;&gt;&lt;/a&gt;C语言的字与字节&lt;/h1&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -425,8 +601,13 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;之前在做一个项目的时候，为了保证数据的准确性，用到了CRC检验，现在将其总结一下，顺便也复习一下。首先说一下CRC校验，他的全称是循环冗余校验（cyclic redundancy check）。CRC检验的基本思想是利用线性编码理论，在发送端根据要传送的k位二进制码序列，以一定的规则产生一个检验码r位(就是CRC码)，附在信息后面，构成一个新的二进制码序列数共(k+r)位，最后发送出去。接收端根据同样的规则校验，以确定传送中是否出错。接收端有两种处理方式：1、计算k位序列的CRC码，与接收到的CRC比较，一致则接收正确。2、计算整个k+r位的CRC码，若为0，则接收正确。CRC码有多种检验位数，8位、16位、32位等，原理相同。16位的CRC码产生的规则是先将要发送的二进制序列数左移16位（即乘以2的16次方后），除以一个多项式，最后所得到的余数就是CRC码。&lt;/p&gt;
-&lt;p&gt;不说复杂了，CRC 算法的基本思想是将传输的数据当做一个位数很长的数，将这个数除以另一个数，得到的余数作为校验数据附加到原数据后面。除法采用正常的多项式乘除法，而加减法都采用模2运算。模2运算就是结果除以2后取余数，如 3 mod 2 = 1，在计算机中就是异或运算！下面举例说一下：&lt;/p&gt;
+      
+      
+        
+        
+          &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -437,86 +618,6 @@
       <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
     
       <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在51和STM32单片机上分别实现任意串口的类似printf操作</title>
-    <link href="https://homepea7.github.io/2020/16.C-uprintf/"/>
-    <id>https://homepea7.github.io/2020/16.C-uprintf/</id>
-    <published>2020-05-28T04:12:12.000Z</published>
-    <updated>2020-10-08T12:21:22.362Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;这个是在本科的时候就弄好了，最近整理本科的一些文件的时候又看到了这些，如是准备做一些小结，也是给自己回忆一下。在51和STM32两款单片机实现C语言自带的printf操作，打印在串口中断，或者用于串口的通讯，下面是具体的操作。&lt;/p&gt;
-&lt;h1 id=&quot;关于串行和并行&quot;&gt;&lt;a href=&quot;#关于串行和并行&quot; class=&quot;headerlink&quot; title=&quot;关于串行和并行&quot;&gt;&lt;/a&gt;关于串行和并行&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Embedded development" scheme="https://Homepea7.github.io/categories/Embedded-development/"/>
-    
-    
-      <category term="C/C++" scheme="https://Homepea7.github.io/tags/C-C/"/>
-    
-      <category term="SingleChip" scheme="https://Homepea7.github.io/tags/SingleChip/"/>
-    
-      <category term="Uart" scheme="https://Homepea7.github.io/tags/Uart/"/>
-    
-      <category term="STC51" scheme="https://Homepea7.github.io/tags/STC51/"/>
-    
-      <category term="STM32" scheme="https://Homepea7.github.io/tags/STM32/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VSCode画图神器--Drawio</title>
-    <link href="https://homepea7.github.io/2020/15.VSCode-Drawio/"/>
-    <id>https://homepea7.github.io/2020/15.VSCode-Drawio/</id>
-    <published>2020-05-19T02:03:41.000Z</published>
-    <updated>2020-05-19T02:32:38.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;论文中画矢量图基本是刚需了，还有流程图也是经常用到的，微软家的Visio老是感觉怪怪的，画出来的图嵌入Word会自动缩放，因此字体大小也不对，所以我是直接放弃了一般用AI，前几天看VSCode的插件，发现VSCode居然也能画图，没错，你没看错，VSCode居然也能敲代码！&lt;/p&gt;
-&lt;p&gt;好了不开玩笑了，介绍今天的主角：Drawio。它本身是一个网页版的应用，跟我以前用的&lt;a href=&quot;https://www.processon.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Process On&lt;/a&gt;差不多的，烦人的是他限制画图个数，后来就放弃了。后来发现了Draw i哦，而且一位来自德国前端工程师Henning Dieterichs成功将 &lt;a href=&quot;http://draw.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;draw.io&lt;/a&gt; 的功能集成进了 VSCode，并打包成了插件供开发者下载使用，让你分分钟能用 VSCode 画出完美的流程图、思维导图与UML图，也有SVG矢量图的版本，十分好用，大家可以先去网页版试试功能，还可以设置语言，有简体中文。不仅如此，&lt;a href=&quot;http://draw.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;draw.io&lt;/a&gt; 还支持将图形保存到 Google Drive、One Drive 等云端硬盘上，如果你正在用这些云盘的话那就太方便了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Latex" scheme="https://Homepea7.github.io/categories/Latex/"/>
-    
-    
-      <category term="VsCode" scheme="https://Homepea7.github.io/tags/VsCode/"/>
-    
-      <category term="Drawio" scheme="https://Homepea7.github.io/tags/Drawio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用VScode与MiKTex写论文</title>
-    <link href="https://homepea7.github.io/2020/14.VSCode-Latex/"/>
-    <id>https://homepea7.github.io/2020/14.VSCode-Latex/</id>
-    <published>2020-05-14T11:46:13.000Z</published>
-    <updated>2020-07-15T02:53:24.592Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;研究生了，于是写Latex的文档也比较多，之前同学们之间推荐的都是使用的Ctex，在 CTeX 套装刚刚问世之时，因其解决了繁琐的中文字体安装工作，所以广受欢迎，但是，一方面 CTeX 套装已经很久不更新，内里的宏包、工具陈旧。不过个人感觉太臃肿，而且安装要接近4G的样子，而且自带的编辑器界面是真的丑。于是就去扒了一下，发现其实就是使用MikTex编译和生成的，于是下载了MikTex的原版软件安装了试试，安装完了之后800M不到，虽然界面也比较难看，不过比Ctex好，而且非常简洁，还自带了PDF的阅读器，他的放大镜用起来非常舒服，感觉还是挺不错的，也用了一段时间，最近看到了用VSCode配置，发现真的是非常的简单和方便，而且VSCode这个软件真的是越用越爽，于是搜了一些资料然后自己尝试了一下，做了这个记录。&lt;/p&gt;
-&lt;h1 id=&quot;软件安装和配置&quot;&gt;&lt;a href=&quot;#软件安装和配置&quot; class=&quot;headerlink&quot; title=&quot;软件安装和配置&quot;&gt;&lt;/a&gt;软件安装和配置&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="Latex" scheme="https://Homepea7.github.io/categories/Latex/"/>
-    
-    
-      <category term="Latex" scheme="https://Homepea7.github.io/tags/Latex/"/>
-    
-      <category term="VsCode" scheme="https://Homepea7.github.io/tags/VsCode/"/>
-    
-      <category term="MiKTeX" scheme="https://Homepea7.github.io/tags/MiKTeX/"/>
     
   </entry>
   

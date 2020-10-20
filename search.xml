@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ESP32的定时器</title>
+    <url>/2020/34.ESP32-Timer/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>说起单片机或者嵌入式系统，定时器应该可以说是不可不提的内容，下面以具体的代码来介绍ESP32的定时器如何使用，一般而言在实现中断处理代码时，最好让ISR仅对中断进行响应，然后把实际的处理（可能包含时间较长的操作）交给主循环来做。按照惯例，先介绍一下环境吧：<br>硬件：TTGO T-Display ESP32带1.14LCD的小开发板 + 编码器<br>软件：VSCode + PlatformIO IDE（其实就是Arduino环境）</p>
+<h1 id="程序详解"><a href="#程序详解" class="headerlink" title="程序详解"></a>程序详解</h1><p>关于定时器的初始化大概只有四五个函数，下面直接每一段单独放出来，有详细的注释。</p>
+<h2 id="timerBegin"><a href="#timerBegin" class="headerlink" title=" timerBegin() "></a><coder> timerBegin() </coder></h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//	函数名称：timerBegin()</span><br><span class="line">//	函数功能：Timer初始化，分别有三个参数</span><br><span class="line">//	函数输入：1. 定时器编号（0到3，对应全部4个硬件定时器）</span><br><span class="line">//			 2. 预分频器数值（ESP32计数器基频为80M，80分频单位是微秒）</span><br><span class="line">//			 3. 计数器向上（<span class="literal">true</span>）或向下（<span class="literal">false</span>）计数的标志</span><br><span class="line">//	函数返回：一个指向 hw_timer_t 结构类型的指针</span><br><span class="line">timer = timerBegin(0, 80, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="timerAttachInterrupt"><a href="#timerAttachInterrupt" class="headerlink" title=" timerAttachInterrupt() "></a><coder> timerAttachInterrupt() </coder></h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//	函数名称：timerAttachInterrupt()</span><br><span class="line">//	函数功能：绑定定时器的中断处理函数，分别有三个参数</span><br><span class="line">//	函数输入：1. 指向已初始化定时器的指针（本例子：timer）</span><br><span class="line">//			 2. 中断处理函数的地址</span><br><span class="line">//			 3. 表示中断触发类型是边沿（<span class="literal">true</span>）还是电平（<span class="literal">false</span>）的标志</span><br><span class="line">//	函数返回：无</span><br><span class="line">timerAttachInterrupt(timer, &amp;onTimer, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="timerAlarmWrite"><a href="#timerAlarmWrite" class="headerlink" title=" timerAlarmWrite() "></a><coder> timerAlarmWrite() </coder></h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//	函数名称：timerAlarmWrite()</span><br><span class="line">//	函数功能：指定触发定时器中断的计数器值，分别有三个参数</span><br><span class="line">//	函数输入：1. 指向已初始化定时器的指针（本例子：timer）</span><br><span class="line">//			 2. 第二个参数是触发中断的计数器值（1000000 us -&gt; 1s）</span><br><span class="line">//			 3. 定时器在产生中断时是否重新加载的标志</span><br><span class="line">//	函数返回：无</span><br><span class="line">timerAlarmWrite(timer, 1000000, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="timerAlarmEnable"><a href="#timerAlarmEnable" class="headerlink" title=" timerAlarmEnable() "></a><coder> timerAlarmEnable() </coder></h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">timerAlarmEnable(timer);		//	使能定时器</span><br></pre></td></tr></table></figure>
+
+<p>然后是中断服务函数ISR：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//	函数名称：onTimer()</span><br><span class="line">//	函数功能：中断服务的功能，它必须是一个返回void（空）且没有输入参数的函数，</span><br><span class="line">//			 为使编译器将代码分配到IRAM内，中断处理程序应该具有 IRAM_ATTR 属性</span><br><span class="line">void IRAM_ATTR <span class="function"><span class="title">onTimer</span></span>() &#123;</span><br><span class="line">	Serial.println(interruptCounter++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后是主函数，啥都不做：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数的结果：每秒输出一个自加的 interruptCounter，具体如下图所示：<br><img src="/images/RaspberryPi/4.5.png" alt="4.5"></p>
+<h1 id="结构优化"><a href="#结构优化" class="headerlink" title="结构优化"></a>结构优化</h1><p>如前文所述，在ISR对中断做出响应之后，真正的定时器中断处理操作其实是在主循环中，更有效的处理方式是，使用一个信号量将主循环锁定，然后在ISR中将其解锁。具体操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;Arduino.h&gt;</span></span><br><span class="line"></span><br><span class="line">volatile int interruptCounter;</span><br><span class="line">int totalInterruptCounter;</span><br><span class="line">hw_timer_t * timer = NULL;</span><br><span class="line">portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;</span><br><span class="line"></span><br><span class="line">//	函数名称：onTimer()</span><br><span class="line">//	函数功能：中断服务的功能，它必须是一个返回void（空）且没有输入参数的函数，</span><br><span class="line">//			 为使编译器将代码分配到IRAM内，中断处理程序应该具有 IRAM_ATTR 属性</span><br><span class="line">void IRAM_ATTR <span class="function"><span class="title">onTimer</span></span>() &#123;</span><br><span class="line">	// Serial.println(interruptCounter++);</span><br><span class="line">	portENTER_CRITICAL_ISR(&amp;timerMux);</span><br><span class="line">	interruptCounter++;</span><br><span class="line">	portEXIT_CRITICAL_ISR(&amp;timerMux);</span><br><span class="line">&#125;</span><br><span class="line">void <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">	Serial.begin(115200);</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//	函数名称：timerBegin()</span><br><span class="line">	//	函数功能：Timer初始化，分别有三个参数</span><br><span class="line">	//	函数输入：1. 定时器编号（0到3，对应全部4个硬件定时器）</span><br><span class="line">	//			 2. 预分频器数值（ESP32计数器基频为80M，80分频单位是微秒）</span><br><span class="line">	//			 3. 计数器向上（<span class="literal">true</span>）或向下（<span class="literal">false</span>）计数的标志</span><br><span class="line">	//	函数返回：一个指向 hw_timer_t 结构类型的指针</span><br><span class="line">	timer = timerBegin(0, 80, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">	//	函数名称：timerAttachInterrupt()</span><br><span class="line">	//	函数功能：绑定定时器的中断处理函数，分别有三个参数</span><br><span class="line">	//	函数输入：1. 指向已初始化定时器的指针（本例子：timer）</span><br><span class="line">	//			 2. 中断处理函数的地址</span><br><span class="line">	//			 3. 表示中断触发类型是边沿（<span class="literal">true</span>）还是电平（<span class="literal">false</span>）的标志</span><br><span class="line">	//	函数返回：无</span><br><span class="line">	timerAttachInterrupt(timer, &amp;onTimer, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">	//	函数名称：timerAlarmWrite()</span><br><span class="line">	//	函数功能：指定触发定时器中断的计数器值，分别有三个参数</span><br><span class="line">	//	函数输入：1. 指向已初始化定时器的指针（本例子：timer）</span><br><span class="line">	//			 2. 第二个参数是触发中断的计数器值（1000000 us -&gt; 1s）</span><br><span class="line">	//			 3. 定时器在产生中断时是否重新加载的标志</span><br><span class="line">	//	函数返回：无</span><br><span class="line">	timerAlarmWrite(timer, 1000000, <span class="literal">true</span>);</span><br><span class="line">	timerAlarmEnable(timer);		//	使能定时器</span><br><span class="line">&#125;</span><br><span class="line">void <span class="function"><span class="title">loop</span></span>() &#123;</span><br><span class="line">	<span class="keyword">if</span> (interruptCounter &gt; 0) &#123;</span><br><span class="line">		portENTER_CRITICAL(&amp;timerMux);</span><br><span class="line">		interruptCounter--;</span><br><span class="line">		portEXIT_CRITICAL(&amp;timerMux);</span><br><span class="line">		totalInterruptCounter++;</span><br><span class="line">		Serial.print(<span class="string">"An interrupt as occurred. Total number: "</span>);</span><br><span class="line">		Serial.println(totalInterruptCounter);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>关于定时器，我个人觉得使用环境真的是非常多，也希望大家能够多看看，下面贴<a href="https://electronics.stackexchange.com/questions/21886/what-does-edge-triggered-and-level-triggered-mean" target="_blank" rel="noopener">大佬的链接</a>，可以多多参考。</p>
+]]></content>
+      <categories>
+        <category>ESP32</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>ESP32</tag>
+        <tag>Timer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ESP32的外部中断和编码器的示例</title>
     <url>/2020/33.ESP32-Interrupt/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>这次主要是记录ESP32的外部中断的相关内容，并且刚刚调试好了编码器，也做一个小小的分享！<br>按照惯例，先介绍一下环境吧：<br>硬件：TTGO T-Display ESP32带1.14LCD的小开发板 + 编码器<br>软件：VSCode + PlatformIO IDE（其实就是Arduino环境）</p>
@@ -28,7 +62,6 @@
 ]]></content>
       <categories>
         <category>ESP32</category>
-        <category>The C/CPP language</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -124,7 +157,6 @@
 ]]></content>
       <categories>
         <category>ESP32</category>
-        <category>The C/CPP language</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -156,9 +188,13 @@
 </ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>具体而言，ESP32的性价比是真的非常高的，而且我觉得有一个最大的好处就是可以使用C++，C++里面的库函数比C语言真的是封装了好多好多；其次是多线程。多线程在对比单片机的中断而言，其实是非常方便的。尤其是在设计比较大的系统而言。</p>
 ]]></content>
+      <categories>
+        <category>ESP32</category>
+      </categories>
       <tags>
         <tag>C/C++</tag>
         <tag>ESP32</tag>
+        <tag>VSCode</tag>
       </tags>
   </entry>
   <entry>
@@ -421,6 +457,34 @@
   </entry>
   <entry>
     <title>空指针、野指针与悬垂指针</title>
+    <url>/2020/24.C-point-DESKTOP-GRPI1FR/</url>
+    <content><![CDATA[<h1 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h1><p>空指针：指针指向的地址为空的指针叫空指针/NULL指针</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *p1;</span><br><span class="line">p1 = NULL;</span><br><span class="line"></span><br><span class="line">char *p2;</span><br><span class="line">p2 = NULL;</span><br></pre></td></tr></table></figure>
+
+<h1 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h1><p>当所指向的对象被释放或者收回，但是对该指针没有作任何的修改，以至于该指针仍旧指向已经回收的内存地址，此情况下该指针便称悬垂指针（也叫迷途指针）。<br>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">int *p1;		//这里p1没有初始化的赋值，随机只想一个地址，是野指针</span><br><span class="line">p1 = &amp;a;		//指向了值</span><br><span class="line"></span><br><span class="line">// 指针在申请的时候一定要赋值，至少要给NULL！</span><br><span class="line">char *p2 = NULL;</span><br></pre></td></tr></table></figure>
+
+<h1 id="悬垂指针"><a href="#悬垂指针" class="headerlink" title="悬垂指针"></a>悬垂指针</h1><p>悬垂指针：指针所指向的对象已经被释放或者回收了，但是指向该对象的指针没有作任何的修改，仍旧指向已经回收的内存地址。 此类指针称为垂悬指针。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   char *dp = NULL;</span><br><span class="line">   &#123;</span><br><span class="line">       char c;</span><br><span class="line">       dp = &amp;c;</span><br><span class="line">   &#125; /* c falls out of scope */</span><br><span class="line">     /* dp is now a dangling pointer */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个很常见的失误是返回一个栈分配的局部变量：一旦调用的函数返回了，分配给这些变量的空间被回收，此时它们拥有的是“垃圾值”。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *func(void)</span><br><span class="line">&#123;</span><br><span class="line">    int num = 1234;</span><br><span class="line">    /* ... */</span><br><span class="line">    <span class="built_in">return</span> &amp;num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用 func 后，尝试从该指针暂时能读取到正确的值（1234），但是再次调用函数后将会重写栈为 num 分配的的值，再从该指针读取的值就不正确了。如果必须要返回一个指向 num 的指针，num 的作用域必须大于这个函数——它也许被声明为 static。</p>
+<h1 id="避免悬垂指针错误"><a href="#避免悬垂指针错误" class="headerlink" title="避免悬垂指针错误"></a>避免悬垂指针错误</h1><p>在 C/C++ 中，一种最简单的技术是实现一个 free()（或类似的）替代版本或者 delete 析构器来保证指针的重置。然后，这个技术不会清除其他指针变量，它们含有该指针的副本。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* Alternative version <span class="keyword">for</span> <span class="string">'free()'</span> */</span><br><span class="line">void safefree(void **pp)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (pp != NULL) &#123;               /* safety check */</span><br><span class="line">        free(*pp);                  /* deallocate chunk, note that free(NULL) is valid */</span><br><span class="line">        *pp = NULL;                 /* reset original pointer */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int f(int i)</span><br><span class="line">&#123;</span><br><span class="line">    char *p = NULL, *p2;</span><br><span class="line">    p = (char *)malloc(1000);    /* get a chunk */</span><br><span class="line">    p2 = p;              /* copy the pointer */</span><br><span class="line">    /* use the chunk here */</span><br><span class="line">    safefree(&amp;p);       /* safety freeing; does not affect p2 variable */</span><br><span class="line">    safefree(&amp;p);       /* this second call won<span class="string">'t fail */</span></span><br><span class="line"><span class="string">    char c = *p2;       /* p2 is still a dangling pointer, so this is undefined behavior. */</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>The C/CPP language</tag>
+        <tag>CRC Check</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>空指针、野指针与悬垂指针</title>
     <url>/2020/24.C-point/</url>
     <content><![CDATA[<h1 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h1><p>空指针：指针指向的地址为空的指针叫空指针/NULL指针</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *p1;</span><br><span class="line">p1 = NULL;</span><br><span class="line"></span><br><span class="line">char *p2;</span><br><span class="line">p2 = NULL;</span><br></pre></td></tr></table></figure>
@@ -648,6 +712,164 @@
   </entry>
   <entry>
     <title>C语言的一些基础知识</title>
+    <url>/2020/18.Basics%20of%20C-DESKTOP-GRPI1FR/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近准备在投简历，也是总结总结一下C语言的基础知识，做一些准备。首先说明，下文后面所做的所有的实验都是在win10_1909_x64环境下，gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)，软件使用的是VSCode。在C语言多线程的使用中，在VSCode配置好了C语言的基本环境之后就能直接使用了。</p>
+<h1 id="C语言的字与字节"><a href="#C语言的字与字节" class="headerlink" title="C语言的字与字节"></a>C语言的字与字节</h1><p>变量大家肯定都熟悉，我的理解是一块内存存储的可变内容。一般来说，多个数据在内存中是连续存储的，彼此之间没有明显的界限，如果不明确指明数据的长度，计算机就不知道何时存取结束。下面对基础的内容进行说明。</p>
+<p>首先是<strong>位</strong>（Bit）：表示二进制数码，只有0和1，是计算机处理和保存信息的最基本的单位。</p>
+<p>其次是<strong>字节</strong>（Byte）：一个字节由8个位组成，他是作为一个完整单位的8个二进制数码，最开始学习的C语言内容之一就是ASCII编码/《美国国家信息交换标准代码》，下面的图展示了AscII编码的一些信息，里面我觉得印象深刻的圈出来了。</p>
+<p>最后是<strong>字</strong>（Word）：一个字由两个字节组成，它表示计算机处理指令或者数据的二进制位数。通常称16位是一个字，32位是一个双字，64位是两个双字。<br><img src="/images/C-Language/1.1.png" alt="P1.1"></p>
+<h1 id="C语言的变量长度"><a href="#C语言的变量长度" class="headerlink" title="C语言的变量长度"></a>C语言的变量长度</h1><p>变量的长度，准确来说应该是便来那个类型所占的字节数，也做一个小小的总结吧，具体内容如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>1</td>
+</tr>
+<tr>
+<td>char[1]</td>
+<td>1</td>
+</tr>
+<tr>
+<td>char[2]</td>
+<td>2</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+</tr>
+<tr>
+<td>short[1]</td>
+<td>2</td>
+</tr>
+<tr>
+<td>short[2]</td>
+<td>4</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+</tr>
+<tr>
+<td>int[1]</td>
+<td>4</td>
+</tr>
+<tr>
+<td>int[2]</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr>
+<td>float[1]</td>
+<td>4</td>
+</tr>
+<tr>
+<td>float[2]</td>
+<td>8</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+</tr>
+<tr>
+<td>double[1]</td>
+<td>8</td>
+</tr>
+<tr>
+<td>double[2]</td>
+<td>16</td>
+</tr>
+</tbody></table>
+<p>尤其注意的是C语言中的bool变量，在C98是标准中是没有定义bool类型变量的，直接引用会报错，一般可以用define或者枚举型便来那个来表示，还有一种方法是在头文件中添加”stdbool.h”这个头文件来引用即可，下面是具体的一些代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "stdio.h"</span></span><br><span class="line"><span class="comment">#include "stdbool.h"</span></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(int));       </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(int[1]));    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(int[2]));    </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(char));      </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(char[1]));   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(char[2]));   </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(double));    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(double[1])); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(double[2])); </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(<span class="built_in">float</span>));     </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(<span class="built_in">float</span>[1]));  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(<span class="built_in">float</span>[2]));  </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(short));     </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(short[1]));  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(short[2]));  </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(bool));      </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(bool[1]));   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(bool[2]));   </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sizeof(long));      </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据结构的字节对齐"><a href="#数据结构的字节对齐" class="headerlink" title="数据结构的字节对齐"></a>数据结构的字节对齐</h1><p>这个是一个非常重要的知识点，面试经常考，具体是个什么意思呢，跑一下下面的代码就知道了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "stdio.h"</span></span><br><span class="line"><span class="comment">#include "stdbool.h"</span></span><br><span class="line"></span><br><span class="line">struct t1</span><br><span class="line">&#123;</span><br><span class="line">    char a1;</span><br><span class="line">    char b1;</span><br><span class="line">    char c1;</span><br><span class="line">    int  d1;</span><br><span class="line">    char e1;</span><br><span class="line">&#125;T1;</span><br><span class="line"></span><br><span class="line">struct t2</span><br><span class="line">&#123;</span><br><span class="line">    char a2;</span><br><span class="line">    char b2;</span><br><span class="line">    char c2;</span><br><span class="line">    char e2;</span><br><span class="line">    int  d2;</span><br><span class="line">&#125;T2;</span><br><span class="line"></span><br><span class="line">struct t3</span><br><span class="line">&#123;</span><br><span class="line">	double a2;</span><br><span class="line">	char b2;</span><br><span class="line">	int  c3;</span><br><span class="line">&#125;T3;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d"</span>, sizeof(T1), sizeof(T2), sizeof(T3));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的输出分别是 “12 8 16”，两个基本相同的两个结构体长度是不一样，这个就是字节对齐。现代计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p>
+<p>对齐的作用和原因：各个硬件平台对存储空间的处理上有很大的不同。一些平台对某些特定类型的数据只能从某些特定地址开始存取。比如有些架构的CPU在访问一个没有进行对齐的变量的时候会发生错误,那么在这种架构下编程必须保证字节对齐.其他平台可能没有这种情况，但是最常见的是如果不按照适合其平台要求对数据存放进行对齐，会在存取效率上带来损失。比如有些平台每次读都是从偶地址开始，如果一个int型（假设为32位系统）如果存放在偶地址开始的地方，那么一个读周期就可以读出这32bit，而如果存放在奇地址开始的地方，就需要2个读周期，并对两次读出的结果的高低字节进行拼凑才能得到该32bit数据。显然在读取效率上下降很多。</p>
+<p>揭示了原因，现在上面的例子应该就比较好分析了，<strong>windows 64 位默认 结构体对齐系数为8，32位 结构体对齐系数为4，而且在VC/C++和GNU GCC中都是默认是4字节对齐</strong>。<br>T1结构体分三段：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1+1+1</td>
+<td>4  [对齐4]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4  [对齐4]</td>
+</tr>
+</tbody></table>
+<p>T2结构体分两段：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1+1+1+1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<p>T3结构体分两段：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>1+4</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>现在对字节对齐已经有了一个比较深刻的认识了大，他是由于计算机在高速读取的时候为了保证读取效率而设计的，但是我们在做嵌入式开发钟数据处理和传输数据的时候，经常设计一些自定义的通信协议，如果按照这种设计反而会降低通信效率，而且如果接收方不清楚这些内容可能会引起一些问题，因此也有一定的方法来取消字节对齐或者自行设计对齐的长度。</p>
+<p>　　· 使用伪指令#pragma pack (n)，编译器将按照n个字节对齐；<br>　　· 使用伪指令#pragma pack ()，取消自定义字节对齐方式。　</p>
+<p>注意：如果#pragma pack (n)中指定的n大于结构体中最大成员的size，则其不起作用，结构体仍然按照size最大的成员进行对界。</p>
+<p>另一种方式比较简单，直接在结构体后面加上<code>__attribute__((packed))</code>，这个是直接取消字节对齐的，或者用<code>__attribute__((aligned(n)))</code>，这个跟<code>pragma pack (n)</code>效果相同。</p>
+<p>可以尝试下面的例子：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "stdio.h"</span></span><br><span class="line"><span class="comment">#include "stdbool.h"</span></span><br><span class="line"></span><br><span class="line">struct t1</span><br><span class="line">&#123;</span><br><span class="line">    char a1;</span><br><span class="line">    char b1;</span><br><span class="line">    char c1;</span><br><span class="line">    int  d1;</span><br><span class="line">    char e1;</span><br><span class="line">&#125;__attribute__((packed)) T1;</span><br><span class="line"></span><br><span class="line">struct t2</span><br><span class="line">&#123;</span><br><span class="line">    char a2;</span><br><span class="line">    char b2;</span><br><span class="line">    char c2;</span><br><span class="line">    char e2;</span><br><span class="line">    int  d2;</span><br><span class="line">&#125;__attribute__((aligned(2))) T2;</span><br><span class="line"></span><br><span class="line">struct t3</span><br><span class="line">&#123;</span><br><span class="line">	double a2;</span><br><span class="line">	char b2;</span><br><span class="line">	int  c3;</span><br><span class="line">	int  d3;</span><br><span class="line">&#125;__attribute__((aligned(4))) T3;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d"</span>, sizeof(T1), sizeof(T2), sizeof(T3));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出为”8 8 24”，有兴趣可以自己对比前面的内容并且简单计算一下。</p>
+]]></content>
+      <categories>
+        <category>The C language</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
+        <tag>Some basics</tag>
+        <tag>变量长度</tag>
+        <tag>字节对齐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言的一些基础知识</title>
     <url>/2020/18.Basics%20of%20C/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近准备在投简历，也是总结总结一下C语言的基础知识，做一些准备。首先说明，下文后面所做的所有的实验都是在win10_1909_x64环境下，gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)，软件使用的是VSCode。在C语言多线程的使用中，在VSCode配置好了C语言的基本环境之后就能直接使用了。</p>
 <h1 id="C语言的字与字节"><a href="#C语言的字与字节" class="headerlink" title="C语言的字与字节"></a>C语言的字与字节</h1><p>变量大家肯定都熟悉，我的理解是一块内存存储的可变内容。一般来说，多个数据在内存中是连续存储的，彼此之间没有明显的界限，如果不明确指明数据的长度，计算机就不知道何时存取结束。下面对基础的内容进行说明。</p>
@@ -820,6 +1042,21 @@
       </tags>
   </entry>
   <entry>
+    <title>C语言实现CRC检验</title>
+    <url>/2020/17.C-CRC-DESKTOP-GRPI1FR/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前在做一个项目的时候，为了保证数据的准确性，用到了CRC检验，现在将其总结一下，顺便也复习一下。首先说一下CRC校验，他的全称是循环冗余校验（cyclic redundancy check）。CRC检验的基本思想是利用线性编码理论，在发送端根据要传送的k位二进制码序列，以一定的规则产生一个检验码r位(就是CRC码)，附在信息后面，构成一个新的二进制码序列数共(k+r)位，最后发送出去。接收端根据同样的规则校验，以确定传送中是否出错。接收端有两种处理方式：1、计算k位序列的CRC码，与接收到的CRC比较，一致则接收正确。2、计算整个k+r位的CRC码，若为0，则接收正确。CRC码有多种检验位数，8位、16位、32位等，原理相同。16位的CRC码产生的规则是先将要发送的二进制序列数左移16位（即乘以2的16次方后），除以一个多项式，最后所得到的余数就是CRC码。</p>
+<p>不说复杂了，CRC 算法的基本思想是将传输的数据当做一个位数很长的数，将这个数除以另一个数，得到的余数作为校验数据附加到原数据后面。除法采用正常的多项式乘除法，而加减法都采用模2运算。模2运算就是结果除以2后取余数，如 3 mod 2 = 1，在计算机中就是异或运算！下面举例说一下：</p>
+<h1 id="CRC介绍"><a href="#CRC介绍" class="headerlink" title="CRC介绍"></a>CRC介绍</h1><h1 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h1><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>之前做项目的时候也参考了很多资料，目前根据根据回忆写这篇博客也是参考了很多别人的东西，例如：<a href="https://blog.csdn.net/liyuanbhu/article/details/7882789" target="_blank" rel="noopener">liyuanbhu</a>的CSDN频道，<a href="https://zhuanlan.zhihu.com/p/77408094" target="_blank" rel="noopener">mculover666</a>的知乎回答，还有<a href="https://www.jb51.net/article/36832.htm" target="_blank" rel="noopener">脚本51</a>的分析介绍。通过这些我也学习到了很多的东西，对CRC检验也有了深刻的体会，我觉得还是挺开心的！</p>
+]]></content>
+      <categories>
+        <category>The C/C++ language</category>
+      </categories>
+      <tags>
+        <tag>The C/CPP language</tag>
+        <tag>CRC Check</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在51和STM32单片机上分别实现任意串口的类似printf操作</title>
     <url>/2020/16.C-uprintf/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>这个是在本科的时候就弄好了，最近整理本科的一些文件的时候又看到了这些，如是准备做一些小结，也是给自己回忆一下。在51和STM32两款单片机实现C语言自带的printf操作，打印在串口中断，或者用于串口的通讯，下面是具体的操作。</p>
@@ -859,7 +1096,51 @@
         <tag>C/C++</tag>
         <tag>SingleChip</tag>
         <tag>Uart</tag>
+        <tag>STM32</tag>
         <tag>STC51</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在51和STM32单片机上分别实现任意串口的类似printf操作</title>
+    <url>/2020/16.C-uprintf-DESKTOP-GRPI1FR/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>这个是在本科的时候就弄好了，最近整理本科的一些文件的时候又看到了这些，如是准备做一些小结，也是给自己回忆一下。在51和STM32两款单片机实现C语言自带的printf操作，打印在串口中断，或者用于串口的通讯，下面是具体的操作。</p>
+<h1 id="关于串行和并行"><a href="#关于串行和并行" class="headerlink" title="关于串行和并行"></a>关于串行和并行</h1><p>在计算机和终端之间的数据传输通常是靠电缆或信道上的电流或电压变化实现的，通信电压或者电流的变化实现通信。如果一组数据的各数据位在多条线上同时被传输，这种传输方式称为并行通信。串行接口是一种可以将接受来自CPU的并行数据字符转换为连续的串行数据流发送出去。简单来说就是串行线材少，信息连续发送，并行信号同时发送，可以同时发送较多的信息，下面介绍单片机的串口通信。</p>
+<p>串口通信(Serial Communication)， 是指外设和计算机间，通过数据信号线 、地线、控制线等，按位进行传输数据的一种通讯方式。这种通信方式使用的数据线少，在通信中虽然传输速度比并行传输低，但是由于咸菜数量少，可以节约通信成本，而且在链接过程中非常方便，因此广泛使用。关于串口的相关知识点，比如：波特率， 数据为， 停止位， 奇偶检验位等等的具体信息王珊又很多的内容，这里就不具体介绍了，下面具体说明常用的两款单片机：51/STM32，他们是怎么配置的；</p>
+<h1 id="51单片机操作"><a href="#51单片机操作" class="headerlink" title="51单片机操作"></a>51单片机操作</h1><p>首先是串口的初始化：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//串口初始化</span><br><span class="line">void UartInit(void)</span><br><span class="line">&#123;</span><br><span class="line">    SCON  = 0x50;		        // SCON: 模式 1, 8-bit UART, 使能接收  </span><br><span class="line">    TMOD |= 0x20;               // TMOD: timer 1, mode 2, 8-bit 重装</span><br><span class="line">    TH1   = 0xFD;               // TH1:  重装值 9600 波特率 晶振 11.0592MHz  </span><br><span class="line">    TR1   = 1;                  // TR1:  timer 1 打开                         </span><br><span class="line">    EA    = 1;                  //打开总中断</span><br><span class="line">//	ES    = 1;                  //打开串口中断</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">//串口中断程序</span><br><span class="line">void UART_SER (void) interrupt 4 //串行中断服务程序</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char Temp;          //定义临时变量 </span><br><span class="line">	<span class="keyword">if</span>(RI)                       //判断是接收中断产生</span><br><span class="line">    &#123;</span><br><span class="line">		RI=0;                    //标志位清零</span><br><span class="line">		Temp = SBUF;             //读入缓冲区的值</span><br><span class="line">		SBUF = Temp;             //把接收到的值再发回电脑端</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(TI)                       //如果是发送标志位，清零</span><br><span class="line">	&#123;</span><br><span class="line">		TI=0;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其次是发送单个字节：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//发送一个字节</span><br><span class="line">void SendByte(unsigned char dat)</span><br><span class="line">&#123;</span><br><span class="line">	SBUF = dat;</span><br><span class="line">	<span class="keyword">while</span>(!TI);</span><br><span class="line">		TI = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里做一个说明，如果使用默认的库中的printf函数是可以的，他向下调用了“char puchar(char c);”这个在”stdio.h”中的函数，因此只需要给“putchar(char c)”给重定向即可使用printf了，使用如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//重定向</span><br><span class="line">char puchar(char c)</span><br><span class="line">&#123;</span><br><span class="line">    SendByte(c);</span><br><span class="line">    <span class="built_in">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重定向之后就可以尽情使用printf了！但是也有一些列的缺点，因为printf函数在库中就会占用1k左右的代码量，因此在小容量的51单片机中还是谨慎使用，下面给出一个更好的方法，就是sprintf函数，他与printf非常像素，但是他将内容映射到一个字符串，然后在将字符串按照字符一个一个发送出去，因此字符串长度可控，占用空间更少，效率也更高！具体如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//发送字符串</span><br><span class="line">void SendStr(unsigned char *s)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>(*s!=<span class="string">'\0'</span>)	// \0 表示字符串结束标志</span><br><span class="line">	&#123;</span><br><span class="line">		SendByte(*s);</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以发送任意的字符串了，下面操作的时候先用sprintf转化一下即可，比如我想发送一个可变长度的helloworld，示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i = 8; i &lt; 12; i++&gt;)</span><br><span class="line">&#123;</span><br><span class="line">    char Temp_S[15];</span><br><span class="line">    sprintf(Temp_S, <span class="string">"Hello World %d"</span>, i);</span><br><span class="line">    SendStr(Temp_S);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于51单片机的说明就到这里，节约一点空间来讲，使用 sprintf + SendStr 这样的肯定是最好的。</p>
+<h1 id="STM32单片机操作"><a href="#STM32单片机操作" class="headerlink" title="STM32单片机操作"></a>STM32单片机操作</h1><p>STM32的程序我是基于<a href="http://www.openedv.com/" target="_blank" rel="noopener">正点原子</a>的来改的，也去他的论学习了很多知识，关于串口的这个也是参考了这个里面很多。原子哥文件里面默认是支持printf的，但是默认是一个，因为printf也是需要一个重定向，在usart.c文件中有说明，重定向那个串口就能用那个串口使用printf函数，具体函数如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//重定义fputc函数 </span><br><span class="line">int fputc(int ch, FILE *f)</span><br><span class="line">&#123;      </span><br><span class="line">	<span class="keyword">while</span>((USART1-&gt;SR&amp;0X40)==0);//循环发送,直到发送完毕   </span><br><span class="line">    USART1-&gt;DR = (u8) ch;      </span><br><span class="line">	<span class="built_in">return</span> ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是但是但是，如果想使用多个串口通信而且想用printf这样方便的函数输出信息怎么办呢？当然有办法，那就是自定义一个，过程的话注释写的很清楚，具体如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//用串口写一个<span class="built_in">printf</span>函数</span><br><span class="line">void uprintf(USART_TypeDef *USARTx, const char *fmt, ...)</span><br><span class="line">&#123;</span><br><span class="line">    va_list ap; //typedef char *va_list; va_list是char型的指针</span><br><span class="line">    char *s_string = malloc(300); //申请缓冲区</span><br><span class="line">    va_start(ap, fmt); //找第一个可变形参的地址，并把地址赋给ap</span><br><span class="line">    vsprintf(s_string, fmt, ap); //类似sprintf函数</span><br><span class="line">    USART_String(USARTx, s_string); //发送和整个字符串</span><br><span class="line">    va_end(ap); //结束</span><br><span class="line">    free(s_string);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是完整的文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include "uart_x.h"</span></span><br><span class="line"><span class="comment">#include "stdlib.h"</span></span><br><span class="line"><span class="comment">#include "stdarg.h"</span></span><br><span class="line">//发送一个字节</span><br><span class="line">void SendByte(USART_TypeDef *USARTx, unsigned char dat)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>((USARTx-&gt;SR &amp; 0X40) == 0) &#123;&#125;; //循环发送,直到发送完毕</span><br><span class="line">    USARTx-&gt;DR = (u8) dat;</span><br><span class="line">&#125;</span><br><span class="line">//发送一个字符串</span><br><span class="line">void USART_String(USART_TypeDef *USARTx, char *s)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(*s != <span class="string">'\0'</span>)	// <span class="string">'\0'</span> 表示字符串结束标志</span><br><span class="line">    &#123;</span><br><span class="line">        SendByte(USARTx, *s);</span><br><span class="line">        s++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//用串口写一个<span class="built_in">printf</span>函数</span><br><span class="line">void uprintf(USART_TypeDef *USARTx, const char *fmt, ...)</span><br><span class="line">&#123;</span><br><span class="line">    va_list ap; //typedef char *va_list; va_list是char型的指针</span><br><span class="line">    char *s_string = malloc(300); //申请空间</span><br><span class="line">    va_start(ap, fmt); /找第一个可变形参的地址，并把地址赋给ap</span><br><span class="line">    vsprintf(s_string, fmt, ap); //类似sprintf函数</span><br><span class="line">    USART_String(USARTx, s_string);  //发送和整个字符串</span><br><span class="line">    va_end(ap); //结束</span><br><span class="line">    free(s_string);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的已经可以基本完成想要的内容了，可以多个串口同时使用printf，但是有一个问题，如果发送的字符串长度大于缓冲区的长度就会内存溢出，因此最好的办法就是在家一个参数，从而申请合适的大小空间。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//用串口写一个<span class="built_in">printf</span>函数</span><br><span class="line">void uprintf_s(USART_TypeDef *USARTx, uint32_t BuffSize,const char *fmt, ...)</span><br><span class="line">&#123;</span><br><span class="line">    va_list ap; //typedef char *va_list; va_list是char型的指针</span><br><span class="line">    char *s_string = malloc(BuffSize); //申请空间</span><br><span class="line">    va_start(ap, fmt); //找第一个可变形参的地址，并把地址赋给ap</span><br><span class="line">    vsprintf_s(s_string,BuffSize, fmt, ap);	//类似sprintf_s函数</span><br><span class="line">    USART_String(USARTx, s_string); //发送和整个字符串</span><br><span class="line">    va_end(ap); 	//结束</span><br><span class="line">    free(s_string);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>总的来说，printf是很好用，可以映射很多东西，比如LCD，OLED的驱动程序，只要配置好了并且设置了重定向都能用，可以说用途非常广泛，但是毕竟是系统库，占用内容还是比较多的，因此51单片机的话还是不用吧，STM32的话也是尽量用sprintf的形式，因为这样效率更高，内容占用也少。</p>
+]]></content>
+      <categories>
+        <category>Embedded development</category>
+      </categories>
+      <tags>
+        <tag>The C/CPP language</tag>
+        <tag>SingleChip</tag>
+        <tag>Uart</tag>
+        <tag>51</tag>
         <tag>STM32</tag>
       </tags>
   </entry>
@@ -1272,6 +1553,20 @@
       <tags>
         <tag>LeetCode</tag>
         <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode做题的记录</title>
+    <url>/2020/04.LeetCode-DESKTOP-GRPI1FR/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本人闲来无事在LeetCode上面开始刷题，但是比较菜，没做出来很多，而且也基本上做的简单的题目，但是仍旧学习了很多知识，在这里做一个简单的记录，以后也会随时更新，也欢迎大家收看，放上<a href="https://github.com/Homepea7/LeetCode" target="_blank" rel="noopener">GitHub地址</a>。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>C</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
