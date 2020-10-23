@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>在群辉上面安装pip</title>
+    <url>/2020/35.DSM-Synology-pip/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的<code>request</code>，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。</p>
+<h1 id="群辉安装Python"><a href="#群辉安装Python" class="headerlink" title="群辉安装Python"></a>群辉安装Python</h1><p>这一点应该不用说了吧，直接去群辉的套件中心，一键安装即可，然后再用SSH登录，输入<code>python -v</code>或者<code>python3 -v</code>即可查看Python版本，并且进入对应的Python环境。</p>
+<h1 id="安装request库"><a href="#安装request库" class="headerlink" title="安装request库"></a>安装request库</h1><p>看了一些资料，比如<a href="https://www.bilibili.com/read/cv1428431/" target="_blank" rel="noopener">学海无涯的B站专栏</a>，这个应该是讲的最详细的一个了，但是很无奈，我这边尝试了没用，不知道是不是我平台的问题。然后就有继续找，找到了<a href="https://stackoverrun.com/cn/q/13048281" target="_blank" rel="noopener">stackoverrun</a>上面的问题讨论，也是在讨论这个问题，下面给出了相应的答案，而且回答的十分详细，步骤真的超级简单，如实就尝试了一下，果然成功了！</p>
+<ul>
+<li><p>首先登陆SSH并输入密码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh user@synology</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取管理员权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载脚本文件到本地</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>*最后运行文件即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
+
+<p>下面是我运行的结果（包括了最后输入pip的测试）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ash-4.3<span class="comment"># wget https://bootstrap.pypa.io/get-pip.py</span></span><br><span class="line">--2020-10-23 08:43:55--  https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">Resolving bootstrap.pypa.io... 151.101.228.175, 2a04:4e42:36::175</span><br><span class="line">Connecting to bootstrap.pypa.io|151.101.228.175|:443... connected.</span><br><span class="line">HTTP request sent, awaiting response... 200 OK</span><br><span class="line">Length: 1886796 (1.8M) [text/x-python]</span><br><span class="line">Saving to: <span class="string">'get-pip.py'</span></span><br><span class="line"></span><br><span class="line">get-pip.py                  100%[===========================================&gt;]   1.80M  1.26MB/s    <span class="keyword">in</span> 1.4s    </span><br><span class="line"></span><br><span class="line">2020-10-23 08:43:58 (1.26 MB/s) - <span class="string">'get-pip.py'</span> saved [1886796/1886796]</span><br><span class="line"></span><br><span class="line">ash-4.3<span class="comment"># python get-pip.py</span></span><br><span class="line">DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support <span class="keyword">for</span> Python 2.7 <span class="keyword">in</span> January 2021. More details about Python 2 support <span class="keyword">in</span> pip can be found at https://pip.pypa.io/en/latest/development/release-process/<span class="comment">#python-2-support pip 21.0 will remove support for this functionality.</span></span><br><span class="line">Collecting pip</span><br><span class="line">  Downloading pip-20.2.4-py2.py3-none-any.whl (1.5 MB)</span><br><span class="line">     |████████████████████████████████| 1.5 MB 272 kB/s </span><br><span class="line">Collecting setuptools</span><br><span class="line">  Downloading setuptools-44.1.1-py2.py3-none-any.whl (583 kB)</span><br><span class="line">     |████████████████████████████████| 583 kB 6.6 MB/s </span><br><span class="line">Collecting wheel</span><br><span class="line">  Downloading wheel-0.35.1-py2.py3-none-any.whl (33 kB)</span><br><span class="line">Installing collected packages: pip, setuptools, wheel</span><br><span class="line">Successfully installed pip-20.2.4 setuptools-44.1.1 wheel-0.35.1</span><br><span class="line">ash-4.3<span class="comment"># pip</span></span><br><span class="line"></span><br><span class="line">Usage:   </span><br><span class="line">  pip &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  install                     Install packages.</span><br><span class="line">  download                    Download packages.</span><br><span class="line">  uninstall                   Uninstall packages.</span><br><span class="line">  freeze                      Output installed packages <span class="keyword">in</span> requirements format.</span><br><span class="line">  list                        List installed packages.</span><br><span class="line">  show                        Show information about installed packages.</span><br><span class="line">  check                       Verify installed packages have compatible dependencies.</span><br><span class="line">  config                      Manage <span class="built_in">local</span> and global configuration.</span><br><span class="line">  search                      Search PyPI <span class="keyword">for</span> packages.</span><br><span class="line">  cache                       Inspect and manage pip<span class="string">'s wheel cache.</span></span><br><span class="line"><span class="string">  wheel                       Build wheels from your requirements.</span></span><br><span class="line"><span class="string">  hash                        Compute hashes of package archives.</span></span><br><span class="line"><span class="string">  completion                  A helper command used for command completion.</span></span><br><span class="line"><span class="string">  debug                       Show information useful for debugging.</span></span><br><span class="line"><span class="string">  help                        Show help for commands.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">General Options:</span></span><br><span class="line"><span class="string">  -h, --help                  Show help.</span></span><br><span class="line"><span class="string">  --isolated                  Run pip in an isolated mode, ignoring environment variables and user</span></span><br><span class="line"><span class="string">                              configuration.</span></span><br><span class="line"><span class="string">  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.</span></span><br><span class="line"><span class="string">  -V, --version               Show version and exit.</span></span><br><span class="line"><span class="string">  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times</span></span><br><span class="line"><span class="string">                              (corresponding to WARNING, ERROR, and CRITICAL logging levels).</span></span><br><span class="line"><span class="string">  --log &lt;path&gt;                Path to a verbose appending log.</span></span><br><span class="line"><span class="string">  --no-input                  Disable prompting for input.</span></span><br><span class="line"><span class="string">  --proxy &lt;proxy&gt;             Specify a proxy in the form [user:passwd@]proxy.server:port.</span></span><br><span class="line"><span class="string">  --retries &lt;retries&gt;         Maximum number of retries each connection should attempt (default 5 times).</span></span><br><span class="line"><span class="string">  --timeout &lt;sec&gt;             Set the socket timeout (default 15 seconds).</span></span><br><span class="line"><span class="string">  --exists-action &lt;action&gt;    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup,</span></span><br><span class="line"><span class="string">                              (a)bort.</span></span><br><span class="line"><span class="string">  --trusted-host &lt;hostname&gt;   Mark this host or host:port pair as trusted, even though it does not have valid</span></span><br><span class="line"><span class="string">                              or any HTTPS.</span></span><br><span class="line"><span class="string">  --cert &lt;path&gt;               Path to alternate CA bundle.</span></span><br><span class="line"><span class="string">  --client-cert &lt;path&gt;        Path to SSL client certificate, a single file containing the private key and the</span></span><br><span class="line"><span class="string">                              certificate in PEM format.</span></span><br><span class="line"><span class="string">  --cache-dir &lt;dir&gt;           Store the cache data in &lt;dir&gt;.</span></span><br><span class="line"><span class="string">  --no-cache-dir              Disable the cache.</span></span><br><span class="line"><span class="string">  --disable-pip-version-check</span></span><br><span class="line"><span class="string">                              Don'</span>t periodically check PyPI to determine whether a new version of pip is</span><br><span class="line">                              available <span class="keyword">for</span> download. Implied with --no-index.</span><br><span class="line">  --no-color                  Suppress colored output</span><br><span class="line">  --no-python-version-warning</span><br><span class="line">                              Silence deprecation warnings <span class="keyword">for</span> upcoming unsupported Pythons.</span><br><span class="line">  --use-feature &lt;feature&gt;     Enable new functionality, that may be backward incompatible.</span><br><span class="line">  --use-deprecated &lt;feature&gt;  Enable deprecated functionality, that will be removed <span class="keyword">in</span> the future.</span><br></pre></td></tr></table></figure>
+
+<h1 id="下一步问题"><a href="#下一步问题" class="headerlink" title="下一步问题"></a>下一步问题</h1><p>到这里貌似已经完美解决了问题，但是我发现一个问题，我实用下列指令安装了一下<code>requests</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+
+<p>但是在实际的实用过程中，我是用的是Python3，具体版本是3.8.2，我import requests发现直接报错，经过一番查找，发现这里的pip居然是python2的，跟我在PC上面使用的体验全完不用，可能是他默认的版本是Python2，这个的话Linux一般都是默认的2而不是3，然后我又继续小找了一番，找到了<a href="https://www.codenong.com/38141115/" target="_blank" rel="noopener">码农家园</a>的一个帖子，回复的超级乱，但是我还是找到了一些有用的信息，然后根据系统给出的提示，终于给弄好了，下面说说具体的步骤：</p>
+<p>首先我直接删除之前下载的get-pip.py文件，然后重新下载了一个：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ash-4.3<span class="comment"># ls</span></span><br><span class="line">get-pip.py</span><br><span class="line">ash-4.3<span class="comment"># rm get-pip.py </span></span><br><span class="line">ash-4.3<span class="comment"># curl -O https://bootstrap.pypa.io/get-pip.py</span></span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100 1842k  100 1842k    0     0   359k      0  0:00:05  0:00:05 --:--:--  445k</span><br><span class="line">ash-4.3<span class="comment"># sudo python3 get-pip.py</span></span><br><span class="line">Collecting pip</span><br><span class="line">  Using cached pip-20.2.4-py2.py3-none-any.whl (1.5 MB)</span><br><span class="line">Collecting setuptools</span><br><span class="line">  Downloading setuptools-50.3.2-py3-none-any.whl (785 kB)</span><br><span class="line">     |████████████████████████████████| 785 kB 71 kB/s </span><br><span class="line">Collecting wheel</span><br><span class="line">  Using cached wheel-0.35.1-py2.py3-none-any.whl (33 kB)</span><br><span class="line">Installing collected packages: pip, setuptools, wheel</span><br><span class="line">  WARNING: The scripts pip, pip3 and pip3.8 are installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">  WARNING: The scripts easy_install and easy_install-3.8 are installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">  WARNING: The script wheel is installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">Successfully installed pip-20.2.4 setuptools-50.3.2 wheel-0.35.1</span><br></pre></td></tr></table></figure>
+
+<p>大家可以仔细看看这个里面的说明，目录是在 /var/packages/py3k/target/usr/local/bin 下面，这个时候pip3是不能用的：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ash-4.3<span class="comment"># pip3</span></span><br><span class="line">ash: pip3: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure>
+<p>然后我又进入到他给的文件夹里面，看看有什么东西，发现有pip3这个文件，真的超级开心有木有，然后尝试用了一下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ash-4.3<span class="comment"># cd /var/packages/py3k/target/usr/local/bin</span></span><br><span class="line">ash-4.3<span class="comment"># ls</span></span><br><span class="line">easy_install  easy_install-3.8	pip  pip3  pip3.8  python3  python3.8  wheel</span><br><span class="line">ash-4.3<span class="comment"># pip3 install requests</span></span><br><span class="line">ash: pip3: <span class="built_in">command</span> not found</span><br><span class="line">ash-4.3<span class="comment"># pip3 -v</span></span><br><span class="line">ash: pip3: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure>
+
+<p>哎，还是不能用，你别说，我又试了一下<code>pip -v</code>，默认的pip2还是能行，你说气不气？<br>然后我想了一下，既然不能直接运行，我用<code>./command</code>这种运行的方式还不行吗？得到一下结果：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ash-4.3<span class="comment"># ./pip3</span></span><br><span class="line"></span><br><span class="line">Usage:   </span><br><span class="line">  pip3 &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  install                     Install packages.</span><br><span class="line">  download                    Download packages.</span><br><span class="line">  uninstall                   Uninstall packages.</span><br><span class="line">  freeze                      Output installed packages <span class="keyword">in</span> requirements format.</span><br><span class="line">  list                        List installed packages.</span><br><span class="line">  show                        Show information about installed packages.</span><br><span class="line">  check                       Verify installed packages have compatible dependencies.</span><br><span class="line">  config                      Manage <span class="built_in">local</span> and global configuration.</span><br><span class="line">  search                      Search PyPI <span class="keyword">for</span> packages.</span><br><span class="line">  cache                       Inspect and manage pip<span class="string">'s wheel cache.</span></span><br><span class="line"><span class="string">  wheel                       Build wheels from your requirements.</span></span><br><span class="line"><span class="string">  hash                        Compute hashes of package archives.</span></span><br><span class="line"><span class="string">  completion                  A helper command used for command completion.</span></span><br><span class="line"><span class="string">  debug                       Show information useful for debugging.</span></span><br><span class="line"><span class="string">  help                        Show help for commands.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">General Options:</span></span><br><span class="line"><span class="string">  -h, --help                  Show help.</span></span><br><span class="line"><span class="string">  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.</span></span><br><span class="line"><span class="string">  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.</span></span><br><span class="line"><span class="string">  -V, --version               Show version and exit.</span></span><br><span class="line"><span class="string">  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times (corresponding to WARNING, ERROR, and CRITICAL logging levels).</span></span><br><span class="line"><span class="string">  --log &lt;path&gt;                Path to a verbose appending log.</span></span><br><span class="line"><span class="string">  --no-input                  Disable prompting for input.</span></span><br><span class="line"><span class="string">  --proxy &lt;proxy&gt;             Specify a proxy in the form [user:passwd@]proxy.server:port.</span></span><br><span class="line"><span class="string">  --retries &lt;retries&gt;         Maximum number of retries each connection should attempt (default 5 times).</span></span><br><span class="line"><span class="string">  --timeout &lt;sec&gt;             Set the socket timeout (default 15 seconds).</span></span><br><span class="line"><span class="string">  --exists-action &lt;action&gt;    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.</span></span><br><span class="line"><span class="string">  --trusted-host &lt;hostname&gt;   Mark this host or host:port pair as trusted, even though it does not have valid or any HTTPS.</span></span><br><span class="line"><span class="string">  --cert &lt;path&gt;               Path to alternate CA bundle.</span></span><br><span class="line"><span class="string">  --client-cert &lt;path&gt;        Path to SSL client certificate, a single file containing the private key and the certificate in PEM format.</span></span><br><span class="line"><span class="string">  --cache-dir &lt;dir&gt;           Store the cache data in &lt;dir&gt;.</span></span><br><span class="line"><span class="string">  --no-cache-dir              Disable the cache.</span></span><br><span class="line"><span class="string">  --disable-pip-version-check</span></span><br><span class="line"><span class="string">                              Don'</span>t periodically check PyPI to determine whether a new version of pip is available <span class="keyword">for</span> download. Implied with --no-index.</span><br><span class="line">  --no-color                  Suppress colored output</span><br><span class="line">  --no-python-version-warning</span><br><span class="line">                              Silence deprecation warnings <span class="keyword">for</span> upcoming unsupported Pythons.</span><br><span class="line">  --use-feature &lt;feature&gt;     Enable new functionality, that may be backward incompatible.</span><br><span class="line">  --use-deprecated &lt;feature&gt;  Enable deprecated functionality, that will be removed <span class="keyword">in</span> the future.</span><br></pre></td></tr></table></figure>
+<p>喜出望外，然后果断使用<code>./pip install xxx</code>安装了 requests 并且 import 了一下，发现可以用，真的是喜出望外，具体如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ash-4.3<span class="comment"># ./pip3 install requests</span></span><br><span class="line">Collecting requests</span><br><span class="line">  Using cached requests-2.24.0-py2.py3-none-any.whl (61 kB)</span><br><span class="line">Collecting certifi&gt;=2017.4.17</span><br><span class="line">  Using cached certifi-2020.6.20-py2.py3-none-any.whl (156 kB)</span><br><span class="line">Collecting chardet&lt;4,&gt;=3.0.2</span><br><span class="line">  Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)</span><br><span class="line">Collecting idna&lt;3,&gt;=2.5</span><br><span class="line">  Using cached idna-2.10-py2.py3-none-any.whl (58 kB)</span><br><span class="line">Collecting urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1</span><br><span class="line">  Using cached urllib3-1.25.11-py2.py3-none-any.whl (127 kB)</span><br><span class="line">Installing collected packages: certifi, chardet, idna, urllib3, requests</span><br><span class="line">  WARNING: The script chardetect is installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0 urllib3-1.25.11</span><br><span class="line">ash-4.3<span class="comment"># python3</span></span><br><span class="line">Python 3.8.2 (tags/Contacts-1.0.0-0232-200617:57e5f51, Jun 29 2020, 09:38:52) </span><br><span class="line">[GCC 4.9.4 20150629 (prerelease)] on linux</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import requests</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，import的时候没有报错，现在已经是可以正常使用了。但是距离完美使用肯定是差一点点的，可以看到我们不可能每次都进入到<code>/var/packages/py3k/target/usr/local/bin</code>这个目录来使用pip3指令的，因此最后一步当然是将该目录加入到PATH中啦，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ash-4.3<span class="comment"># export PATH="/var/packages/py3k/target/usr/local/bin:$PATH"</span></span><br><span class="line">ash-4.3<span class="comment"># pip3</span></span><br><span class="line"></span><br><span class="line">Usage:   </span><br><span class="line">  pip3 &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  install                     Install packages.</span><br><span class="line">  download                    Download packages.</span><br><span class="line">  uninstall                   Uninstall packages.</span><br><span class="line">  freeze                      Output installed packages <span class="keyword">in</span> requirements format.</span><br><span class="line">  list                        List installed packages.</span><br><span class="line">  show                        Show information about installed packages.</span><br><span class="line">  check                       Verify installed packages have compatible dependencies.</span><br><span class="line">  config                      Manage <span class="built_in">local</span> and global configuration.</span><br><span class="line">  search                      Search PyPI <span class="keyword">for</span> packages.</span><br><span class="line">  cache                       Inspect and manage pip<span class="string">'s wheel cache.</span></span><br><span class="line"><span class="string">  wheel                       Build wheels from your requirements.</span></span><br><span class="line"><span class="string">  hash                        Compute hashes of package archives.</span></span><br><span class="line"><span class="string">  completion                  A helper command used for command completion.</span></span><br><span class="line"><span class="string">  debug                       Show information useful for debugging.</span></span><br><span class="line"><span class="string">  help                        Show help for commands.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">General Options:</span></span><br><span class="line"><span class="string">  -h, --help                  Show help.</span></span><br><span class="line"><span class="string">  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.</span></span><br><span class="line"><span class="string">  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.</span></span><br><span class="line"><span class="string">  -V, --version               Show version and exit.</span></span><br><span class="line"><span class="string">  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times (corresponding to WARNING, ERROR, and CRITICAL logging levels).</span></span><br><span class="line"><span class="string">  --log &lt;path&gt;                Path to a verbose appending log.</span></span><br><span class="line"><span class="string">  --no-input                  Disable prompting for input.</span></span><br><span class="line"><span class="string">  --proxy &lt;proxy&gt;             Specify a proxy in the form [user:passwd@]proxy.server:port.</span></span><br><span class="line"><span class="string">  --retries &lt;retries&gt;         Maximum number of retries each connection should attempt (default 5 times).</span></span><br><span class="line"><span class="string">  --timeout &lt;sec&gt;             Set the socket timeout (default 15 seconds).</span></span><br><span class="line"><span class="string">  --exists-action &lt;action&gt;    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.</span></span><br><span class="line"><span class="string">  --trusted-host &lt;hostname&gt;   Mark this host or host:port pair as trusted, even though it does not have valid or any HTTPS.</span></span><br><span class="line"><span class="string">  --cert &lt;path&gt;               Path to alternate CA bundle.</span></span><br><span class="line"><span class="string">  --client-cert &lt;path&gt;        Path to SSL client certificate, a single file containing the private key and the certificate in PEM format.</span></span><br><span class="line"><span class="string">  --cache-dir &lt;dir&gt;           Store the cache data in &lt;dir&gt;.</span></span><br><span class="line"><span class="string">  --no-cache-dir              Disable the cache.</span></span><br><span class="line"><span class="string">  --disable-pip-version-check</span></span><br><span class="line"><span class="string">                              Don'</span>t periodically check PyPI to determine whether a new version of pip is available <span class="keyword">for</span> download. Implied with --no-index.</span><br><span class="line">  --no-color                  Suppress colored output</span><br><span class="line">  --no-python-version-warning</span><br><span class="line">                              Silence deprecation warnings <span class="keyword">for</span> upcoming unsupported Pythons.</span><br><span class="line">  --use-feature &lt;feature&gt;     Enable new functionality, that may be backward incompatible.</span><br><span class="line">  --use-deprecated &lt;feature&gt;  Enable deprecated functionality, that will be removed <span class="keyword">in</span> the future.</span><br></pre></td></tr></table></figure>
+
+<p>上面添加了以后我还测试了一下，任何位置都可以使用pip3来安装相应的库，好用多了！</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>完美解决，皆大欢喜<del>~</del></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>DSM/Synology</tag>
+        <tag>Python</tag>
+        <tag>pip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>输入数字判断CPU是大端还是小端模式</title>
+    <url>/2020/30.Endian/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前几天做了一个笔试题目，是输入一个数字，16进制的，类似 <code>0x12345678</code> 这种的，当时就想应该还是很好判断的，直接取数字的地址，然后取相应的位计算大小即可，但是通过率一直是0。一直在分析原因，由于他需要输入数据，当时也没多想，反正一直就没有做出来。知道前两天想到了一个点，存储数据最方便的肯定是字符串呀，如实今天上午花了点时间，重新写了一些，也不知道有没有通过率，反正当做是复习知识点了。</p>
+<h1 id="概念与详解"><a href="#概念与详解" class="headerlink" title="概念与详解"></a>概念与详解</h1><p>在各种体系的计算机中通常采用的字节存储机制主要有两种： Big-Endian和Little-Endian，即大端模式和小端模式。<br>Big-Endian和Little-Endian的定义如下：</p>
+<p>1) Little-Endian：低位字节排放在内存的低地址端，高位字节排放在内存的高地址端，如Intel的8086系列。<br>2) Big-Endian：高位字节排放在内存的低地址端，低位字节排放在内存的高地址端，如PowerPC处理器。</p>
+<p>举个例子，比如16进制数字 <code>0x12345678</code> 在内存中的表示形式为：</p>
+<p>大端模式：</p>
+<table>
+<thead>
+<tr>
+<th>adress</th>
+<th align="center">…</th>
+<th align="center">0x2000</th>
+<th align="right">0x2001</th>
+<th align="right">0x2002</th>
+<th align="right">0x2003</th>
+<th align="right">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td align="center">…</td>
+<td align="center"><strong>0x12</strong></td>
+<td align="right"><strong>0x34</strong></td>
+<td align="right"><strong>0x56</strong></td>
+<td align="right"><strong>0x78</strong></td>
+<td align="right">…</td>
+</tr>
+</tbody></table>
+<p>小端模式：</p>
+<table>
+<thead>
+<tr>
+<th>adress</th>
+<th>…</th>
+<th align="center">0x2000</th>
+<th align="right">0x2001</th>
+<th align="right">0x2002</th>
+<th align="right">0x2003</th>
+<th align="right">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>…</td>
+<td align="center"><strong>0x78</strong></td>
+<td align="right"><strong>0x56</strong></td>
+<td align="right"><strong>0x34</strong></td>
+<td align="right"><strong>0x12</strong></td>
+<td align="right">…</td>
+</tr>
+</tbody></table>
+<p>小端模式 ：强制转换数据不需要调整字节内容，1、2、4字节的存储方式一样。<br>大端模式 ：符号位的判定固定为第一个字节，容易判断正负。</p>
+<p>为什么会有大小端模式之分呢？<br>这是因为在计算机系统中，我们是以字节为单位的，每个地址单元都对应着一个字节，一个字节为8bit。但是在C语言中除了8bit的char之外，还有16bit的short型，32bit的long型（要看具体的编译器），另外，对于位数大于8位的处理器，例如16位或者32位的处理器，由于寄存器宽度大于一个字节，那么必然存在着一个如何将多个字节安排的问题。因此就导致了大端存储模式和小端存储模式。</p>
+<p>例如一个16bit的short型x，在内存中的地址为0x0010，x的值为0x1122，那么0x11为高字节，0x22为低字节。对于大端模式，就将0x11放在低地址中，即0x0010中，0x22放在高地址中，即0x0011中。小端模式，刚好相反。我们常用的x86结构是小端模式，而KEIL C51则为大端模式。很多的ARM，DSP都为小端模式。有些ARM处理器还可以由硬件来选择是大端模式还是小端模式。</p>
+<h1 id="如何判断大小端"><a href="#如何判断大小端" class="headerlink" title="如何判断大小端"></a>如何判断大小端</h1><p>直接取整数的地址，用short两位的性质才判断即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int i=1;   </span><br><span class="line">char *p=(char *)&amp;i;   </span><br><span class="line"><span class="keyword">if</span>(*p == 1)     </span><br><span class="line">    cout &lt;&lt; <span class="string">"Little-Endian"</span> &lt;&lt; endl;</span><br><span class="line"><span class="keyword">else</span> // (*p == 0)</span><br><span class="line">    cout &lt;&lt; <span class="string">"Big-Endian"</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>或者使用联合体</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//<span class="built_in">return</span> 1 : little-endian</span><br><span class="line">//       0 : big-endian</span><br><span class="line">int checkCPUendian()</span><br><span class="line">&#123;</span><br><span class="line">    union &#123;</span><br><span class="line">        unsigned int a;</span><br><span class="line">        unsigned char b; </span><br><span class="line">    &#125; c;</span><br><span class="line">  </span><br><span class="line">    c.a = 1;</span><br><span class="line">    <span class="built_in">return</span> (c.b == 1); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结做题"><a href="#总结做题" class="headerlink" title="总结做题"></a>总结做题</h1><p>一个输入一个输出，而且大小端肯定是会变的，用一个字符串就能完美替代，具体代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//	** 功能：判断当前操作系统大小端的函数</span><br><span class="line">//	** 输入：一个字符串，要求是十进制的格式,Eg:0x1A2B3C4D</span><br><span class="line">//	** 输出：-1: 无法判断/ 0：小端模式/	1：大端模式</span><br><span class="line">int judgeEndian(string str)</span><br><span class="line">&#123;</span><br><span class="line">	//	首先字符串去头(<span class="string">"0x"</span>的头部)</span><br><span class="line">	str = str.substr(2, str.size()-1);	</span><br><span class="line">	</span><br><span class="line">	//	然后去掉不能判断的（长度是奇数的可以）</span><br><span class="line">	int size = str.size(), flag = 0;</span><br><span class="line">	<span class="keyword">if</span>( !(size%2) )	&#123;</span><br><span class="line">		<span class="keyword">for</span>(int i = 0; i &lt; size/2; i+= 2)	&#123;</span><br><span class="line">			//	cout &lt;&lt; str.substr(i, 2) &lt;&lt; <span class="string">" | "</span> &lt;&lt; str.substr(size-2-i, 2) &lt;&lt; endl;	</span><br><span class="line">			<span class="keyword">if</span>(str.substr(i, 2) != str.substr(size-2-i, 2))&#123;</span><br><span class="line">				flag = 1;</span><br><span class="line">				<span class="built_in">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag == 0) &#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">" can not jundge! "</span>;</span><br><span class="line">			<span class="built_in">return</span> -1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//	下面开始计算</span><br><span class="line">	//	直接转换成16进制</span><br><span class="line">	int num = stoi(str, nullptr, 16);</span><br><span class="line">	// <span class="built_in">printf</span>(<span class="string">"%X \r\n"</span>,  num);</span><br><span class="line">	// <span class="built_in">printf</span>(<span class="string">"%X \r\n"</span>,  ((char*)&amp;num)[0]);</span><br><span class="line"></span><br><span class="line">	//	下面是两个尾部值</span><br><span class="line">	short int orgEnd = stoi(str.substr(size-2, 2),nullptr, 16);	//原本值由字符串转化而来</span><br><span class="line">	short int trsEnd = ((char*)&amp;num)[0];		   //转化值由整数经过存储，然后取地址得到</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(orgEnd == trsEnd) &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">"Little-Endian! "</span>;</span><br><span class="line">		<span class="built_in">return</span> 0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">"Big-Endian! "</span>;</span><br><span class="line">		<span class="built_in">return</span> 1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	string str;</span><br><span class="line">	cin &gt;&gt; str;</span><br><span class="line">	judgeEndian(str);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>没有什么值得特别总结的吧，感觉还是多加练习多多刷题就行！</p>
+]]></content>
+      <categories>
+        <category>The C/C++ language</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ESP32的定时器</title>
     <url>/2020/34.ESP32-Timer/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>说起单片机或者嵌入式系统，定时器应该可以说是不可不提的内容，下面以具体的代码来介绍ESP32的定时器如何使用，一般而言在实现中断处理代码时，最好让ISR仅对中断进行响应，然后把实际的处理（可能包含时间较长的操作）交给主循环来做。按照惯例，先介绍一下环境吧：<br>硬件：TTGO T-Display ESP32带1.14LCD的小开发板 + 编码器<br>软件：VSCode + PlatformIO IDE（其实就是Arduino环境）</p>
@@ -198,77 +324,6 @@
       </tags>
   </entry>
   <entry>
-    <title>输入数字判断CPU是大端还是小端模式</title>
-    <url>/2020/30.Endian/</url>
-    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>前几天做了一个笔试题目，是输入一个数字，16进制的，类似 <code>0x12345678</code> 这种的，当时就想应该还是很好判断的，直接取数字的地址，然后取相应的位计算大小即可，但是通过率一直是0。一直在分析原因，由于他需要输入数据，当时也没多想，反正一直就没有做出来。知道前两天想到了一个点，存储数据最方便的肯定是字符串呀，如实今天上午花了点时间，重新写了一些，也不知道有没有通过率，反正当做是复习知识点了。</p>
-<h1 id="概念与详解"><a href="#概念与详解" class="headerlink" title="概念与详解"></a>概念与详解</h1><p>在各种体系的计算机中通常采用的字节存储机制主要有两种： Big-Endian和Little-Endian，即大端模式和小端模式。<br>Big-Endian和Little-Endian的定义如下：</p>
-<p>1) Little-Endian：低位字节排放在内存的低地址端，高位字节排放在内存的高地址端，如Intel的8086系列。<br>2) Big-Endian：高位字节排放在内存的低地址端，低位字节排放在内存的高地址端，如PowerPC处理器。</p>
-<p>举个例子，比如16进制数字 <code>0x12345678</code> 在内存中的表示形式为：</p>
-<p>大端模式：</p>
-<table>
-<thead>
-<tr>
-<th>adress</th>
-<th align="center">…</th>
-<th align="center">0x2000</th>
-<th align="right">0x2001</th>
-<th align="right">0x2002</th>
-<th align="right">0x2003</th>
-<th align="right">…</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>data</td>
-<td align="center">…</td>
-<td align="center"><strong>0x12</strong></td>
-<td align="right"><strong>0x34</strong></td>
-<td align="right"><strong>0x56</strong></td>
-<td align="right"><strong>0x78</strong></td>
-<td align="right">…</td>
-</tr>
-</tbody></table>
-<p>小端模式：</p>
-<table>
-<thead>
-<tr>
-<th>adress</th>
-<th>…</th>
-<th align="center">0x2000</th>
-<th align="right">0x2001</th>
-<th align="right">0x2002</th>
-<th align="right">0x2003</th>
-<th align="right">…</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>data</td>
-<td>…</td>
-<td align="center"><strong>0x78</strong></td>
-<td align="right"><strong>0x56</strong></td>
-<td align="right"><strong>0x34</strong></td>
-<td align="right"><strong>0x12</strong></td>
-<td align="right">…</td>
-</tr>
-</tbody></table>
-<p>小端模式 ：强制转换数据不需要调整字节内容，1、2、4字节的存储方式一样。<br>大端模式 ：符号位的判定固定为第一个字节，容易判断正负。</p>
-<p>为什么会有大小端模式之分呢？<br>这是因为在计算机系统中，我们是以字节为单位的，每个地址单元都对应着一个字节，一个字节为8bit。但是在C语言中除了8bit的char之外，还有16bit的short型，32bit的long型（要看具体的编译器），另外，对于位数大于8位的处理器，例如16位或者32位的处理器，由于寄存器宽度大于一个字节，那么必然存在着一个如何将多个字节安排的问题。因此就导致了大端存储模式和小端存储模式。</p>
-<p>例如一个16bit的short型x，在内存中的地址为0x0010，x的值为0x1122，那么0x11为高字节，0x22为低字节。对于大端模式，就将0x11放在低地址中，即0x0010中，0x22放在高地址中，即0x0011中。小端模式，刚好相反。我们常用的x86结构是小端模式，而KEIL C51则为大端模式。很多的ARM，DSP都为小端模式。有些ARM处理器还可以由硬件来选择是大端模式还是小端模式。</p>
-<h1 id="如何判断大小端"><a href="#如何判断大小端" class="headerlink" title="如何判断大小端"></a>如何判断大小端</h1><p>直接取整数的地址，用short两位的性质才判断即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int i=1;   </span><br><span class="line">char *p=(char *)&amp;i;   </span><br><span class="line"><span class="keyword">if</span>(*p == 1)     </span><br><span class="line">    cout &lt;&lt; <span class="string">"Little-Endian"</span> &lt;&lt; endl;</span><br><span class="line"><span class="keyword">else</span> // (*p == 0)</span><br><span class="line">    cout &lt;&lt; <span class="string">"Big-Endian"</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
-<p>或者使用联合体</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//<span class="built_in">return</span> 1 : little-endian</span><br><span class="line">//       0 : big-endian</span><br><span class="line">int checkCPUendian()</span><br><span class="line">&#123;</span><br><span class="line">    union &#123;</span><br><span class="line">        unsigned int a;</span><br><span class="line">        unsigned char b; </span><br><span class="line">    &#125; c;</span><br><span class="line">  </span><br><span class="line">    c.a = 1;</span><br><span class="line">    <span class="built_in">return</span> (c.b == 1); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结做题"><a href="#总结做题" class="headerlink" title="总结做题"></a>总结做题</h1><p>一个输入一个输出，而且大小端肯定是会变的，用一个字符串就能完美替代，具体代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//	** 功能：判断当前操作系统大小端的函数</span><br><span class="line">//	** 输入：一个字符串，要求是十进制的格式,Eg:0x1A2B3C4D</span><br><span class="line">//	** 输出：-1: 无法判断/ 0：小端模式/	1：大端模式</span><br><span class="line">int judgeEndian(string str)</span><br><span class="line">&#123;</span><br><span class="line">	//	首先字符串去头(<span class="string">"0x"</span>的头部)</span><br><span class="line">	str = str.substr(2, str.size()-1);	</span><br><span class="line">	</span><br><span class="line">	//	然后去掉不能判断的（长度是奇数的可以）</span><br><span class="line">	int size = str.size(), flag = 0;</span><br><span class="line">	<span class="keyword">if</span>( !(size%2) )	&#123;</span><br><span class="line">		<span class="keyword">for</span>(int i = 0; i &lt; size/2; i+= 2)	&#123;</span><br><span class="line">			//	cout &lt;&lt; str.substr(i, 2) &lt;&lt; <span class="string">" | "</span> &lt;&lt; str.substr(size-2-i, 2) &lt;&lt; endl;	</span><br><span class="line">			<span class="keyword">if</span>(str.substr(i, 2) != str.substr(size-2-i, 2))&#123;</span><br><span class="line">				flag = 1;</span><br><span class="line">				<span class="built_in">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag == 0) &#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">" can not jundge! "</span>;</span><br><span class="line">			<span class="built_in">return</span> -1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//	下面开始计算</span><br><span class="line">	//	直接转换成16进制</span><br><span class="line">	int num = stoi(str, nullptr, 16);</span><br><span class="line">	// <span class="built_in">printf</span>(<span class="string">"%X \r\n"</span>,  num);</span><br><span class="line">	// <span class="built_in">printf</span>(<span class="string">"%X \r\n"</span>,  ((char*)&amp;num)[0]);</span><br><span class="line"></span><br><span class="line">	//	下面是两个尾部值</span><br><span class="line">	short int orgEnd = stoi(str.substr(size-2, 2),nullptr, 16);	//原本值由字符串转化而来</span><br><span class="line">	short int trsEnd = ((char*)&amp;num)[0];		   //转化值由整数经过存储，然后取地址得到</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(orgEnd == trsEnd) &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">"Little-Endian! "</span>;</span><br><span class="line">		<span class="built_in">return</span> 0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">"Big-Endian! "</span>;</span><br><span class="line">		<span class="built_in">return</span> 1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	string str;</span><br><span class="line">	cin &gt;&gt; str;</span><br><span class="line">	judgeEndian(str);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>没有什么值得特别总结的吧，感觉还是多加练习多多刷题就行！</p>
-]]></content>
-      <categories>
-        <category>The C/C++ language</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C/C++常见输入输出的小总结</title>
     <url>/2020/29.IO-Stream/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>怎么说呢，首先说说地址，还是<a href="https://ac.nowcoder.com/acm/contest/5650?from=hr_test#question" target="_blank" rel="noopener">牛客网</a>。总地来说吧，最近也是做了不少的题目，对于输入和输出数据的类型东西也是有了一些了解。我最开始利用输入字符串的形式，加上 vector 解析的<a href="http://localhost:4000/2020/23.GetData-C/" target="_blank" rel="noopener">例子</a>也是一个不错的想法，但是最近仔细的做了一系列的输入输出题目以后，发现有了新的思路。</p>
@@ -457,34 +512,6 @@
   </entry>
   <entry>
     <title>空指针、野指针与悬垂指针</title>
-    <url>/2020/24.C-point-DESKTOP-GRPI1FR/</url>
-    <content><![CDATA[<h1 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h1><p>空指针：指针指向的地址为空的指针叫空指针/NULL指针</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *p1;</span><br><span class="line">p1 = NULL;</span><br><span class="line"></span><br><span class="line">char *p2;</span><br><span class="line">p2 = NULL;</span><br></pre></td></tr></table></figure>
-
-<h1 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h1><p>当所指向的对象被释放或者收回，但是对该指针没有作任何的修改，以至于该指针仍旧指向已经回收的内存地址，此情况下该指针便称悬垂指针（也叫迷途指针）。<br>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">int *p1;		//这里p1没有初始化的赋值，随机只想一个地址，是野指针</span><br><span class="line">p1 = &amp;a;		//指向了值</span><br><span class="line"></span><br><span class="line">// 指针在申请的时候一定要赋值，至少要给NULL！</span><br><span class="line">char *p2 = NULL;</span><br></pre></td></tr></table></figure>
-
-<h1 id="悬垂指针"><a href="#悬垂指针" class="headerlink" title="悬垂指针"></a>悬垂指针</h1><p>悬垂指针：指针所指向的对象已经被释放或者回收了，但是指向该对象的指针没有作任何的修改，仍旧指向已经回收的内存地址。 此类指针称为垂悬指针。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   char *dp = NULL;</span><br><span class="line">   &#123;</span><br><span class="line">       char c;</span><br><span class="line">       dp = &amp;c;</span><br><span class="line">   &#125; /* c falls out of scope */</span><br><span class="line">     /* dp is now a dangling pointer */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>一个很常见的失误是返回一个栈分配的局部变量：一旦调用的函数返回了，分配给这些变量的空间被回收，此时它们拥有的是“垃圾值”。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *func(void)</span><br><span class="line">&#123;</span><br><span class="line">    int num = 1234;</span><br><span class="line">    /* ... */</span><br><span class="line">    <span class="built_in">return</span> &amp;num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用 func 后，尝试从该指针暂时能读取到正确的值（1234），但是再次调用函数后将会重写栈为 num 分配的的值，再从该指针读取的值就不正确了。如果必须要返回一个指向 num 的指针，num 的作用域必须大于这个函数——它也许被声明为 static。</p>
-<h1 id="避免悬垂指针错误"><a href="#避免悬垂指针错误" class="headerlink" title="避免悬垂指针错误"></a>避免悬垂指针错误</h1><p>在 C/C++ 中，一种最简单的技术是实现一个 free()（或类似的）替代版本或者 delete 析构器来保证指针的重置。然后，这个技术不会清除其他指针变量，它们含有该指针的副本。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* Alternative version <span class="keyword">for</span> <span class="string">'free()'</span> */</span><br><span class="line">void safefree(void **pp)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (pp != NULL) &#123;               /* safety check */</span><br><span class="line">        free(*pp);                  /* deallocate chunk, note that free(NULL) is valid */</span><br><span class="line">        *pp = NULL;                 /* reset original pointer */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int f(int i)</span><br><span class="line">&#123;</span><br><span class="line">    char *p = NULL, *p2;</span><br><span class="line">    p = (char *)malloc(1000);    /* get a chunk */</span><br><span class="line">    p2 = p;              /* copy the pointer */</span><br><span class="line">    /* use the chunk here */</span><br><span class="line">    safefree(&amp;p);       /* safety freeing; does not affect p2 variable */</span><br><span class="line">    safefree(&amp;p);       /* this second call won<span class="string">'t fail */</span></span><br><span class="line"><span class="string">    char c = *p2;       /* p2 is still a dangling pointer, so this is undefined behavior. */</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>The C/CPP language</category>
-      </categories>
-      <tags>
-        <tag>The C/CPP language</tag>
-        <tag>CRC Check</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>空指针、野指针与悬垂指针</title>
     <url>/2020/24.C-point/</url>
     <content><![CDATA[<h1 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h1><p>空指针：指针指向的地址为空的指针叫空指针/NULL指针</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *p1;</span><br><span class="line">p1 = NULL;</span><br><span class="line"></span><br><span class="line">char *p2;</span><br><span class="line">p2 = NULL;</span><br></pre></td></tr></table></figure>
@@ -509,6 +536,34 @@
       <tags>
         <tag>C/C++</tag>
         <tag>CRC Check</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>空指针、野指针与悬垂指针</title>
+    <url>/2020/24.C-point-DESKTOP-GRPI1FR/</url>
+    <content><![CDATA[<h1 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h1><p>空指针：指针指向的地址为空的指针叫空指针/NULL指针</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *p1;</span><br><span class="line">p1 = NULL;</span><br><span class="line"></span><br><span class="line">char *p2;</span><br><span class="line">p2 = NULL;</span><br></pre></td></tr></table></figure>
+
+<h1 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h1><p>当所指向的对象被释放或者收回，但是对该指针没有作任何的修改，以至于该指针仍旧指向已经回收的内存地址，此情况下该指针便称悬垂指针（也叫迷途指针）。<br>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">int *p1;		//这里p1没有初始化的赋值，随机只想一个地址，是野指针</span><br><span class="line">p1 = &amp;a;		//指向了值</span><br><span class="line"></span><br><span class="line">// 指针在申请的时候一定要赋值，至少要给NULL！</span><br><span class="line">char *p2 = NULL;</span><br></pre></td></tr></table></figure>
+
+<h1 id="悬垂指针"><a href="#悬垂指针" class="headerlink" title="悬垂指针"></a>悬垂指针</h1><p>悬垂指针：指针所指向的对象已经被释放或者回收了，但是指向该对象的指针没有作任何的修改，仍旧指向已经回收的内存地址。 此类指针称为垂悬指针。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   char *dp = NULL;</span><br><span class="line">   &#123;</span><br><span class="line">       char c;</span><br><span class="line">       dp = &amp;c;</span><br><span class="line">   &#125; /* c falls out of scope */</span><br><span class="line">     /* dp is now a dangling pointer */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个很常见的失误是返回一个栈分配的局部变量：一旦调用的函数返回了，分配给这些变量的空间被回收，此时它们拥有的是“垃圾值”。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int *func(void)</span><br><span class="line">&#123;</span><br><span class="line">    int num = 1234;</span><br><span class="line">    /* ... */</span><br><span class="line">    <span class="built_in">return</span> &amp;num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用 func 后，尝试从该指针暂时能读取到正确的值（1234），但是再次调用函数后将会重写栈为 num 分配的的值，再从该指针读取的值就不正确了。如果必须要返回一个指向 num 的指针，num 的作用域必须大于这个函数——它也许被声明为 static。</p>
+<h1 id="避免悬垂指针错误"><a href="#避免悬垂指针错误" class="headerlink" title="避免悬垂指针错误"></a>避免悬垂指针错误</h1><p>在 C/C++ 中，一种最简单的技术是实现一个 free()（或类似的）替代版本或者 delete 析构器来保证指针的重置。然后，这个技术不会清除其他指针变量，它们含有该指针的副本。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* Alternative version <span class="keyword">for</span> <span class="string">'free()'</span> */</span><br><span class="line">void safefree(void **pp)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (pp != NULL) &#123;               /* safety check */</span><br><span class="line">        free(*pp);                  /* deallocate chunk, note that free(NULL) is valid */</span><br><span class="line">        *pp = NULL;                 /* reset original pointer */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int f(int i)</span><br><span class="line">&#123;</span><br><span class="line">    char *p = NULL, *p2;</span><br><span class="line">    p = (char *)malloc(1000);    /* get a chunk */</span><br><span class="line">    p2 = p;              /* copy the pointer */</span><br><span class="line">    /* use the chunk here */</span><br><span class="line">    safefree(&amp;p);       /* safety freeing; does not affect p2 variable */</span><br><span class="line">    safefree(&amp;p);       /* this second call won<span class="string">'t fail */</span></span><br><span class="line"><span class="string">    char c = *p2;       /* p2 is still a dangling pointer, so this is undefined behavior. */</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>The C/CPP language</category>
+      </categories>
+      <tags>
+        <tag>CRC Check</tag>
+        <tag>The C/CPP language</tag>
       </tags>
   </entry>
   <entry>
@@ -1052,8 +1107,8 @@
         <category>The C/C++ language</category>
       </categories>
       <tags>
-        <tag>The C/CPP language</tag>
         <tag>CRC Check</tag>
+        <tag>The C/CPP language</tag>
       </tags>
   </entry>
   <entry>
@@ -1096,8 +1151,8 @@
         <tag>C/C++</tag>
         <tag>SingleChip</tag>
         <tag>Uart</tag>
-        <tag>STM32</tag>
         <tag>STC51</tag>
+        <tag>STM32</tag>
       </tags>
   </entry>
   <entry>
@@ -1137,11 +1192,11 @@
         <category>Embedded development</category>
       </categories>
       <tags>
-        <tag>The C/CPP language</tag>
         <tag>SingleChip</tag>
         <tag>Uart</tag>
-        <tag>51</tag>
         <tag>STM32</tag>
+        <tag>The C/CPP language</tag>
+        <tag>51</tag>
       </tags>
   </entry>
   <entry>
@@ -1744,6 +1799,15 @@
 </li>
 <li><p>图片：来源B站<a href="https://space.bilibili.com/6823116" target="_blank" rel="noopener">壁纸娘</a>的“Bilibili盛夏”，5K超清！<br><img src="bilibili%E7%9B%9B%E5%A4%8F" alt=""> <img src="https://i0.hdslb.com/bfs/album/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"></p>
 </li>
+</ul>
+<h1 id="最后列举一些我常用的API接口吧"><a href="#最后列举一些我常用的API接口吧" class="headerlink" title="最后列举一些我常用的API接口吧"></a>最后列举一些我常用的API接口吧</h1><h2 id="网络时间"><a href="#网络时间" class="headerlink" title="网络时间"></a>网络时间</h2><ul>
+<li><p>淘宝：获取的是毫秒的时间戳，直接转换即可<br><a href="http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp" target="_blank" rel="noopener">http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp</a></p>
+</li>
+<li><p>苏宁：获取的是秒级的，根据需求来吧<br><a href="http://quan.suning.com/getSysTime.do" target="_blank" rel="noopener">http://quan.suning.com/getSysTime.do</a></p>
+</li>
+</ul>
+<h2 id="关于城市代码和天气查询"><a href="#关于城市代码和天气查询" class="headerlink" title="关于城市代码和天气查询"></a>关于城市代码和天气查询</h2><ul>
+<li>和风天气：个人开发免费，绝对够用，而且API和开发文档十分友好，而且有很多的Demo<br><a href="https://console.qweather.com/" target="_blank" rel="noopener">https://console.qweather.com/</a></li>
 </ul>
 ]]></content>
   </entry>

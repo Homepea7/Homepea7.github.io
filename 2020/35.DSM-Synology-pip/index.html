@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pokeball_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pokeball_16px.png">
+  <link rel="mask-icon" href="/images/pokeball_logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://Homepea7.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"right","display":"always","padding":18,"offset":12,"b2t":true,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  <meta name="description" content="说明关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的request，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在群辉上面安装pip">
+<meta property="og:url" content="https://homepea7.github.io/2020/35.DSM-Synology-pip/index.html">
+<meta property="og:site_name" content="Homepea&#39;s Blog">
+<meta property="og:description" content="说明关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的request，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-23T00:46:30.000Z">
+<meta property="article:modified_time" content="2020-10-23T02:05:46.934Z">
+<meta property="article:author" content="Kavin Homepea">
+<meta property="article:tag" content="DSM&#x2F;Synology">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="pip">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://homepea7.github.io/2020/35.DSM-Synology-pip/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>在群辉上面安装pip | Homepea's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157890086-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-157890086-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Homepea's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homepea's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Good good study, day day up!</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-favorites">
+
+    <a href="/favorites/" rel="section"><i class="fa fa-fw fa-bookmark"></i>收藏</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-fw fa-gift"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">69</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">41</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404.html/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://homepea7.github.io/2020/35.DSM-Synology-pip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kavin Homepea">
+      <meta itemprop="description" content="Better me">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homepea's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在群辉上面安装pip
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-23 08:46:30" itemprop="dateCreated datePublished" datetime="2020-10-23T08:46:30+08:00">2020-10-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/35.DSM-Synology-pip/" class="post-meta-item leancloud_visitors" data-flag-title="在群辉上面安装pip" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/35.DSM-Synology-pip/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/35.DSM-Synology-pip/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的<code>request</code>，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。</p>
+<h1 id="群辉安装Python"><a href="#群辉安装Python" class="headerlink" title="群辉安装Python"></a>群辉安装Python</h1><p>这一点应该不用说了吧，直接去群辉的套件中心，一键安装即可，然后再用SSH登录，输入<code>python -v</code>或者<code>python3 -v</code>即可查看Python版本，并且进入对应的Python环境。</p>
+<h1 id="安装request库"><a href="#安装request库" class="headerlink" title="安装request库"></a>安装request库</h1><p>看了一些资料，比如<a href="https://www.bilibili.com/read/cv1428431/" target="_blank" rel="noopener">学海无涯的B站专栏</a>，这个应该是讲的最详细的一个了，但是很无奈，我这边尝试了没用，不知道是不是我平台的问题。然后就有继续找，找到了<a href="https://stackoverrun.com/cn/q/13048281" target="_blank" rel="noopener">stackoverrun</a>上面的问题讨论，也是在讨论这个问题，下面给出了相应的答案，而且回答的十分详细，步骤真的超级简单，如实就尝试了一下，果然成功了！</p>
+<ul>
+<li><p>首先登陆SSH并输入密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@synology</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取管理员权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载脚本文件到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>*最后运行文件即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
+
+<p>下面是我运行的结果（包括了最后输入pip的测试）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">ash-4.3<span class="comment"># wget https://bootstrap.pypa.io/get-pip.py</span></span><br><span class="line">--2020-10-23 08:43:55--  https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">Resolving bootstrap.pypa.io... 151.101.228.175, 2a04:4e42:36::175</span><br><span class="line">Connecting to bootstrap.pypa.io|151.101.228.175|:443... connected.</span><br><span class="line">HTTP request sent, awaiting response... 200 OK</span><br><span class="line">Length: 1886796 (1.8M) [text/x-python]</span><br><span class="line">Saving to: <span class="string">'get-pip.py'</span></span><br><span class="line"></span><br><span class="line">get-pip.py                  100%[===========================================&gt;]   1.80M  1.26MB/s    <span class="keyword">in</span> 1.4s    </span><br><span class="line"></span><br><span class="line">2020-10-23 08:43:58 (1.26 MB/s) - <span class="string">'get-pip.py'</span> saved [1886796/1886796]</span><br><span class="line"></span><br><span class="line">ash-4.3<span class="comment"># python get-pip.py</span></span><br><span class="line">DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support <span class="keyword">for</span> Python 2.7 <span class="keyword">in</span> January 2021. More details about Python 2 support <span class="keyword">in</span> pip can be found at https://pip.pypa.io/en/latest/development/release-process/<span class="comment">#python-2-support pip 21.0 will remove support for this functionality.</span></span><br><span class="line">Collecting pip</span><br><span class="line">  Downloading pip-20.2.4-py2.py3-none-any.whl (1.5 MB)</span><br><span class="line">     |████████████████████████████████| 1.5 MB 272 kB/s </span><br><span class="line">Collecting setuptools</span><br><span class="line">  Downloading setuptools-44.1.1-py2.py3-none-any.whl (583 kB)</span><br><span class="line">     |████████████████████████████████| 583 kB 6.6 MB/s </span><br><span class="line">Collecting wheel</span><br><span class="line">  Downloading wheel-0.35.1-py2.py3-none-any.whl (33 kB)</span><br><span class="line">Installing collected packages: pip, setuptools, wheel</span><br><span class="line">Successfully installed pip-20.2.4 setuptools-44.1.1 wheel-0.35.1</span><br><span class="line">ash-4.3<span class="comment"># pip</span></span><br><span class="line"></span><br><span class="line">Usage:   </span><br><span class="line">  pip &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  install                     Install packages.</span><br><span class="line">  download                    Download packages.</span><br><span class="line">  uninstall                   Uninstall packages.</span><br><span class="line">  freeze                      Output installed packages <span class="keyword">in</span> requirements format.</span><br><span class="line">  list                        List installed packages.</span><br><span class="line">  show                        Show information about installed packages.</span><br><span class="line">  check                       Verify installed packages have compatible dependencies.</span><br><span class="line">  config                      Manage <span class="built_in">local</span> and global configuration.</span><br><span class="line">  search                      Search PyPI <span class="keyword">for</span> packages.</span><br><span class="line">  cache                       Inspect and manage pip<span class="string">'s wheel cache.</span></span><br><span class="line"><span class="string">  wheel                       Build wheels from your requirements.</span></span><br><span class="line"><span class="string">  hash                        Compute hashes of package archives.</span></span><br><span class="line"><span class="string">  completion                  A helper command used for command completion.</span></span><br><span class="line"><span class="string">  debug                       Show information useful for debugging.</span></span><br><span class="line"><span class="string">  help                        Show help for commands.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">General Options:</span></span><br><span class="line"><span class="string">  -h, --help                  Show help.</span></span><br><span class="line"><span class="string">  --isolated                  Run pip in an isolated mode, ignoring environment variables and user</span></span><br><span class="line"><span class="string">                              configuration.</span></span><br><span class="line"><span class="string">  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.</span></span><br><span class="line"><span class="string">  -V, --version               Show version and exit.</span></span><br><span class="line"><span class="string">  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times</span></span><br><span class="line"><span class="string">                              (corresponding to WARNING, ERROR, and CRITICAL logging levels).</span></span><br><span class="line"><span class="string">  --log &lt;path&gt;                Path to a verbose appending log.</span></span><br><span class="line"><span class="string">  --no-input                  Disable prompting for input.</span></span><br><span class="line"><span class="string">  --proxy &lt;proxy&gt;             Specify a proxy in the form [user:passwd@]proxy.server:port.</span></span><br><span class="line"><span class="string">  --retries &lt;retries&gt;         Maximum number of retries each connection should attempt (default 5 times).</span></span><br><span class="line"><span class="string">  --timeout &lt;sec&gt;             Set the socket timeout (default 15 seconds).</span></span><br><span class="line"><span class="string">  --exists-action &lt;action&gt;    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup,</span></span><br><span class="line"><span class="string">                              (a)bort.</span></span><br><span class="line"><span class="string">  --trusted-host &lt;hostname&gt;   Mark this host or host:port pair as trusted, even though it does not have valid</span></span><br><span class="line"><span class="string">                              or any HTTPS.</span></span><br><span class="line"><span class="string">  --cert &lt;path&gt;               Path to alternate CA bundle.</span></span><br><span class="line"><span class="string">  --client-cert &lt;path&gt;        Path to SSL client certificate, a single file containing the private key and the</span></span><br><span class="line"><span class="string">                              certificate in PEM format.</span></span><br><span class="line"><span class="string">  --cache-dir &lt;dir&gt;           Store the cache data in &lt;dir&gt;.</span></span><br><span class="line"><span class="string">  --no-cache-dir              Disable the cache.</span></span><br><span class="line"><span class="string">  --disable-pip-version-check</span></span><br><span class="line"><span class="string">                              Don'</span>t periodically check PyPI to determine whether a new version of pip is</span><br><span class="line">                              available <span class="keyword">for</span> download. Implied with --no-index.</span><br><span class="line">  --no-color                  Suppress colored output</span><br><span class="line">  --no-python-version-warning</span><br><span class="line">                              Silence deprecation warnings <span class="keyword">for</span> upcoming unsupported Pythons.</span><br><span class="line">  --use-feature &lt;feature&gt;     Enable new functionality, that may be backward incompatible.</span><br><span class="line">  --use-deprecated &lt;feature&gt;  Enable deprecated functionality, that will be removed <span class="keyword">in</span> the future.</span><br></pre></td></tr></table></figure>
+
+<h1 id="下一步问题"><a href="#下一步问题" class="headerlink" title="下一步问题"></a>下一步问题</h1><p>到这里貌似已经完美解决了问题，但是我发现一个问题，我实用下列指令安装了一下<code>requests</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+
+<p>但是在实际的实用过程中，我是用的是Python3，具体版本是3.8.2，我import requests发现直接报错，经过一番查找，发现这里的pip居然是python2的，跟我在PC上面使用的体验全完不用，可能是他默认的版本是Python2，这个的话Linux一般都是默认的2而不是3，然后我又继续小找了一番，找到了<a href="https://www.codenong.com/38141115/" target="_blank" rel="noopener">码农家园</a>的一个帖子，回复的超级乱，但是我还是找到了一些有用的信息，然后根据系统给出的提示，终于给弄好了，下面说说具体的步骤：</p>
+<p>首先我直接删除之前下载的get-pip.py文件，然后重新下载了一个：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ash-4.3<span class="comment"># ls</span></span><br><span class="line">get-pip.py</span><br><span class="line">ash-4.3<span class="comment"># rm get-pip.py </span></span><br><span class="line">ash-4.3<span class="comment"># curl -O https://bootstrap.pypa.io/get-pip.py</span></span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100 1842k  100 1842k    0     0   359k      0  0:00:05  0:00:05 --:--:--  445k</span><br><span class="line">ash-4.3<span class="comment"># sudo python3 get-pip.py</span></span><br><span class="line">Collecting pip</span><br><span class="line">  Using cached pip-20.2.4-py2.py3-none-any.whl (1.5 MB)</span><br><span class="line">Collecting setuptools</span><br><span class="line">  Downloading setuptools-50.3.2-py3-none-any.whl (785 kB)</span><br><span class="line">     |████████████████████████████████| 785 kB 71 kB/s </span><br><span class="line">Collecting wheel</span><br><span class="line">  Using cached wheel-0.35.1-py2.py3-none-any.whl (33 kB)</span><br><span class="line">Installing collected packages: pip, setuptools, wheel</span><br><span class="line">  WARNING: The scripts pip, pip3 and pip3.8 are installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">  WARNING: The scripts easy_install and easy_install-3.8 are installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">  WARNING: The script wheel is installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">Successfully installed pip-20.2.4 setuptools-50.3.2 wheel-0.35.1</span><br></pre></td></tr></table></figure>
+
+<p>大家可以仔细看看这个里面的说明，目录是在 /var/packages/py3k/target/usr/local/bin 下面，这个时候pip3是不能用的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ash-4.3<span class="comment"># pip3</span></span><br><span class="line">ash: pip3: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure>
+<p>然后我又进入到他给的文件夹里面，看看有什么东西，发现有pip3这个文件，真的超级开心有木有，然后尝试用了一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ash-4.3<span class="comment"># cd /var/packages/py3k/target/usr/local/bin</span></span><br><span class="line">ash-4.3<span class="comment"># ls</span></span><br><span class="line">easy_install  easy_install-3.8	pip  pip3  pip3.8  python3  python3.8  wheel</span><br><span class="line">ash-4.3<span class="comment"># pip3 install requests</span></span><br><span class="line">ash: pip3: <span class="built_in">command</span> not found</span><br><span class="line">ash-4.3<span class="comment"># pip3 -v</span></span><br><span class="line">ash: pip3: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure>
+
+<p>哎，还是不能用，你别说，我又试了一下<code>pip -v</code>，默认的pip2还是能行，你说气不气？<br>然后我想了一下，既然不能直接运行，我用<code>./command</code>这种运行的方式还不行吗？得到一下结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">ash-4.3<span class="comment"># ./pip3</span></span><br><span class="line"></span><br><span class="line">Usage:   </span><br><span class="line">  pip3 &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  install                     Install packages.</span><br><span class="line">  download                    Download packages.</span><br><span class="line">  uninstall                   Uninstall packages.</span><br><span class="line">  freeze                      Output installed packages <span class="keyword">in</span> requirements format.</span><br><span class="line">  list                        List installed packages.</span><br><span class="line">  show                        Show information about installed packages.</span><br><span class="line">  check                       Verify installed packages have compatible dependencies.</span><br><span class="line">  config                      Manage <span class="built_in">local</span> and global configuration.</span><br><span class="line">  search                      Search PyPI <span class="keyword">for</span> packages.</span><br><span class="line">  cache                       Inspect and manage pip<span class="string">'s wheel cache.</span></span><br><span class="line"><span class="string">  wheel                       Build wheels from your requirements.</span></span><br><span class="line"><span class="string">  hash                        Compute hashes of package archives.</span></span><br><span class="line"><span class="string">  completion                  A helper command used for command completion.</span></span><br><span class="line"><span class="string">  debug                       Show information useful for debugging.</span></span><br><span class="line"><span class="string">  help                        Show help for commands.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">General Options:</span></span><br><span class="line"><span class="string">  -h, --help                  Show help.</span></span><br><span class="line"><span class="string">  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.</span></span><br><span class="line"><span class="string">  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.</span></span><br><span class="line"><span class="string">  -V, --version               Show version and exit.</span></span><br><span class="line"><span class="string">  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times (corresponding to WARNING, ERROR, and CRITICAL logging levels).</span></span><br><span class="line"><span class="string">  --log &lt;path&gt;                Path to a verbose appending log.</span></span><br><span class="line"><span class="string">  --no-input                  Disable prompting for input.</span></span><br><span class="line"><span class="string">  --proxy &lt;proxy&gt;             Specify a proxy in the form [user:passwd@]proxy.server:port.</span></span><br><span class="line"><span class="string">  --retries &lt;retries&gt;         Maximum number of retries each connection should attempt (default 5 times).</span></span><br><span class="line"><span class="string">  --timeout &lt;sec&gt;             Set the socket timeout (default 15 seconds).</span></span><br><span class="line"><span class="string">  --exists-action &lt;action&gt;    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.</span></span><br><span class="line"><span class="string">  --trusted-host &lt;hostname&gt;   Mark this host or host:port pair as trusted, even though it does not have valid or any HTTPS.</span></span><br><span class="line"><span class="string">  --cert &lt;path&gt;               Path to alternate CA bundle.</span></span><br><span class="line"><span class="string">  --client-cert &lt;path&gt;        Path to SSL client certificate, a single file containing the private key and the certificate in PEM format.</span></span><br><span class="line"><span class="string">  --cache-dir &lt;dir&gt;           Store the cache data in &lt;dir&gt;.</span></span><br><span class="line"><span class="string">  --no-cache-dir              Disable the cache.</span></span><br><span class="line"><span class="string">  --disable-pip-version-check</span></span><br><span class="line"><span class="string">                              Don'</span>t periodically check PyPI to determine whether a new version of pip is available <span class="keyword">for</span> download. Implied with --no-index.</span><br><span class="line">  --no-color                  Suppress colored output</span><br><span class="line">  --no-python-version-warning</span><br><span class="line">                              Silence deprecation warnings <span class="keyword">for</span> upcoming unsupported Pythons.</span><br><span class="line">  --use-feature &lt;feature&gt;     Enable new functionality, that may be backward incompatible.</span><br><span class="line">  --use-deprecated &lt;feature&gt;  Enable deprecated functionality, that will be removed <span class="keyword">in</span> the future.</span><br></pre></td></tr></table></figure>
+<p>喜出望外，然后果断使用<code>./pip install xxx</code>安装了 requests 并且 import 了一下，发现可以用，真的是喜出望外，具体如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ash-4.3<span class="comment"># ./pip3 install requests</span></span><br><span class="line">Collecting requests</span><br><span class="line">  Using cached requests-2.24.0-py2.py3-none-any.whl (61 kB)</span><br><span class="line">Collecting certifi&gt;=2017.4.17</span><br><span class="line">  Using cached certifi-2020.6.20-py2.py3-none-any.whl (156 kB)</span><br><span class="line">Collecting chardet&lt;4,&gt;=3.0.2</span><br><span class="line">  Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)</span><br><span class="line">Collecting idna&lt;3,&gt;=2.5</span><br><span class="line">  Using cached idna-2.10-py2.py3-none-any.whl (58 kB)</span><br><span class="line">Collecting urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1</span><br><span class="line">  Using cached urllib3-1.25.11-py2.py3-none-any.whl (127 kB)</span><br><span class="line">Installing collected packages: certifi, chardet, idna, urllib3, requests</span><br><span class="line">  WARNING: The script chardetect is installed <span class="keyword">in</span> <span class="string">'/var/packages/py3k/target/usr/local/bin'</span> <span class="built_in">which</span> is not on PATH.</span><br><span class="line">  Consider adding this directory to PATH or, <span class="keyword">if</span> you prefer to suppress this warning, use --no-warn-script-location.</span><br><span class="line">Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0 urllib3-1.25.11</span><br><span class="line">ash-4.3<span class="comment"># python3</span></span><br><span class="line">Python 3.8.2 (tags/Contacts-1.0.0-0232-200617:57e5f51, Jun 29 2020, 09:38:52) </span><br><span class="line">[GCC 4.9.4 20150629 (prerelease)] on linux</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import requests</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，import的时候没有报错，现在已经是可以正常使用了。但是距离完美使用肯定是差一点点的，可以看到我们不可能每次都进入到<code>/var/packages/py3k/target/usr/local/bin</code>这个目录来使用pip3指令的，因此最后一步当然是将该目录加入到PATH中啦，指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">ash-4.3<span class="comment"># export PATH="/var/packages/py3k/target/usr/local/bin:$PATH"</span></span><br><span class="line">ash-4.3<span class="comment"># pip3</span></span><br><span class="line"></span><br><span class="line">Usage:   </span><br><span class="line">  pip3 &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  install                     Install packages.</span><br><span class="line">  download                    Download packages.</span><br><span class="line">  uninstall                   Uninstall packages.</span><br><span class="line">  freeze                      Output installed packages <span class="keyword">in</span> requirements format.</span><br><span class="line">  list                        List installed packages.</span><br><span class="line">  show                        Show information about installed packages.</span><br><span class="line">  check                       Verify installed packages have compatible dependencies.</span><br><span class="line">  config                      Manage <span class="built_in">local</span> and global configuration.</span><br><span class="line">  search                      Search PyPI <span class="keyword">for</span> packages.</span><br><span class="line">  cache                       Inspect and manage pip<span class="string">'s wheel cache.</span></span><br><span class="line"><span class="string">  wheel                       Build wheels from your requirements.</span></span><br><span class="line"><span class="string">  hash                        Compute hashes of package archives.</span></span><br><span class="line"><span class="string">  completion                  A helper command used for command completion.</span></span><br><span class="line"><span class="string">  debug                       Show information useful for debugging.</span></span><br><span class="line"><span class="string">  help                        Show help for commands.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">General Options:</span></span><br><span class="line"><span class="string">  -h, --help                  Show help.</span></span><br><span class="line"><span class="string">  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.</span></span><br><span class="line"><span class="string">  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.</span></span><br><span class="line"><span class="string">  -V, --version               Show version and exit.</span></span><br><span class="line"><span class="string">  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times (corresponding to WARNING, ERROR, and CRITICAL logging levels).</span></span><br><span class="line"><span class="string">  --log &lt;path&gt;                Path to a verbose appending log.</span></span><br><span class="line"><span class="string">  --no-input                  Disable prompting for input.</span></span><br><span class="line"><span class="string">  --proxy &lt;proxy&gt;             Specify a proxy in the form [user:passwd@]proxy.server:port.</span></span><br><span class="line"><span class="string">  --retries &lt;retries&gt;         Maximum number of retries each connection should attempt (default 5 times).</span></span><br><span class="line"><span class="string">  --timeout &lt;sec&gt;             Set the socket timeout (default 15 seconds).</span></span><br><span class="line"><span class="string">  --exists-action &lt;action&gt;    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.</span></span><br><span class="line"><span class="string">  --trusted-host &lt;hostname&gt;   Mark this host or host:port pair as trusted, even though it does not have valid or any HTTPS.</span></span><br><span class="line"><span class="string">  --cert &lt;path&gt;               Path to alternate CA bundle.</span></span><br><span class="line"><span class="string">  --client-cert &lt;path&gt;        Path to SSL client certificate, a single file containing the private key and the certificate in PEM format.</span></span><br><span class="line"><span class="string">  --cache-dir &lt;dir&gt;           Store the cache data in &lt;dir&gt;.</span></span><br><span class="line"><span class="string">  --no-cache-dir              Disable the cache.</span></span><br><span class="line"><span class="string">  --disable-pip-version-check</span></span><br><span class="line"><span class="string">                              Don'</span>t periodically check PyPI to determine whether a new version of pip is available <span class="keyword">for</span> download. Implied with --no-index.</span><br><span class="line">  --no-color                  Suppress colored output</span><br><span class="line">  --no-python-version-warning</span><br><span class="line">                              Silence deprecation warnings <span class="keyword">for</span> upcoming unsupported Pythons.</span><br><span class="line">  --use-feature &lt;feature&gt;     Enable new functionality, that may be backward incompatible.</span><br><span class="line">  --use-deprecated &lt;feature&gt;  Enable deprecated functionality, that will be removed <span class="keyword">in</span> the future.</span><br></pre></td></tr></table></figure>
+
+<p>上面添加了以后我还测试了一下，任何位置都可以使用pip3来安装相应的库，好用多了！</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>完美解决，皆大欢喜<del>~</del></p>
+
+    </div>
+
+    
+    
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DSM-Synology/" rel="tag"><i class="fa fa-tag"></i> DSM/Synology</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/pip/" rel="tag"><i class="fa fa-tag"></i> pip</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/30.Endian/" rel="prev" title="输入数字判断CPU是大端还是小端模式">
+      <i class="fa fa-chevron-left"></i> 输入数字判断CPU是大端还是小端模式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#群辉安装Python"><span class="nav-number">2.</span> <span class="nav-text">群辉安装Python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装request库"><span class="nav-number">3.</span> <span class="nav-text">安装request库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下一步问题"><span class="nav-number">4.</span> <span class="nav-text">下一步问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结尾"><span class="nav-number">5.</span> <span class="nav-text">结尾</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kavin Homepea"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kavin Homepea</p>
+  <div class="site-description" itemprop="description">Better me</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Homepea7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Homepea7" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kavinhomepea@gmail.com" title="E-Mail → mailto:kavinhomepea@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homepea</span>
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">98k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:29</span>
+</div>
+
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("01/01/2020 12:00:00");
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.4' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'CCp6fpSlvQK1Wh7l8lr9Vglh-gzGzoHsz',
+      appKey: '7ANNsdbheFJqf9q2mrDcnhAp',
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar: 'monsterid',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+    
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","hOffset":50,"vOffset":0,"width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+

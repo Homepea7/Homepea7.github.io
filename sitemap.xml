@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homepea7.github.io/2020/35.DSM-Synology-pip/</loc>
+    
+    <lastmod>2020-10-23T02:05:46.934Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://homepea7.github.io/about/index.html</loc>
+    
+    <lastmod>2020-10-22T13:40:42.401Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://homepea7.github.io/2020/34.ESP32-Timer/</loc>
     
     <lastmod>2020-10-20T12:30:34.906Z</lastmod>
@@ -18,7 +32,7 @@
   <url>
     <loc>https://homepea7.github.io/2020/32.ESP32-UART/</loc>
     
-    <lastmod>2020-10-20T12:12:27.123Z</lastmod>
+    <lastmod>2020-10-20T12:12:27.122Z</lastmod>
     
   </url>
   
@@ -39,21 +53,21 @@
   <url>
     <loc>https://homepea7.github.io/2020/23.GetData-C/</loc>
     
-    <lastmod>2020-10-08T12:21:45.046Z</lastmod>
+    <lastmod>2020-10-08T12:21:45.045Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://homepea7.github.io/2020/16.C-uprintf/</loc>
     
-    <lastmod>2020-10-08T12:21:22.362Z</lastmod>
+    <lastmod>2020-10-08T12:21:22.361Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://homepea7.github.io/2020/17.C-CRC/</loc>
     
-    <lastmod>2020-10-08T12:20:54.857Z</lastmod>
+    <lastmod>2020-10-08T12:20:54.856Z</lastmod>
     
   </url>
   
@@ -88,14 +102,14 @@
   <url>
     <loc>https://homepea7.github.io/2020/29.IO-Stream/</loc>
     
-    <lastmod>2020-10-08T12:17:44.815Z</lastmod>
+    <lastmod>2020-10-08T12:17:44.814Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://homepea7.github.io/2020/30.Endian/</loc>
     
-    <lastmod>2020-10-08T12:17:36.506Z</lastmod>
+    <lastmod>2020-10-08T12:17:36.505Z</lastmod>
     
   </url>
   
@@ -116,7 +130,7 @@
   <url>
     <loc>https://homepea7.github.io/2020/27.UnblockCloudmusic/</loc>
     
-    <lastmod>2020-08-28T02:38:42.598Z</lastmod>
+    <lastmod>2020-08-28T02:38:42.597Z</lastmod>
     
   </url>
   
@@ -313,13 +327,6 @@
     <loc>https://homepea7.github.io/404.html</loc>
     
     <lastmod>2020-02-06T08:52:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://homepea7.github.io/about/index.html</loc>
-    
-    <lastmod>2020-02-06T08:46:17.000Z</lastmod>
     
   </url>
   
