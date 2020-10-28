@@ -72,7 +72,7 @@
 <meta property="og:description" content="说明前面说过，我买到的这个树莓派是一代A+，没网口，Wi-Fi和蓝牙也都没有，就仅仅只有一个USB接口，资源少的可怜，怎么办呢，手里闲置的USB网卡刚刚好可以用到了。这个网卡是802.11&#x2F;n的，免驱，插上就能用。于是网上爬了一些内容，也顺利连接了家里的Wi-Fi，感觉美滋滋~~ 说明一下，一代树莓派A+的功耗非常低，但是线材还是要有保障的，今天刚刚连接USB网卡的时候开机一直提示低电压保护，虽然">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-02T15:00:08.000Z">
-<meta property="article:modified_time" content="2020-03-05T06:04:09.000Z">
+<meta property="article:modified_time" content="2020-10-23T03:06:37.003Z">
 <meta property="article:author" content="Kavin Homepea">
 <meta property="article:tag" content="RaspberryPi">
 <meta property="article:tag" content="USBPort">
@@ -187,7 +187,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">69</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -197,7 +197,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">42</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -325,7 +325,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.4k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -351,12 +351,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># lsusb</span></span><br><span class="line">Bus 001 Device 002: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
 
 <p>这里偷懒，直接使用的<font color=red>root</font>用户，可以看到，上面显示的 Device 002就是我的无线网卡，系统已经自带该网卡的驱动。</p>
-<p>这里比较推荐使用新的系统，最好是直接去树莓派的官网下载，因为系统增加新网卡的支持，能免去编译驱动的麻烦，如果你的无线网卡在系统中无法识别，请自行编译安装驱动。</p>
-<h1 id="查看已经连接的网络"><a href="#查看已经连接的网络" class="headerlink" title="查看已经连接的网络"></a>查看已经连接的网络</h1><p>指令如下：</p>
+<p>这里比较推荐使用新的系统，最好是直接去树莓派的官网下载，因为系统增加新网卡的支持，能免去编译驱动的麻烦，如果你的无线网卡在系统中无法识别，请自行编译安装驱动，这个的话就需要一定的工地了，最好是买免驱的吧，基本上都是免驱的吧。</p>
+<h1 id="查看已经连接的网络"><a href="#查看已经连接的网络" class="headerlink" title="查看已经连接的网络"></a>查看已经连接的网络</h1><p>使用iwconfig查看wlan0的详情，使用如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwconfig</span></span><br><span class="line">wlan0     IEEE 802.11  ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">          Mode:Managed  Frequency:2.467 GHz  Access Point: 6C:FD:B9:CC:9B:1B</span><br><span class="line">          Bit Rate=72.2 Mb/s   Tx-Power=20 dBm</span><br><span class="line">          Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Encryption key:off</span><br><span class="line">          Power Management:off</span><br><span class="line">          Link Quality=70/70  Signal level=-37 dBm</span><br><span class="line">          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0</span><br><span class="line">          Tx excessive retries:1420  Invalid misc:135   Missed beacon:0</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure>
 
 <p>这个<font color=red>OpenWrt</font> 就是连接的Wi-Fi，还有连接频段和信号质量等等信息，如果没有连接的话就不会显示这么多信息，而且是”off/any”这个状态。</p>
-<h1 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h1><h2 id="扫描可见SSID"><a href="#扫描可见SSID" class="headerlink" title="扫描可见SSID"></a>扫描可见SSID</h2><p>使用如下指令扫描附近可见的SSID，并截取想要连接的无线路由器的信息：</p>
+<h1 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h1><h2 id="扫描可见SSID"><a href="#扫描可见SSID" class="headerlink" title="扫描可见SSID"></a>扫描可见SSID</h2><p>使用<code>sudo iwlist wlan0 scan</code>指令扫描附近可见的SSID，并截取想要连接的无线路由器的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwlist wlan0 scan</span></span><br><span class="line">wlan0     Scan completed :</span><br><span class="line">          Cell 01 - Address: 6C:FD:B9:CC:9B:1B</span><br><span class="line">                    Channel:12</span><br><span class="line">                    Frequency:2.467 GHz (Channel 12)</span><br><span class="line">                    Quality=67/70  Signal level=-43 dBm</span><br><span class="line">                    Encryption key:on</span><br><span class="line">                    ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s</span><br><span class="line">                              9 Mb/s; 12 Mb/s; 18 Mb/s</span><br><span class="line">                    Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s</span><br><span class="line">                    Mode:Master</span><br><span class="line">                    Extra:tsf=00000120c308241c</span><br><span class="line">                    Extra: Last beacon: 60ms ago</span><br><span class="line">                    IE: Unknown: 00074F70656E577274</span><br><span class="line">                    IE: Unknown: 010882848B960C121824</span><br><span class="line">                    IE: Unknown: 03010C</span><br><span class="line">                    IE: Unknown: 0706303020010C14</span><br><span class="line">                    IE: Unknown: 2A0100</span><br><span class="line">                    IE: Unknown: 32043048606C</span><br><span class="line">                    IE: IEEE 802.11i/WPA2 Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: WPA Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: Unknown: 0B050300A20000</span><br><span class="line">                    IE: Unknown: 2D1AEC0213FFFF000001000000000000000100000000000000000000</span><br><span class="line">                    IE: Unknown: 3D160C070600000000000000000000000000000000000000</span><br><span class="line">                    IE: Unknown: 7F080000000000000140</span><br><span class="line">                    IE: Unknown: DD180050F2020101010003A4000027A4000042435E0062322F00</span><br></pre></td></tr></table></figure>
 
 <h2 id="设置SSID和对应密码"><a href="#设置SSID和对应密码" class="headerlink" title="设置SSID和对应密码"></a>设置SSID和对应密码</h2><p>使用如下命令密码生成SSID和对应的密码，复制内容备用</p>
@@ -365,7 +365,7 @@
 <p>然后通过重定向命令写入到文件备用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># wpa_passphrase MERCURY_4E1A blackcar &gt; ~/wifi.conf</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="修改wpa-supplicant-conf"><a href="#修改wpa-supplicant-conf" class="headerlink" title="修改wpa_supplicant.conf"></a>修改wpa_supplicant.conf</h2><p>这一步需要管理员权限的，现在把内容粘贴到/etc/wpa_supplicant/wpa_supplicant.conf，如下：</p>
+<h2 id="修改wpa-supplicant-conf"><a href="#修改wpa-supplicant-conf" class="headerlink" title="修改wpa_supplicant.conf"></a>修改wpa_supplicant.conf</h2><p>这一步需要管理员权限的，现在把内容粘贴到 /etc/wpa_supplicant/wpa_supplicant.conf，如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># less wifi.conf &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</span></span><br></pre></td></tr></table></figure>
 
 <p>或重定向的方式给 wpa_supplicant.conf 追加 wifi.conf ：</p>
@@ -502,7 +502,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -515,7 +515,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">71</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -561,12 +561,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">98k</span>
+    <span title="站点总字数">105k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:35</span>
 </div>
 
 <script>

@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homepea7.github.io/2020/36.AItalk-WeChat/</loc>
+    
+    <lastmod>2020-10-28T07:41:24.821Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://homepea7.github.io/2020/35.DSM-Synology-pip/</loc>
     
-    <lastmod>2020-10-23T02:05:46.934Z</lastmod>
+    <lastmod>2020-10-28T01:15:06.162Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://homepea7.github.io/2020/10.Raspberry-USBPort/</loc>
+    
+    <lastmod>2020-10-23T03:06:37.003Z</lastmod>
     
   </url>
   
@@ -229,13 +243,6 @@
     <loc>https://homepea7.github.io/2020/12.PR-Resolution/</loc>
     
     <lastmod>2020-05-09T01:15:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://homepea7.github.io/2020/10.Raspberry-USBPort/</loc>
-    
-    <lastmod>2020-03-05T06:04:09.000Z</lastmod>
     
   </url>
   

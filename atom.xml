@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homepea7.github.io/"/>
-  <updated>2020-10-23T02:05:46.934Z</updated>
+  <updated>2020-10-28T07:41:24.821Z</updated>
   <id>https://homepea7.github.io/</id>
   
   <author>
@@ -17,15 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用AI对话将内容部署到微信上</title>
+    <link href="https://homepea7.github.io/2020/36.AItalk-WeChat/"/>
+    <id>https://homepea7.github.io/2020/36.AItalk-WeChat/</id>
+    <published>2020-10-28T06:19:03.000Z</published>
+    <updated>2020-10-28T07:41:24.821Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近闲来无事，在玩ESP32的时候看到了HTTP请求，从&lt;a href=&quot;https://id.qweather.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;和风天气&lt;/a&gt;爬到了一些信息，当看到返回的Json的数据时还是非常兴奋的。就顺便想了下，觉得如果有AI对话，那肯定很有意思，那如果能够发到微信上面，那不是我女神每天早上的早安和晚安语录那不是也有了嘛？哈哈哈，说干就干，下面是每天早上七点半的早安语录示例，还要说明一下，这个小项目的话个人开源，&lt;a href=&quot;https://github.com/Homepea7/OneWordEveryday&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;代码在这里&lt;/a&gt;。&lt;img src=&quot;/images/Python/1.0.png&quot; alt=&quot;内容&quot;&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;代码分析&quot;&gt;&lt;a href=&quot;#代码分析&quot; class=&quot;headerlink&quot; title=&quot;代码分析&quot;&gt;&lt;/a&gt;代码分析&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://Homepea7.github.io/categories/Python/"/>
+    
+    
+      <category term="AI" scheme="https://Homepea7.github.io/tags/AI/"/>
+    
+      <category term="Python" scheme="https://Homepea7.github.io/tags/Python/"/>
+    
+      <category term="WeChat" scheme="https://Homepea7.github.io/tags/WeChat/"/>
+    
+  </entry>
+  
+  <entry>
     <title>在群辉上面安装pip</title>
     <link href="https://homepea7.github.io/2020/35.DSM-Synology-pip/"/>
     <id>https://homepea7.github.io/2020/35.DSM-Synology-pip/</id>
     <published>2020-10-23T00:46:30.000Z</published>
-    <updated>2020-10-23T02:05:46.934Z</updated>
+    <updated>2020-10-28T01:15:06.162Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的&lt;code&gt;request&lt;/code&gt;，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。&lt;/p&gt;
+      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的&lt;code&gt;requests&lt;/code&gt;，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。&lt;/p&gt;
 &lt;h1 id=&quot;群辉安装Python&quot;&gt;&lt;a href=&quot;#群辉安装Python&quot; class=&quot;headerlink&quot; title=&quot;群辉安装Python&quot;&gt;&lt;/a&gt;群辉安装Python&lt;/h1&gt;
     
     </summary>
@@ -34,9 +60,9 @@
       <category term="Python" scheme="https://Homepea7.github.io/categories/Python/"/>
     
     
-      <category term="DSM/Synology" scheme="https://Homepea7.github.io/tags/DSM-Synology/"/>
-    
       <category term="Python" scheme="https://Homepea7.github.io/tags/Python/"/>
+    
+      <category term="DSM/Synology" scheme="https://Homepea7.github.io/tags/DSM-Synology/"/>
     
       <category term="pip" scheme="https://Homepea7.github.io/tags/pip/"/>
     
@@ -334,9 +360,9 @@
       <category term="The C/CPP language" scheme="https://Homepea7.github.io/categories/The-C-CPP-language/"/>
     
     
-      <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
-    
       <category term="The C/CPP language" scheme="https://Homepea7.github.io/tags/The-C-CPP-language/"/>
+    
+      <category term="CRC Check" scheme="https://Homepea7.github.io/tags/CRC-Check/"/>
     
   </entry>
   
@@ -480,34 +506,6 @@
     
     
       <category term="The C language" scheme="https://Homepea7.github.io/categories/The-C-language/"/>
-    
-    
-      <category term="C语言" scheme="https://Homepea7.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-      <category term="Some basics" scheme="https://Homepea7.github.io/tags/Some-basics/"/>
-    
-      <category term="变量长度" scheme="https://Homepea7.github.io/tags/%E5%8F%98%E9%87%8F%E9%95%BF%E5%BA%A6/"/>
-    
-      <category term="字节对齐" scheme="https://Homepea7.github.io/tags/%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言的一些基础知识</title>
-    <link href="https://homepea7.github.io/2020/18.Basics%20of%20C/"/>
-    <id>https://homepea7.github.io/2020/18.Basics%20of%20C/</id>
-    <published>2020-06-10T09:03:51.000Z</published>
-    <updated>2020-10-06T08:35:57.473Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;最近准备在投简历，也是总结总结一下C语言的基础知识，做一些准备。首先说明，下文后面所做的所有的实验都是在win10_1909_x64环境下，gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)，软件使用的是VSCode。在C语言多线程的使用中，在VSCode配置好了C语言的基本环境之后就能直接使用了。&lt;/p&gt;
-&lt;h1 id=&quot;C语言的字与字节&quot;&gt;&lt;a href=&quot;#C语言的字与字节&quot; class=&quot;headerlink&quot; title=&quot;C语言的字与字节&quot;&gt;&lt;/a&gt;C语言的字与字节&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="The C/C++ language" scheme="https://Homepea7.github.io/categories/The-C-C-language/"/>
     
     
       <category term="C语言" scheme="https://Homepea7.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>

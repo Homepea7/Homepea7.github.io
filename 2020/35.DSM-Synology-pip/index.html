@@ -64,18 +64,18 @@
 </style>
 
 
-  <meta name="description" content="说明关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的request，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给">
+  <meta name="description" content="说明关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的requests，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在群辉上面安装pip">
 <meta property="og:url" content="https://homepea7.github.io/2020/35.DSM-Synology-pip/index.html">
 <meta property="og:site_name" content="Homepea&#39;s Blog">
-<meta property="og:description" content="说明关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的request，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给">
+<meta property="og:description" content="说明关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的requests，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-23T00:46:30.000Z">
-<meta property="article:modified_time" content="2020-10-23T02:05:46.934Z">
+<meta property="article:modified_time" content="2020-10-28T01:15:06.162Z">
 <meta property="article:author" content="Kavin Homepea">
-<meta property="article:tag" content="DSM&#x2F;Synology">
 <meta property="article:tag" content="Python">
+<meta property="article:tag" content="DSM&#x2F;Synology">
 <meta property="article:tag" content="pip">
 <meta name="twitter:card" content="summary">
 
@@ -187,7 +187,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">69</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -197,7 +197,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">42</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -344,7 +344,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的<code>request</code>，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。</p>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的<code>requests</code>，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。</p>
 <h1 id="群辉安装Python"><a href="#群辉安装Python" class="headerlink" title="群辉安装Python"></a>群辉安装Python</h1><p>这一点应该不用说了吧，直接去群辉的套件中心，一键安装即可，然后再用SSH登录，输入<code>python -v</code>或者<code>python3 -v</code>即可查看Python版本，并且进入对应的Python环境。</p>
 <h1 id="安装request库"><a href="#安装request库" class="headerlink" title="安装request库"></a>安装request库</h1><p>看了一些资料，比如<a href="https://www.bilibili.com/read/cv1428431/" target="_blank" rel="noopener">学海无涯的B站专栏</a>，这个应该是讲的最详细的一个了，但是很无奈，我这边尝试了没用，不知道是不是我平台的问题。然后就有继续找，找到了<a href="https://stackoverrun.com/cn/q/13048281" target="_blank" rel="noopener">stackoverrun</a>上面的问题讨论，也是在讨论这个问题，下面给出了相应的答案，而且回答的十分详细，步骤真的超级简单，如实就尝试了一下，果然成功了！</p>
 <ul>
@@ -406,8 +406,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DSM-Synology/" rel="tag"><i class="fa fa-tag"></i> DSM/Synology</a>
               <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/DSM-Synology/" rel="tag"><i class="fa fa-tag"></i> DSM/Synology</a>
               <a href="/tags/pip/" rel="tag"><i class="fa fa-tag"></i> pip</a>
           </div>
 
@@ -420,7 +420,10 @@
     <a href="/2020/30.Endian/" rel="prev" title="输入数字判断CPU是大端还是小端模式">
       <i class="fa fa-chevron-left"></i> 输入数字判断CPU是大端还是小端模式
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/36.AItalk-WeChat/" rel="next" title="使用AI对话将内容部署到微信上">
+      使用AI对话将内容部署到微信上 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -497,7 +500,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -510,7 +513,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">71</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -556,12 +559,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">98k</span>
+    <span title="站点总字数">105k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:35</span>
 </div>
 
 <script>

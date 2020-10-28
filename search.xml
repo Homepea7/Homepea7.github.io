@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用AI对话将内容部署到微信上</title>
+    <url>/2020/36.AItalk-WeChat/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>最近闲来无事，在玩ESP32的时候看到了HTTP请求，从<a href="https://id.qweather.com/" target="_blank" rel="noopener">和风天气</a>爬到了一些信息，当看到返回的Json的数据时还是非常兴奋的。就顺便想了下，觉得如果有AI对话，那肯定很有意思，那如果能够发到微信上面，那不是我女神每天早上的早安和晚安语录那不是也有了嘛？哈哈哈，说干就干，下面是每天早上七点半的早安语录示例，还要说明一下，这个小项目的话个人开源，<a href="https://github.com/Homepea7/OneWordEveryday" target="_blank" rel="noopener">代码在这里</a>。<img src="/images/Python/1.0.png" alt="内容">。</p>
+<h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><p>话不多说，直接上代码，首先是利用的库。如果没有的话请自行pip安装，linux用户记得使用pip3：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">import os</span><br><span class="line">import re</span><br><span class="line">import json</span><br><span class="line">import time</span><br><span class="line">import string</span><br><span class="line">import random</span><br><span class="line">import urllib</span><br><span class="line">import hashlib</span><br><span class="line">import requests</span><br><span class="line">import schedule</span><br><span class="line">import datetime</span><br><span class="line">from urllib.parse import quote</span><br><span class="line">from pyserverchan import pyserver</span><br></pre></td></tr></table></figure>
+
+<p>然后就是我用到的AI机器人，刚刚开始的时候我都想试试，最后确定了两个我觉得挺好用的，这里都分享出来，分别是<a href="https://api.qingyunke.com/" target="_blank" rel="noopener">青云客</a>的AI对话和<a href="https://ai.qq.com/product/nlpchat.shtml" target="_blank" rel="noopener">腾讯闲聊</a>的AI对话。下面我都会对这两个进行简单的分析。</p>
+<p>下面呢我还是对这两个AI对话做一个简单的介绍吧，首先是青云客，我选择的理由非常简单，不用注册，不用申请key，直接拿来立马就可以用，而且实现超级简单，功能如下：完全免费，支持功能：天气、翻译、藏头诗、笑话、歌词、计算、域名信息/备案/收录查询、IP查询、手机号码归属、人工智能聊天；</p>
+<p>其次是腾讯闲聊AI对话：腾讯闲聊服务基于AI Lab领先的NLP引擎能力、数据运算能力和千亿级互联网语料数据的支持，同时集成了广泛的知识问答能力，可实现上百种自定义属性配置，以及男、女不同的语言风格及说话方式，从而让聊天变得更睿智、简单和有趣。而且有一个非常好用的点事可以接入微信公众号，实现简单的AI对话，如果有需求的话实现会很简单。</p>
+<p>做一个简单的对比吧，青云客的机器人使用简单，但是速度相对较慢，一般发言一次可能需要5-6秒才能恢复；腾讯的AI对话使用较为麻烦，还需要注册和申请key，但是作为国内的巨头之一，速度真的是非常快，感觉1-2秒就能返回想要的数据。好了，下面是具体的代码解析。</p>
+<h2 id="青云客的实现"><a href="#青云客的实现" class="headerlink" title="青云客的实现"></a>青云客的实现</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line"><span class="comment"># 函数说明：青云客机器人的简单对话</span></span><br><span class="line"><span class="comment"># 函数输入：想要的对话（utf-8编码的）</span></span><br><span class="line"><span class="comment"># 函数输出：AI对话的结果</span></span><br><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line">def qingyunkeAI(msg):</span><br><span class="line">	url = <span class="string">'http://api.qingyunke.com/api.php?key=free&amp;appid=0&amp;msg=&#123;&#125;'</span>.format(urllib.parse.quote(msg))</span><br><span class="line">	html = requests.get(url)</span><br><span class="line">	<span class="built_in">return</span> html.json()[<span class="string">"content"</span>]</span><br><span class="line"><span class="comment"># msg = '武汉的天气怎么样'</span></span><br><span class="line"><span class="comment"># print("原话&gt;&gt;", msg)</span></span><br><span class="line"><span class="comment"># res = qingyunkeAI(msg)</span></span><br><span class="line"><span class="comment"># print("青云客&gt;&gt;", res)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="腾讯闲聊的实现"><a href="#腾讯闲聊的实现" class="headerlink" title="腾讯闲聊的实现"></a>腾讯闲聊的实现</h2><p>首先去腾讯闲聊登录，第一选择肯定是QQ登录，他默认也是会使用QQ登录的，然后直接<img src="/images/Python/1.1.png" alt="创建应用">)，然后就可以拿到APPID和APPKEY。<img src="/images/Python/1.3.png" alt="如下"><br>然后就可以愉快的调用下面的代码啦(在仓库里面还有一个单独的TencentAI.py文件，也是用来解析的，那个使用控制台进行的对话)：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line"><span class="comment"># 函数说明：腾讯AI的简单对话</span></span><br><span class="line"><span class="comment"># 函数输入：想要的对话（utf-8编码的）</span></span><br><span class="line"><span class="comment"># 函数输出：AI对话的结果</span></span><br><span class="line"><span class="comment"># 备注:	腾讯闲聊机器人的凭证如下：</span></span><br><span class="line"><span class="comment"># 		App_ID: 123456</span></span><br><span class="line"><span class="comment"># 		App_Key: 123456</span></span><br><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line">def tencentAI(msg):</span><br><span class="line">	APPID = <span class="string">"123456"</span>	<span class="comment">#替换成自己申请的ID</span></span><br><span class="line">	APPKEY = <span class="string">"123456"</span>	<span class="comment">#替换成自己申请的KEY</span></span><br><span class="line">	url = <span class="string">"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textchat"</span></span><br><span class="line">	params = &#123;</span><br><span class="line">		<span class="string">"app_id"</span>: APPID,</span><br><span class="line">		<span class="string">"time_stamp"</span>: str(int(time.time())),</span><br><span class="line">		<span class="string">"nonce_str"</span>: <span class="string">""</span>.join(random.choice(string.ascii_letters + string.digits) <span class="keyword">for</span> x <span class="keyword">in</span> range(16)),</span><br><span class="line">		<span class="string">"session"</span>: <span class="string">"10000"</span>.encode(<span class="string">"utf-8"</span>),</span><br><span class="line">		<span class="string">"question"</span>: msg.encode(<span class="string">"utf-8"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	sign_before = <span class="string">""</span></span><br><span class="line">	<span class="keyword">for</span> key <span class="keyword">in</span> sorted(params):</span><br><span class="line">		<span class="comment"># 键值拼接过程value部分需要URL编码，URL编码算法用大写字母，例如%E8。quote默认大写。</span></span><br><span class="line">		sign_before += <span class="string">"&#123;&#125;=&#123;&#125;&amp;"</span>.format(key, urllib.parse.quote(params[key], safe=<span class="string">""</span>))</span><br><span class="line">	<span class="comment"># 将应用密钥以app_key为键名，拼接到字符串sign_before末尾</span></span><br><span class="line">	sign_before += <span class="string">"app_key=&#123;&#125;"</span>.format(APPKEY)</span><br><span class="line">	<span class="comment"># 对字符串sign_before进行MD5运算，得到接口请求签名</span></span><br><span class="line">	sign = hashlib.md5(sign_before.encode(<span class="string">"UTF-8"</span>)).hexdigest().upper()</span><br><span class="line">	params[<span class="string">"sign"</span>] = sign</span><br><span class="line">	<span class="comment"># print(params)</span></span><br><span class="line">	html = requests.post(url, data=params).json()</span><br><span class="line">	<span class="built_in">return</span> html[<span class="string">"data"</span>][<span class="string">"answer"</span>]</span><br><span class="line"><span class="comment"># msg= "讲一个笑话"</span></span><br><span class="line"><span class="comment"># print("原话&gt;&gt;", msg)</span></span><br><span class="line"><span class="comment"># res = tencentAI(msg)</span></span><br><span class="line"><span class="comment"># print("腾讯&gt;&gt;", res)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="关于一言的获取"><a href="#关于一言的获取" class="headerlink" title="关于一言的获取"></a>关于一言的获取</h2><p>一言（Hitokoto）网创立于2016 年，隶属于萌创团队，目前网站主要提供一句话服务。不论在哪里，总有那么几个句子能穿透你的心。把这些句子汇聚起来，传递更多的心情。它也是可以免费和无KEY调用的，接口也是十分简单，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line"><span class="comment"># 函数说明：获取一言接口的数据，并存储到全局的字符串OneWord中</span></span><br><span class="line"><span class="comment"># 函数输入：无</span></span><br><span class="line"><span class="comment"># 函数输出：True/False</span></span><br><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line">def getOneWord():</span><br><span class="line">	<span class="comment"># 1. 请求一言的接口</span></span><br><span class="line">	url = <span class="string">"https://v1.hitokoto.cn/"</span></span><br><span class="line">	response = requests.get(url)</span><br><span class="line">	<span class="comment"># 2. 获取响应数据，并解析JSON，转化为python字典</span></span><br><span class="line">	result = response.json()</span><br><span class="line">	<span class="comment"># 3. 打印结果中的"hitokoto"（想要的句子）</span></span><br><span class="line">	<span class="built_in">print</span>(result[<span class="string">"hitokoto"</span>])	<span class="comment"># Json解析</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> response.status_code == 200 :</span><br><span class="line">		<span class="built_in">return</span> result[<span class="string">"hitokoto"</span>]</span><br><span class="line">	<span class="keyword">else</span> :</span><br><span class="line">		<span class="built_in">return</span> <span class="string">""</span></span><br><span class="line"><span class="comment"># getOneWord()		# 测试获取一言数据</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="推送到微信端"><a href="#推送到微信端" class="headerlink" title="推送到微信端"></a>推送到微信端</h1><p>微信端额推送服务我选择了<a href="http://sc.ftqq.com/3.version" target="_blank" rel="noopener">Server酱</a>。没有别的原因，就是主页的那句话我很喜欢，<code>是的是的，有很多的客户端都可以做到这个功能，比如Slack。那为什么我还要写一个呢？因为它们总是给得太多，我只是要一个简简单单的消息接收器而已。这也成为了「Server酱」的设计目标：功能越少越好。</code>，就凭这句话，我觉得不需要多少话来介绍了，使用起来只需要授权GitHub账号，并且绑定微信，就能得到一个Key，就能很快的实现消息的推送。下面我还是简单介绍自己用法，首先是我最开始用的将一言的数据发送到微信：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line"><span class="comment"># 函数说明：将一言数据发送到Server酱，即微信的提醒</span></span><br><span class="line"><span class="comment"># 函数输入：无</span></span><br><span class="line"><span class="comment"># 函数输出：无</span></span><br><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line">def sendOneWord():</span><br><span class="line">	<span class="comment"># 1. 获取sckey，具体请见：http://sc.ftqq.com/3.version</span></span><br><span class="line">	sckeyDC = <span class="string">"XXX"</span></span><br><span class="line">	sckeyLL = <span class="string">"XXX"</span></span><br><span class="line">	<span class="comment"># 2. 拼接url并且发送请求，text为推送的title,desp为推送的描述</span></span><br><span class="line">	OneWord = getOneWord()</span><br><span class="line">	<span class="comment"># print(OneWord)</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(OneWord == <span class="string">""</span>):</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">" 不好啦，服务器疯了： 未能正确获取一言的数据"</span>)</span><br><span class="line">		requests.get(<span class="string">"https://sc.ftqq.com/%s.send?text=不好啦，服务器崩了！&amp;desp=未能正确获取一言的数据"</span>%sckeyLL)</span><br><span class="line">		requests.get(<span class="string">"https://sc.ftqq.com/%s.send?text=不好啦，服务器崩了！&amp;desp=未能正确获取一言的数据"</span>%sckeyDC)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		url = <span class="string">"https://sc.ftqq.com/%s.send?text=程序的测试&amp;desp=%s"</span> % (sckeyLL, OneWord)</span><br><span class="line">		requests.get(url)</span><br><span class="line">		url = <span class="string">"https://sc.ftqq.com/%s.send?text=程序的测试&amp;desp=%s"</span> % (sckeyDC, OneWord)</span><br><span class="line">		requests.get(url)</span><br><span class="line"><span class="comment"># sendOneWord()		# 测试发送到Server酱</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我发现这个消息好像不方便设置格式，而且既然是给女神发送的，格式不好看怎么能行。我看到了Server酱是支持Markdown格式的，而且我的这么多博客都是Markdown格式，如果能够简单排版的话效果肯定会好很多，于是我又开始寻找怎么发送Markdown格式。官网上面说，两个空格就是换行，但是我发送字符串，怎么都不行，最后我就google查了一下，还真的查到了一些，我新建一个<code>.md</code>文件，然后使用Python对文件进行读写，将爬到的数据写入这个文本，然后使用函数就能直接发送Markdown格式的文件了，真的是太有才了！具体代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line"><span class="comment"># 函数说明：把获取的结果保存到md文件中，方便发送</span></span><br><span class="line"><span class="comment"># 函数输入：无</span></span><br><span class="line"><span class="comment"># 函数输出：全部内容都在README.md文件中</span></span><br><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line">def all2md():</span><br><span class="line">	with open(<span class="string">"README.md"</span>, mode=<span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) as f:	<span class="comment"># 'w'是写模式，会清空内容</span></span><br><span class="line">		f.write(<span class="string">"# 知心一言\n"</span>)</span><br><span class="line">		f.write(<span class="string">"  "</span> + getOneWord() + <span class="string">"\n\n"</span>)</span><br><span class="line">	f.close()</span><br><span class="line"></span><br><span class="line">	msg = <span class="string">"武汉的天气怎么样"</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"原话&gt;&gt;"</span>, msg)</span><br><span class="line">	res = qingyunkeAI(msg)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"青云客&gt;&gt;"</span>, res)</span><br><span class="line">	with open(<span class="string">"README.md"</span>, mode=<span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>) as f:	<span class="comment"># 'a'是追加模式</span></span><br><span class="line">		f.write(<span class="string">"# 最近天气\n"</span>)</span><br><span class="line">		f.write(<span class="string">"  "</span> + re.sub(<span class="string">'&#123;br&#125;'</span>, <span class="string">'\n  '</span>, res) + <span class="string">"\n\n"</span>)</span><br><span class="line">	f.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	msg = <span class="string">"讲一个笑话"</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"原话&gt;&gt;"</span>, msg)</span><br><span class="line">	res = tencentAI(msg)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"腾讯&gt;&gt;"</span>, res)</span><br><span class="line"></span><br><span class="line">	with open(<span class="string">"README.md"</span>, mode=<span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>) as f:	<span class="comment"># 'a'是追加模式</span></span><br><span class="line">		f.write(<span class="string">"# 每日笑话\n"</span>)</span><br><span class="line">		f.write(<span class="string">"  "</span> + res + <span class="string">"\n\n"</span>)</span><br><span class="line">	f.close()</span><br><span class="line"></span><br><span class="line">	sckeyDC = <span class="string">"XXX"</span></span><br><span class="line">	sckeyLL = <span class="string">"XXX"</span></span><br><span class="line"></span><br><span class="line">	user_URL = <span class="string">'https://sc.ftqq.com/'</span> + sckeyLL + <span class="string">'.send'</span></span><br><span class="line">	svc = pyserver.ServerChan(user_URL)</span><br><span class="line">	svc.output_to_weixin_markdown(<span class="string">"README.md"</span>, title=<span class="string">'****早安呀╰(*°▽°*)╯'</span>)</span><br><span class="line"></span><br><span class="line">	user_URL = <span class="string">'https://sc.ftqq.com/'</span> + sckeyDC + <span class="string">'.send'</span></span><br><span class="line">	svc = pyserver.ServerChan(user_URL)</span><br><span class="line">	<span class="comment"># svc.output_to_weixin("ATestMessage.")</span></span><br><span class="line">	<span class="comment"># svc.output_to_weixin_picture("http://sc.ftqq.com/static/image/bottom_logo.png")</span></span><br><span class="line">	svc.output_to_weixin_markdown(<span class="string">"README.md"</span>, title=<span class="string">'***早安呀╰(*°▽°*)╯'</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h1><p>定时任务我是用的是轻量级的schedule模块，他的特点是就是非常方便，但是只能用于轻量的任务调度，务必保持执行的时间小于任务调度时间，否则会调用越来越多的资源直至崩溃。具体代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line"><span class="comment"># 函数说明：定时执行任务（schedule模块）</span></span><br><span class="line"><span class="comment"># 函数输入：无</span></span><br><span class="line"><span class="comment"># 函数输出：无</span></span><br><span class="line"><span class="comment"># 函数说明：schedule模块只能用于轻量的任务调度，务必保持执行的</span></span><br><span class="line"><span class="comment"># 		   时间小于任务调度时间</span></span><br><span class="line"><span class="comment"># *********************************************************</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">" main "</span>)</span><br><span class="line">	<span class="comment"># schedule.every(1).minutes.do(all2md)</span></span><br><span class="line">	<span class="comment"># schedule.every().hour.do(all2md)</span></span><br><span class="line">	<span class="comment"># schedule.every().day.at("07:30").do(all2md)</span></span><br><span class="line">	<span class="comment"># schedule.every(5).to(10).days.do(all2md)</span></span><br><span class="line">	<span class="comment"># schedule.every().monday.do(all2md)</span></span><br><span class="line">	<span class="comment"># schedule.every().wednesday.at("13:15").do(all2md)</span></span><br><span class="line">	</span><br><span class="line">	schedule.every().day.at(<span class="string">"07:30"</span>).<span class="keyword">do</span>(all2md)</span><br><span class="line">	<span class="keyword">while</span> True:</span><br><span class="line">		schedule.run_pending()</span><br><span class="line">		time.sleep(1)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>好啦，程序总体就是这样，我个人觉得从功能上肯定还是有很多可以开发的内容，但是目前我就是仅仅是想发送一个早安语，目前的功能也差不多足够了。程序放到我的小猫盘上面跑，24小时待机还是美滋滋。对了，如果群辉上面运行有问题，请看我上一篇文章呀。</p>
+<p>话说有一个自己的小服务器真的是很爽的啊<del>~</del></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>Python</tag>
+        <tag>WeChat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在群辉上面安装pip</title>
     <url>/2020/35.DSM-Synology-pip/</url>
-    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的<code>request</code>，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。</p>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于NAS，群辉肯定是不得不提的，本人之前也是疫情在家的时候买了一个小猫盘，也算是尝鲜了一波NAS吧，毕竟猫盘的性能还是有点捉急的，而且是ARM的（以后肯定还是要装一台x86的）。然后最近稍微学习了一下Python的<code>requests</code>，正缺一个24小时不关机的设备跑Python的，如实就想到了群辉，而且也装好了Python，但是奈何没有pip，于是查询了一些资料（国内的几个方法好像都不行），终于给解决了。</p>
 <h1 id="群辉安装Python"><a href="#群辉安装Python" class="headerlink" title="群辉安装Python"></a>群辉安装Python</h1><p>这一点应该不用说了吧，直接去群辉的套件中心，一键安装即可，然后再用SSH登录，输入<code>python -v</code>或者<code>python3 -v</code>即可查看Python版本，并且进入对应的Python环境。</p>
 <h1 id="安装request库"><a href="#安装request库" class="headerlink" title="安装request库"></a>安装request库</h1><p>看了一些资料，比如<a href="https://www.bilibili.com/read/cv1428431/" target="_blank" rel="noopener">学海无涯的B站专栏</a>，这个应该是讲的最详细的一个了，但是很无奈，我这边尝试了没用，不知道是不是我平台的问题。然后就有继续找，找到了<a href="https://stackoverrun.com/cn/q/13048281" target="_blank" rel="noopener">stackoverrun</a>上面的问题讨论，也是在讨论这个问题，下面给出了相应的答案，而且回答的十分详细，步骤真的超级简单，如实就尝试了一下，果然成功了！</p>
 <ul>
@@ -50,8 +91,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>DSM/Synology</tag>
         <tag>Python</tag>
+        <tag>DSM/Synology</tag>
         <tag>pip</tag>
       </tags>
   </entry>
@@ -562,8 +603,8 @@
         <category>The C/CPP language</category>
       </categories>
       <tags>
-        <tag>CRC Check</tag>
         <tag>The C/CPP language</tag>
+        <tag>CRC Check</tag>
       </tags>
   </entry>
   <entry>
@@ -1083,6 +1124,21 @@
   </entry>
   <entry>
     <title>C语言实现CRC检验</title>
+    <url>/2020/17.C-CRC-DESKTOP-GRPI1FR/</url>
+    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前在做一个项目的时候，为了保证数据的准确性，用到了CRC检验，现在将其总结一下，顺便也复习一下。首先说一下CRC校验，他的全称是循环冗余校验（cyclic redundancy check）。CRC检验的基本思想是利用线性编码理论，在发送端根据要传送的k位二进制码序列，以一定的规则产生一个检验码r位(就是CRC码)，附在信息后面，构成一个新的二进制码序列数共(k+r)位，最后发送出去。接收端根据同样的规则校验，以确定传送中是否出错。接收端有两种处理方式：1、计算k位序列的CRC码，与接收到的CRC比较，一致则接收正确。2、计算整个k+r位的CRC码，若为0，则接收正确。CRC码有多种检验位数，8位、16位、32位等，原理相同。16位的CRC码产生的规则是先将要发送的二进制序列数左移16位（即乘以2的16次方后），除以一个多项式，最后所得到的余数就是CRC码。</p>
+<p>不说复杂了，CRC 算法的基本思想是将传输的数据当做一个位数很长的数，将这个数除以另一个数，得到的余数作为校验数据附加到原数据后面。除法采用正常的多项式乘除法，而加减法都采用模2运算。模2运算就是结果除以2后取余数，如 3 mod 2 = 1，在计算机中就是异或运算！下面举例说一下：</p>
+<h1 id="CRC介绍"><a href="#CRC介绍" class="headerlink" title="CRC介绍"></a>CRC介绍</h1><h1 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h1><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>之前做项目的时候也参考了很多资料，目前根据根据回忆写这篇博客也是参考了很多别人的东西，例如：<a href="https://blog.csdn.net/liyuanbhu/article/details/7882789" target="_blank" rel="noopener">liyuanbhu</a>的CSDN频道，<a href="https://zhuanlan.zhihu.com/p/77408094" target="_blank" rel="noopener">mculover666</a>的知乎回答，还有<a href="https://www.jb51.net/article/36832.htm" target="_blank" rel="noopener">脚本51</a>的分析介绍。通过这些我也学习到了很多的东西，对CRC检验也有了深刻的体会，我觉得还是挺开心的！</p>
+]]></content>
+      <categories>
+        <category>The C/C++ language</category>
+      </categories>
+      <tags>
+        <tag>The C/CPP language</tag>
+        <tag>CRC Check</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言实现CRC检验</title>
     <url>/2020/17.C-CRC/</url>
     <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前在做一个项目的时候，为了保证数据的准确性，用到了CRC检验，现在将其总结一下，顺便也复习一下。首先说一下CRC校验，他的全称是循环冗余校验（cyclic redundancy check）。CRC检验的基本思想是利用线性编码理论，在发送端根据要传送的k位二进制码序列，以一定的规则产生一个检验码r位(就是CRC码)，附在信息后面，构成一个新的二进制码序列数共(k+r)位，最后发送出去。接收端根据同样的规则校验，以确定传送中是否出错。接收端有两种处理方式：1、计算k位序列的CRC码，与接收到的CRC比较，一致则接收正确。2、计算整个k+r位的CRC码，若为0，则接收正确。CRC码有多种检验位数，8位、16位、32位等，原理相同。16位的CRC码产生的规则是先将要发送的二进制序列数左移16位（即乘以2的16次方后），除以一个多项式，最后所得到的余数就是CRC码。</p>
 <p>不说复杂了，CRC 算法的基本思想是将传输的数据当做一个位数很长的数，将这个数除以另一个数，得到的余数作为校验数据附加到原数据后面。除法采用正常的多项式乘除法，而加减法都采用模2运算。模2运算就是结果除以2后取余数，如 3 mod 2 = 1，在计算机中就是异或运算！下面举例说一下：</p>
@@ -1094,21 +1150,6 @@
       <tags>
         <tag>C/C++</tag>
         <tag>CRC Check</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C语言实现CRC检验</title>
-    <url>/2020/17.C-CRC-DESKTOP-GRPI1FR/</url>
-    <content><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>之前在做一个项目的时候，为了保证数据的准确性，用到了CRC检验，现在将其总结一下，顺便也复习一下。首先说一下CRC校验，他的全称是循环冗余校验（cyclic redundancy check）。CRC检验的基本思想是利用线性编码理论，在发送端根据要传送的k位二进制码序列，以一定的规则产生一个检验码r位(就是CRC码)，附在信息后面，构成一个新的二进制码序列数共(k+r)位，最后发送出去。接收端根据同样的规则校验，以确定传送中是否出错。接收端有两种处理方式：1、计算k位序列的CRC码，与接收到的CRC比较，一致则接收正确。2、计算整个k+r位的CRC码，若为0，则接收正确。CRC码有多种检验位数，8位、16位、32位等，原理相同。16位的CRC码产生的规则是先将要发送的二进制序列数左移16位（即乘以2的16次方后），除以一个多项式，最后所得到的余数就是CRC码。</p>
-<p>不说复杂了，CRC 算法的基本思想是将传输的数据当做一个位数很长的数，将这个数除以另一个数，得到的余数作为校验数据附加到原数据后面。除法采用正常的多项式乘除法，而加减法都采用模2运算。模2运算就是结果除以2后取余数，如 3 mod 2 = 1，在计算机中就是异或运算！下面举例说一下：</p>
-<h1 id="CRC介绍"><a href="#CRC介绍" class="headerlink" title="CRC介绍"></a>CRC介绍</h1><h1 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h1><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>之前做项目的时候也参考了很多资料，目前根据根据回忆写这篇博客也是参考了很多别人的东西，例如：<a href="https://blog.csdn.net/liyuanbhu/article/details/7882789" target="_blank" rel="noopener">liyuanbhu</a>的CSDN频道，<a href="https://zhuanlan.zhihu.com/p/77408094" target="_blank" rel="noopener">mculover666</a>的知乎回答，还有<a href="https://www.jb51.net/article/36832.htm" target="_blank" rel="noopener">脚本51</a>的分析介绍。通过这些我也学习到了很多的东西，对CRC检验也有了深刻的体会，我觉得还是挺开心的！</p>
-]]></content>
-      <categories>
-        <category>The C/C++ language</category>
-      </categories>
-      <tags>
-        <tag>CRC Check</tag>
-        <tag>The C/CPP language</tag>
       </tags>
   </entry>
   <entry>
@@ -1151,8 +1192,8 @@
         <tag>C/C++</tag>
         <tag>SingleChip</tag>
         <tag>Uart</tag>
-        <tag>STC51</tag>
         <tag>STM32</tag>
+        <tag>STC51</tag>
       </tags>
   </entry>
   <entry>
@@ -1192,11 +1233,11 @@
         <category>Embedded development</category>
       </categories>
       <tags>
+        <tag>The C/CPP language</tag>
         <tag>SingleChip</tag>
         <tag>Uart</tag>
-        <tag>STM32</tag>
-        <tag>The C/CPP language</tag>
         <tag>51</tag>
+        <tag>STM32</tag>
       </tags>
   </entry>
   <entry>
@@ -1337,12 +1378,12 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># lsusb</span></span><br><span class="line">Bus 001 Device 002: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
 
 <p>这里偷懒，直接使用的<font color=red>root</font>用户，可以看到，上面显示的 Device 002就是我的无线网卡，系统已经自带该网卡的驱动。</p>
-<p>这里比较推荐使用新的系统，最好是直接去树莓派的官网下载，因为系统增加新网卡的支持，能免去编译驱动的麻烦，如果你的无线网卡在系统中无法识别，请自行编译安装驱动。</p>
-<h1 id="查看已经连接的网络"><a href="#查看已经连接的网络" class="headerlink" title="查看已经连接的网络"></a>查看已经连接的网络</h1><p>指令如下：</p>
+<p>这里比较推荐使用新的系统，最好是直接去树莓派的官网下载，因为系统增加新网卡的支持，能免去编译驱动的麻烦，如果你的无线网卡在系统中无法识别，请自行编译安装驱动，这个的话就需要一定的工地了，最好是买免驱的吧，基本上都是免驱的吧。</p>
+<h1 id="查看已经连接的网络"><a href="#查看已经连接的网络" class="headerlink" title="查看已经连接的网络"></a>查看已经连接的网络</h1><p>使用iwconfig查看wlan0的详情，使用如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwconfig</span></span><br><span class="line">wlan0     IEEE 802.11  ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">          Mode:Managed  Frequency:2.467 GHz  Access Point: 6C:FD:B9:CC:9B:1B</span><br><span class="line">          Bit Rate=72.2 Mb/s   Tx-Power=20 dBm</span><br><span class="line">          Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Encryption key:off</span><br><span class="line">          Power Management:off</span><br><span class="line">          Link Quality=70/70  Signal level=-37 dBm</span><br><span class="line">          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0</span><br><span class="line">          Tx excessive retries:1420  Invalid misc:135   Missed beacon:0</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure>
 
 <p>这个<font color=red>OpenWrt</font> 就是连接的Wi-Fi，还有连接频段和信号质量等等信息，如果没有连接的话就不会显示这么多信息，而且是”off/any”这个状态。</p>
-<h1 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h1><h2 id="扫描可见SSID"><a href="#扫描可见SSID" class="headerlink" title="扫描可见SSID"></a>扫描可见SSID</h2><p>使用如下指令扫描附近可见的SSID，并截取想要连接的无线路由器的信息：</p>
+<h1 id="配置无线网络"><a href="#配置无线网络" class="headerlink" title="配置无线网络"></a>配置无线网络</h1><h2 id="扫描可见SSID"><a href="#扫描可见SSID" class="headerlink" title="扫描可见SSID"></a>扫描可见SSID</h2><p>使用<code>sudo iwlist wlan0 scan</code>指令扫描附近可见的SSID，并截取想要连接的无线路由器的信息：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># iwlist wlan0 scan</span></span><br><span class="line">wlan0     Scan completed :</span><br><span class="line">          Cell 01 - Address: 6C:FD:B9:CC:9B:1B</span><br><span class="line">                    Channel:12</span><br><span class="line">                    Frequency:2.467 GHz (Channel 12)</span><br><span class="line">                    Quality=67/70  Signal level=-43 dBm</span><br><span class="line">                    Encryption key:on</span><br><span class="line">                    ESSID:<span class="string">"OpenWrt"</span></span><br><span class="line">                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s</span><br><span class="line">                              9 Mb/s; 12 Mb/s; 18 Mb/s</span><br><span class="line">                    Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s</span><br><span class="line">                    Mode:Master</span><br><span class="line">                    Extra:tsf=00000120c308241c</span><br><span class="line">                    Extra: Last beacon: 60ms ago</span><br><span class="line">                    IE: Unknown: 00074F70656E577274</span><br><span class="line">                    IE: Unknown: 010882848B960C121824</span><br><span class="line">                    IE: Unknown: 03010C</span><br><span class="line">                    IE: Unknown: 0706303020010C14</span><br><span class="line">                    IE: Unknown: 2A0100</span><br><span class="line">                    IE: Unknown: 32043048606C</span><br><span class="line">                    IE: IEEE 802.11i/WPA2 Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: WPA Version 1</span><br><span class="line">                        Group Cipher : CCMP</span><br><span class="line">                        Pairwise Ciphers (1) : CCMP</span><br><span class="line">                        Authentication Suites (1) : PSK</span><br><span class="line">                    IE: Unknown: 0B050300A20000</span><br><span class="line">                    IE: Unknown: 2D1AEC0213FFFF000001000000000000000100000000000000000000</span><br><span class="line">                    IE: Unknown: 3D160C070600000000000000000000000000000000000000</span><br><span class="line">                    IE: Unknown: 7F080000000000000140</span><br><span class="line">                    IE: Unknown: DD180050F2020101010003A4000027A4000042435E0062322F00</span><br></pre></td></tr></table></figure>
 
 <h2 id="设置SSID和对应密码"><a href="#设置SSID和对应密码" class="headerlink" title="设置SSID和对应密码"></a>设置SSID和对应密码</h2><p>使用如下命令密码生成SSID和对应的密码，复制内容备用</p>
@@ -1351,7 +1392,7 @@
 <p>然后通过重定向命令写入到文件备用：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># wpa_passphrase MERCURY_4E1A blackcar &gt; ~/wifi.conf</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="修改wpa-supplicant-conf"><a href="#修改wpa-supplicant-conf" class="headerlink" title="修改wpa_supplicant.conf"></a>修改wpa_supplicant.conf</h2><p>这一步需要管理员权限的，现在把内容粘贴到/etc/wpa_supplicant/wpa_supplicant.conf，如下：</p>
+<h2 id="修改wpa-supplicant-conf"><a href="#修改wpa-supplicant-conf" class="headerlink" title="修改wpa_supplicant.conf"></a>修改wpa_supplicant.conf</h2><p>这一步需要管理员权限的，现在把内容粘贴到 /etc/wpa_supplicant/wpa_supplicant.conf，如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:~<span class="comment"># less wifi.conf &gt;&gt; /etc/wpa_supplicant/wpa_supplicant.conf</span></span><br></pre></td></tr></table></figure>
 
 <p>或重定向的方式给 wpa_supplicant.conf 追加 wifi.conf ：</p>
